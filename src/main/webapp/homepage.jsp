@@ -32,7 +32,7 @@
 		class="yx-nav navbar navbar-default navbar-left navbar-fixed-top yx-nav">
 		<a class="yx-brand navbar-brand" href="index" style="color: cadetblue">阅享图书交流平台</a>
 		<div class="yx-toolbar">
-			<button class="btn btn-default btn-sm">发布图书</button>
+			<a class="btn btn-default btn-sm" href="<%=path%>/ReleaseBook">发布图书</a>
 			<form class="yx-search-bar">
 				<input type="text" name="searchString" placeholder="查询图书" />
 				<button class="btn btn-sm btn-primary btn-block" type="submit">Search</button>
