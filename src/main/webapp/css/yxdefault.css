@@ -1,0 +1,30 @@
+html {
+	height: 100%;
+	width: 960px;
+}
+
+body {
+	height: 100%;
+	background-image: url(../images/bg.png);
+	background-size: cover;
+}
+
+.yx-nav {
+	display: inline-block;
+	text-align: center;
+}
+
+.yx-toolbar {
+	padding: 10px;
+	float: right;
+}
+
+.yx-brand {
+	font-size: 20;
+}
+
+.yx-search-bar {
+	margin: 0;
+	display: inline-flex;
+	text-align: center;
+}
