@@ -1,0 +1,10 @@
+package action;
+
+public class DisplayMoreBooks extends BaseAction {
+	@Override
+	public String execute() throws Exception {
+		
+		return SUCCESS;
+	}
+
+}
