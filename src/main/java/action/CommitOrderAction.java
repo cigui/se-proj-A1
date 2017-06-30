@@ -1,6 +1,6 @@
 package action;
 
-public class CommitOrder extends BaseAction {
+public class CommitOrderAction extends BaseAction {
 	@Override
 	public String execute() throws Exception {
 		

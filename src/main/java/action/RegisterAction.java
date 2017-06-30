@@ -1,6 +1,6 @@
 package action;
 
-public class SelectCategory extends BaseAction {
+public class RegisterAction extends BaseAction {
 	@Override
 	public String execute() throws Exception {
 		

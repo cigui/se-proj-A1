@@ -1,10 +1,11 @@
 package action;
 
-public class SearchBook extends BaseAction {
+public class AddBookToCartAction extends BaseAction {
 	@Override
 	public String execute() throws Exception {
 		
 		return SUCCESS;
 	}
-
+		
+	
 }

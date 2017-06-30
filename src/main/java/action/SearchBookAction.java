@@ -1,6 +1,6 @@
 package action;
 
-public class Logout extends BaseAction {
+public class SearchBookAction extends BaseAction {
 	@Override
 	public String execute() throws Exception {
 		

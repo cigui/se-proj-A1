@@ -1,6 +1,6 @@
 package action;
 
-public class SendBookComment extends BaseAction {
+public class ReleaseBookAction extends BaseAction {
 	@Override
 	public String execute() throws Exception {
 		

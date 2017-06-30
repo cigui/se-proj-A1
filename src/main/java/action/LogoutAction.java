@@ -1,6 +1,6 @@
 package action;
 
-public class UpdateUserInformation extends BaseAction {
+public class LogoutAction extends BaseAction {
 	@Override
 	public String execute() throws Exception {
 		
