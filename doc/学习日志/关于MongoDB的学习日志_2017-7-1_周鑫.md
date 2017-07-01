@@ -20,15 +20,79 @@
     - 在其中随便挑了一个来用，[NoSQL Manager for MongoDB](https://www.mongodbmanager.com/)，使用上还是很方便的。
 
 ## 应用于Java项目中
+
+### Spring Data MongoDB
 - 根据chp的建议，可以使用Spring框架中对MongoDB的支持包：[Spring Data MongoDB](http://projects.spring.io/spring-data-mongodb/)
 - 对于使用Maven的项目，可以直接在pom.xml中添加依赖，目前最新版依赖代码如下：  
 ```
-<dependencies>
-    <dependency>
-        <groupId>org.springframework.data</groupId>
-        <artifactId>spring-data-mongodb</artifactId>
-        <version>1.10.4.RELEASE</version>
-    </dependency>
-</dependencies>
-```
-- 对框架的使用方面我还没有弄清楚，下次再更新吧。
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-mongodb</artifactId>
+            <version>1.10.4.RELEASE</version>
+        </dependency>
+    </dependencies>
+ ```
+- Spring对MongoDB的支持使得我们可以很方便地进行增删改查操作。之前使用Spring + Hibernate时，Dao层实现一般会是扩展一个Spring提供的HibernateDaoSupport类，然后通过getHibernateTemplate()方法获取HibernateTemplate类进行数据持久化。类似地，当我们使用Spring + MongoDB时也是通过获取MongoTemplate类来进行数据持久化操作。
+- MongoTemplate的获取一般有两种方式：
+    1. 通过java类进行初始化获得MongoTemplate，代码如下：  
+    ```
+    @Configuration
+    public class AppConfig {
+
+        public @Bean Mongo mongo() throws Exception {
+            return new Mongo("localhost");
+        }
+
+        public @Bean MongoTemplate mongoTemplate() throws Exception {
+            return new MongoTemplate(mongo(), "mydatabase");
+        }
+    }
+    ```
+    2. 通过xml文件进行初始化并注入到dao的实现类中，具体做法如下：
+        - 找到Spring的配置文件(applicationContext.xml)，在其中的"beans"节点中加入与mongodb相关的属性，如下列代码中用'*'包住的部分。
+        ```
+        <?xml version="1.0" encoding="UTF-8"?>
+        <beans xmlns="http://www.springframework.org/schema/beans"
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                xmlns:context="http://www.springframework.org/schema/context"
+                *xmlns:mongo="http://www.springframework.org/schema/data/mongo"*
+                xsi:schemaLocation=
+                "http://www.springframework.org/schema/context
+                http://www.springframework.org/schema/context/spring-context-3.0.xsd
+                *http://www.springframework.org/schema/data/mongo 
+                http://www.springframework.org/schema/data/mongo/spring-mongo-1.0.xsd*
+                http://www.springframework.org/schema/beans
+                http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+                ...
+        </beans>
+        ```
+        - 在配置文件中加入下面的bean声明：
+        ```
+        <mongo:mongo host="localhost" port="27017"/>
+
+        <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+        <constructor-arg ref="mongo"/>
+        <constructor-arg name="databaseName" value="db"/>
+        </bean>
+        ```
+        - 之后，在要获取MongoTemplate的dao的实现类中声明私有变量并提供setter方法，代码如下：
+        ```
+        private MongoTemplate mongoTemplate;
+
+        public void setMongoTemplate(MongoTemplate mongoTemplate) {
+            this.mongoTemplate = mongoTemplate;
+        }
+        ```
+        - 另外还需要在配置文件中加入对该dao的实现类的bean声明，代码如下：
+        ```
+        <bean id="bookDao" class="dao.impl.BookDaoImpl">
+            <property name="mongoTemplate" ref="mongoTemplate" />
+        </bean>
+        ```
+        - 通过这些配置，就可以让Spring做MongoTemplate的注入工作了。
+- 从上面对两种获取MongoTemplate的方式介绍所花费的篇幅的差距就可以看出来，我是偏爱后一种的。虽然后一种方式配置起来可能略微麻烦一点（我之前在另一台电脑上尝试过并且失败了，今天又试一次才成功了），但是用前一种方式获得MongoTemplate一点也不Spring，一旦修改数据库的名字就得去修改源码，感觉有点蠢。因此在web的作业中和这次项目中，我应该会采用后一种方式。
+- 获取MongoTemplate之后，就可以通过它对数据库进行增删改查操作了。这里的操作与通过HibernateTemplate对MySQL进行增删改查类似，可以直接insert一个自定义类对象（例如Book），而不需要像使用MongoDB Shell那样建立Collection然后insert一个json格式的数据，可以说是很方便了。具体的操作可以参考[《Spring Data MongoDB 一：入门篇（环境搭建、简单的CRUD操作）》](http://blog.csdn.net/congcong68/article/details/44545253)
+- 需要注意的是，上面获取MongoTemplate对象时我们只告诉了它连接地址和选择的数据库的名字，还没有建立数据库中的Collection（MongoDB中的Collection类似于MySQL中的Table），于是每次insert一个自定义类的对象时，实际上会先在指定的数据库中创建Collection再插入数据，Collection的名字就是字母全为小写的类名（例如Book类对应的Collection就是book）。
+- 写到这里，离使用MongoDB存储图片还有一大段距离。百度过用MongoDB存储图片，得出的最佳结论是使用MongoDB提供的GridFS规范，似乎Spring对此也有相应支持的GridFsTemplate类，不过今天大概也只能写到这里了。
