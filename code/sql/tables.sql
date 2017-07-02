@@ -88,7 +88,7 @@ create table BorrowComments
 /*==============================================================*/
 /* Table: BorrowingHistory                                      */
 /*==============================================================*/
-create table BorrowingHistory
+create table BorrowHistory
 (
    orderStatus          smallint not null,
    location             varchar(50),
@@ -102,7 +102,7 @@ create table BorrowingHistory
 /*==============================================================*/
 /* Table: BorrowingItems                                        */
 /*==============================================================*/
-create table BorrowingItems
+create table BorrowItems
 (
    r_id                 int not null,
    id                   int not null,
@@ -122,7 +122,7 @@ create table Categories
 /*==============================================================*/
 /* Table: Location                                              */
 /*==============================================================*/
-create table Location
+create table Locations
 (
    l_id                 int not null auto_increment,
    province             varchar(20) not null,
@@ -170,16 +170,16 @@ alter table BookReleases add constraint FK_Relationship_4 foreign key (id)
 alter table BorrowComments add constraint FK_Relationship_13 foreign key (h_id)
       references BorrowingHistory (h_id) on delete restrict on update restrict;
 
-alter table BorrowingHistory add constraint FK_Relationship_10 foreign key (r_id)
+alter table BorrowHistory add constraint FK_Relationship_10 foreign key (r_id)
       references BookReleases (r_id) on delete restrict on update restrict;
 
-alter table BorrowingHistory add constraint FK_Relationship_8 foreign key (id)
+alter table BorrowHistory add constraint FK_Relationship_8 foreign key (id)
       references Users (id) on delete restrict on update restrict;
 
-alter table BorrowingItems add constraint FK_Relationship_7 foreign key (id)
+alter table BorrowItems add constraint FK_Relationship_7 foreign key (id)
       references Users (id) on delete restrict on update restrict;
 
-alter table BorrowingItems add constraint FK_Relationship_9 foreign key (r_id)
+alter table BorrowItems add constraint FK_Relationship_9 foreign key (r_id)
       references BookReleases (r_id) on delete restrict on update restrict;
 
 alter table Users add constraint FK_Relationship_14 foreign key (l_id)
