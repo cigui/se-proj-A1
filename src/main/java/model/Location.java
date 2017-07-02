@@ -2,19 +2,19 @@ package model;
 
 public class Location {
 	private int l_id;
-	private char province;
-	private char city;
-	private char district;
+	private String province;
+	private String city;
+	private String district;
 	
 	public Location(){
 		
 	}
     
-	public Location(int l_id, char province, char city, char district){
-		this.setL_id(l_id);
-		this.setProvince(province);
-		this.setCity(city);
-		this.setDistrict(district);
+	public Location(int l_id, String province, String city, String district){
+		this.l_id = l_id;
+		this.province = province;
+		this.city = city;
+		this.district = district;
 	}
 
 	public int getL_id() {
@@ -25,27 +25,27 @@ public class Location {
 		this.l_id = l_id;
 	}
 
-	public char getProvince() {
+	public String getProvince() {
 		return province;
 	}
 
-	public void setProvince(char province) {
+	public void setProvince(String province) {
 		this.province = province;
 	}
 
-	public char getCity() {
+	public String getCity() {
 		return city;
 	}
 
-	public void setCity(char city) {
+	public void setCity(String city) {
 		this.city = city;
 	}
 
-	public char getDistrict() {
+	public String getDistrict() {
 		return district;
 	}
 
-	public void setDistrict(char district) {
+	public void setDistrict(String district) {
 		this.district = district;
 	}
 	
