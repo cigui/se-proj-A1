@@ -19,7 +19,7 @@
         }
     }
     ```
-    这段代码来自[Spring Data MongoDB官方文档](http://docs.spring.io/spring-data/data-mongo/docs/1.10.3.RELEASE/reference/html/#gridfs)，不过我自己没有试过这么配置。
+    - 这段代码来自[Spring Data MongoDB官方文档](http://docs.spring.io/spring-data/data-mongo/docs/1.10.3.RELEASE/reference/html/#gridfs)，不过我自己没有试过这么配置。  
     2. 通过xml文件进行初始化并注入到类中，具体做法如下：
     - 在昨天进行过基础配置的xml文件中再添加以下代码：
     ```
