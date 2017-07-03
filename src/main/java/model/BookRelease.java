@@ -6,7 +6,7 @@ public class BookRelease {
 	private int r_id;
 	private int id;
 	private int isbn;
-	private Date publishDate;
+	private Date publish_date;
 	private String discription;
 	private int status;
 	private int price;
@@ -15,11 +15,11 @@ public class BookRelease {
 		
 	}
 	
-	public BookRelease(int id, int r_id, int isbn, Date publishDate, String discription, int status, int price ){
+	public BookRelease(int id, int r_id, int isbn, Date publish_date, String discription, int status, int price ){
 		this.id = id;
 		this.r_id = r_id;
 		this.isbn = isbn;
-		this.publishDate = publishDate;
+		this.publish_date = publish_date;
 		this.discription = discription;
 		this.status = status;
 		this.price = price;
@@ -49,12 +49,12 @@ public class BookRelease {
 	public void setIsbn(int isbn) {
 		this.isbn = isbn;
 	}
-	public Date getPublishDate() {
-		return publishDate;
+	public Date getPublish_date() {
+		return publish_date;
 	}
 
-	public void setPublishDate(Date publishDate) {
-		this.publishDate = publishDate;
+	public void setPublish_date(Date publish_date) {
+		this.publish_date = publish_date;
 	}
 
 	public String getDiscription() {
