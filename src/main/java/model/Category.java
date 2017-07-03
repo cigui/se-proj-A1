@@ -1,31 +1,31 @@
 package model;
 
 public class Category {
-	private int cate_ID;
-	private char name;
+	private int cate_id;
+	private String name;
 	
 	public Category(){
 		
 	}
 	
-	public Category(int cate_ID, char name){
-		this.setCate_ID(cate_ID);
-		this.setName(name);
+	public Category(int cate_id, String name){
+		this.cate_id = cate_id;
+		this.name = name;
 	}
 
 	public int getCate_ID() {
-		return cate_ID;
+		return cate_id;
 	}
 
-	public void setCate_ID(int cate_ID) {
-		this.cate_ID = cate_ID;
+	public void setCate_ID(int cate_id) {
+		this.cate_id = cate_id;
 	}
 
-	public char getName() {
+	public String getName() {
 		return name;
 	}
 
-	public void setName(char name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 

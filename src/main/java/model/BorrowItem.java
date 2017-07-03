@@ -9,8 +9,8 @@ public class BorrowItem {
 	}
 	
 	public BorrowItem(int id, int r_id){
-		this.setId(id);
-		this.setR_id(r_id);
+		this.id = id;
+		this.r_id = r_id;
 	}
 
 	public int getId() {

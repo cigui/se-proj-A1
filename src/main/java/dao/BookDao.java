@@ -12,7 +12,7 @@ public interface BookDao {
 
 	public void update(Book book);
 
-	public Book getBookByISBN(int ISBN);
+	public Book getBookByIsbn(int isbn);
 	
 	public Book getBookByTitle(int title);
 	
