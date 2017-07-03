@@ -13,6 +13,8 @@ public interface UserDao {
 	public void update(User user);
 
 	public User getUserById(int id);
+	
+	public User getUserByEmail(int email);
 
 	public List<User> getAllUsers();
 
