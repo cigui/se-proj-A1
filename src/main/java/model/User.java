@@ -10,13 +10,13 @@ public class User {
 	private int points;
 	private int credit;
 	private int fav_category;
-	private int gender;
+	private byte gender;
 	
 	public User(){
 		
 	}
 
-	public User(int id, int l_id, String nickname, String password, String email, int role, int points, int credit, int fav_category, int gender){
+	public User(int id, int l_id, String nickname, String password, String email, int role, int points, int credit, int fav_category, byte gender){
 		this.id = id;
 		this.l_id = l_id;
 		this.nickname = nickname;
@@ -102,11 +102,11 @@ public class User {
 		this.fav_category = fav_category;
 	}
 
-	public int getGender() {
+	public byte getGender() {
 		return gender;
 	}
 
-	public void setGender(int gender) {
+	public void setGender(byte gender) {
 		this.gender = gender;
 	}
 	
