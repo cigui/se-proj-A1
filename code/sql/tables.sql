@@ -10,9 +10,9 @@ drop table if exists BookComments;
 
 drop table if exists BorrowComments;
 
-drop table if exists BorrowingItems;
+drop table if exists BorrowItems;
 
-drop table if exists BorrowingHistory;
+drop table if exists BorrowHistory;
 
 drop table if exists BookReleases;
 
@@ -22,7 +22,7 @@ drop table if exists Categories;
 
 drop table if exists Users;
 
-drop table if exists Location;
+drop table if exists Locations;
 
 /*==============================================================*/
 /* Table: BookCateRelationship                                  */
@@ -168,7 +168,7 @@ alter table BookReleases add constraint FK_Relationship_4 foreign key (id)
       references Users (id) on delete restrict on update restrict;
 
 alter table BorrowComments add constraint FK_Relationship_13 foreign key (h_id)
-      references BorrowingHistory (h_id) on delete restrict on update restrict;
+      references BorrowHistory (h_id) on delete restrict on update restrict;
 
 alter table BorrowHistory add constraint FK_Relationship_10 foreign key (r_id)
       references BookReleases (r_id) on delete restrict on update restrict;
@@ -183,5 +183,5 @@ alter table BorrowItems add constraint FK_Relationship_9 foreign key (r_id)
       references BookReleases (r_id) on delete restrict on update restrict;
 
 alter table Users add constraint FK_Relationship_14 foreign key (l_id)
-      references Location (l_id) on delete restrict on update restrict;
+      references Locations (l_id) on delete restrict on update restrict;
 
