@@ -1,1 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="model.Book" table="books">
+		<id name="isbn" type="int">
+			<column name="isbn" />
+			<generator class="native" />
+		</id>
+		<property name="title"/>
+    	<property name="author"/> 
+    	<property name="publisher"/> 
+    	<property name="translator"/> 
+	</class>
+</hibernate-mapping>
