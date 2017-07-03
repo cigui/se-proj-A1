@@ -13,10 +13,12 @@ public interface UserService {
 	public void update(User user);
 
 	public User getUserById(int id);
+	
+	public User getUserByEmail(String email);
 
 	public List<User> getAllUsers();
     
-    public void isAdmin(User user);
+    public boolean isAdmin(User user);
     
     public boolean login(String email,String password);
     
