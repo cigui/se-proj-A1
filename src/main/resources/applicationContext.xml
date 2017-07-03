@@ -46,13 +46,31 @@
 	</bean>
 
 	<!-- DAO Bean -->
+	<bean id="bookCateRelationshipDao" class="dao.impl.BookCateRelationshipDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="bookCommentDao" class="dao.impl.BookCommentDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
 	<bean id="bookDao" class="dao.impl.BookDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-	<bean id="orderDao" class="dao.impl.OrderDaoImpl">
+	<bean id="bookReleaseDao" class="dao.impl.BookReleaseDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-	<bean id="orderitemDao" class="dao.impl.OrderitemDaoImpl">
+	<bean id="borrowCommentDao" class="dao.impl.BorrowCommentDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="borrowHistoryDao" class="dao.impl.BorrowHistoryDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="borrowItemDao" class="dao.impl.BorrowItemDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="categoryDao" class="dao.impl.CategoryDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="locationDao" class="dao.impl.LocationDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	<bean id="userDao" class="dao.impl.UserDaoImpl">
