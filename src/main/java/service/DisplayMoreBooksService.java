@@ -20,7 +20,7 @@ public interface DisplayMoreBooksService {
 
 	public List<BookRelease> getAllBookReleases();
     
-    public void DisplayMoreBooks();//?
+    public void DisplayMoreBooks();
     
 }
 
