@@ -14,7 +14,7 @@
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
 		destroy-method="close" p:driverClass="com.mysql.jdbc.Driver"
 		p:jdbcUrl="jdbc:mysql://localhost:3306/proj" p:user="root"
-		p:password="" p:maxPoolSize="40" p:minPoolSize="1"
+		p:password="123456" p:maxPoolSize="40" p:minPoolSize="1"
 		p:initialPoolSize="1" p:maxIdleTime="20" />
 
 	<bean id="sessionFactory"
@@ -22,7 +22,7 @@
 		p:dataSource-ref="dataSource">
 		<property name="mappingResources">
 			<list>
-				<value>model/Book.hbm.xml</value>
+<!-- 				<value>model/Book.hbm.xml</value>
 				<value>model/BookCateRelationship.hbm.xml</value>
 				<value>model/BookComment.hbm.xml</value>
 				<value>model/BookRelease.hbm.xml</value>
@@ -30,7 +30,7 @@
 				<value>model/BorrowComment.hbm.xml</value>
 				<value>model/BorrowItem.hbm.xml</value>
 				<value>model/Category.hbm.xml</value>
-				<value>model/Location.hbm.xml</value>
+				<value>model/Location.hbm.xml</value> -->
 				<value>model/User.hbm.xml</value>
 			</list>
 		</property>
@@ -46,7 +46,7 @@
 	</bean>
 
 	<!-- DAO Bean -->
-	<bean id="bookCateRelationshipDao" class="dao.impl.BookCateRelationshipDaoImpl">
+<!-- 	<bean id="bookCateRelationshipDao" class="dao.impl.BookCateRelationshipDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	<bean id="bookCommentDao" class="dao.impl.BookCommentDaoImpl">
@@ -72,19 +72,22 @@
 	</bean>
 	<bean id="locationDao" class="dao.impl.LocationDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
-	</bean>
+	</bean> -->
 	<bean id="userDao" class="dao.impl.UserDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
 	<!-- Service -->
-	<bean id="appService" class="service.impl.AppServiceImpl">
-		<!-- DAO -->
+	<bean id="userService" class="service.impl.UserServiceImpl">
+		<property name="userDao" ref="userDao"></property>
+	</bean>
+<!-- 	<bean id="appService" class="service.impl.AppServiceImpl">
+		DAO
 		<property name="bookDao" ref="bookDao"></property>
 		<property name="orderDao" ref="orderDao"></property>
 		<property name="orderitemDao" ref="orderitemDao"></property>
 		<property name="userDao" ref="userDao"></property>
-	</bean>
+	</bean> -->
 
 	<!-- HibernateTransactionManager -->
 	<bean id="transactionManager"
@@ -99,8 +102,8 @@
 	</tx:advice>
 	<aop:config>
 		<!-- appService Bean -->
-		<aop:pointcut id="beanPointcut" expression="bean(appService)" />
-		<aop:advisor advice-ref="txAdvice" pointcut-ref="beanPointcut" />
+		<aop:pointcut id="userServiceBeanPointcut" expression="bean(userService)" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="userServiceBeanPointcut" />
 	</aop:config>
 
 </beans>

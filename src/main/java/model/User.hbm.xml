@@ -16,7 +16,7 @@
     	<property name="role"/> 
     	<property name="points"/> 
     	<property name="credit"/> 
-    	<property name="fav_category"/> 
-    	<property name="gender"/> 
+    	<property name="fav_category" type="java.lang.Integer"/> 
+    	<property name="gender" type="java.lang.Byte"/> 
 	</class>
 </hibernate-mapping>

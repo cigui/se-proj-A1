@@ -9,8 +9,8 @@ public class User {
 	private int role;
 	private int points;
 	private int credit;
-	private int fav_category;
-	private byte gender;
+	private Integer fav_category;
+	private Byte gender;
 	
 	public User(){
 		
@@ -94,19 +94,19 @@ public class User {
 		this.credit = credit;
 	}
 
-	public int getFav_category() {
+	public Integer getFav_category() {
 		return fav_category;
 	}
 
-	public void setFav_category(int fav_category) {
+	public void setFav_category(Integer fav_category) {
 		this.fav_category = fav_category;
 	}
 
-	public byte getGender() {
+	public Byte getGender() {
 		return gender;
 	}
 
-	public void setGender(byte gender) {
+	public void setGender(Byte gender) {
 		this.gender = gender;
 	}
 	
