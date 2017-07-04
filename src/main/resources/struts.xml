@@ -13,9 +13,19 @@
 			<result name="success">/homepage.jsp</result>
 		</action>
 		
-		<action name="*">
-			<result>/{1}.jsp</result>
+		<!-- Login & Logout Actions -->
+		<action name="login" class="action.userActions.LoginAction">
+			<result name="success" type="redirect">index</result>
+			<result name="error" type="redirect">error.jsp</result>
 		</action>
+		<action name="logout" class="action.userActions.LogoutAction">
+			<result name="success" type="redirect">index</result>
+			<result name="error">error.jsp</result>
+		</action>
+		
+		<!-- <action name="*">
+			<result>/{1}.jsp</result>
+		</action> -->
 		
 	</package>
 </struts>
