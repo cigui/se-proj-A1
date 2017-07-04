@@ -1,1 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="model.BookRelease" table="bookreleases">
+		<id name="r_id" type="int">
+			<column name="r_id" />
+			<generator class="native" />
+		</id>
+		<property name="id"/> 
+    	<property name="isbn"/> 
+    	<property name="publish_date"/> 
+    	<property name="dicription"/> 
+    	<property name="status"/> 
+    	<property name="price"/>
+	</class>
+</hibernate-mapping>

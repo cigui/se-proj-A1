@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Struts2 DTD -->
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+	"http://struts.apache.org/dtds/struts-2.1.7.dtd">
+<struts>
+	<constant name="struts.i18n.encoding" value="utf-8" />
+	<constant name="struts.devMode" value="true" />
+	<package name="process" extends="json-default">
+		<default-action-ref name="index"></default-action-ref>
+		
+		<action name="index" class="action.IndexAction">
+			<result name="success">/homepage.jsp</result>
+		</action>
+		
+		<!-- Login & Logout Actions -->
+		<action name="login" class="action.userActions.LoginAction">
+			<result name="success" type="redirect">index</result>
+			<result name="error" type="redirect">error.jsp</result>
+		</action>
+		<action name="logout" class="action.userActions.LogoutAction">
+			<result name="success" type="redirect">index</result>
+			<result name="error">error.jsp</result>
+		</action>
+		
+		<!-- <action name="*">
+			<result>/{1}.jsp</result>
+		</action> -->
+		
+	</package>
+</struts>

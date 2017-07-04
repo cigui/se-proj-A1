@@ -1,8 +1,8 @@
-<html>
-<head>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
-<%-- <%@ taglib prefix="s" uri="/struts-tags"%> --%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
+<html>
+<head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>阅享</title>
 <%
@@ -23,9 +23,6 @@
 	var userId = "<s:property value='#session.userId' />";
 	var logined = "<s:property value='#session.logined' />"; 
 </script> -->
-<script>
-	var path = "<%=path%>";
-</script>
 </head>
 <body>
 	<div
@@ -37,10 +34,20 @@
 				<input type="text" name="searchString" placeholder="查询图书" />
 				<button class="btn btn-sm btn-primary btn-block" type="submit">Search</button>
 			</form>
-			<button class="btn btn-default btn-sm" data-toggle="modal"
-				data-target="#myModal">登录</button>
-			<span> or </span> <a href="<%=path%>/register.jsp"
-				class="btn btn-default btn-sm" role="button">注册</a>
+			<s:if test="#session.logined">
+				<span>Hi, <s:property value='#session.userName' />!</span>
+				<a href="profile" class="btn btn-default btn-sm"
+					role="button">个人信息</a>
+				<a href="logout" class="btn btn-default btn-sm"
+					role="button">登出</a>
+			</s:if>
+			<s:else>
+				<button class="btn btn-default btn-sm" data-toggle="modal"
+					data-target="#myModal">登录</button>
+				<span> or </span>
+				<a href="<%=path%>/register.jsp" class="btn btn-default btn-sm"
+					role="button">注册</a>
+			</s:else>
 		</div>
 	</div>
 
@@ -53,7 +60,7 @@
 						aria-hidden="true">&times;</button>
 					<h4 class="modal-title" id="myModalLabel"></h4>
 				</div>
-				<form class="modal-body form-signin" action="loginAction">
+				<form class="modal-body form-signin" action="login">
 					<h2 class="form-signin-heading">Please login</h2>
 					<input type="email" class="form-control" name="email"
 						placeholder="Email Address" required="true" autofocus="" /> <input
@@ -83,7 +90,8 @@
 						<span class="yx-header nav-header">首页推荐</span>
 					</div>
 					<div class="col-md-1">
-						<span><a class="btn btn-default btn-sm" href="<%=path%>/Recommend">更多</a></span>
+						<span><a class="btn btn-default btn-sm"
+							href="<%=path%>/Recommend">更多</a></span>
 					</div>
 				</div>
 				<div class="cover">
@@ -107,13 +115,16 @@
 					</div>
 				</div>
 				<div class="cover">
-					<a id="link1" href='#'><img id="cover1" src="<%=path%>/images/404.png" /></a>
+					<a id="link1" href='#'><img id="cover1"
+						src="<%=path%>/images/404.png" /></a>
 				</div>
 				<div class="cover">
-					<a id="link2" href='#'><img id="cover2" src="<%=path%>/images/404.png" /></a>
+					<a id="link2" href='#'><img id="cover2"
+						src="<%=path%>/images/404.png" /></a>
 				</div>
 				<div class="cover">
-					<a id="link3" href='#'><img id="cover3" src="<%=path%>/images/404.png" /></a>
+					<a id="link3" href='#'><img id="cover3"
+						src="<%=path%>/images/404.png" /></a>
 				</div>
 			</div>
 		</div>
