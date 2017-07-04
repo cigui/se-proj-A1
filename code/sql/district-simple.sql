@@ -8,7 +8,7 @@ Modified on 2017/7/4 for se-proj-A1
 
 ALTER TABLE district CHANGE COLUMN `l_id` `id` SMALLINT(5);
 
-ALTER TABLE `proj`.`district` ADD COLUMN `code` VARCHAR(10) NULL AFTER `parent_id`;
+ALTER TABLE `district` ADD COLUMN `code` VARCHAR(10) NULL AFTER `parent_id`;
 
 insert into `district` (`id`, `name`, `parent_id`, `code`, `order`) values('1','北京','0','110000','1');
 insert into `district` (`id`, `name`, `parent_id`, `code`, `order`) values('2','天津','0','120000','2');
