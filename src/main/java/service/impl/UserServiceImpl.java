@@ -20,26 +20,24 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public Integer save(User user) {
-		// TODO 自动生成的方法存根
-		return null;
+		return userDao.save(user);
 	}
 
 	@Override
 	public void delete(User user) {
-		// TODO 自动生成的方法存根
+		userDao.delete(user);
 		
 	}
 
 	@Override
 	public void update(User user) {
-		// TODO 自动生成的方法存根
+		userDao.update(user);
 		
 	}
 
 	@Override
 	public User getUserById(int id) {
-		// TODO 自动生成的方法存根
-		return null;
+		return userDao.getUserById(id);
 	}
 
 	@Override
@@ -49,14 +47,18 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public List<User> getAllUsers() {
-		// TODO 自动生成的方法存根
-		return null;
+		return userDao.getAllUsers();
 	}
 
 	@Override
 	public boolean isAdmin(User user) {
-		// TODO 自动生成的方法存根
-		return false;
+		//int of admin setted 2
+		if(user.getRole() == 2){
+			return true;
+		}
+		else{
+			return false;
+		}
 	}
 
 	@Override
@@ -71,22 +73,32 @@ public class UserServiceImpl implements UserService{
 		return false;
 	}
 
-	@Override
-	public boolean register(String nickname, String email, String password) {
-		// TODO 自动生成的方法存根
-		return false;
-	}
+
 
 	@Override
 	public boolean dupEmail(String email, User user) {
-		// TODO 自动生成的方法存根
-		return false;
+		if(getUserByEmail(email) != null){
+			return true;
+		}
+		else{
+			return false;
+		}
 	}
 
 	@Override
 	public boolean uploadImage() {
-		// TODO 自动生成的方法存根
+		// TODO with mongoDB
 		return false;
+	}
+
+	@Override
+	public boolean register(User user) {
+		if(getUserByEmail(user.getEmail()) != null){
+			return false;
+		}
+		//save check undone
+		save(user);
+		return true;
 	}
 	
 }
