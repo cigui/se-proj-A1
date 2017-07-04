@@ -9,8 +9,8 @@
 			<column name="h_id" />
 			<generator class="native" />
 		</id>
-    	<property name="id"/> 
-    	<property name="r_id"/> 
+    	<property name="id" type="java.lang.Integer"/> 
+    	<property name="r_id" type="java.lang.Integer"/> 
     	<property name="date"/> 
     	<property name="location"/> 
     	<property name="orderStatus"/> 

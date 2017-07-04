@@ -22,7 +22,6 @@ public class LogoutAction extends BaseAction implements SessionAware {
 		return SUCCESS;
 	}
 
-	@Override
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
 	}
