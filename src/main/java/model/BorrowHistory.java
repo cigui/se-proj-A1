@@ -6,15 +6,15 @@ public class BorrowHistory {
 	private int orderStatus;
 	private String location;
 	private Timestamp date;
-	private int id;
+	private Integer id;
 	private int h_id;
-	private int r_id;
+	private Integer r_id;
 	
 	public BorrowHistory(){
 		
 	}
 	
-	public BorrowHistory(int orderStatus,String location,Timestamp date, int id, int h_id,int r_id){
+	public BorrowHistory(int orderStatus,String location,Timestamp date, Integer id, Integer h_id,Integer r_id){
 		this.orderStatus = orderStatus;
 		this.location = location;
 		this.date = date;
@@ -48,11 +48,11 @@ public class BorrowHistory {
 		this.date = date;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -64,11 +64,11 @@ public class BorrowHistory {
 		this.h_id = h_id;
 	}
 
-	public int getR_id() {
+	public Integer getR_id() {
 		return r_id;
 	}
 
-	public void setR_id(int r_id) {
+	public void setR_id(Integer r_id) {
 		this.r_id = r_id;
 	}
 

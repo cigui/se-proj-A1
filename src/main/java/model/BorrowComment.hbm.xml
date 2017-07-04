@@ -9,7 +9,7 @@
 			<column name="h_id" />
 			<generator class="native" />
 		</id> 
-    	<property name="score"/> 
+    	<property name="score" type = "java.lang.Integer"/> 
     	<property name="borrowComment"/> 
 	</class>
 </hibernate-mapping>
