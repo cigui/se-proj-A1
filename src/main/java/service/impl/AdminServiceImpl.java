@@ -1,4 +1,4 @@
-package service.Impl;
+package service.impl;
 
 public class AdminServiceImpl {
 
