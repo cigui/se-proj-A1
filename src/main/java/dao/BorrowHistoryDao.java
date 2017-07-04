@@ -14,7 +14,7 @@ public interface BorrowHistoryDao {
 
 	public BorrowHistory getBorrowHistoryByH_id(int h_id);
 	
-	public BorrowHistory getBorrowHistoryById(int id);
+	public List<BorrowHistory> getBorrowHistoryById(int id);
 
 	public List<BorrowHistory> getAllBorrowHistories();
 
