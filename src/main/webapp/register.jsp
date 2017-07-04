@@ -13,7 +13,7 @@
 <script
 	src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://cdn.bootcss.com/bootbox.js/4.4.0/bootbox.min.js"></script>
-<script src="<%=path%>/js/index.js"></script>
+<script src="<%=path%>/js/register.js"></script>
 <link
 	href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -48,9 +48,9 @@
 				<div class="row">
 					<br>
 				</div>
-				<form class="form-horizontal">
+				<form class="form-horizontal" style="text-align: center" action="register">
 					<div class="form-group">
-						<div class="col-md-10">
+						<div class="col-md-6">
 							<div class="form-group">
 								<label for="nickName" class="col-md-2 control-label">昵称(*)</label>
 								<div class="col-md-6">
@@ -76,30 +76,29 @@
 							</div>
 							<div class="form-group">
 								<label class="col-md-2 control-label">性别</label>
-								<div class="col-md-2">
-									<input type="radio" class="form-control" id="male"
-										name="gender" value="男">男
+								<div class="col-md-2 radio">
+									<label><input type="radio" class="form-control" id="male"
+										name="gender" value="1">男</label>
 								</div>
-								<div class="col-md-2">
-									<input type="radio" class="form-control" id="female"
-										name="gender" value="女">女
+								<div class="col-md-2 radio">
+									<label><input type="radio" class="form-control" id="female"
+										name="gender" value="0">女</label>
 								</div>
 							</div>
 						</div>
-						<div class="col-md-2">
-							<div class="form-group">
-								<label for="avatar">个人头像</label> <input
-									type="file" id="avatar">
+						<div class="col-md-6">
+							<div class="form-group" style="text-align: center">
+								<img id="preview" src="<%=path%>/images/picture-1.jpg" 
+								 style="width:256px; height:256px; max-width:256px; max-height:256px"/>
+							</div>
+							<div class="form-group" style="text-align: center">
+								<label for="avatar">个人头像</label>
+								<input type="file" id="avatar" style="margin:0 auto">
 								<p class="help-block">图片大小不得超过4MB</p>
 							</div>
 						</div>
-						<!-- <label for="nickName" class="col-sm-2 control-label">昵称</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" id="nickName"
-								placeholder="请输入昵称">
-							<p class="help-block">不超过7个汉字（即14字节）</p>
-						</div> -->
 					</div>
+					<button type="submit" class="btn btn-default">注册</button>
 				</form>
 			</div>
 		</div>
