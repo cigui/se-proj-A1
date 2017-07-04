@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 public class BorrowHistory {
 	private int orderStatus;
-	private char location;
+	private String location;
 	private Timestamp date;
 	private int id;
 	private int h_id;
@@ -14,13 +14,13 @@ public class BorrowHistory {
 		
 	}
 	
-	public BorrowHistory(int orderStatus,char location,Timestamp date, int id, int h_id,int r_id){
-		this.setOrderStatus(orderStatus);
-		this.setLocation(location);
-		this.setDate(date);
-		this.setId(id);
-		this.setH_id(h_id);
-		this.setR_id(r_id);
+	public BorrowHistory(int orderStatus,String location,Timestamp date, int id, int h_id,int r_id){
+		this.orderStatus = orderStatus;
+		this.location = location;
+		this.date = date;
+		this.id = id;
+		this.h_id = h_id;
+		this.r_id = r_id;
 		
 	}
 
@@ -32,11 +32,11 @@ public class BorrowHistory {
 		this.orderStatus = orderStatus;
 	}
 
-	public char getLocation() {
+	public String getLocation() {
 		return location;
 	}
 
-	public void setLocation(char location) {
+	public void setLocation(String location) {
 		this.location = location;
 	}
 

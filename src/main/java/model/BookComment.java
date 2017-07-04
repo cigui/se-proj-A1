@@ -2,19 +2,19 @@ package model;
 
 public class BookComment {
 	private int id;
-	private int ISBN;
-	private char discription;
+	private int isbn;
+	private String discription;
 	private int score;
 	
 	public BookComment(){
 		
 	}
 	
-	public BookComment(int id,int ISBN,char discription,int score){
-		this.setId(id);
-		this.setISBN(ISBN);
-		this.setDiscription(discription);
-		this.setScore(score);
+	public BookComment(int id,int isbn,String discription,int score){
+		this.id = id;
+		this.isbn = isbn;
+		this.discription = discription;
+		this.score = score;
 	}
 
 	public int getId() {
@@ -25,19 +25,19 @@ public class BookComment {
 		this.id = id;
 	}
 
-	public int getISBN() {
-		return ISBN;
+	public int getIsbn() {
+		return isbn;
 	}
 
-	public void setISBN(int iSBN) {
-		ISBN = iSBN;
+	public void setIsbn(int isbn) {
+		this.isbn = isbn;
 	}
 
-	public char getDiscription() {
+	public String getDiscription() {
 		return discription;
 	}
 
-	public void setDiscription(char discription) {
+	public void setDiscription(String discription) {
 		this.discription = discription;
 	}
 

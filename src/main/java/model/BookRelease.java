@@ -5,9 +5,9 @@ import java.sql.Date;
 public class BookRelease {
 	private int r_id;
 	private int id;
-	private int ISBN;
-	private Date publishDate;
-	private char discription;
+	private int isbn;
+	private Date publish_date;
+	private String discription;
 	private int status;
 	private int price;
 	
@@ -15,14 +15,14 @@ public class BookRelease {
 		
 	}
 	
-	public BookRelease(int id, int r_id, int ISBN, Date publishDate, char discription, int status, int price ){
-		this.setId(id);
-		this.setR_id(r_id);
-		this.setISBN(ISBN);
-		this.setPublishDate(publishDate);
-		this.setDiscription(discription);
-		this.setStatus(status);
-		this.setPrice(price);
+	public BookRelease(int id, int r_id, int isbn, Date publish_date, String discription, int status, int price ){
+		this.id = id;
+		this.r_id = r_id;
+		this.isbn = isbn;
+		this.publish_date = publish_date;
+		this.discription = discription;
+		this.status = status;
+		this.price = price;
 		
 	}
 
@@ -42,27 +42,26 @@ public class BookRelease {
 		this.id = id;
 	}
 
-	public int getISBN() {
-		return ISBN;
+	public int getIsbn() {
+		return isbn;
 	}
 
-	public void setISBN(int iSBN) {
-		ISBN = iSBN;
+	public void setIsbn(int isbn) {
+		this.isbn = isbn;
+	}
+	public Date getPublish_date() {
+		return publish_date;
 	}
 
-	public Date getPublishDate() {
-		return publishDate;
+	public void setPublish_date(Date publish_date) {
+		this.publish_date = publish_date;
 	}
 
-	public void setPublishDate(Date publishDate) {
-		this.publishDate = publishDate;
-	}
-
-	public char getDiscription() {
+	public String getDiscription() {
 		return discription;
 	}
 
-	public void setDiscription(char discription) {
+	public void setDiscription(String discription) {
 		this.discription = discription;
 	}
 

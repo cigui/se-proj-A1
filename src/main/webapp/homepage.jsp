@@ -1,7 +1,8 @@
-<html>
-<head>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
+<html>
+<head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>阅享</title>
 <%
@@ -11,26 +12,42 @@
 <script
 	src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://cdn.bootcss.com/bootbox.js/4.4.0/bootbox.min.js"></script>
+<script src="<%=path%>/js/index.js"></script>
 <link
 	href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
 	rel="stylesheet">
 <link href="<%=path%>/css/login_style.css" rel="stylesheet">
-<link href="<%=path%>/css/home.css" rel="stylesheet">
+<link href="<%=path%>/css/yxdefault.css" rel="stylesheet">
 <link href="<%=path%>/css/index.css" rel="stylesheet">
+<!-- <script>
+	var userId = "<s:property value='#session.userId' />";
+	var logined = "<s:property value='#session.logined' />"; 
+</script> -->
 </head>
 <body>
 	<div
 		class="yx-nav navbar navbar-default navbar-left navbar-fixed-top yx-nav">
 		<a class="yx-brand navbar-brand" href="index" style="color: cadetblue">阅享图书交流平台</a>
 		<div class="yx-toolbar">
+			<a class="btn btn-default btn-sm" href="<%=path%>/ReleaseBook">发布图书</a>
 			<form class="yx-search-bar">
 				<input type="text" name="searchString" placeholder="查询图书" />
 				<button class="btn btn-sm btn-primary btn-block" type="submit">Search</button>
 			</form>
-			<button class="btn btn-default btn-sm" data-toggle="modal"
-				data-target="#myModal">sign in</button>
-			<span> or </span> <a href="<%=path%>/register.jsp"
-				class="btn btn-default btn-sm" role="button">sign up</a>
+			<s:if test="#session.logined">
+				<span>Hi, <s:property value='#session.userName' />!</span>
+				<a href="profile" class="btn btn-default btn-sm"
+					role="button">个人信息</a>
+				<a href="logout" class="btn btn-default btn-sm"
+					role="button">登出</a>
+			</s:if>
+			<s:else>
+				<button class="btn btn-default btn-sm" data-toggle="modal"
+					data-target="#myModal">登录</button>
+				<span> or </span>
+				<a href="<%=path%>/register.jsp" class="btn btn-default btn-sm"
+					role="button">注册</a>
+			</s:else>
 		</div>
 	</div>
 
@@ -43,7 +60,7 @@
 						aria-hidden="true">&times;</button>
 					<h4 class="modal-title" id="myModalLabel"></h4>
 				</div>
-				<form class="modal-body form-signin" action="loginAction">
+				<form class="modal-body form-signin" action="login">
 					<h2 class="form-signin-heading">Please login</h2>
 					<input type="email" class="form-control" name="email"
 						placeholder="Email Address" required="true" autofocus="" /> <input
@@ -67,31 +84,56 @@
 					<li><a href="#">传记</a></li>
 				</ul>
 			</div>
-			<div class="col-md-5">
-				<div class="row yx-header nav-header">首页推荐</div>
-				<div class="covers">
+			<div class="covers col-md-5">
+				<div class="row">
+					<div class="col-md-9">
+						<span class="yx-header nav-header">首页推荐</span>
+					</div>
+					<div class="col-md-1">
+						<span><a class="btn btn-default btn-sm"
+							href="<%=path%>/Recommend">更多</a></span>
+					</div>
+				</div>
+				<div class="cover">
 					<a href='#'><img src="<%=path%>/images/404.png" /></a>
+				</div>
+				<div class="cover">
 					<a href='#'><img src="<%=path%>/images/404.png" /></a>
+				</div>
+				<div class="cover">
 					<a href='#'><img src="<%=path%>/images/404.png" /></a>
 				</div>
 
 			</div>
-			<div class="col-md-5">
-				<div class="row yx-header nav-header">猜你喜欢</div>
-				<div class="covers">
-					<a href='#'><img src="<%=path%>/images/404.png" /></a>
-					<a href='#'><img src="<%=path%>/images/404.png" /></a>
-					<a href='#'><img src="<%=path%>/images/404.png" /></a>
+			<div class="covers col-md-5">
+				<div class="row">
+					<div class="col-md-9">
+						<span class="yx-header nav-header">猜你喜欢</span>
+					</div>
+					<div class="col-md-1">
+						<span><button class="btn btn-default btn-sm yx-guess">换一批</button></span>
+					</div>
+				</div>
+				<div class="cover">
+					<a id="link1" href='#'><img id="cover1"
+						src="<%=path%>/images/404.png" /></a>
+				</div>
+				<div class="cover">
+					<a id="link2" href='#'><img id="cover2"
+						src="<%=path%>/images/404.png" /></a>
+				</div>
+				<div class="cover">
+					<a id="link3" href='#'><img id="cover3"
+						src="<%=path%>/images/404.png" /></a>
 				</div>
 			</div>
 		</div>
 	</div>
 	<div
 		class="yx-nav navbar navbar-default navbar-left navbar-fixed-bottom yx-nav">
-		<div> 联系我们：</div>
-		<span>QQ: 123456789</span>
-		<span>Tel: 12345678</span>
-		<span>Email: 123456789@qq.com</span>
+		<div>联系我们：</div>
+		<span>QQ: 123456789</span> <span>Tel: 12345678</span> <span>Email:
+			123456789@qq.com</span>
 	</div>
 </body>
 </html>
