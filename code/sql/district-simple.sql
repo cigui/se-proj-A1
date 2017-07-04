@@ -6,16 +6,9 @@ Modified on 2017/7/4 for se-proj-A1
 */
 /*!40101 SET NAMES utf8 */;
 
-drop table if exists `district`;
+ALTER TABLE district CHANGE COLUMN `l_id` `id` SMALLINT(5);
 
-create table `district` (
-	`id` smallint (5),
-	`name` varchar (20),
-	`parent_id` smallint (5),
-	`code` char (10),
-	`order` tinyint (2),
-	primary key (`id`)
-); 
+ALTER TABLE `proj`.`district` ADD COLUMN `code` VARCHAR(10) NULL AFTER `parent_id`;
 
 insert into `district` (`id`, `name`, `parent_id`, `code`, `order`) values('1','北京','0','110000','1');
 insert into `district` (`id`, `name`, `parent_id`, `code`, `order`) values('2','天津','0','120000','2');
@@ -3598,3 +3591,4 @@ insert into `district` (`id`, `name`, `parent_id`, `code`, `order`) values('7041
 ALTER TABLE district DROP COLUMN `code`;
 
 ALTER TABLE district CHANGE COLUMN `id` `l_id` SMALLINT(5);
+
