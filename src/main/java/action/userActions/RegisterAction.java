@@ -1,4 +1,6 @@
-package action;
+package action.userActions;
+
+import action.BaseAction;
 
 public class RegisterAction extends BaseAction {
 	@Override

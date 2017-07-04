@@ -4,7 +4,7 @@ import model.User;
 
 import java.util.List;
 
-/*log in ¡¢log out¡¢register¡¢updateUserInformation*/
+/*log in ï¿½ï¿½log outï¿½ï¿½registerï¿½ï¿½updateUserInformation*/
 public interface UserService {
     public Integer save(User user);
 
@@ -22,7 +22,7 @@ public interface UserService {
     
     public boolean login(String email,String password);
     
-    public boolean register(String nickname,String email,String password);
+    public boolean register(User user);
    
     public boolean dupEmail(String email,User user);
     
