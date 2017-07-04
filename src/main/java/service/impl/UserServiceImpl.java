@@ -19,19 +19,19 @@ public class UserServiceImpl implements UserService{
 	}
 
 	public Integer save(User user) {
-		return null;
+		return userDao.save(user);
 	}
 
 	public void delete(User user) {
-		
+		userDao.delete(user);
 	}
 
 	public void update(User user) {
-		
+		userDao.update(user);
 	}
 
 	public User getUserById(int id) {
-		return null;
+		return userDao.getUserById(id);
 	}
 
 	public User getUserByEmail(String email) {
@@ -39,11 +39,17 @@ public class UserServiceImpl implements UserService{
 	}
 
 	public List<User> getAllUsers() {
-		return null;
+		return userDao.getAllUsers();
 	}
 
 	public boolean isAdmin(User user) {
-		return false;
+		//int of admin setted 2
+		if(user.getRole() == 2){
+			return true;
+		}
+		else{
+			return false;
+		}
 	}
 
 	public boolean login(String email, String password) {
@@ -57,16 +63,28 @@ public class UserServiceImpl implements UserService{
 		return false;
 	}
 
-	public boolean register(String nickname, String email, String password) {
-		return false;
-	}
-
 	public boolean dupEmail(String email, User user) {
-		return false;
+		if(getUserByEmail(email) != null){
+			return true;
+		}
+		else{
+			return false;
+		}
 	}
 
 	public boolean uploadImage() {
+		// TODO with mongoDB
 		return false;
+	}
+
+	@Override
+	public boolean register(User user) {
+		if(getUserByEmail(user.getEmail()) != null){
+			return false;
+		}
+		//save check undone
+		save(user);
+		return true;
 	}
 	
 }
