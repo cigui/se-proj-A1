@@ -10,31 +10,26 @@ import model.User;
 @SuppressWarnings("deprecation")
 public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 
-	@Override
 	public Integer save(User user) {
-		// TODO 自动生成的方法存根
-		return null;
+		return (Integer) getHibernateTemplate().save(user);
 	}
 
-	@Override
 	public void delete(User user) {
-		// TODO 自动生成的方法存根
-		
+		getHibernateTemplate().delete(user);
 	}
 
-	@Override
 	public void update(User user) {
-		// TODO 自动生成的方法存根
-		
+		getHibernateTemplate().merge(user);
 	}
 
-	@Override
 	public User getUserById(int id) {
-		// TODO 自动生成的方法存根
-		return null;
+		@SuppressWarnings("unchecked")
+		List<User> users = (List<User>) getHibernateTemplate().find(
+				"from User as b where b.id=?", id);
+		User user = users.size() > 0 ? users.get(0) : null;
+		return user;
 	}
 
-	@Override
 	public User getUserByEmail(String email) {
 		@SuppressWarnings("unchecked")
 		List<User> users = (List<User>) getHibernateTemplate().find(
@@ -43,10 +38,11 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 		return user;
 	}
 
-	@Override
 	public List<User> getAllUsers() {
-		// TODO 自动生成的方法存根
-		return null;
+		@SuppressWarnings("unchecked")
+		List<User> users = (List<User>) getHibernateTemplate()
+				.find("from User");
+		return users;
 	}
 	
 }

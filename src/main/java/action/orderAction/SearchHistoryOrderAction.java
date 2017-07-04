@@ -1,4 +1,6 @@
-package action;
+package action.orderAction;
+
+import action.BaseAction;
 
 public class SearchHistoryOrderAction extends BaseAction {
 	@Override

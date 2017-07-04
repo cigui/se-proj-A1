@@ -12,9 +12,9 @@ public interface BookCommentDao {
 
 	public void update(BookComment bookComment);
 
-	public BookComment getBookCommentByIsbn(int isbn);
+	public List<BookComment> getBookCommentByIsbn(int isbn);
 	
-	public BookComment getBookCommentById(int id);
+	public List<BookComment> getBookCommentById(int id);
 
 	public List<BookComment> getAllBookComments();
 

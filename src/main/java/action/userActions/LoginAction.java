@@ -44,7 +44,6 @@ public class LoginAction extends BaseAction implements SessionAware {
 		this.userService = userService;
 	}
 
-	@Override
 	public void setSession(Map<String, Object> arg0) {
 		this.session = arg0;
 	}

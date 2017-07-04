@@ -12,7 +12,7 @@ public interface LocationDao {
 
 	public void update(Location location);
 
-	public Location getLocationById(int l_id);
+	public Location getLocationByL_id(int l_id);
 
 	public List<Location> getAllLocations();
 
