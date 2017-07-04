@@ -1,6 +1,6 @@
 /*==============================================================*/
-/* DBMS name:      MySQL 5.7                                    */
-/* Modified on:     2017/7/2                                    */
+/* DBMS name:      MySQL 5.0                                    */
+/* Created on:     2017/7/4 16:38:12                            */
 /*==============================================================*/
 
 
@@ -22,7 +22,7 @@ drop table if exists Categories;
 
 drop table if exists Users;
 
-drop table if exists Locations;
+drop table if exists District;
 
 /*==============================================================*/
 /* Table: BookCateRelationship                                  */
@@ -71,6 +71,7 @@ create table Books
    author               varchar(40) not null,
    publisher            varchar(40) not null,
    translator           varchar(40),
+   coverSrc             varchar(40),
    primary key (isbn)
 );
 
@@ -86,13 +87,13 @@ create table BorrowComments
 );
 
 /*==============================================================*/
-/* Table: BorrowingHistory                                      */
+/* Table: BorrowHistory                                         */
 /*==============================================================*/
 create table BorrowHistory
 (
    orderStatus          smallint not null,
    location             varchar(50),
-   date                 datetime not null DEFAULT CURRENT_TIMESTAMP,
+   date                 datetime not null,
    h_id                 int not null auto_increment,
    id                   int,
    r_id                 int,
@@ -100,7 +101,7 @@ create table BorrowHistory
 );
 
 /*==============================================================*/
-/* Table: BorrowingItems                                        */
+/* Table: BorrowItems                                           */
 /*==============================================================*/
 create table BorrowItems
 (
@@ -120,14 +121,14 @@ create table Categories
 );
 
 /*==============================================================*/
-/* Table: Location                                              */
+/* Table: District                                              */
 /*==============================================================*/
-create table Locations
+create table District
 (
-   l_id                 int not null auto_increment,
-   province             varchar(20) not null,
-   city                 varchar(20) not null,
-   district             varchar(20) not null,
+   l_id                 smallint(5) not null,
+   name                 varchar(20) not null,
+   parent_id            smallint(5) not null,
+   `order`              tinyint(2),
    primary key (l_id)
 );
 
@@ -137,7 +138,7 @@ create table Locations
 create table Users
 (
    id                   int not null auto_increment,
-   l_id                 int,
+   l_id                 smallint(5),
    nickname             varchar(14) not null,
    password             varchar(20) not null,
    email                varchar(50) not null,
@@ -146,7 +147,8 @@ create table Users
    credit               int not null,
    fav_category         int,
    gender               tinyint,
-   primary key (id)
+   primary key (id),
+   UNIQUE INDEX `email` (`email` ASC)
 );
 
 alter table BookCateRelationship add constraint FK_Relationship_1 foreign key (isbn)
@@ -183,5 +185,5 @@ alter table BorrowItems add constraint FK_Relationship_9 foreign key (r_id)
       references BookReleases (r_id) on delete restrict on update restrict;
 
 alter table Users add constraint FK_Relationship_14 foreign key (l_id)
-      references Locations (l_id) on delete restrict on update restrict;
+      references District (l_id) on delete restrict on update restrict;
 
