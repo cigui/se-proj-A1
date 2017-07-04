@@ -3,30 +3,30 @@ package model;
 public class User {
 	private int id;
 	private int l_id;
-	private char nickname;
-	private char password;
-	private char email;
+	private String nickname;
+	private String password;
+	private String email;
 	private int role;
 	private int points;
 	private int credit;
-	private int fav_Category;
-	private int gender;
+	private Integer fav_category;
+	private Byte gender;
 	
 	public User(){
 		
 	}
 
-	public User(int id, int l_id, char nickname, char password, char email, int role, int points, int credit, int fav_Category, int gender){
-		this.setId(id);
-		this.setL_id(l_id);
-		this.setNickname(nickname);
-		this.setPassword(password);
-		this.setEmail(email);
-		this.setRole(role);
-		this.setPoints(points);
-		this.setCredit(credit);
-		this.setFav_Category(fav_Category);
-		this.setGender(gender);
+	public User(int id, int l_id, String nickname, String password, String email, int role, int points, int credit, int fav_category, byte gender){
+		this.id = id;
+		this.l_id = l_id;
+		this.nickname = nickname;
+		this.password = password;
+		this.email = email;
+		this.role = role;
+		this.points = points;
+		this.credit = credit;
+		this.fav_category = fav_category;
+		this.gender = gender;
 		
 	}
 
@@ -46,27 +46,27 @@ public class User {
 		this.l_id = l_id;
 	}
 
-	public char getNickname() {
+	public String getNickname() {
 		return nickname;
 	}
 
-	public void setNickname(char nickname) {
+	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
 
-	public char getPassword() {
+	public String getPassword() {
 		return password;
 	}
 
-	public void setPassword(char password) {
+	public void setPassword(String password) {
 		this.password = password;
 	}
 
-	public char getEmail() {
+	public String getEmail() {
 		return email;
 	}
 
-	public void setEmail(char email) {
+	public void setEmail(String email) {
 		this.email = email;
 	}
 
@@ -94,19 +94,19 @@ public class User {
 		this.credit = credit;
 	}
 
-	public int getFav_Category() {
-		return fav_Category;
+	public Integer getFav_category() {
+		return fav_category;
 	}
 
-	public void setFav_Category(int fav_Category) {
-		this.fav_Category = fav_Category;
+	public void setFav_category(Integer fav_category) {
+		this.fav_category = fav_category;
 	}
 
-	public int getGender() {
+	public Byte getGender() {
 		return gender;
 	}
 
-	public void setGender(int gender) {
+	public void setGender(Byte gender) {
 		this.gender = gender;
 	}
 	

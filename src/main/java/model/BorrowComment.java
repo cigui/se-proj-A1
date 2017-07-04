@@ -3,16 +3,16 @@ package model;
 public class BorrowComment {
 	private int h_id;
 	private int score;
-	private char borrowComment;
+	private String borrowComment;
 	
 	public BorrowComment(){
 		
 	}
 
-	public BorrowComment(int h_id, int score, char borrowComment ){
-		this.setH_id(h_id);
-		this.setScore(score);
-		this.setBorrowComment(borrowComment);
+	public BorrowComment(int h_id, int score, String borrowComment ){
+		this.h_id = h_id;
+		this.score = score;
+		this.borrowComment = borrowComment;
 		
 	}
 
@@ -32,11 +32,11 @@ public class BorrowComment {
 		this.score = score;
 	}
 
-	public char getBorrowComment() {
+	public String getBorrowComment() {
 		return borrowComment;
 	}
 
-	public void setBorrowComment(char borrowComment) {
+	public void setBorrowComment(String borrowComment) {
 		this.borrowComment = borrowComment;
 	}
 	

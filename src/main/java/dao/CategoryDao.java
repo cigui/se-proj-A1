@@ -13,7 +13,7 @@ public interface CategoryDao {
 
 	public void update(Category category);
 
-	public Category getCategoryById(int cate_ID);
+	public Category getCategoryByCate_id(int cate_id);
 
 	public List<Category> getAllCategories();
 

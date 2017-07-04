@@ -12,9 +12,9 @@ public interface BookCateRelationshipDao {
 
 	public void update(BookCateRelationship bookCateRelationship);
 
-	public BookCateRelationship getBookCateRelationshipByISBN(int ISBN);
+	public BookCateRelationship getBookCateRelationshipByIsbn(int isbn);
 	
-	public BookCateRelationship getBookCateRelationshipByCate_ID(int cate_ID);
+	public BookCateRelationship getBookCateRelationshipByCate_id(int cate_id);
 
 	public List<BookCateRelationship> getAllBookCateRelationships();
 

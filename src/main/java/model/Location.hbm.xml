@@ -1,1 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="model.Location" table="location">
+		<id name="l_id" type="int">
+			<column name="l_id" />
+			<generator class="native" />
+		</id>
+		<property name="province"/> 
+    	<property name="city"/> 
+    	<property name="district"/> 
+    	
+	</class>
+</hibernate-mapping>

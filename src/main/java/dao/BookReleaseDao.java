@@ -12,11 +12,13 @@ public interface BookReleaseDao {
 
 	public void update(BookRelease bookRelease);
 
-	public BookRelease getBookReleaseByISBN(int ISBN);
+	public BookRelease getBookReleaseByIsbn(int isbn);
 	
 	public BookRelease getBookReleaseById(int id);
 	
 	public BookRelease getBookReleaseByR_id(int r_id);
+	
+	public BookRelease getBookReleaseByStatus(int status);
 
 	public List<BookRelease> getAllBookReleases();
 

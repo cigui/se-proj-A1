@@ -1,0 +1,55 @@
+html {
+	height: 100%;
+	width: 960px;
+}
+
+body {
+	height: 100%;
+	background-image: url(../images/bg.png);
+	background-size: cover;
+}
+
+.yx-nav {
+	display: inline-block;
+	text-align: center;
+}
+
+.yx-toolbar {
+	padding: 10px;
+	float: right;
+}
+
+.yx-brand {
+	font-size: 20;
+}
+
+.yx-search-bar {
+	margin: 0;
+	display: inline-flex;
+	text-align: center;
+}
+
+.container {
+	height: 100%;
+	background-color: ghostwhite;
+	margin-top: 52px;
+	margin-left: 10%;
+	margin-right: 10%;
+	overflow: auto;
+}
+
+.yx-header {
+	font-size: 26px;
+	margin: 0 auto;
+}
+
+hr {
+  clear: both;
+  margin: 0;
+  height: 0px;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  border-bottom: 1px solid #c5c5da;
+  padding: 0;
+}

@@ -1,23 +1,23 @@
 package model;
 
 public class BookCateRelationship {
-	private int ISBN;
+	private int isbn;
 	private int cate_ID;
 	
 	public BookCateRelationship(){
 		
 	}
 	
-	public BookCateRelationship(int ISBN,int cate_ID){
-		this.ISBN = ISBN;
+	public BookCateRelationship(int isbn,int cate_ID){
+		this.isbn = isbn;
 		this.cate_ID = cate_ID;
 	}
 	
-	public int getISBN() {
-		return ISBN;
+	public int getIsbn() {
+		return isbn;
 	}
-	public void setISBN(int iSBN) {
-		ISBN = iSBN;
+	public void setIsbn(int isbn) {
+		this.isbn = isbn;
 	}
 	public int getCate_ID() {
 		return cate_ID;
