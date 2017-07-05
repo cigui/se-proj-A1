@@ -31,10 +31,7 @@ public class SendBookCommentServiceImpl implements SendBookCommentService {
 		 bookCommentDao.update(bookComment);
 	 }
 	 
-	 public List<BookComment> getBookCommentByISBN(int ISBN){
-		 return bookCommentDao.getBookCommentByIsbn(ISBN);
-	 }
-	 
+
 	 public List<BookComment> getBookCommentById(int id){
 		 return bookCommentDao.getBookCommentById(id);
 	 }

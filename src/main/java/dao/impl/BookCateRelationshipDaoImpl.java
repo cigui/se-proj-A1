@@ -29,7 +29,7 @@ public class BookCateRelationshipDaoImpl extends HibernateDaoSupport implements 
 		return bookCateRelationships;
 	}
 	
-	public List<BookCateRelationship> getBookCateRelationshipByIsbn(int isbn) {
+	public List<BookCateRelationship> getBookCateRelationshipByIsbn(long isbn) {
 		@SuppressWarnings("unchecked")
 		List<BookCateRelationship> bookCateRelationships = (List<BookCateRelationship>) getHibernateTemplate().find(
 				"from BookCateRelationship as d where d.isbn=?", isbn);
