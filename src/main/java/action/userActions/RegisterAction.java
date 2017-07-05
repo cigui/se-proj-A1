@@ -1,15 +1,19 @@
 package action.userActions;
 
 import java.io.File;
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
 
 import action.BaseAction;
 import model.User;
 import service.UserService;
 
-public class RegisterAction extends BaseAction {
+public class RegisterAction extends BaseAction implements SessionAware {
 	
 	/**
-	 * 
+	 * Modified on 5th, July, 2017
+	 * By Zhou Xin
 	 */
 	private static final long serialVersionUID = 1L;
 	private UserService userService;
@@ -21,7 +25,7 @@ public class RegisterAction extends BaseAction {
 	private File avatar; 
 	private String avatarContentType;
 	private String avatarFileName;
-	
+	private Map<String, Object> session;
 
 	public int getDistrict() {
 		return district;
@@ -112,16 +116,26 @@ public class RegisterAction extends BaseAction {
 		this.userService = userService;
 	}
 
+	public void setSession(Map<String, Object> session) {
+		this.session = session;
+	}
 
 	@Override
 	public String execute() throws Exception {
 		try {
 			User user = new User(district, nickName, password, email, gender);
 			userService.register(user);
+			if (avatar != null){
+				userService.uploadImage(avatar, avatarFileName, avatarContentType);
+			}
+			session.put("logined", true);
+			session.put("userName", user.getNickname());
+			session.put("userId", user.getId()); 
+			return SUCCESS;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return ERROR;
 		}
-		return SUCCESS;
 	}
+
 }

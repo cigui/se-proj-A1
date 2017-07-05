@@ -2,6 +2,7 @@ package service;
 
 import model.User;
 
+import java.io.File;
 import java.util.List;
 
 /*log in ��log out��register��updateUserInformation*/
@@ -26,7 +27,7 @@ public interface UserService {
    
     public boolean dupEmail(String email,User user);
     
-    public boolean uploadImage();
+    public boolean uploadImage(int id, File image, String fileName, String contentType);
    
 }
 

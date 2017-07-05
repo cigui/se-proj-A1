@@ -12,6 +12,7 @@
 <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script	src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://cdn.bootcss.com/bootbox.js/4.4.0/bootbox.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-validate/1.16.0/jquery.validate.min.js"></script>
 <script src="<%=path%>/js/register.js"></script>
 <link
 	href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -19,11 +20,10 @@
 <link href="<%=path%>/css/login_style.css" rel="stylesheet">
 <link href="<%=path%>/css/yxdefault.css" rel="stylesheet">
 <link href="<%=path%>/css/index.css" rel="stylesheet">
+<style type="text/css">.error{color: red; font-weight: normal}</style>
 </head>
 <script>
 	var path = "<%=path%>";
-</script>
-<script>
 	$(document).ready(function() {
 		var logined = "<s:property value='#session.logined' />";
 		if (logined) {
@@ -50,15 +50,15 @@
 				<div class="row">
 					<br>
 				</div>
-				<form class="form-horizontal" style="text-align: center" action="register" method="post"
-						enctype="multipart/form-data">
+				<form id="registerForm" class="form-horizontal" style="text-align: center" action="register" method="post"
+						enctype="multipart/form-data" onsubmit="document.getElementById('sub').disabled=true;">
 					<div class="form-group">
 						<div class="col-md-6">
 							<div class="form-group">
 								<label for="nickName" class="col-md-2 control-label">昵称(*)</label>
 								<div class="col-md-6">
 									<input type="text" class="form-control" id="nickName" name="nickName"
-										placeholder="请输入昵称" required="true">
+										placeholder="请输入昵称" required="true" maxlength="14">
 									<p class="help-block">不超过7个汉字（即14字节）</p>
 								</div>
 							</div>
@@ -66,24 +66,32 @@
 								<label for="email" class="col-md-2 control-label">电子邮箱(*)</label>
 								<div class="col-md-6">
 									<input type="text" class="form-control" id="email" name="email"
-										placeholder="请输入电子邮箱" required="true">
+										placeholder="请输入电子邮箱" required="true" maxlength="50">
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="password" class="col-md-2 control-label">密码(*)</label>
 								<div class="col-md-6">
 									<input type="password" class="form-control" id="password"
-										name="password" placeholder="请输入密码" required="true">
+										name="password" placeholder="请输入密码" required="true" maxlength="20">
+									<p class="help-block">长度在6至20字符之间</p>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="password" class="col-md-2 control-label">密码(*)</label>
+								<div class="col-md-6">
+									<input type="password" class="form-control" id="confirmPassword"
+										name="confirmPassword" placeholder="请再次输入密码" required="true" maxlength="20">
 									<p class="help-block">长度在6至20字符之间</p>
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="location" class="col-md-2 control-label">所在地(*)</label>
 								<div class="col-md-2">
-									<label><select id="province" class="form-control" required="true"></select>省</label>
+									<label><select id="province" name="province" class="form-control" required="true"></select>省</label>
 								</div>
 								<div class="col-md-2">
-									<label><select id="city" class="form-control" required="true" disabled="disabled"></select>市</label>
+									<label><select id="city" name="city" class="form-control" required="true" disabled="disabled"></select>市</label>
 								</div>
 								<div class="col-md-2">
 									<label><select id="district" name="district" class="form-control" required="true" disabled="disabled"></select>区/县</label>
