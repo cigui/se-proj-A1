@@ -126,11 +126,12 @@ public class RegisterAction extends BaseAction implements SessionAware {
 			User user = new User(district, nickName, password, email, gender);
 			userService.register(user);
 			if (avatar != null){
-				userService.uploadImage(avatar, avatarFileName, avatarContentType);
+				userService.uploadImage(user.getId(),avatar, avatarFileName, avatarContentType);
 			}
 			session.put("logined", true);
 			session.put("userName", user.getNickname());
 			session.put("userId", user.getId()); 
+			session.put("role", user.getRole()); 
 			return SUCCESS;
 		} catch (Exception e) {
 			e.printStackTrace();

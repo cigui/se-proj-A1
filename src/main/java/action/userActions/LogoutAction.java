@@ -18,6 +18,8 @@ public class LogoutAction extends BaseAction implements SessionAware {
 	public String execute() throws Exception {
 		session.remove("logined");
 		session.remove("userName");
+		session.remove("userId");
+		session.remove("role");
 		session.remove("isAdmin");
 		return SUCCESS;
 	}
