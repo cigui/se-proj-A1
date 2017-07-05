@@ -23,7 +23,7 @@
 			<result name="error">error.jsp</result>
 		</action>
 		<action name="register" class="action.userActions.RegisterAction">
-			<result name="success" type="redirect">welcome</result>
+			<result name="success" type="redirect">welcome.jsp</result>
 			<result name="error">error.jsp</result>
 		</action>
 		

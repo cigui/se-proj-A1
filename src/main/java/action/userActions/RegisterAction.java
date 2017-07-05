@@ -131,7 +131,7 @@ public class RegisterAction extends BaseAction implements SessionAware {
 			session.put("logined", true);
 			session.put("userName", user.getNickname());
 			session.put("userId", user.getId()); 
-			session.put("role", user.getId()); 
+			session.put("role", user.getRole()); 
 			return SUCCESS;
 		} catch (Exception e) {
 			e.printStackTrace();
