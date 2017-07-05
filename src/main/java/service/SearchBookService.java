@@ -1,24 +1,24 @@
 package service;
 
-import model.BookRelease;
+import model.Book;
 
 import java.util.List;
 public interface SearchBookService {
     
-    public Integer save(BookRelease bookRelease);
+    public Integer save(Book book);
 
-	public void delete(BookRelease bookRelease);
+	public void delete(Book book);
 
-	public void update(BookRelease bookRelease);
+	public void update(Book book);
 
-	public BookRelease getBookReleaseByISBN(int ISBN);
+	public Book getBookByISBN(int ISBN);
 	
-	public BookRelease getBookReleaseById(int id);
+	public List<Book> getBookByTitle(String title);
 	
-	public BookRelease getBookReleaseByR_id(int r_id);
+	public List<Book> getBookByAuthor(String author);
 
-	public List<BookRelease> getAllBookReleases();
+	public List<Book> getAllBooks();
        
-    public boolean SearchBook(String keyword);
+    public List<Book> SearchBook(String keyword);
     
 }
