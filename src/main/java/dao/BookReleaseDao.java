@@ -3,6 +3,7 @@ package dao;
 import java.util.List;
 
 import model.BookRelease;
+import model.Picture;
 
 public interface BookReleaseDao {
 
@@ -21,5 +22,7 @@ public interface BookReleaseDao {
 	public List<BookRelease> getBookReleaseByStatus(int status);
 
 	public List<BookRelease> getAllBookReleases();
+	
+	public Picture getPictureByR_id(int r_id);
 
 }

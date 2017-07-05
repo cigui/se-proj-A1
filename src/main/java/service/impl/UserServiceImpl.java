@@ -77,7 +77,6 @@ public class UserServiceImpl implements UserService{
 		return false;
 	}
 
-	@Override
 	public boolean register(User user) {
 		if(getUserByEmail(user.getEmail()) != null){
 			return false;

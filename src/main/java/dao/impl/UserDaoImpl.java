@@ -2,9 +2,16 @@ package dao.impl;
 
 import java.util.List;
 
+import org.springframework.data.mongodb.core.query.Query;
+
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.gridfs.GridFsTemplate;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
+import com.mongodb.gridfs.GridFSDBFile;
+
 import dao.UserDao;
+import model.Picture;
 import model.User;
 
 @SuppressWarnings("deprecation")
@@ -44,5 +51,18 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 				.find("from User");
 		return users;
 	}
+	
+	private GridFsTemplate GridFsTemplate;
+
+	public void setGridFsTemplate(GridFsTemplate GridFsTemplate) {
+	    this.GridFsTemplate = GridFsTemplate;
+	}
+	
+	public Picture getPictureById(int id) {
+		GridFSDBFile result = GridFsTemplate.findOne(new Query(Criteria.where("metadata.id").is(id)));
+		Picture picture =new Picture(result.getContentType(),result.getInputStream());
+		return picture;
+	}
+
 	
 }

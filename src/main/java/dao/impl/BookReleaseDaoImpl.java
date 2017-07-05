@@ -2,10 +2,16 @@ package dao.impl;
 
 import java.util.List;
 
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.gridfs.GridFsTemplate;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+
+import com.mongodb.gridfs.GridFSDBFile;
 
 import dao.BookReleaseDao;
 import model.BookRelease;
+import model.Picture;
 
 @SuppressWarnings("deprecation")
 public class BookReleaseDaoImpl extends HibernateDaoSupport implements BookReleaseDao {
@@ -56,6 +62,18 @@ public class BookReleaseDaoImpl extends HibernateDaoSupport implements BookRelea
 		List<BookRelease> bookReleases = (List<BookRelease>) getHibernateTemplate()
 				.find("from BookRelease");
 		return bookReleases;
+	}
+	
+	private GridFsTemplate GridFsTemplate;
+
+	public void setGridFsTemplate(GridFsTemplate GridFsTemplate) {
+	    this.GridFsTemplate = GridFsTemplate;
+	}
+	
+	public Picture getPictureByR_id(int r_id) {
+		GridFSDBFile result = GridFsTemplate.findOne(new Query(Criteria.where("metadata.r_id").is(r_id)));
+		Picture picture =new Picture(result.getContentType(),result.getInputStream());
+		return picture;
 	}
 	
 }
