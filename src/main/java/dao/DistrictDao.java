@@ -12,7 +12,7 @@ public interface DistrictDao {
 
 	public void update(District location);
 
-	public District getDistrictById(int id);
+	public District getDistrictsById(int id);
 	
 	public List<District> getDistrictByParent_id(int parent_id);
 
