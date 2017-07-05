@@ -11,7 +11,7 @@ public interface BookService {
 
 	public void update(Book book);
 
-	public Book getBookByISBN(int ISBN);
+	public Book getBookByISBN(long ISBN);
 	
 	public List<Book> getBookByTitle(String title);
 	

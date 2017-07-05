@@ -5,9 +5,9 @@ import java.util.List;
 
 import dao.BookDao;
 import model.Book;
-import service.SearchBookService;
+import service.BookService;
 
-public class SearchBookServiceImpl implements SearchBookService{
+public class BookServiceImpl implements BookService{
 	
 	private BookDao bookDao;
 
@@ -35,7 +35,7 @@ public class SearchBookServiceImpl implements SearchBookService{
 	}
 
 	@Override
-	public Book getBookByISBN(int ISBN) {
+	public Book getBookByISBN(long ISBN) {
 		return bookDao.getBookByIsbn(ISBN);
 	}
 
@@ -57,10 +57,27 @@ public class SearchBookServiceImpl implements SearchBookService{
 	@Override
 	public List<Book> SearchBook(String keyword) {
 		List<Book> resultList = new ArrayList<Book>();
-		resultList.add(getBookByISBN(Integer.parseInt(keyword)));
+		try{
+			resultList.add(getBookByISBN(Long.parseLong(keyword)));
+		}
+		catch(NumberFormatException nf){
+			//do nothing
+		}
 		resultList.addAll(getBookByTitle(keyword));
 		resultList.addAll(getBookByAuthor(keyword));
 		return resultList;
+	}
+
+	@Override
+	public void DisplayBooks() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void DisplayBooksByCategory(String category) {
+		// TODO Auto-generated method stub
+		
 	}
 
 
