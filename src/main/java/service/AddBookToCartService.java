@@ -11,7 +11,7 @@ public interface AddBookToCartService {
 
 	public void update(BorrowItem borrowItem);
 
-	public BorrowItem getBorrowItemById(int id);
+	public List<BorrowItem> getBorrowItemById(int id);
 
 	public List<BorrowItem> getAllBorrowItems();
     
