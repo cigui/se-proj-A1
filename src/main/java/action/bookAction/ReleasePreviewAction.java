@@ -1,4 +1,6 @@
-package action;
+package action.bookAction;
+
+import action.BaseAction;
 
 public class ReleasePreviewAction extends BaseAction {
 	@Override
