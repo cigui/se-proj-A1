@@ -5,7 +5,7 @@ import java.sql.Date;
 public class BookRelease {
 	private int r_id;
 	private int id;
-	private int isbn;
+	private long isbn;
 	private Date publish_date;
 	private String discription;
 	private int status;
@@ -15,7 +15,7 @@ public class BookRelease {
 		
 	}
 	
-	public BookRelease(int id, int r_id, int isbn, Date publish_date, String discription, int status, int price ){
+	public BookRelease(int id, int r_id, long isbn, Date publish_date, String discription, int status, int price ){
 		this.id = id;
 		this.r_id = r_id;
 		this.isbn = isbn;
@@ -42,11 +42,11 @@ public class BookRelease {
 		this.id = id;
 	}
 
-	public int getIsbn() {
+	public long getIsbn() {
 		return isbn;
 	}
 
-	public void setIsbn(int isbn) {
+	public void setIsbn(long isbn) {
 		this.isbn = isbn;
 	}
 	public Date getPublish_date() {
