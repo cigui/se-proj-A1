@@ -1,5 +1,6 @@
 package dao;
 
+import java.io.File;
 import java.util.List;
 
 import model.Picture;
@@ -20,5 +21,7 @@ public interface UserDao {
 	public List<User> getAllUsers();
 	
 	public Picture getPictureById(int id);
+	
+	public boolean uploadPicture(int id,File file,String contentType,String fileName);
 
 }

@@ -1,5 +1,6 @@
 package dao;
 
+import java.io.File;
 import java.util.List;
 
 import model.BookRelease;
@@ -24,5 +25,7 @@ public interface BookReleaseDao {
 	public List<BookRelease> getAllBookReleases();
 	
 	public Picture getPictureByR_id(int r_id);
+	
+	public boolean uploadPicture(int r_id,File file,String contentType,String fileName);
 
 }
