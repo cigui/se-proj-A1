@@ -1,5 +1,6 @@
 package service.impl;
 
+import java.io.File;
 import java.util.List;
 
 import dao.UserDao;
@@ -72,17 +73,16 @@ public class UserServiceImpl implements UserService{
 		}
 	}
 
-	public boolean uploadImage() {
-		// TODO with mongoDB
-		return false;
+	public boolean uploadImage(int id, File image, String contentType, String fileName) {
+		return userDao.uploadPicture(id, image, contentType, fileName);
 	}
 
 	public boolean register(User user) {
 		if(getUserByEmail(user.getEmail()) != null){
 			return false;
 		}
-		//save check undone
-		save(user);
+		int userId = userDao.save(user);
+		user.setId(userId);
 		return true;
 	}
 	

@@ -42,7 +42,7 @@ create table BookComments
    id                   int not null,
    isbn                 bigint not null,
    discription          varchar(140) not null,
-   score                int not null,
+   score                tinyint not null,
    primary key (id, isbn)
 );
 
@@ -72,6 +72,7 @@ create table Books
    publisher            varchar(40) not null,
    translator           varchar(40),
    coverSrc             varchar(40),
+   score                tinyint,
    primary key (isbn)
 );
 
@@ -82,7 +83,7 @@ create table BorrowComments
 (
    h_id                 int not null,
    borrowComment        varchar(140),
-   score                int,
+   score                tinyint,
    primary key (h_id)
 );
 
