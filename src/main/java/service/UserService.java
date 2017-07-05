@@ -1,5 +1,6 @@
 package service;
 
+import model.BookRelease;
 import model.User;
 
 import java.util.List;
@@ -32,5 +33,6 @@ public interface UserService {
     
     public void unbanUser(int id);
    
+    public void checkBook(BookRelease bookRelease);
 }
 

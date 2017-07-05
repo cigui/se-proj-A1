@@ -3,6 +3,7 @@ package service.impl;
 import java.util.List;
 
 import dao.UserDao;
+import model.BookRelease;
 import model.User;
 import service.UserService;
 
@@ -95,6 +96,12 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public void unbanUser(int id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void checkBook(BookRelease bookRelease) {
 		// TODO Auto-generated method stub
 		
 	}
