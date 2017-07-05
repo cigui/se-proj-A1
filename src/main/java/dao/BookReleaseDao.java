@@ -14,7 +14,7 @@ public interface BookReleaseDao {
 
 	public void update(BookRelease bookRelease);
 
-	public List<BookRelease> getBookReleaseByIsbn(int isbn);
+	public List<BookRelease> getBookReleaseByIsbn(long isbn);
 	
 	public List<BookRelease> getBookReleaseById(int id);
 	

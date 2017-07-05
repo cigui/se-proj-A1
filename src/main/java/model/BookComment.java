@@ -2,15 +2,15 @@ package model;
 
 public class BookComment {
 	private int id;
-	private int isbn;
+	private long isbn;
 	private String discription;
-	private int score;
+	private byte score;
 	
 	public BookComment(){
 		
 	}
 	
-	public BookComment(int id,int isbn,String discription,int score){
+	public BookComment(int id,long isbn,String discription,byte score){
 		this.id = id;
 		this.isbn = isbn;
 		this.discription = discription;
@@ -25,11 +25,11 @@ public class BookComment {
 		this.id = id;
 	}
 
-	public int getIsbn() {
+	public long getIsbn() {
 		return isbn;
 	}
 
-	public void setIsbn(int isbn) {
+	public void setIsbn(long isbn) {
 		this.isbn = isbn;
 	}
 
@@ -41,11 +41,11 @@ public class BookComment {
 		this.discription = discription;
 	}
 
-	public int getScore() {
+	public byte getScore() {
 		return score;
 	}
 
-	public void setScore(int score) {
+	public void setScore(byte score) {
 		this.score = score;
 	}
 

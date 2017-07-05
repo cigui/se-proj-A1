@@ -12,7 +12,7 @@ public interface BookDao {
 
 	public void update(Book book);
 
-	public Book getBookByIsbn(int isbn);
+	public Book getBookByIsbn(long isbn);
 	
 	public List<Book> getBookByTitle(String title);
 	

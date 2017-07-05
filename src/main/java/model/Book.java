@@ -1,24 +1,27 @@
 package model;
 
-import java.sql.Blob;
 
 public class Book {
-	private int isbn;
+	private long isbn;
 	private String title;
 	private String author;
 	private String publisher;
 	private String translator;
+	private String coverSrc;
+	private byte score;
 
 	public Book(){
 		
 	}
 	
-	public Book(int isbn,String title,String author,String publisher,String translator){
+	public Book(long isbn,String title,String author,String publisher,String translator,String coverSrc, byte score){
 		this.isbn = isbn;
 		this.title = title;
 		this.author = author;
 		this.publisher = publisher;
 		this.translator = translator;
+		this.coverSrc = coverSrc;
+		this.score = score;
 	}
 
 
@@ -55,12 +58,28 @@ public class Book {
 		this.translator = translator;
 	}
 
-	public int getIsbn() {
+	public long getIsbn() {
 		return isbn;
 	}
 
-	public void setIsbn(int isbn) {
+	public void setIsbn(long isbn) {
 		this.isbn = isbn;
+	}
+
+	public String getCoverSrc() {
+		return coverSrc;
+	}
+
+	public void setCoverSrc(String coverSrc) {
+		this.coverSrc = coverSrc;
+	}
+
+	public byte getScore() {
+		return score;
+	}
+
+	public void setScore(byte score) {
+		this.score = score;
 	}
 
 	
