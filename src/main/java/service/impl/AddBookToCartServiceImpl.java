@@ -18,34 +18,28 @@ public class AddBookToCartServiceImpl implements AddBookToCartService{
 		this.borrowItemDao = borrowItemDao;
 	}
 
-	@Override
 	public Integer save(BorrowItem borrowItem) {
 		return borrowItemDao.save(borrowItem);
 	}
 
-	@Override
 	public void delete(BorrowItem borrowItem) {
 		borrowItemDao.delete(borrowItem);
 		
 	}
 
-	@Override
 	public void update(BorrowItem borrowItem) {
 		borrowItemDao.update(borrowItem);
 		
 	}
 
-	@Override
 	public List<BorrowItem> getBorrowItemById(int id) {
 		return borrowItemDao.getBorrowItemById(id);
 	}
 
-	@Override
 	public List<BorrowItem> getAllBorrowItems() {
 		return borrowItemDao.getAllBorrowItems();
 	}
 
-	@Override
 	public boolean AddBookToCart(BorrowItem borrowItem) {
 		int id = borrowItem.getId();
 		List<BorrowItem> userList = getBorrowItemById(id);
