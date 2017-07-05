@@ -86,5 +86,17 @@ public class UserServiceImpl implements UserService{
 		save(user);
 		return true;
 	}
+
+	@Override
+	public void banUser(int id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void unbanUser(int id) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

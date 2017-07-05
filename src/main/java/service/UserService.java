@@ -27,6 +27,10 @@ public interface UserService {
     public boolean dupEmail(String email,User user);
     
     public boolean uploadImage();
+    
+    public void banUser(int id);
+    
+    public void unbanUser(int id);
    
 }
 
