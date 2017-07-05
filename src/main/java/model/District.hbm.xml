@@ -4,14 +4,14 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-	<class name="model.Location" table="location">
-		<id name="l_id" type="int">
-			<column name="l_id" />
+	<class name="model.District" table="district">
+		<id name="id" type="int">
+			<column name="id" />
 			<generator class="native" />
 		</id>
-		<property name="province"/> 
-    	<property name="city"/> 
-    	<property name="district"/> 
+		<property name="name"/> 
+    	<property name="parent_id"/> 
+    	<property name="order"/> 
     	
 	</class>
 </hibernate-mapping>
