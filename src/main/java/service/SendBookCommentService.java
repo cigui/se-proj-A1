@@ -4,7 +4,7 @@ import model.BookComment;
 
 import java.util.List;
 
-public interface SendBookCommenService {
+public interface SendBookCommentService {
 
     public Integer save(BookComment bookComment);
 
