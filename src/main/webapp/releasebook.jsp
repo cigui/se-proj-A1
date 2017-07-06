@@ -1,9 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
-<%-- <%@ taglib prefix="s" uri="/struts-tags"%> --%>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>阅享 - 发布图书</title>
 <%
@@ -13,6 +13,7 @@
 <script
 	src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://cdn.bootcss.com/bootbox.js/4.4.0/bootbox.min.js"></script>
+<script src="<%=path%>/js/releasebook.js"></script>
 <link
 	href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -20,6 +21,16 @@
 <link href="<%=path%>/css/yxdefault.css" rel="stylesheet">
 <link href="<%=path%>/css/releasebook.css" rel="stylesheet">
 </head>
+<script>
+	var logined = "<s:property value='#session.logined'/>";
+/* 	$(document).ready(function() {
+		if (logined == "") {
+			bootbox.alert("您尚未登录，请先登录！", function(){
+				location.href = "index";
+			})
+		}
+	}); */
+</script>
 <body>
 	<div
 		class="yx-nav navbar navbar-default navbar-left navbar-fixed-top yx-nav">
@@ -30,27 +41,23 @@
 				<input type="text" name="searchString" placeholder="查询图书" />
 				<button class="btn btn-sm btn-primary btn-block" type="submit">Search</button>
 			</form>
+			<span>Hi, <s:property value='#session.userName' />!</span>
+				<a href="profile" class="btn btn-default btn-sm"
+					role="button">个人信息</a>
+				<a href="logout" class="btn btn-default btn-sm"
+					role="button">登出</a>
 		</div>
 	</div>
 
 	<div class="container">
-		<div class="row">
-			<br>
+		<div class="page-header">
+			<h1 class="text-primary">
+				书籍信息填写<br> <small>您只需填写书籍的ISBN码，我们会获取书籍的标题、作者等详细信息:)</small>
+			</h1>
 		</div>
-		<div class="row">
-			<div class="col-md-9">
-				<span class="yx-header nav-header">书籍信息</span>
-			</div>
-		</div>
-		<hr />
 
 		<div class="row">
 			<div class="col-md-8">
-				<div class="row">
-					<div class="col-md-12">
-						<span style="font-size: 16px">您只需填写书籍的ISBN码，我们会获取书籍的标题、作者等详细信息:)</span>
-					</div>
-				</div>
 				<div role="form">
 					<div class="form-group">
 						<label for="ISBN">书籍编码</label> 
