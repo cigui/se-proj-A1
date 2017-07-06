@@ -9,8 +9,6 @@ import model.BookRelease;
 import model.User;
 import service.UserService;
 
-public class UserServiceImpl implements UserService{
-	
 public class UserServiceImpl implements UserService {
 
 	private UserDao userDao;
@@ -57,13 +55,9 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public boolean isAdmin(User user) {
-		//int of admin setted 2
-		if(user.getRole() == 2){
 		// int of admin setted 2
 		if (user.getRole() == 2) {
 			return true;
-		}
-		else{
 		} else {
 			return false;
 		}
@@ -81,11 +75,9 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public boolean dupEmail(String email, User user) {
-		if(getUserByEmail(email) != null){
+
 		if (getUserByEmail(email) != null) {
 			return true;
-		}
-		else{
 		} else {
 			return false;
 		}
@@ -128,7 +120,5 @@ public class UserServiceImpl implements UserService {
 			bookReleaseDao.update(bookRelease);
 		}
 	}
-
-
 
 }
