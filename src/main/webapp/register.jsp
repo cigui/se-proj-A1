@@ -38,7 +38,7 @@
 		class="yx-nav navbar navbar-default navbar-left navbar-fixed-top yx-nav">
 		<a class="yx-brand navbar-brand" href="index" style="color: cadetblue">阅享图书交流平台</a>
 	</div>
-	<div class="container">
+	<div class="yx-container container">
 		<div class="page-header">
 			<h1 class="text-primary">
 				注册信息填写
@@ -47,7 +47,10 @@
 		<div class="row">
 			<div class="col-md-12">
 				<form id="registerForm" class="form-horizontal" style="text-align: center" action="register" method="post"
-						enctype="multipart/form-data" onsubmit="document.getElementById('sub').disabled=true;">
+						enctype="multipart/form-data" 
+						<!-- 这里的onsubmit属性原本是通过submit后禁用提交按钮来禁止重复提交表单，但这样也会在输入不合法时禁止提交，故暂先注释掉，后期再做修改 -->
+						<!-- onsubmit="document.getElementById('submit').disabled=true;" -->
+						>
 					<div class="form-group">
 						<div class="col-md-6">
 							<div class="form-group">
@@ -118,7 +121,7 @@
 							</div>
 						</div>
 					</div>
-					<button type="submit" class="btn btn-info">注册</button>
+					<button id="submit" type="submit" class="btn btn-info">注册</button>
 				</form>
 			</div>
 		</div>
