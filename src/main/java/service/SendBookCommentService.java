@@ -12,9 +12,9 @@ public interface SendBookCommentService {
 
 	public void update(BookComment bookComment);
 
-	public BookComment getBookCommentByISBN(int ISBN);
+	public List<BookComment> getBookCommentByISBN(int ISBN);
 	
-	public BookComment getBookCommentById(int id);
+	public List<BookComment> getBookCommentById(int id);
 
 	public List<BookComment> getAllBookComments();
     

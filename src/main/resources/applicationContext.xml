@@ -97,10 +97,10 @@
     </bean>
     <bean id="userDao" class="dao.impl.UserDaoImpl">
         <property name="GridFsTemplate" ref="GridFsTemplate" />
-    </bean>
+    </bean> -->
     <bean id="userDao" class="dao.impl.UserDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
-	</bean>-->
+	</bean>
 	
 
 	<!-- Service -->

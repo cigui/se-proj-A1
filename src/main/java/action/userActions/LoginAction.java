@@ -55,6 +55,7 @@ public class LoginAction extends BaseAction implements SessionAware {
 			session.put("logined", true);
 			session.put("userName", u.getNickname());
 			session.put("userId", u.getId());
+			session.put("role", u.getRole());
 			if (userService.isAdmin(u)){
 				session.put("isAdmin", true);
 			}

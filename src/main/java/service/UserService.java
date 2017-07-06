@@ -1,7 +1,9 @@
 package service;
 
+import model.BookRelease;
 import model.User;
 
+import java.io.File;
 import java.util.List;
 
 /*log in ��log out��register��updateUserInformation*/
@@ -25,8 +27,13 @@ public interface UserService {
     public boolean register(User user);
    
     public boolean dupEmail(String email,User user);
+  
+    public boolean uploadImage(int id, File image, String fileName, String contentType);
     
-    public boolean uploadImage();
+    public void banUser(int id);
+    
+    public void unbanUser(int id);
    
+    public void checkBook(BookRelease bookRelease);
 }
 
