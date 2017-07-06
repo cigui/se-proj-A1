@@ -41,7 +41,7 @@ $(function() {
 		}
 	});
 
-	$.getJSON(path + "/testdata/province.json", {
+	$.getJSON("getDistricts", {
 		parentId : 0
 	}, function(data) {
 		var province = $('#province');
@@ -56,7 +56,7 @@ $(function() {
 	$('#province').change(
 			function() {
 				var id = $('#province').val();
-				$.getJSON(path + "/testdata/" + id + ".json", {
+				$.getJSON("getDistricts", {
 					parentId : id
 				}, function(data) {
 					var city = $('#city');
@@ -70,32 +70,22 @@ $(function() {
 				})
 			});
 
-	$('#city')
-			.change(
-					function() {
-						var id = $('#city').val();
-						$
-								.getJSON(
-										path + "/testdata/" + 3 + ".json",
-										{
-											parentId : id
-										},
-										function(data) {
-											var district = $('#district');
-											district.removeAttr("disabled");
-											district.empty();
-											district
-													.append("<option disabled selected value></option>");
-											for (var i = 0; i < data.length; i++) {
-												district
-														.append("<option value='"
-																+ data[i].id
-																+ "'>"
-																+ data[i].name
-																+ "</option>");
-											}
-										})
-					})
+	$('#city').change(
+			function() {
+				var id = $('#city').val();
+				$.getJSON("getDistricts",{
+					parentId : id
+				}, function(data) {
+					var district = $('#district');
+					district.removeAttr("disabled");
+					district.empty();
+					district.append("<option disabled selected value></option>");
+					for (var i = 0; i < data.length; i++) {
+						district.append("<option value='"+ data[i].id+ "'>"
+								+ data[i].name + "</option>");
+					}
+				})
+			});
 
 	$("#avatar").change(function() {
 		var objUrl = getObjectURL(this.files[0]);
