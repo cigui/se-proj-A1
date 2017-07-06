@@ -27,6 +27,12 @@
 			<result name="error">error.jsp</result>
 		</action>
 		
+		<action name="getDistricts" class="action.userActions.GetDistrictsAction">
+			<result type="json">
+				<param name="root">districts</param>
+			</result>
+		</action>
+		
 		<!-- <action name="*">
 			<result>/{1}.jsp</result>
 		</action> -->
