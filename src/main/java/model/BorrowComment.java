@@ -2,14 +2,14 @@ package model;
 
 public class BorrowComment {
 	private int h_id;
-	private Integer score;
+	private byte score;
 	private String borrowComment;
 	
 	public BorrowComment(){
 		
 	}
 
-	public BorrowComment(int h_id, Integer score, String borrowComment ){
+	public BorrowComment(int h_id, byte score, String borrowComment ){
 		this.h_id = h_id;
 		this.score = score;
 		this.borrowComment = borrowComment;
@@ -24,11 +24,11 @@ public class BorrowComment {
 		this.h_id = h_id;
 	}
 
-	public Integer getScore() {
+	public byte getScore() {
 		return score;
 	}
 
-	public void setScore(Integer score) {
+	public void setScore(byte score) {
 		this.score = score;
 	}
 

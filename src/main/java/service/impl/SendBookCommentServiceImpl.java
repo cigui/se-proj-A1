@@ -31,11 +31,8 @@ public class SendBookCommentServiceImpl implements SendBookCommentService {
 		 bookCommentDao.update(bookComment);
 	 }
 	 
-	 public BookComment getBookCommentByISBN(int ISBN){
-		 return bookCommentDao.getBookCommentByIsbn(ISBN);
-	 }
-	 
-	 public BookComment getBookCommentById(int id){
+
+	 public List<BookComment> getBookCommentById(int id){
 		 return bookCommentDao.getBookCommentById(id);
 	 }
 	 
@@ -44,10 +41,10 @@ public class SendBookCommentServiceImpl implements SendBookCommentService {
 	 }
 	 
 	 public boolean SendBookComment(BookComment bookComment){
-		 if (bookCommentDao.save(bookComment))
-			 return True;
+		 if (bookCommentDao.save(bookComment) > 0)
+			 return true;
 		 else
-			 return False;
+			 return false;
 	 }
 }
 

@@ -12,7 +12,7 @@ public interface BookCommentDao {
 
 	public void update(BookComment bookComment);
 
-	public List<BookComment> getBookCommentByIsbn(int isbn);
+	public List<BookComment> getBookCommentByIsbn(long isbn);
 	
 	public List<BookComment> getBookCommentById(int id);
 

@@ -16,6 +16,6 @@
         />
         </composite-id>
     	<property name="discription"/> 
-    	<property name="score"/> 
+    	<property name="score" type = "java.lang.Byte"/> 
 	</class>
 </hibernate-mapping>
