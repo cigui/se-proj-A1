@@ -15,8 +15,16 @@ public class User {
 	public User(){
 		
 	}
+	
+	public User(int l_id, String nickname, String password, String email, Byte gender) {
+		this.l_id = l_id;
+		this.nickname = nickname;
+		this.password = password;
+		this.email = email;
+		this.gender = gender;
+	}
 
-	public User(int id, int l_id, String nickname, String password, String email, int role, int points, int credit, int fav_category, byte gender){
+	public User(int id, int l_id, String nickname, String password, String email, int role, int points, int credit, int fav_category, Byte gender){
 		this.id = id;
 		this.l_id = l_id;
 		this.nickname = nickname;

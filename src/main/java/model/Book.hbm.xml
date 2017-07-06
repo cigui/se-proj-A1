@@ -13,5 +13,9 @@
     	<property name="author"/> 
     	<property name="publisher"/> 
     	<property name="translator"/> 
+    	<property name="coverSrc"/> 
+    	<property name="byte" type = "java.lang.Byte"/>
+    	
+    	
 	</class>
 </hibernate-mapping>

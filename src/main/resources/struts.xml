@@ -13,13 +13,17 @@
 			<result name="success">/homepage.jsp</result>
 		</action>
 		
-		<!-- Login & Logout Actions -->
+		<!-- Login, Logout & Register -->
 		<action name="login" class="action.userActions.LoginAction">
 			<result name="success" type="redirect">index</result>
 			<result name="error" type="redirect">error.jsp</result>
 		</action>
 		<action name="logout" class="action.userActions.LogoutAction">
 			<result name="success" type="redirect">index</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<action name="register" class="action.userActions.RegisterAction">
+			<result name="success" type="redirect">welcome.jsp</result>
 			<result name="error">error.jsp</result>
 		</action>
 		
