@@ -22,7 +22,8 @@ public class DistrictDaoImpl extends HibernateDaoSupport implements DistrictDao 
 		getHibernateTemplate().merge(district);
 	}
 
-	public District getDistrictById(int id) {
+	@Override
+	public District getDistrictsById(int id) {
 		@SuppressWarnings("unchecked")
 		List<District> districts = (List<District>) getHibernateTemplate().find(
 				"from District as u where u.id=?", id);
@@ -43,7 +44,5 @@ public class DistrictDaoImpl extends HibernateDaoSupport implements DistrictDao 
 				.find("from District");
 		return districts;
 	}
-
-
 	
 }
