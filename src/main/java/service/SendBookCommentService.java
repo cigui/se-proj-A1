@@ -18,6 +18,6 @@ public interface SendBookCommentService {
 
 	public List<BookComment> getAllBookComments();
     
-    public boolean SendBookComment(BookComment bookComment);
+	public void SendBookComment(int id,long isbn,String discription,byte score);
     
 }
