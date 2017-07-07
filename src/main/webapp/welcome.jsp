@@ -44,7 +44,7 @@
 				<a href="logout" class="btn btn-default btn-sm" role="button">登出</a>
 			</div>
 		</div>
-		<div class="container">
+		<div class="yx-container container">
 			<div class="page-header">
 				<h1 class="text-primary">
 					欢迎来到阅享！<br> <small>我猜我们会发送一封邮件到您注册所用的邮箱，请尽快查看邮箱点击邮件中的链接激活账号:)</small>

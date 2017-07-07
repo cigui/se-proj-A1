@@ -47,10 +47,9 @@
 		<div class="row">
 			<div class="col-md-12">
 				<form id="registerForm" class="form-horizontal" style="text-align: center" action="register" method="post"
-						enctype="multipart/form-data" 
+						enctype="multipart/form-data">
 						<!-- 这里的onsubmit属性原本是通过submit后禁用提交按钮来禁止重复提交表单，但这样也会在输入不合法时禁止提交，故暂先注释掉，后期再做修改 -->
 						<!-- onsubmit="document.getElementById('submit').disabled=true;" -->
-						>
 					<div class="form-group">
 						<div class="col-md-6">
 							<div class="form-group">
