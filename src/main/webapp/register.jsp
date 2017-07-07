@@ -38,20 +38,19 @@
 		class="yx-nav navbar navbar-default navbar-left navbar-fixed-top yx-nav">
 		<a class="yx-brand navbar-brand" href="index" style="color: cadetblue">阅享图书交流平台</a>
 	</div>
-	<div class="container">
-		<div class="row">
-			<br>
-		</div>
-		<div class="row">
-			<div class="col-md-12" style="font-size: 28px">注册信息填写</div>
+	<div class="yx-container container">
+		<div class="page-header">
+			<h1 class="text-primary">
+				注册信息填写
+			</h1>
 		</div>
 		<div class="row">
 			<div class="col-md-12">
-				<div class="row">
-					<br>
-				</div>
 				<form id="registerForm" class="form-horizontal" style="text-align: center" action="register" method="post"
-						enctype="multipart/form-data" onsubmit="document.getElementById('sub').disabled=true;">
+						enctype="multipart/form-data" 
+						<!-- 这里的onsubmit属性原本是通过submit后禁用提交按钮来禁止重复提交表单，但这样也会在输入不合法时禁止提交，故暂先注释掉，后期再做修改 -->
+						<!-- onsubmit="document.getElementById('submit').disabled=true;" -->
+						>
 					<div class="form-group">
 						<div class="col-md-6">
 							<div class="form-group">
@@ -78,7 +77,7 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="password" class="col-md-2 control-label">密码(*)</label>
+								<label for="password" class="col-md-2 control-label">确认密码(*)</label>
 								<div class="col-md-6">
 									<input type="password" class="form-control" id="confirmPassword"
 										name="confirmPassword" placeholder="请再次输入密码" required="true" maxlength="20">
@@ -122,7 +121,7 @@
 							</div>
 						</div>
 					</div>
-					<button type="submit" class="btn btn-info">注册</button>
+					<button id="submit" type="submit" class="btn btn-info">注册</button>
 				</form>
 			</div>
 		</div>

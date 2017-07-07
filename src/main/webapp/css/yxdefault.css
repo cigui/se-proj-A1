@@ -29,12 +29,11 @@ body {
 	text-align: center;
 }
 
-.container {
+.yx-container {
 	height: 100%;
 	background-color: ghostwhite;
-	margin-top: 52px;/* 
-	margin-left: 10%;
-	margin-right: 10%; */
+	margin-top: 52px;
+	margin-top: 52px;
 	overflow: auto;
 }
 
