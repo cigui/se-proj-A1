@@ -39,6 +39,10 @@
 			</result>
 		</action>
 		
+		<action name="releaseBook" class="action.bookAction.ReleaseBookAction">
+			<result name="success" type="redirect">releasesuccess.jsp</result>
+		</action>
+		
 		<!-- <action name="*">
 			<result>/{1}.jsp</result>
 		</action> -->

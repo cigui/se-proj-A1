@@ -85,11 +85,25 @@
 								</div>
 							</div>
 							<div class="form-group">
+								<label for="publishDate" class="col-md-2 control-label">出版日期(*)</label>
+								<div class="col-md-8">
+									<input type="date" class="form-control" id="publishDate" name="publishDate"
+										placeholder="请输入出版日期" required="true">
+								</div>
+							</div>
+							<div class="form-group">
 								<label for="discription" class="col-md-2 control-label">书籍描述(*)</label>
 								<div class="col-md-8">
 									<textarea maxlength="140" rows="10" required="true"
 										class="form-control" id="discription" name="discription"
 										placeholder="请输入书籍描述（该书新旧程度、注意事项等等，不超过140字符）"></textarea>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="price" class="col-md-2 control-label">积分定价(*)</label>
+								<div class="col-md-8">
+									<input type="number" class="form-control" id="price" name="price"
+										placeholder="请输入积分定价" required="true">
 								</div>
 							</div>
 						</div>

@@ -25,7 +25,9 @@ $(function(){
 			discription : {
 				required : true,
 				byteRangeLength : 140
-			}
+			},
+			price : "required",
+			publishDate : "required"
 		},
 		/* 验证错误信息  */
 		messages : {
@@ -36,7 +38,9 @@ $(function(){
 			discription : {
 				required : "请输入书籍描述",
 				byteRangeLength : "描述不能超过140字节！（单个汉字占两个字节）"
-			}
+			},
+			price : "请输入积分定价",
+			publishDate : "请输入出版日期"
 		}
 	});
 	
