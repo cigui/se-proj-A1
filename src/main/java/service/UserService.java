@@ -30,10 +30,8 @@ public interface UserService {
   
     public boolean uploadImage(int id, File image, String fileName, String contentType);
     
-    public void banUser(int id);
+    public void manageUser(int id, int status);							//0:ban, 1:unban
     
-    public void unbanUser(int id);
-   
-    public void checkBook(BookRelease bookRelease);
+    public void checkBookRelease(BookRelease bookRelease, int status);	//0:reject, 1:pass
 }
 
