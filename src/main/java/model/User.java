@@ -6,7 +6,7 @@ public class User {
 	private String nickname;
 	private String password;
 	private String email;
-	private int role;
+	private int role;			//0:not checked, 1:user, 2:admin, -1:banned
 	private int points;
 	private int credit;
 	private Integer fav_category;
