@@ -6,13 +6,13 @@ import model.District;
 
 public interface DistrictDao {
 
-	public Integer save(District location);
+	public Integer save(District district);
 
-	public void delete(District location);
+	public void delete(District district);
 
-	public void update(District location);
+	public void update(District district);
 
-	public District getDistrictsById(int id);
+	public District getDistrictById(int id);
 	
 	public List<District> getDistrictByParent_id(int parent_id);
 

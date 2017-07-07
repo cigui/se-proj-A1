@@ -6,8 +6,8 @@
 <hibernate-mapping>
 	<class name="model.District" table="district">
 		<id name="id" type="int">
-			<column name="id" />
-			<generator class="native" />
+			<column name="l_id" />
+			<generator class="assigned" />
 		</id>
 		<property name="name"/> 
     	<property name="parent_id"/> 
