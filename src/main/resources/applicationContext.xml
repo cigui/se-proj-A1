@@ -41,8 +41,8 @@
 		p:dataSource-ref="dataSource">
 		<property name="mappingResources">
 			<list>
-<!-- 				<value>model/Book.hbm.xml</value>
-				<value>model/BookCateRelationship.hbm.xml</value>
+ 				<value>model/Book.hbm.xml</value>
+<!--				<value>model/BookCateRelationship.hbm.xml</value>
 				<value>model/BookComment.hbm.xml</value>
 				<value>model/BookRelease.hbm.xml</value>
 				<value>model/BorrowHistory.hbm.xml</value>
@@ -71,12 +71,6 @@
 	<bean id="bookCommentDao" class="dao.impl.BookCommentDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-	<bean id="bookDao" class="dao.impl.BookDaoImpl">
-		<property name="sessionFactory" ref="sessionFactory" />
-	</bean>
-	<bean id="bookReleaseDao" class="dao.impl.BookReleaseDaoImpl">
-		<property name="sessionFactory" ref="sessionFactory" />
-	</bean>
 	<bean id="borrowCommentDao" class="dao.impl.BorrowCommentDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
@@ -88,18 +82,17 @@
 	</bean>
 	<bean id="categoryDao" class="dao.impl.CategoryDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>-->
+	<bean id="bookDao" class="dao.impl.BookDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-	<bean id="locationDao" class="dao.impl.LocationDaoImpl">
-		<property name="sessionFactory" ref="sessionFactory" />
-	</bean> 
 	<bean id="bookReleaseDao" class="dao.impl.BookReleaseDaoImpl">
-        <property name="GridFsTemplate" ref="GridFsTemplate" />
-    </bean>
-    <bean id="userDao" class="dao.impl.UserDaoImpl">
-        <property name="GridFsTemplate" ref="GridFsTemplate" />
-    </bean> -->
+		<property name="sessionFactory" ref="sessionFactory" />
+		<property name="GridFsTemplate" ref="gridFsTemplate" />
+	</bean>
     <bean id="userDao" class="dao.impl.UserDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
+		<property name="GridFsTemplate" ref="gridFsTemplate" />
 	</bean>
 	<bean id="districtDao" class="dao.impl.DistrictDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
@@ -109,6 +102,9 @@
 	<!-- Service -->
 	<bean id="userService" class="service.impl.UserServiceImpl">
 		<property name="userDao" ref="userDao"></property>
+	</bean>
+	<bean id="bookService" class="service.impl.BookServiceImpl">
+		<property name="bookDao" ref="bookDao"></property>
 	</bean>
 	<bean id="districtService" class="service.impl.DistrictServiceImpl">
 		<property name="districtDao" ref="districtDao"></property>
@@ -135,6 +131,7 @@
 	<aop:config>
 		<!-- appService Bean -->
 		<aop:pointcut id="userServiceBeanPointcut" expression="bean(userService)" />
+		<aop:pointcut id="bookServiceBeanPointcut" expression="bean(bookService)" />
 		<aop:pointcut id="districtServiceBeanPointcut" expression="bean(districtService)" />
 		<!-- <aop:advisor advice-ref="txAdvice" pointcut-ref="userServiceBeanPointcut" /> -->
 	</aop:config>
