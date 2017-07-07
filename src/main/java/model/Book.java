@@ -8,7 +8,7 @@ public class Book {
 	private String publisher;
 	private String translator;
 	private String coverSrc;
-	private byte score;
+	private Byte score;
 
 	public Book(){
 		
@@ -74,11 +74,11 @@ public class Book {
 		this.coverSrc = coverSrc;
 	}
 
-	public byte getScore() {
+	public Byte getScore() {
 		return score;
 	}
 
-	public void setScore(byte score) {
+	public void setScore(Byte score) {
 		this.score = score;
 	}
 

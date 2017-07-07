@@ -32,13 +32,11 @@ body {
 .yx-container {
 	height: 100%;
 	background-color: ghostwhite;
-	margin-top: 52px;
-	margin-top: 52px;
 	overflow: auto;
 }
 
-.yx-header {
-	font-size: 26px;
+.yx-header {/* 
+	font-size: 26px; */
 	margin: 0 auto;
 }
 

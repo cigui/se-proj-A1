@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>阅享 - 注册</title>
 <%
 	String path = request.getContextPath();
@@ -35,7 +36,7 @@
 </script>
 <body>
 	<div
-		class="yx-nav navbar navbar-default navbar-left navbar-fixed-top yx-nav">
+		class="yx-nav navbar navbar-default navbar-left navbar-static-top yx-nav" style="width:100%; margin-bottom:0">
 		<a class="yx-brand navbar-brand" href="index" style="color: cadetblue">阅享图书交流平台</a>
 	</div>
 	<div class="yx-container container">

@@ -5,7 +5,7 @@
 
 <hibernate-mapping>
 	<class name="model.Book" table="books">
-		<id name="isbn" type="int">
+		<id name="isbn" type="long">
 			<column name="isbn" />
 			<generator class="native" />
 		</id>
@@ -14,7 +14,7 @@
     	<property name="publisher"/> 
     	<property name="translator"/> 
     	<property name="coverSrc"/> 
-    	<property name="byte" type = "java.lang.Byte"/>
+    	<property name="score" type = "java.lang.Byte"/>
     	
     	
 	</class>

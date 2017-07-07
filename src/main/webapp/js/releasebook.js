@@ -25,7 +25,9 @@ $(function(){
 			discription : {
 				required : true,
 				byteRangeLength : 140
-			}
+			},
+			price : "required",
+			publishDate : "required"
 		},
 		/* 验证错误信息  */
 		messages : {
@@ -36,7 +38,9 @@ $(function(){
 			discription : {
 				required : "请输入书籍描述",
 				byteRangeLength : "描述不能超过140字节！（单个汉字占两个字节）"
-			}
+			},
+			price : "请输入积分定价",
+			publishDate : "请输入出版日期"
 		}
 	});
 	
@@ -44,6 +48,7 @@ $(function(){
 	$("#previewInfo").click(function() {
 		var value = $('#isbn').val();
 		var len = value.length;
+		var resultFlag = false;
 		/* 检查输入是否为13位 */
 		if (len != 13) {
 			bootbox.alert("请输入13位isbn码！");
@@ -51,37 +56,42 @@ $(function(){
 		}
 		
 		/* 首先查找本地数据库中是否有这本书 */
-		$.getJSON("getBook", {
+		if ($.getJSON("getBook", {
 			isbn : value
 		}, function(data){
 			if (data!=null) {
+				console.log(data);
+				resultFlag = true;
 				$('#infoIsbn').text(value);
 				$('#infoTitle').text(data.title);
 				$('#infoAuthor').text(data.author);
 				$('#infoPublisher').text(data.publisher);
 				$('#infoTranslator').text(data.translator);
-				$('#cover').attr("src",data.imgSrc);
+				$('#cover').attr("src","https://img3.doubanio.com/lpic/"+data.coverSrc);
 				return true;
 			}
-		})
+		})) {
+			return true;
+		}
 		
-		
-		/* ajax调用web接口 */
-		$.ajax({
-			url : "https://api.douban.com/v2/book/isbn/:"+value,
-			type : "GET",
-			/* 这里需要设置数据类型为JSONP防止跨域请求不被允许 */
-			dataType : "JSONP", 
-			success : function(data){
-				$('#infoIsbn').text(value);
-				$('#infoTitle').text(data.title);
-				$('#infoAuthor').text(data.author);
-				$('#infoPublisher').text(data.publisher);
-				$('#infoTranslator').text(data.translator);
-				$('#cover').attr("src",data.images.large);
-				console.log(data);
-			}
-		})
+		else {
+			/* 如果没有，通过ajax调用web接口 */
+			$.ajax({
+				url : "https://api.douban.com/v2/book/isbn/:"+value,
+				type : "GET",
+				/* 这里需要设置数据类型为JSONP防止跨域请求不被允许 */
+				dataType : "JSONP", 
+				success : function(data){
+					$('#infoIsbn').text(value);
+					$('#infoTitle').text(data.title);
+					$('#infoAuthor').text(data.author);
+					$('#infoPublisher').text(data.publisher);
+					$('#infoTranslator').text(data.translator);
+					$('#cover').attr("src",data.images.large);
+					console.log(data);
+				}
+			});
+		}
 	})
 	
 	/* 图片输入验证以及预览 */

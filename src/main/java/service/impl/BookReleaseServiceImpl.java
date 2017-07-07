@@ -37,7 +37,10 @@ public class BookReleaseServiceImpl implements BookReleaseService {
 
 	public boolean ReleaseBook(BookRelease bookRelease) {
 		try {
-			bookReleaseDao.save(bookRelease);
+			long isbn = bookRelease.getIsbn();
+			/* TODO: GET BOOK INFO FROM DOUBAN AND SAVE IT INTO DB*/
+			int r_id = bookReleaseDao.save(bookRelease);
+			bookRelease.setR_id(r_id);
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();

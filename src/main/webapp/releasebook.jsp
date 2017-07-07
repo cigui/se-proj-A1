@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>阅享 - 发布图书</title>
 <%
 	String path = request.getContextPath();
@@ -42,7 +43,7 @@
 </script>
 <body>
 	<div
-		class="yx-nav navbar navbar-default navbar-left navbar-fixed-top yx-nav">
+		class="yx-nav navbar navbar-default navbar-left navbar-static-top yx-nav" style="width:100%; margin-bottom:0">
 		<a class="yx-brand navbar-brand" href="index" style="color: cadetblue">阅享图书交流平台</a>
 		<div class="yx-toolbar">
 			<a class="btn btn-default btn-sm" href="<%=path%>/ReleaseBook">发布图书</a>
@@ -80,7 +81,14 @@
 								</div>
 								<div class="col-md-2">
 									<button id="previewInfo" data-toggle="modal"
-										class="btn btn-info" data-target="#previewModal">预览图书信息</button>
+										class="btn btn-info btn-sm" data-target="#previewModal">预览图书信息</button>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="publishDate" class="col-md-2 control-label">出版日期(*)</label>
+								<div class="col-md-8">
+									<input type="date" class="form-control" id="publishDate" name="publishDate"
+										placeholder="请输入出版日期" required="true">
 								</div>
 							</div>
 							<div class="form-group">
@@ -89,6 +97,13 @@
 									<textarea maxlength="140" rows="10" required="true"
 										class="form-control" id="discription" name="discription"
 										placeholder="请输入书籍描述（该书新旧程度、注意事项等等，不超过140字符）"></textarea>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="price" class="col-md-2 control-label">积分定价(*)</label>
+								<div class="col-md-8">
+									<input type="number" class="form-control" id="price" name="price"
+										placeholder="请输入积分定价" required="true">
 								</div>
 							</div>
 						</div>
