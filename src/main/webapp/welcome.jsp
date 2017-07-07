@@ -4,6 +4,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>欢迎~:)</title>
 <%
 	String path = request.getContextPath();
@@ -30,7 +31,8 @@
 <s:else>
 	<body>
 		<div
-			class="yx-nav navbar navbar-default navbar-left navbar-fixed-top yx-nav">
+			class="yx-nav navbar navbar-default navbar-left navbar-static-top yx-nav"
+			style="width: 100%; margin-bottom: 0">
 			<a class="yx-brand navbar-brand" href="index"
 				style="color: cadetblue">阅享图书交流平台</a>
 			<div class="yx-toolbar">
