@@ -34,7 +34,7 @@ public class DistrictDaoImpl extends HibernateDaoSupport implements DistrictDao 
 	public List<District> getDistrictByParent_id(int parent_id) {
 		@SuppressWarnings("unchecked")
 		List<District> districts = (List<District>) getHibernateTemplate().find(
-				"from District as p where p.parent_id=?", parent_id);
+				"from District where parent_id=?", parent_id);
 		return districts;
 	}
 

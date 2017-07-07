@@ -41,7 +41,7 @@ $(function() {
 		}
 	});
 
-	$.getJSON(path + "/testdata/province.json", {
+	$.getJSON("getDistricts", {
 		parentId : 0
 	}, function(data) {
 		var province = $('#province');
@@ -56,7 +56,7 @@ $(function() {
 	$('#province').change(
 			function() {
 				var id = $('#province').val();
-				$.getJSON(path + "/testdata/" + id + ".json", {
+				$.getJSON("getDistricts", {
 					parentId : id
 				}, function(data) {
 					var city = $('#city');
@@ -70,39 +70,46 @@ $(function() {
 				})
 			});
 
-	$('#city')
-			.change(
-					function() {
-						var id = $('#city').val();
-						$
-								.getJSON(
-										path + "/testdata/" + 3 + ".json",
-										{
-											parentId : id
-										},
-										function(data) {
-											var district = $('#district');
-											district.removeAttr("disabled");
-											district.empty();
-											district
-													.append("<option disabled selected value></option>");
-											for (var i = 0; i < data.length; i++) {
-												district
-														.append("<option value='"
-																+ data[i].id
-																+ "'>"
-																+ data[i].name
-																+ "</option>");
-											}
-										})
-					})
+	$('#city').change(
+			function() {
+				var id = $('#city').val();
+				$.getJSON("getDistricts",{
+					parentId : id
+				}, function(data) {
+					var district = $('#district');
+					district.removeAttr("disabled");
+					district.empty();
+					district.append("<option disabled selected value></option>");
+					for (var i = 0; i < data.length; i++) {
+						district.append("<option value='"+ data[i].id+ "'>"
+								+ data[i].name + "</option>");
+					}
+				})
+			});
 
 	$("#avatar").change(function() {
 		var objUrl = getObjectURL(this.files[0]);
-		console.log("objUrl = " + objUrl);
+		var fileSize = this.files[0].size;
+		// 使用正则表达式检查图片格式
+		if(!/image\/\w+/.test(this.files[0].type)){
+			bootbox.alert("请上传图片类型文件！", function(){
+				/* 此方法暂未支持IE */
+				$("#avatar").val("");
+			});
+			return false;
+        }
+		// console.log("objUrl = " + objUrl);
+		if (fileSize > 4 * 1024 * 1024) {
+			bootbox.alert("上传的图片不能超过4M！", function(){
+				/* 此方法暂未支持IE */
+				$("#avatar").val("");
+			});
+			return false;
+		}
 		if (objUrl) {
 			$("#preview").attr("src", objUrl);
 		}
+		return true;
 	});
 	// 获取该文件的url
 	function getObjectURL(file) {
