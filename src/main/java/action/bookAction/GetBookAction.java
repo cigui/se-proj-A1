@@ -12,7 +12,7 @@ public class GetBookAction extends BaseAction {
 	 */
 	private static final long serialVersionUID = 1L;
 	private String isbn;
-	private Book result;
+	private Book result = null;
 	private BookService bookService;
 
 	public String getIsbn() {

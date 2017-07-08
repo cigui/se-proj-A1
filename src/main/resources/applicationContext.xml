@@ -107,6 +107,7 @@
 		<property name="bookDao" ref="bookDao"></property>
 	</bean>
 	<bean id="bookReleaseService" class="service.impl.BookReleaseServiceImpl">
+		<property name="bookDao" ref="bookDao"></property>
 		<property name="bookReleaseDao" ref="bookReleaseDao"></property>
 	</bean>
 	<bean id="districtService" class="service.impl.DistrictServiceImpl">

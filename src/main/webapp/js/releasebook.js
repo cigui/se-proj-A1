@@ -56,7 +56,7 @@ $(function(){
 		}
 		
 		/* 首先查找本地数据库中是否有这本书 */
-		if ($.getJSON("getBook", {
+		$.getJSON("getBook", {
 			isbn : value
 		}, function(data){
 			if (data!=null) {
@@ -69,29 +69,25 @@ $(function(){
 				$('#infoTranslator').text(data.translator);
 				$('#cover').attr("src","https://img3.doubanio.com/lpic/"+data.coverSrc);
 				return true;
+			} else {
+				/* 如果本地数据库中没有，则需要通过豆瓣api获取书籍信息 */
+				$.ajax({
+					url : "https://api.douban.com/v2/book/isbn/:"+value,
+					type : "GET",
+					/* 这里需要设置数据类型为JSONP防止跨域请求不被允许 */
+					dataType : "JSONP", 
+					success : function(data){
+						$('#infoIsbn').text(value);
+						$('#infoTitle').text(data.title);
+						$('#infoAuthor').text(data.author);
+						$('#infoPublisher').text(data.publisher);
+						$('#infoTranslator').text(data.translator);
+						$('#cover').attr("src",data.images.large);
+						/*console.log(data);*/
+					}
+				});
 			}
-		})) {
-			return true;
-		}
-		
-		else {
-			/* 如果没有，通过ajax调用web接口 */
-			$.ajax({
-				url : "https://api.douban.com/v2/book/isbn/:"+value,
-				type : "GET",
-				/* 这里需要设置数据类型为JSONP防止跨域请求不被允许 */
-				dataType : "JSONP", 
-				success : function(data){
-					$('#infoIsbn').text(value);
-					$('#infoTitle').text(data.title);
-					$('#infoAuthor').text(data.author);
-					$('#infoPublisher').text(data.publisher);
-					$('#infoTranslator').text(data.translator);
-					$('#cover').attr("src",data.images.large);
-					console.log(data);
-				}
-			});
-		}
+		})
 	})
 	
 	/* 图片输入验证以及预览 */
