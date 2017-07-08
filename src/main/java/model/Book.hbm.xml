@@ -7,7 +7,6 @@
 	<class name="model.Book" table="books">
 		<id name="isbn" type="long">
 			<column name="isbn" />
-			<generator class="native" />
 		</id>
 		<property name="title"/>
     	<property name="author"/> 

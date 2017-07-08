@@ -14,7 +14,7 @@ public class Book {
 		
 	}
 	
-	public Book(long isbn,String title,String author,String publisher,String translator,String coverSrc, byte score){
+	public Book(long isbn,String title,String author,String publisher,String translator,String coverSrc, Byte score){
 		this.isbn = isbn;
 		this.title = title;
 		this.author = author;

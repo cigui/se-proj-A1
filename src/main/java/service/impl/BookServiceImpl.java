@@ -19,7 +19,7 @@ public class BookServiceImpl implements BookService{
 		this.bookDao = bookDao;
 	}
 
-	public Integer save(Book book) {
+	public Long save(Book book) {
 		return bookDao.save(book);
 	}
 
