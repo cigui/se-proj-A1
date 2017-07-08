@@ -10,8 +10,8 @@ import model.Book;
 @SuppressWarnings("deprecation")
 public class BookDaoImpl extends HibernateDaoSupport implements BookDao {
 
-	public Integer save(Book book) {
-		return (Integer) getHibernateTemplate().save(book);
+	public Long save(Book book) {
+		return (Long) getHibernateTemplate().save(book);
 	}
 
 	public void delete(Book book) {
