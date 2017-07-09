@@ -3,7 +3,6 @@ package service.impl;
 import java.io.File;
 import java.util.List;
 
-
 import dao.BookReleaseDao;
 import dao.UserDao;
 import model.BookRelease;
@@ -98,24 +97,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 
-
-	public void banUser(int id) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void unbanUser(int id) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void checkBook(BookRelease bookRelease) {
-		
-		
-	}
-	
-
-
+	@Override
 	public void manageUser(int id, int status) {
 		User u = getUserById(id);
 		if (!isAdmin(u)) {
@@ -129,6 +111,7 @@ public class UserServiceImpl implements UserService {
 		}
 	}
 
+	@Override
 	public void checkBookRelease(BookRelease bookRelease, int status) {
 		if (status == 1) {
 			bookRelease.setStatus(1);
@@ -138,3 +121,5 @@ public class UserServiceImpl implements UserService {
 			bookReleaseDao.update(bookRelease);
 		}
 	}
+
+}

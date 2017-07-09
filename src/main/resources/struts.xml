@@ -33,6 +33,7 @@
 			</result>
 		</action>
 		
+
 		<action name="getBook" class="action.bookAction.GetBookAction">
 			<result type="json">
 				<param name="root">result</param>
@@ -41,6 +42,13 @@
 		
 		<action name="releaseBook" class="action.bookAction.ReleaseBookAction">
 			<result name="success" type="redirect">releasesuccess.jsp</result>
+
+    <!-- Manage user -->
+		<action name="listUsers" class="action.userActions.AllUsersAction">
+			<result name="success">manageUser.jsp</result>
+		</action>
+		<action name="manageUser" class="action.userActions.ManageUserAction">
+			<result name="success">manageUser.jsp</result>
 		</action>
 		
 		<!-- <action name="*">
