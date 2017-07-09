@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>阅享 - 注册</title>
 <%
 	String path = request.getContextPath();
@@ -35,7 +36,7 @@
 </script>
 <body>
 	<div
-		class="yx-nav navbar navbar-default navbar-left navbar-fixed-top yx-nav">
+		class="yx-nav navbar navbar-default navbar-left navbar-static-top yx-nav" style="width:100%; margin-bottom:0">
 		<a class="yx-brand navbar-brand" href="index" style="color: cadetblue">阅享图书交流平台</a>
 	</div>
 	<div class="yx-container container">
@@ -47,10 +48,9 @@
 		<div class="row">
 			<div class="col-md-12">
 				<form id="registerForm" class="form-horizontal" style="text-align: center" action="register" method="post"
-						enctype="multipart/form-data" >
+						enctype="multipart/form-data">
 						<!-- 这里的onsubmit属性原本是通过submit后禁用提交按钮来禁止重复提交表单，但这样也会在输入不合法时禁止提交，故暂先注释掉，后期再做修改 -->
 						<!-- onsubmit="document.getElementById('submit').disabled=true;" -->
-						>
 					<div class="form-group">
 						<div class="col-md-6">
 							<div class="form-group">

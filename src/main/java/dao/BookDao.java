@@ -6,7 +6,7 @@ import model.Book;
 
 public interface BookDao {
 
-	public Integer save(Book book);
+	public Long save(Book book);
 
 	public void delete(Book book);
 

@@ -40,11 +40,14 @@ public class SendBookCommentServiceImpl implements SendBookCommentService {
 		 return bookCommentDao.getAllBookComments();
 	 }
 	 
-	 public boolean SendBookComment(BookComment bookComment){
-		 if (bookCommentDao.save(bookComment) > 0)
-			 return true;
-		 else
-			 return false;
+	 public void SendBookComment(int id,long isbn,String discription,byte score){
+		 BookComment bookComment = new BookComment(id,isbn,discription,score);
+		 bookCommentDao.save(bookComment);
+		 
+	 }
+	 
+	 public List<BookComment> getBookCommentByISBN(int ISBN){
+		 return bookCommentDao.getBookCommentByIsbn(ISBN);
 	 }
 
 	@Override

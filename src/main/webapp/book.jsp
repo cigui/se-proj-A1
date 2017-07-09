@@ -4,7 +4,6 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>阅享</title>
 <%
 	String path = request.getContextPath();
@@ -27,10 +26,10 @@
 </head>
 <body>
 	<div
-		class="yx-nav navbar navbar-default navbar-left navbar-static-top yx-nav" style="width:100%; margin-bottom:0">
+		class="yx-nav navbar navbar-default navbar-left navbar-fixed-top yx-nav">
 		<a class="yx-brand navbar-brand" href="index" style="color: cadetblue">阅享图书交流平台</a>
 		<div class="yx-toolbar">
-			<a class="btn btn-default btn-sm" href="<%=path%>/releasebook.jsp">发布图书</a>
+			<a class="btn btn-default btn-sm" href="<%=path%>/ReleaseBook">发布图书</a>
 			<form class="yx-search-bar">
 				<input type="text" name="searchString" placeholder="查询图书" />
 				<button class="btn btn-sm btn-primary btn-block" type="submit">Search</button>
@@ -76,61 +75,119 @@
 	</div>
 
 	<div class="yx-container container">
-		<div class="row">
-			<div class="col-xs-2 col-md-2">
-				<ul class="nav nav-list">
-					<li class="yx-header nav-header">图书分类</li>
-					<li class="active"><a href="#">文学</a></li>
-					<li><a href="#">小说</a></li>
-					<li><a href="#">传记</a></li>
-				</ul>
-			</div>
-			<div class="covers col-xs-5 col-md-5">
+	    <div class = "row">
+	        <div class = "col-md-1">
+	        </div>
+	        <div class = "col-md-7">
+	            <h1>书籍名</h1>
+	        </div>
+	        
+	    </div>
+	
+	    <div class="row">
+	        <div class = "col-md-1">
+	        </div>
+	        <div class = "infors col-md-6">
+	          <div class = "row">
+	             <div class = "col-md-3">
+	                <h3>ISBN码:</h3>
+	             </div>
+	             <div class = "col-md-7">
+	                <h3>假装有码</h3>
+	             </div>
+	          </div>
+	          <p></p>
+	          <div class = "row">
+	             <div class = "col-md-3">
+	                <h3>作者:</h3>
+	             </div>
+	             <div class = "col-md-7">
+	                <h3>假装有作者</h3>
+	             </div>
+	          </div>
+	          <p></p>
+	          <div class = "row">
+	             <div class = "col-md-3">
+	                <h3>出版社:</h3>
+	             </div>
+	             <div class = "col-md-7">
+	                <h3>假装有出版社</h3>
+	             </div>
+	          </div>
+	          <p></p>
+	          <div class = "row">
+	             <div class = "col-md-3">
+	                <h3>翻译:</h3>
+	             </div>
+	             <div class = "col-md-7">
+	                <h3>翻译</h3>
+	             </div>
+	          </div>
+	       </div>
+	       <div class = "col-md-5">
+	          <a id="link1" href='#'><img class = "img-responsive" id="cover1" 
+						src="<%=path%>/images/picture-0.png" /></a>
+	       </div>
+	    
+	    </div>
+	    <div class="row">
+	       <p></p>
+	       </div>
+	       <div class="row">
+	       <p></p>
+	       </div>
+	    <div class="row">
+	       <p></p>
+	       <div class="row">
+		    <div class = "col-md-1">
+	        </div>
+			<div class="covers col-md-5">
 				<div class="row">
-					<div class="col-xs-5 col-md-9">
-						<span class="yx-header nav-header">首页推荐</span>
+					<div class="col-md-9">
+						<span class="yx-header nav-header">图书借阅</span>
 					</div>
-					<div class="col-xs-1 col-md-1">
+					<div class="col-md-1">
 						<span><a class="btn btn-default btn-sm"
 							href="<%=path%>/Recommend">更多</a></span>
 					</div>
 				</div>
 				<div class="cover">
-					<a href='#'><img src="<%=path%>/images/404.png" /></a>
+					<a href='#'><p></a>
 				</div>
 				<div class="cover">
-					<a href='#'><img src="<%=path%>/images/404.png" /></a>
+					<a href='#'><p></a>
 				</div>
 				<div class="cover">
-					<a href='#'><img src="<%=path%>/images/404.png" /></a>
+					<a href='#'><p></a>
 				</div>
 
 			</div>
-			<div class="covers col-xs-5 col-md-5">
+			<div class="covers col-md-5">
 				<div class="row">
-					<div class="col-xs-5 col-md-9">
-						<span class="yx-header nav-header">猜你喜欢</span>
+					<div class="col-md-9">
+						<span class="yx-header nav-header">图书评论</span>
 					</div>
-					<div class="col-xs-1 col-md-1">
-						<span><button class="btn btn-default btn-sm yx-guess">换一批</button></span>
+					<div class="col-md-1">
+						<span><button class="btn btn-default btn-sm yx-guess">我也要评</button></span>
 					</div>
 				</div>
 				<div class="cover">
-					<a id="link1" href='#'><img id="cover1"
-						src="<%=path%>/images/404.png" /></a>
+				    <p></p>
 				</div>
 				<div class="cover">
-					<a id="link2" href='#'><img id="cover2"
-						src="<%=path%>/images/404.png" /></a>
+					<p></p>
 				</div>
 				<div class="cover">
-					<a id="link3" href='#'><img id="cover3"
-						src="<%=path%>/images/404.png" /></a>
+					<p></p>
 				</div>
 			</div>
 		</div>
-	</div>
-	<div class="yx-nav navbar navbar-default navbar-left navbar-static-bottom yx-nav" style="width:100%; margin-bottom:0">
+	    </div>
+	    
+	    
+		
+	<div
+		class="yx-nav navbar navbar-default navbar-left navbar-fixed-bottom yx-nav">
 		<div>联系我们：</div>
 		<span>QQ: 123456789</span> <span>Tel: 12345678</span> <span>Email:
 			123456789@qq.com</span>

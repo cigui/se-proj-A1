@@ -19,42 +19,34 @@ public class BookServiceImpl implements BookService{
 		this.bookDao = bookDao;
 	}
 
-	@Override
-	public Integer save(Book book) {
+	public Long save(Book book) {
 		return bookDao.save(book);
 	}
 
-	@Override
 	public void delete(Book book) {
 		bookDao.delete(book);
 	}
 
-	@Override
 	public void update(Book book) {
 		bookDao.update(book);
 	}
 
-	@Override
 	public Book getBookByISBN(long ISBN) {
 		return bookDao.getBookByIsbn(ISBN);
 	}
 
-	@Override
 	public List<Book> getBookByTitle(String title) {
 		return bookDao.getBookByTitle(title);
 	}
 
-	@Override
 	public List<Book> getBookByAuthor(String author) {
 		return bookDao.getBookByAuthor(author);
 	}
 
-	@Override
 	public List<Book> getAllBooks() {
 		return bookDao.getAllBooks();
 	}
 
-	@Override
 	public List<Book> SearchBook(String keyword) {
 		List<Book> resultList = new ArrayList<Book>();
 		try{
@@ -68,13 +60,11 @@ public class BookServiceImpl implements BookService{
 		return resultList;
 	}
 
-	@Override
 	public void DisplayBooks() {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public void DisplayBooksByCategory(String category) {
 		// TODO Auto-generated method stub
 		

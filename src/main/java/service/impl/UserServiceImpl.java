@@ -96,6 +96,7 @@ public class UserServiceImpl implements UserService {
 		return true;
 	}
 
+
 	@Override
 	public void manageUser(int id, int status) {
 		User u = getUserById(id);
