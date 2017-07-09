@@ -1,7 +1,25 @@
 $(function() {
+	// 中文字两个字节
+	$.validator.addMethod("byteRangeLength", function(value, element, param) {
+		var length = value.length;
+		for(var i = 0; i < value.length; i++) {
+			if(value.charCodeAt(i) > 127) {
+				length++;
+			}
+		}
+		if (length > param) {
+			return false;
+		}
+		else {
+			return true;
+		}
+	});
 	$("#registerForm").validate({
 		rules : {
-			nickName : "required",
+			nickName : {
+				required : true,
+				byteRangeLength : 14
+			},
 			email : {
 				required : true,
 				email : true
@@ -20,7 +38,10 @@ $(function() {
 			district : "required"
 		},
 		messages : {
-			nickName : "请输入姓名",
+			nickName : {
+				required : "请输入姓名",
+				byteRangeLength : 14
+			},
 			email : {
 				required : "请输入Email地址",
 				email : "请输入正确的email地址"
@@ -56,6 +77,15 @@ $(function() {
 	$('#province').change(
 			function() {
 				var id = $('#province').val();
+				/* 直辖市id为1,2,3,4 */
+				if (id < 5) {
+					$('#city').attr("name", "district");
+					$('#district').attr("required", false);
+				}
+				else {
+					$('#city').attr("name", "city");
+					$('#district').attr("required", true);
+				}
 				$.getJSON("getDistricts", {
 					parentId : id
 				}, function(data) {
@@ -124,6 +154,5 @@ $(function() {
 			url = window.webkitURL.createObjectURL(file);
 		}
 		return url;
-	}
-	;
+	};
 });

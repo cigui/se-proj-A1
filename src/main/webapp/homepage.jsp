@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>阅享</title>
 <%
 	String path = request.getContextPath();
@@ -26,10 +27,10 @@
 </head>
 <body>
 	<div
-		class="yx-nav navbar navbar-default navbar-left navbar-fixed-top yx-nav">
+		class="yx-nav navbar navbar-default navbar-left navbar-static-top yx-nav" style="width:100%; margin-bottom:0">
 		<a class="yx-brand navbar-brand" href="index" style="color: cadetblue">阅享图书交流平台</a>
 		<div class="yx-toolbar">
-			<a class="btn btn-default btn-sm" href="<%=path%>/ReleaseBook">发布图书</a>
+			<a class="btn btn-default btn-sm" href="<%=path%>/releasebook.jsp">发布图书</a>
 			<form class="yx-search-bar">
 				<input type="text" name="searchString" placeholder="查询图书" />
 				<button class="btn btn-sm btn-primary btn-block" type="submit">Search</button>
@@ -76,7 +77,7 @@
 
 	<div class="yx-container container">
 		<div class="row">
-			<div class="col-md-2">
+			<div class="col-xs-2 col-md-2">
 				<ul class="nav nav-list">
 					<li class="yx-header nav-header">图书分类</li>
 					<li class="active"><a href="#">文学</a></li>
@@ -84,12 +85,12 @@
 					<li><a href="#">传记</a></li>
 				</ul>
 			</div>
-			<div class="covers col-md-5">
+			<div class="covers col-xs-5 col-md-5">
 				<div class="row">
-					<div class="col-md-9">
+					<div class="col-xs-5 col-md-9">
 						<span class="yx-header nav-header">首页推荐</span>
 					</div>
-					<div class="col-md-1">
+					<div class="col-xs-1 col-md-1">
 						<span><a class="btn btn-default btn-sm"
 							href="<%=path%>/Recommend">更多</a></span>
 					</div>
@@ -105,12 +106,12 @@
 				</div>
 
 			</div>
-			<div class="covers col-md-5">
+			<div class="covers col-xs-5 col-md-5">
 				<div class="row">
-					<div class="col-md-9">
+					<div class="col-xs-5 col-md-9">
 						<span class="yx-header nav-header">猜你喜欢</span>
 					</div>
-					<div class="col-md-1">
+					<div class="col-xs-1 col-md-1">
 						<span><button class="btn btn-default btn-sm yx-guess">换一批</button></span>
 					</div>
 				</div>
@@ -129,8 +130,7 @@
 			</div>
 		</div>
 	</div>
-	<div
-		class="yx-nav navbar navbar-default navbar-left navbar-fixed-bottom yx-nav">
+	<div class="yx-nav navbar navbar-default navbar-left navbar-static-bottom yx-nav" style="width:100%; margin-bottom:0">
 		<div>联系我们：</div>
 		<span>QQ: 123456789</span> <span>Tel: 12345678</span> <span>Email:
 			123456789@qq.com</span>

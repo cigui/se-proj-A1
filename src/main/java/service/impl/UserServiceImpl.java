@@ -98,6 +98,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 
+
 	public void banUser(int id) {
 		// TODO Auto-generated method stub
 		
@@ -113,6 +114,7 @@ public class UserServiceImpl implements UserService {
 		
 	}
 	
+
 
 	public void manageUser(int id, int status) {
 		User u = getUserById(id);
@@ -136,6 +138,3 @@ public class UserServiceImpl implements UserService {
 			bookReleaseDao.update(bookRelease);
 		}
 	}
-
-
-}

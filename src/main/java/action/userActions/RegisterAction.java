@@ -124,7 +124,9 @@ public class RegisterAction extends BaseAction implements SessionAware {
 	public String execute() throws Exception {
 		try {
 			User user = new User(district, nickName, password, email, gender);
-			userService.register(user);
+			if (!userService.register(user)){
+				return ERROR;
+			};
 			if (avatar != null){
 				userService.uploadImage(user.getId(),avatar, avatarFileName, avatarContentType);
 			}
