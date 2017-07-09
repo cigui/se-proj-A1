@@ -1,7 +1,25 @@
 $(function() {
+	// 中文字两个字节
+	$.validator.addMethod("byteRangeLength", function(value, element, param) {
+		var length = value.length;
+		for(var i = 0; i < value.length; i++) {
+			if(value.charCodeAt(i) > 127) {
+				length++;
+			}
+		}
+		if (length > param) {
+			return false;
+		}
+		else {
+			return true;
+		}
+	});
 	$("#registerForm").validate({
 		rules : {
-			nickName : "required",
+			nickName : {
+				required : true,
+				byteRangeLength : 14
+			},
 			email : {
 				required : true,
 				email : true
@@ -20,7 +38,10 @@ $(function() {
 			district : "required"
 		},
 		messages : {
-			nickName : "请输入姓名",
+			nickName : {
+				required : "请输入姓名",
+				byteRangeLength : 14
+			},
 			email : {
 				required : "请输入Email地址",
 				email : "请输入正确的email地址"
@@ -41,7 +62,7 @@ $(function() {
 		}
 	});
 
-	$.getJSON(path + "/testdata/province.json", {
+	$.getJSON("getDistricts", {
 		parentId : 0
 	}, function(data) {
 		var province = $('#province');
@@ -56,7 +77,16 @@ $(function() {
 	$('#province').change(
 			function() {
 				var id = $('#province').val();
-				$.getJSON(path + "/testdata/" + id + ".json", {
+				/* 直辖市id为1,2,3,4 */
+				if (id < 5) {
+					$('#city').attr("name", "district");
+					$('#district').attr("required", false);
+				}
+				else {
+					$('#city').attr("name", "city");
+					$('#district').attr("required", true);
+				}
+				$.getJSON("getDistricts", {
 					parentId : id
 				}, function(data) {
 					var city = $('#city');
@@ -70,39 +100,46 @@ $(function() {
 				})
 			});
 
-	$('#city')
-			.change(
-					function() {
-						var id = $('#city').val();
-						$
-								.getJSON(
-										path + "/testdata/" + 3 + ".json",
-										{
-											parentId : id
-										},
-										function(data) {
-											var district = $('#district');
-											district.removeAttr("disabled");
-											district.empty();
-											district
-													.append("<option disabled selected value></option>");
-											for (var i = 0; i < data.length; i++) {
-												district
-														.append("<option value='"
-																+ data[i].id
-																+ "'>"
-																+ data[i].name
-																+ "</option>");
-											}
-										})
-					})
+	$('#city').change(
+			function() {
+				var id = $('#city').val();
+				$.getJSON("getDistricts",{
+					parentId : id
+				}, function(data) {
+					var district = $('#district');
+					district.removeAttr("disabled");
+					district.empty();
+					district.append("<option disabled selected value></option>");
+					for (var i = 0; i < data.length; i++) {
+						district.append("<option value='"+ data[i].id+ "'>"
+								+ data[i].name + "</option>");
+					}
+				})
+			});
 
 	$("#avatar").change(function() {
 		var objUrl = getObjectURL(this.files[0]);
-		console.log("objUrl = " + objUrl);
+		var fileSize = this.files[0].size;
+		// 使用正则表达式检查图片格式
+		if(!/image\/\w+/.test(this.files[0].type)){
+			bootbox.alert("请上传图片类型文件！", function(){
+				/* 此方法暂未支持IE */
+				$("#avatar").val("");
+			});
+			return false;
+        }
+		// console.log("objUrl = " + objUrl);
+		if (fileSize > 4 * 1024 * 1024) {
+			bootbox.alert("上传的图片不能超过4M！", function(){
+				/* 此方法暂未支持IE */
+				$("#avatar").val("");
+			});
+			return false;
+		}
 		if (objUrl) {
 			$("#preview").attr("src", objUrl);
 		}
+		return true;
 	});
 	// 获取该文件的url
 	function getObjectURL(file) {
@@ -117,6 +154,5 @@ $(function() {
 			url = window.webkitURL.createObjectURL(file);
 		}
 		return url;
-	}
-	;
+	};
 });

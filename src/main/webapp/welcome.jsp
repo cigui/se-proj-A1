@@ -4,6 +4,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>欢迎~:)</title>
 <%
 	String path = request.getContextPath();
@@ -30,7 +31,8 @@
 <s:else>
 	<body>
 		<div
-			class="yx-nav navbar navbar-default navbar-left navbar-fixed-top yx-nav">
+			class="yx-nav navbar navbar-default navbar-left navbar-static-top yx-nav"
+			style="width: 100%; margin-bottom: 0">
 			<a class="yx-brand navbar-brand" href="index"
 				style="color: cadetblue">阅享图书交流平台</a>
 			<div class="yx-toolbar">
@@ -44,7 +46,7 @@
 				<a href="logout" class="btn btn-default btn-sm" role="button">登出</a>
 			</div>
 		</div>
-		<div class="container">
+		<div class="yx-container container">
 			<div class="page-header">
 				<h1 class="text-primary">
 					欢迎来到阅享！<br> <small>我猜我们会发送一封邮件到您注册所用的邮箱，请尽快查看邮箱点击邮件中的链接激活账号:)</small>

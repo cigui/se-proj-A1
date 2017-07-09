@@ -3,14 +3,16 @@ package service.impl;
 import java.io.File;
 import java.util.List;
 
+import dao.BookReleaseDao;
 import dao.UserDao;
 import model.BookRelease;
 import model.User;
 import service.UserService;
 
-public class UserServiceImpl implements UserService{
-	
+public class UserServiceImpl implements UserService {
+
 	private UserDao userDao;
+	private BookReleaseDao bookReleaseDao;
 
 	public UserDao getUserDao() {
 		return userDao;
@@ -18,6 +20,14 @@ public class UserServiceImpl implements UserService{
 
 	public void setUserDao(UserDao userDao) {
 		this.userDao = userDao;
+	}
+
+	public BookReleaseDao getBookReleaseDao() {
+		return bookReleaseDao;
+	}
+
+	public void setBookReleaseDao(BookReleaseDao bookReleaseDao) {
+		this.bookReleaseDao = bookReleaseDao;
 	}
 
 	public Integer save(User user) {
@@ -45,11 +55,10 @@ public class UserServiceImpl implements UserService{
 	}
 
 	public boolean isAdmin(User user) {
-		//int of admin setted 2
-		if(user.getRole() == 2){
+		// int of admin setted 2
+		if (user.getRole() == 2) {
 			return true;
-		}
-		else{
+		} else {
 			return false;
 		}
 	}
@@ -66,10 +75,10 @@ public class UserServiceImpl implements UserService{
 	}
 
 	public boolean dupEmail(String email, User user) {
-		if(getUserByEmail(email) != null){
+
+		if (getUserByEmail(email) != null) {
 			return true;
-		}
-		else{
+		} else {
 			return false;
 		}
 	}
@@ -88,21 +97,27 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public void banUser(int id) {
-		// TODO Auto-generated method stub
-		
+	public void manageUser(int id, int status) {
+		User u = getUserById(id);
+		if (!isAdmin(u)) {
+			if (status == 0) {
+				u.setRole(-1);
+				update(u);
+			} else if (status == 1) {
+				u.setRole(1);
+				update(u);
+			}
+		}
 	}
 
 	@Override
-	public void unbanUser(int id) {
-		// TODO Auto-generated method stub
-		
+	public void checkBookRelease(BookRelease bookRelease, int status) {
+		if (status == 1) {
+			bookRelease.setStatus(1);
+			bookReleaseDao.update(bookRelease);
+		} else if (status == 0) {
+			bookRelease.setStatus(-1);
+			bookReleaseDao.update(bookRelease);
+		}
 	}
-
-	@Override
-	public void checkBook(BookRelease bookRelease) {
-		// TODO Auto-generated method stub
-		
-	}
-	
 }

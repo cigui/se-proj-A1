@@ -11,8 +11,8 @@
 		</id>
 		<property name="id"/> 
     	<property name="isbn"/> 
-    	<property name="publish_date"/> 
-    	<property name="dicription"/> 
+    	<property name="publish_date" type="java.sql.Date"/> 
+    	<property name="discription"/> 
     	<property name="status"/> 
     	<property name="price"/>
 	</class>

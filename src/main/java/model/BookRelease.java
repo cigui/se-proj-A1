@@ -8,14 +8,23 @@ public class BookRelease {
 	private long isbn;
 	private Date publish_date;
 	private String discription;
-	private int status;
+	private short status; // 0:not checked, 1:pass, -1:reject
 	private int price;
 	
 	public BookRelease(){
 		
 	}
 	
-	public BookRelease(int id, int r_id, long isbn, Date publish_date, String discription, int status, int price ){
+	public BookRelease(int id, long isbn,Date publish_date, String discription, int price) {
+		this.id = id;
+		this.isbn = isbn;
+		this.publish_date = publish_date;
+		this.discription = discription;
+		this.price = price;
+		this.status = 0; /* 已发布，未审核 */
+	}
+	
+	public BookRelease(int id, int r_id, long isbn, Date publish_date, String discription, short status, int price ){
 		this.id = id;
 		this.r_id = r_id;
 		this.isbn = isbn;
@@ -65,11 +74,11 @@ public class BookRelease {
 		this.discription = discription;
 	}
 
-	public int getStatus() {
+	public short getStatus() {
 		return status;
 	}
 
-	public void setStatus(int status) {
+	public void setStatus(short status) {
 		this.status = status;
 	}
 
@@ -81,6 +90,4 @@ public class BookRelease {
 		this.price = price;
 	}
 	
-	
-
 }

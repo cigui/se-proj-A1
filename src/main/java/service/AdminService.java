@@ -15,7 +15,7 @@ public interface AdminService {
 
 	public User getUserById(int id);
 	
-	public User getUserByEmail(int email);
+	public User getUserByEmail(String email);
 
 	public List<User> getAllUsers();
     
@@ -25,9 +25,11 @@ public interface AdminService {
 
 	public void update(BookRelease bookRelease);
 
-	public User getBookReleaseByStatus(int Status);
+	public List<BookRelease> getBookReleaseByStatus(int status);
 
 	public List<BookRelease> getAllBookReleases();
+	
+	public void checkBook(BookRelease bookRelease,int status);
     
 
 }

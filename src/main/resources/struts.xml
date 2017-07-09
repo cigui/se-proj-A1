@@ -27,6 +27,22 @@
 			<result name="error">error.jsp</result>
 		</action>
 		
+		<action name="getDistricts" class="action.userActions.GetDistrictsAction">
+			<result type="json">
+				<param name="root">districts</param>
+			</result>
+		</action>
+		
+		<action name="getBook" class="action.bookAction.GetBookAction">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		
+		<action name="releaseBook" class="action.bookAction.ReleaseBookAction">
+			<result name="success" type="redirect">releasesuccess.jsp</result>
+		</action>
+		
 		<!-- <action name="*">
 			<result>/{1}.jsp</result>
 		</action> -->

@@ -8,13 +8,13 @@ public class Book {
 	private String publisher;
 	private String translator;
 	private String coverSrc;
-	private byte score;
+	private Byte score;
 
 	public Book(){
 		
 	}
 	
-	public Book(long isbn,String title,String author,String publisher,String translator,String coverSrc, byte score){
+	public Book(long isbn,String title,String author,String publisher,String translator,String coverSrc, Byte score){
 		this.isbn = isbn;
 		this.title = title;
 		this.author = author;
@@ -74,11 +74,11 @@ public class Book {
 		this.coverSrc = coverSrc;
 	}
 
-	public byte getScore() {
+	public Byte getScore() {
 		return score;
 	}
 
-	public void setScore(byte score) {
+	public void setScore(Byte score) {
 		this.score = score;
 	}
 
