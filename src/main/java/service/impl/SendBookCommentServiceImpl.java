@@ -46,6 +46,12 @@ public class SendBookCommentServiceImpl implements SendBookCommentService {
 		 else
 			 return false;
 	 }
+
+	@Override
+	public List<BookComment> getBookCommentByISBN(int ISBN) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
 
 

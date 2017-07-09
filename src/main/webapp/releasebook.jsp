@@ -119,7 +119,7 @@
 				<div class="modal-body">
 					<div class="container">
 						<div class="row">
-							<div class="col-md-8>
+							<div class="col-md-8">
 								<div id="isbn" class="row">isbn</div>
 								<div id="title" class="row">title</div>
 								<div id="author" class="row">author</div>
