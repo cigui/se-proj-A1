@@ -79,6 +79,7 @@
 	        <div class = "col-md-1">
 	        </div>
 	        <div class = "col-md-7">
+	            <h2>？？？</h2> 
 	            <h1>书籍名</h1>
 	        </div>
 	        
@@ -168,7 +169,8 @@
 						<span class="yx-header nav-header">图书评论</span>
 					</div>
 					<div class="col-md-1">
-						<span><button class="btn btn-default btn-sm yx-guess">我也要评</button></span>
+						<button class="btn btn-default btn-sm" data-toggle="modal"
+					data-target="#myComment">我也想评</button>
 					</div>
 				</div>
 				<div class="cover">
@@ -184,6 +186,28 @@
 		</div>
 	    </div>
 	    
+	    <div class="modal fade" id="myComment" tabindex="-1" role="dialog"
+		aria-labelledby="BookComment" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="myModalLabel"></h4>
+				</div>
+				<form class="modal-body form-bookcomment" action="sendBookComment">
+					<h2 class="form-bookcomment-heading">我的评论</h2>
+					<input type="email" class="form-control" name="email"
+						placeholder="Email Address" required="true" autofocus="" /> <input
+						type="password" class="form-control" name="pwd"
+						placeholder="Password" required="true" />
+					<button class="btn btn-lg btn-primary btn-block" type="submit">发表评论</button>
+				</form>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal -->
+	</div>
 	    
 		
 	<div

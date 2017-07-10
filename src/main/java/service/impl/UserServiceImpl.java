@@ -129,12 +129,13 @@ public class UserServiceImpl implements UserService {
 		}
 	}
 
-	public void checkBookRelease(BookRelease bookRelease, int status) {
+	public void checkBookRelease(BookRelease bookRelease, short status) {
 		if (status == 1) {
-			bookRelease.setStatus(1);
+			bookRelease.setStatus((short) 1);
 			bookReleaseDao.update(bookRelease);
 		} else if (status == 0) {
-			bookRelease.setStatus(-1);
+			bookRelease.setStatus((short) -1);
 			bookReleaseDao.update(bookRelease);
 		}
 	}
+}
