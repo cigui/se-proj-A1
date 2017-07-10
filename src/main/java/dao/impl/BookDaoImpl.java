@@ -53,10 +53,10 @@ public class BookDaoImpl extends HibernateDaoSupport implements BookDao {
 		return books;
 	}
 	
-	public List<Book> getBookByScore(Byte score){
+	public List<Book> getBookByScore(){
 		@SuppressWarnings("unchecked")
-		List<Book> books = (List<Book>) getHibernateTemplate().find(
-				"from Book order by score desc as s where s.score=?", score);
+		List<Book> books = (List<Book>) getHibernateTemplate()
+		    .find("from Book order by score desc");
 		return books;
 	}
 	
