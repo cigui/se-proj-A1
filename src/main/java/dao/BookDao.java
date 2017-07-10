@@ -20,6 +20,6 @@ public interface BookDao {
 
 	public List<Book> getAllBooks();
 	
-	public List<Book> getBookByScore(Byte score);
+	public List<Book> getBookByScore();
 
 }

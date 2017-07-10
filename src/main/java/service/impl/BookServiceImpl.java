@@ -70,8 +70,8 @@ public class BookServiceImpl implements BookService{
 		
 	}
 	
-	public List<Book> getBookByScore(Byte score){
-		return bookDao.getBookByScore(score);
+	public List<Book> getBookByScore(){
+		return bookDao.getBookByScore();
 	}
 
 
