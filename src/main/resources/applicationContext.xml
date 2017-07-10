@@ -106,6 +106,9 @@
 	<bean id="bookService" class="service.impl.BookServiceImpl">
 		<property name="bookDao" ref="bookDao"></property>
 	</bean>
+	<bean id="adminService" class="service.impl.AdminServiceImpl">
+		<property name="bookReleaseDao" ref="bookReleaseDao"></property>
+	</bean>
 	<bean id="bookReleaseService" class="service.impl.BookReleaseServiceImpl">
 		<property name="bookDao" ref="bookDao"></property>
 		<property name="bookReleaseDao" ref="bookReleaseDao"></property>
@@ -136,6 +139,7 @@
 		<!-- appService Bean -->
 		<aop:pointcut id="userServiceBeanPointcut" expression="bean(userService)" />
 		<aop:pointcut id="bookServiceBeanPointcut" expression="bean(bookService)" />
+		<aop:pointcut id="adminServiceBeanPointcut" expression="bean(adminService)" />
 		<aop:pointcut id="bookReleaseServiceBeanPointcut" expression="bean(bookReleaseService)" />
 		<aop:pointcut id="districtServiceBeanPointcut" expression="bean(districtService)" />
 		<!-- <aop:advisor advice-ref="txAdvice" pointcut-ref="userServiceBeanPointcut" /> -->

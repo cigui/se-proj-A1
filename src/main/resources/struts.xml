@@ -51,6 +51,14 @@
 			<result name="success">manageUser.jsp</result>
 		</action>
 		
+    <!-- Manage bookRelease -->
+		<action name="listBookReleases" class="action.bookAction.GetBookReleaseByStatusAction">
+			<result name="success">/WEB-INF/view/manageBook.jsp</result>
+		</action>
+		<action name="manageBook" class="action.bookAction.CheckBookAction">
+			<result name="success">/WEB-INF/view/manageBook.jsp</result>
+		</action>
+		
 		<!-- <action name="*">
 			<result>/{1}.jsp</result>
 		</action> -->
