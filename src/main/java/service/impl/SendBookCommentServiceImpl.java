@@ -50,8 +50,6 @@ public class SendBookCommentServiceImpl implements SendBookCommentService {
 		 return bookCommentDao.getBookCommentByIsbn(ISBN);
 	 }
 
-	
-	
 }
 
 

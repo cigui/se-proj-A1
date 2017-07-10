@@ -52,7 +52,7 @@
 		class="yx-nav navbar navbar-default navbar-left navbar-fixed-top yx-nav">
 		<a class="yx-brand navbar-brand" href="index" style="color: cadetblue">阅享图书交流平台</a>
 		<div>
-			<span>Hi, <%=session.getAttribute("userName")%>!</span>
+			<span>Hi, <%session.getAttribute("userName"); %>!</span>
 			<a href="profile" class="btn btn-default btn-sm"
 				role="button">个人信息</a>
 		</div>
