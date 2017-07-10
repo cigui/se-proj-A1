@@ -10,7 +10,6 @@ public class BookRelease {
 	private String discription;
 	private short status; // 0:not checked, 1:pass, -1:reject
 	private int price;
-	
 	public BookRelease(){
 		
 	}
