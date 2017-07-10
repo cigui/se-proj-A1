@@ -77,8 +77,8 @@ public class BookRelease {
 		return status;
 	}
 
-	public void setStatus(short status) {
-		this.status = status;
+	public void setStatus(short i) {
+		this.status = i;
 	}
 
 	public int getPrice() {

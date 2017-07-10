@@ -32,6 +32,6 @@ public interface UserService {
     
     public void manageUser(int id, int status);							//0:ban, 1:unban
     
-    public void checkBookRelease(BookRelease bookRelease, int status);	//0:reject, 1:pass
+    public void checkBookRelease(BookRelease bookRelease, short status);	//0:reject, 1:pass
 }
 

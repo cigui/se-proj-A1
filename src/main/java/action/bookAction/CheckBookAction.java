@@ -11,18 +11,18 @@ import service.AdminService;
 public class CheckBookAction extends BaseAction implements SessionAware {
 	
 	private static final long serialVersionUID = 1L;
-	private int status;
+	private short status;
 	private BookRelease bookRelease;
 	private AdminService adminService;
 	@SuppressWarnings("unused")
 	private Map<String, Object> session;
 	
 	
-	public int getStatus() {
+	public short getStatus() {
 		return status;
 	}
 	
-	public void setStatus(int status) {
+	public void setStatus(short status) {
 		this.status = status;
 	}
 	
