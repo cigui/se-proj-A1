@@ -1,18 +1,14 @@
 package service.impl;
 
 import model.BookComment;
-import service.SendBookCommentService;
+import service.BookCommentService;
 
 import java.util.List;
 
 import dao.BookCommentDao;
 
-/**
- * @author YuHaifeng
- * @version 1.0
- * 
- */
-public class SendBookCommentServiceImpl implements SendBookCommentService {
+
+public class BookCommentServiceImpl implements BookCommentService {
 	private BookCommentDao bookCommentDao;
 	
 	 public void setBookCommentDao(BookCommentDao bookCommentDao) {
@@ -46,7 +42,7 @@ public class SendBookCommentServiceImpl implements SendBookCommentService {
 		 
 	 }
 	 
-	 public List<BookComment> getBookCommentByISBN(int ISBN){
+	 public List<BookComment> getBookCommentByISBN(long ISBN){
 		 return bookCommentDao.getBookCommentByIsbn(ISBN);
 	 }
 

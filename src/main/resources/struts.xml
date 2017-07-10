@@ -58,6 +58,10 @@
 		<action name="manageBook" class="action.bookAction.CheckBookAction">
 			<result name="success">/WEB-INF/view/manageBook.jsp</result>
 		</action>
+    <!-- Book Detail -->
+		<action name="bookdetails" class="action.bookAction.BookDetailsAction">
+			<result name="success">book.jsp</result>
+		</action>
 		
 		<!-- <action name="*">
 			<result>/{1}.jsp</result>
