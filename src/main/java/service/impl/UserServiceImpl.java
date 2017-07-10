@@ -97,7 +97,6 @@ public class UserServiceImpl implements UserService {
 	}
 
 
-	@Override
 	public void manageUser(int id, int status) {
 		User u = getUserById(id);
 		if (!isAdmin(u)) {
@@ -111,15 +110,13 @@ public class UserServiceImpl implements UserService {
 		}
 	}
 
-	@Override
-	public void checkBookRelease(BookRelease bookRelease, int status) {
+	public void checkBookRelease(BookRelease bookRelease, short status) {
 		if (status == 1) {
-			bookRelease.setStatus(1);
+			bookRelease.setStatus((short) 1);
 			bookReleaseDao.update(bookRelease);
 		} else if (status == 0) {
-			bookRelease.setStatus(-1);
+			bookRelease.setStatus((short) -1);
 			bookReleaseDao.update(bookRelease);
 		}
 	}
-
 }

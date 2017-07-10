@@ -29,7 +29,7 @@ public interface AdminService {
 
 	public List<BookRelease> getAllBookReleases();
 	
-	public void checkBook(BookRelease bookRelease,int status);
+	public void checkBook(BookRelease bookRelease,short status);
     
 
 }

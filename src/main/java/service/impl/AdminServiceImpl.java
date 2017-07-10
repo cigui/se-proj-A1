@@ -58,13 +58,13 @@ public class AdminServiceImpl implements AdminService {
 		return bookReleaseDao.getAllBookReleases();
 	}
 
-	public void checkBook(BookRelease bookRelease,int status){
+	public void checkBook(BookRelease bookRelease,short status){
 		if (status == 1)	{
-			bookRelease.setStatus(1);
+			bookRelease.setStatus((short) 1);
 			bookReleaseDao.update(bookRelease);
 		}
 		if (status == 0)	{
-			bookRelease.setStatus(-1);
+			bookRelease.setStatus((short) -1);
 			bookReleaseDao.update(bookRelease);
 		}
 			
