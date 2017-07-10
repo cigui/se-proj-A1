@@ -42,7 +42,7 @@
 		
 		<action name="releaseBook" class="action.bookAction.ReleaseBookAction">
 			<result name="success" type="redirect">releasesuccess.jsp</result>
-
+		</action>
     <!-- Manage user -->
 		<action name="listUsers" class="action.userActions.AllUsersAction">
 			<result name="success">manageUser.jsp</result>
