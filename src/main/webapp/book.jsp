@@ -26,7 +26,8 @@
 </head>
 <body>
 	<div
-		class="yx-nav navbar navbar-default navbar-left navbar-fixed-top yx-nav">
+		class="yx-nav navbar navbar-default navbar-left navbar-static-top yx-nav style="width:100%; margin-bottom:0""
+		style="width: 100%; margin-bottom: 0">
 		<a class="yx-brand navbar-brand" href="index" style="color: cadetblue">阅享图书交流平台</a>
 		<div class="yx-toolbar">
 			<a class="btn btn-default btn-sm" href="<%=path%>/ReleaseBook">发布图书</a>
@@ -35,11 +36,10 @@
 				<button class="btn btn-sm btn-primary btn-block" type="submit">Search</button>
 			</form>
 			<s:if test="#session.logined">
-				<span>Hi, <s:property value='#session.userName' />!</span>
-				<a href="profile" class="btn btn-default btn-sm"
-					role="button">个人信息</a>
-				<a href="logout" class="btn btn-default btn-sm"
-					role="button">登出</a>
+				<span>Hi, <s:property value='#session.userName' />!
+				</span>
+				<a href="profile" class="btn btn-default btn-sm" role="button">个人信息</a>
+				<a href="logout" class="btn btn-default btn-sm" role="button">登出</a>
 			</s:if>
 			<s:else>
 				<button class="btn btn-default btn-sm" data-toggle="modal"
@@ -75,143 +75,139 @@
 	</div>
 
 	<div class="yx-container container">
-	    <div class = "row">
-	        <div class = "col-md-1">
-	        </div>
-	        <div class = "col-md-7">
-	            <h2>？？？</h2> 
-	            <h1>书籍名</h1>
-	        </div>
-	        
-	    </div>
-	
-	    <div class="row">
-	        <div class = "col-md-1">
-	        </div>
-	        <div class = "infors col-md-6">
-	          <div class = "row">
-	             <div class = "col-md-3">
-	                <h3>ISBN码:</h3>
-	             </div>
-	             <div class = "col-md-7">
-	                <h3>假装有码</h3>
-	             </div>
-	          </div>
-	          <p></p>
-	          <div class = "row">
-	             <div class = "col-md-3">
-	                <h3>作者:</h3>
-	             </div>
-	             <div class = "col-md-7">
-	                <h3>假装有作者</h3>
-	             </div>
-	          </div>
-	          <p></p>
-	          <div class = "row">
-	             <div class = "col-md-3">
-	                <h3>出版社:</h3>
-	             </div>
-	             <div class = "col-md-7">
-	                <h3>假装有出版社</h3>
-	             </div>
-	          </div>
-	          <p></p>
-	          <div class = "row">
-	             <div class = "col-md-3">
-	                <h3>翻译:</h3>
-	             </div>
-	             <div class = "col-md-7">
-	                <h3>翻译</h3>
-	             </div>
-	          </div>
-	       </div>
-	       <div class = "col-md-5">
-	          <a id="link1" href='#'><img class = "img-responsive" id="cover1" 
-						src="<%=path%>/images/picture-0.png" /></a>
-	       </div>
-	    
-	    </div>
-	    <div class="row">
-	       <p></p>
-	       </div>
-	       <div class="row">
-	       <p></p>
-	       </div>
-	    <div class="row">
-	       <p></p>
-	       <div class="row">
-		    <div class = "col-md-1">
-	        </div>
-			<div class="covers col-md-5">
-				<div class="row">
-					<div class="col-md-9">
-						<span class="yx-header nav-header">图书借阅</span>
-					</div>
-					<div class="col-md-1">
-						<span><a class="btn btn-default btn-sm"
-							href="<%=path%>/Recommend">更多</a></span>
-					</div>
-				</div>
-				<div class="cover">
-					<a href='#'><p></a>
-				</div>
-				<div class="cover">
-					<a href='#'><p></a>
-				</div>
-				<div class="cover">
-					<a href='#'><p></a>
-				</div>
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-7">
+				<h1>书籍名</h1>
+			</div>
 
-			</div>
-			<div class="covers col-md-5">
+		</div>
+
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="infors col-md-6">
 				<div class="row">
-					<div class="col-md-9">
-						<span class="yx-header nav-header">图书评论</span>
+					<div class="col-md-3">
+						<h3>ISBN码:</h3>
 					</div>
-					<div class="col-md-1">
-						<button class="btn btn-default btn-sm" data-toggle="modal"
-					data-target="#myComment">我也想评</button>
+					<div class="col-md-7">
+						<h3>假装有码</h3>
 					</div>
 				</div>
-				<div class="cover">
-				    <p></p>
+				<p></p>
+				<div class="row">
+					<div class="col-md-3">
+						<h3>作者:</h3>
+					</div>
+					<div class="col-md-7">
+						<h3>假装有作者</h3>
+					</div>
 				</div>
-				<div class="cover">
-					<p></p>
+				<p></p>
+				<div class="row">
+					<div class="col-md-3">
+						<h3>出版社:</h3>
+					</div>
+					<div class="col-md-7">
+						<h3>假装有出版社</h3>
+					</div>
 				</div>
-				<div class="cover">
-					<p></p>
+				<p></p>
+				<div class="row">
+					<div class="col-md-3">
+						<h3>翻译:</h3>
+					</div>
+					<div class="col-md-7">
+						<h3>翻译</h3>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-5">
+				<a id="link1" href='#'><img class="img-responsive" id="cover1"
+					src="<%=path%>/images/picture-0.png" /></a>
+			</div>
+
+		</div>
+		<div class="row">
+			<p></p>
+		</div>
+		<div class="row">
+			<p></p>
+		</div>
+		<div class="row">
+			<p></p>
+			<div class="row">
+				<div class="col-md-1"></div>
+				<div class="covers col-md-5">
+					<div class="row">
+						<div class="col-md-9">
+							<span class="yx-header nav-header">图书借阅</span>
+						</div>
+						<div class="col-md-1">
+							<span><a class="btn btn-default btn-sm"
+								href="<%=path%>/Recommend">更多</a></span>
+						</div>
+					</div>
+					<div class="cover">
+						<a href='#'><p></a>
+					</div>
+					<div class="cover">
+						<a href='#'><p></a>
+					</div>
+					<div class="cover">
+						<a href='#'><p></a>
+					</div>
+
+				</div>
+				<div class="covers col-md-5">
+					<div class="row">
+						<div class="col-md-9">
+							<span class="yx-header nav-header">图书评论</span>
+						</div>
+						<div class="col-md-1">
+							<button class="btn btn-default btn-sm" data-toggle="modal"
+								data-target="#myComment">我也想评</button>
+						</div>
+					</div>
+					<div class="cover">
+						<p></p>
+					</div>
+					<div class="cover">
+						<p></p>
+					</div>
+					<div class="cover">
+						<p></p>
+					</div>
 				</div>
 			</div>
 		</div>
-	    </div>
-	    
-	    <div class="modal fade" id="myComment" tabindex="-1" role="dialog"
-		aria-labelledby="BookComment" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-hidden="true">&times;</button>
-					<h4 class="modal-title" id="myModalLabel"></h4>
+
+		<div class="modal fade" id="myComment" tabindex="-1" role="dialog"
+			aria-labelledby="BookComment" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true">&times;</button>
+						<h4 class="modal-title" id="myModalLabel"></h4>
+					</div>
+					<form class="modal-body form-bookcomment" action="sendBookComment">
+						<h2 class="form-bookcomment-heading">我的评论</h2>
+						<input type="number" class="form-bookcontrol" name="score"
+							placeholder=" 请输入评分（0-10分）" required="true" autofocus="" />
+						<textarea maxlength="140" rows="10" required="true"
+							class="form-control" id="discription" name="discription"
+							placeholder="请输入书籍评价（不超过140字符）"></textarea>
+						<button class="btn btn-lg btn-primary btn-block" type="submit">发表评论</button>
+					</form>
 				</div>
-				<form class="modal-body form-bookcomment" action="sendBookComment">
-					<h2 class="form-bookcomment-heading">我的评论</h2>
-					<input type="email" class="form-control" name="email"
-						placeholder="Email Address" required="true" autofocus="" /> <input
-						type="password" class="form-control" name="pwd"
-						placeholder="Password" required="true" />
-					<button class="btn btn-lg btn-primary btn-block" type="submit">发表评论</button>
-				</form>
+				<!-- /.modal-content -->
 			</div>
-			<!-- /.modal-content -->
+			<!-- /.modal -->
 		</div>
-		<!-- /.modal -->
 	</div>
-	    
-		
 	<div
-		class="yx-nav navbar navbar-default navbar-left navbar-fixed-bottom yx-nav">
+		class="yx-nav navbar navbar-default navbar-left navbar-static-bottom yx-nav" style="width:100%; margin-bottom:0">
 		<div>联系我们：</div>
 		<span>QQ: 123456789</span> <span>Tel: 12345678</span> <span>Email:
 			123456789@qq.com</span>

@@ -20,7 +20,7 @@ public interface BookReleaseDao {
 	
 	public BookRelease getBookReleaseByR_id(int r_id);
 	
-	public List<BookRelease> getBookReleaseByStatus(int status);
+	public List<BookRelease> getBookReleaseByStatus();
 
 	public List<BookRelease> getAllBookReleases();
 	

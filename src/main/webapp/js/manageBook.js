@@ -10,17 +10,17 @@ $(function() {
 					label : 'Cancel'
 				}
 			},
-			message : 'Sure to ban this user?',
+			message : 'Sure to ban this BookRelease?',
 			callback : function(result) {
 				if (result) {
 					var dataset = e.currentTarget.dataset;
 					var id = dataset.id;
 					jQuery.ajax({
-						url : 'manageUser',
+						url : 'manageBook',
 						processData : true,
 						dataType : "text",
 						data : {
-							id : id,
+							r_id : id,
 							status : 0
 						},
 						success : function(data) {
@@ -47,17 +47,17 @@ $(function() {
 					label : 'Cancel'
 				}
 			},
-			message : 'Sure to unban this user?',
+			message : 'Sure to unban this BookRelease?',
 			callback : function(result) {
 				if (result) {
 					var dataset = e.currentTarget.dataset;
 					var id = dataset.id;
 					jQuery.ajax({
-						url : 'manageUser',
+						url : 'manageBook',
 						processData : true,
 						dataType : "text",
 						data : {
-							id : id,
+							r_id : id,
 							status : 1
 						},
 						success : function(data) {
