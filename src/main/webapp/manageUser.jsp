@@ -29,6 +29,7 @@
 <script>
 	var admin = "<s:property value='#session.role'/>";
 	var path = "<%=path%>";
+	var users = "<%=request.getAttribute("users")%>"
 	$(document).ready(function() {
 		/*if (admin != 2) {
 			bootbox.alert("滚吧王八羔子", function() {
@@ -49,7 +50,7 @@
 			}
 	%>
 	<div
-		class="yx-nav navbar navbar-default navbar-left navbar-fixed-top yx-nav">
+		class="yx-nav navbar navbar-default navbar-left navbar-static-top yx-nav" style="width:100%; margin-bottom:0">
 		<a class="yx-brand navbar-brand" href="index" style="color: cadetblue">阅享图书交流平台</a>
 		<div>
 			<span>Hi, <%=session.getAttribute("userName")%>!</span>
@@ -63,7 +64,7 @@
 			<div class="col-md-2">
 				<ul class="nav nav-list">
 					<li class="yx-header nav-header">管理</li>
-					<li class=active><a href="#"><i class="fa fa-user"></i>用户管理</a></li>
+					<li class=active><a href="listUsers"><i class="fa fa-user"></i>用户管理</a></li>
 					<li><a href="#"><i class="fa fa-book"></i>图书发布管理</a></li>
 				</ul>
 			</div>
@@ -77,7 +78,7 @@
 											<th>Nickname</th>
 											<th>Role</th>
 											<th>Credit</th>
-											<th></th>
+											<th><a href="listUsers"><i class="fa fa-refresh"></i></a></th>
 										</tr>
 									</thead>
 									<tbody>
@@ -111,7 +112,7 @@
 		</div>
 	</div>
 	<div
-		class="yx-nav navbar navbar-default navbar-left navbar-fixed-bottom yx-nav">
+		class="yx-nav navbar navbar-default navbar-left navbar-static-bottom yx-nav" style="width:100%; margin-bottom:0">
 		<div>联系我们：</div>
 		<span>QQ: 123456789</span> <span>Tel: 12345678</span> <span>Email:
 			123456789@qq.com</span>
