@@ -24,5 +24,7 @@ public interface BookService {
     public void DisplayBooks();
     
     public void DisplayBooksByCategory(String category);
+    
+    public List<Book> getBookByScore(Byte score);
 
 }
