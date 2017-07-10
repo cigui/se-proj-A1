@@ -97,7 +97,6 @@ public class UserServiceImpl implements UserService {
 	}
 
 
-	@Override
 	public void manageUser(int id, int status) {
 		User u = getUserById(id);
 		if (!isAdmin(u)) {
