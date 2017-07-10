@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@ page import="model.Book"%>
+<%@ page import="model.BookRelease"%>
+<%@ page import="model.BookComment"%>
+<%@ page import="model.User"%>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="java.util.HashMap"%>
+<%@ page import="java.util.Map"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <html>
 <head>
@@ -25,8 +32,33 @@
 </script> -->
 </head>
 <body>
+	<%
+		Book book = new Book();
+			if (request.getAttribute("book") != null) {
+		book = (Book) request.getAttribute("book");
+			}
+	%>
+	<%
+		ArrayList<BookRelease> bookReleaseList = new ArrayList<BookRelease>();
+			if (request.getAttribute("bookReleases") != null) {
+		bookReleaseList = (ArrayList<BookRelease>) request.getAttribute("bookReleases");
+			}
+	%>
+	<%
+		ArrayList<BookComment> bookCommentList = new ArrayList<BookComment>();
+			if (request.getAttribute("bookComments") != null) {
+		bookCommentList = (ArrayList<BookComment>) request.getAttribute("bookComments");
+			}
+	%>
+	<%
+		Map<Integer,User> userList = new HashMap<Integer,User>();
+			if (request.getAttribute("users") != null) {
+		userList = (Map<Integer,User>) request.getAttribute("users");
+			}
+	%>
 	<div
-		class="yx-nav navbar navbar-default navbar-left navbar-static-top yx-nav style="width:100%; margin-bottom:0""
+		class="yx-nav navbar navbar-default navbar-left navbar-static-top yx-nav style="
+		width:100%; margin-bottom:0""
 		style="width: 100%; margin-bottom: 0">
 		<a class="yx-brand navbar-brand" href="index" style="color: cadetblue">阅享图书交流平台</a>
 		<div class="yx-toolbar">
@@ -78,7 +110,9 @@
 		<div class="row">
 			<div class="col-md-1"></div>
 			<div class="col-md-7">
-				<h1>书籍名</h1>
+				<h1>
+					《<%=book.getTitle()%>》
+				</h1>
 			</div>
 
 		</div>
@@ -91,7 +125,7 @@
 						<h3>ISBN码:</h3>
 					</div>
 					<div class="col-md-7">
-						<h3>假装有码</h3>
+						<h3><%=book.getIsbn()%></h3>
 					</div>
 				</div>
 				<p></p>
@@ -100,7 +134,7 @@
 						<h3>作者:</h3>
 					</div>
 					<div class="col-md-7">
-						<h3>假装有作者</h3>
+						<h3><%=book.getAuthor()%></h3>
 					</div>
 				</div>
 				<p></p>
@@ -109,7 +143,7 @@
 						<h3>出版社:</h3>
 					</div>
 					<div class="col-md-7">
-						<h3>假装有出版社</h3>
+						<h3><%=book.getPublisher()%></h3>
 					</div>
 				</div>
 				<p></p>
@@ -118,13 +152,14 @@
 						<h3>翻译:</h3>
 					</div>
 					<div class="col-md-7">
-						<h3>翻译</h3>
+						<h3><%=book.getTranslator()%></h3>
 					</div>
 				</div>
 			</div>
 			<div class="col-md-5">
-				<a id="link1" href='#'><img class="img-responsive" id="cover1"
-					src="<%=path%>/images/picture-0.png" /></a>
+				<a href='https://img3.doubanio.com/lpic/<%=book.getCoverSrc() %>'><img
+					class="img-responsive" id="cover1"
+					src="https://img3.doubanio.com/lpic/<%=book.getCoverSrc() %>" /></a>
 			</div>
 
 		</div>
@@ -147,16 +182,39 @@
 							<span><a class="btn btn-default btn-sm"
 								href="<%=path%>/Recommend">更多</a></span>
 						</div>
+						<div class="dataTable_wrapper">
+								<table class="table table-striped table-bordered table-hover"
+									id="dataTables">
+						<thead>
+								<tr>
+						<th>借出人</th>
+						<th>信用等级</th>
+						<th>积分</th>
+						<th></th>
+						</tr>
+						</thead>
+						<tbody>
+						    <%
+											for (int i = 0; i < bookReleaseList.size(); i++) {
+																				BookRelease bookRelease = bookReleaseList.get(i);
+																				int id = bookRelease.getId();
+																				User user = userList.get(id);
+										%>
+							<tr>
+								<td><%=user.getNickname()%></td>
+								<td><%=user.getCredit()%></td>
+								<td><%=bookRelease.getPrice()%></td>
+								<td><button class="btn btn-default btn-sm" data-toggle="modal"
+								data-target="#">去看看</button></td>
+								</tr>
+										<%
+											}
+										%>
+									</tbody>
+								</table>
+							</div>
 					</div>
-					<div class="cover">
-						<a href='#'><p></a>
-					</div>
-					<div class="cover">
-						<a href='#'><p></a>
-					</div>
-					<div class="cover">
-						<a href='#'><p></a>
-					</div>
+					
 
 				</div>
 				<div class="covers col-md-5">
@@ -207,7 +265,8 @@
 		</div>
 	</div>
 	<div
-		class="yx-nav navbar navbar-default navbar-left navbar-static-bottom yx-nav" style="width:100%; margin-bottom:0">
+		class="yx-nav navbar navbar-default navbar-left navbar-static-bottom yx-nav"
+		style="width: 100%; margin-bottom: 0">
 		<div>联系我们：</div>
 		<span>QQ: 123456789</span> <span>Tel: 12345678</span> <span>Email:
 			123456789@qq.com</span>

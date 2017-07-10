@@ -113,7 +113,7 @@
 					%>
 					<div class="col-xs-6 col-md-6">
 						<div class="cover">
-							<a href='#'><img
+							<a href='bookdetails?isbn=<%=book.getIsbn()%>'><img
 								src="https://img3.doubanio.com/lpic/<%=book.getCoverSrc()%>" /></a>
 						</div>
 					</div>
