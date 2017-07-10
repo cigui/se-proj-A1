@@ -22,7 +22,6 @@ public class DistrictDaoImpl extends HibernateDaoSupport implements DistrictDao 
 		getHibernateTemplate().merge(district);
 	}
 
-	@Override
 	public District getDistrictById(int id) {
 		@SuppressWarnings("unchecked")
 		List<District> districts = (List<District>) getHibernateTemplate().find(

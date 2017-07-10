@@ -21,12 +21,12 @@ $(function() {
 						processData : true,
 						dataType : "text",
 						data : {
-							id : id
+							id : id,
 							status : 0
 						},
 						success : function(data) {
 							bootbox.alert({
-								message : 'Ban Successfully! '
+								message : 'Ban Successfully! ',
 								callback : function() {
 									location.reload();
 								}
