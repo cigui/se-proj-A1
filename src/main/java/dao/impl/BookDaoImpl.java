@@ -2,6 +2,8 @@ package dao.impl;
 
 import java.util.List;
 
+import javax.management.Query;
+
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import dao.BookDao;
@@ -48,6 +50,13 @@ public class BookDaoImpl extends HibernateDaoSupport implements BookDao {
 		@SuppressWarnings("unchecked")
 		List<Book> books = (List<Book>) getHibernateTemplate()
 				.find("from Book");
+		return books;
+	}
+	
+	public List<Book> getBookByScore(Byte score){
+		@SuppressWarnings("unchecked")
+		List<Book> books = (List<Book>) getHibernateTemplate().find(
+				"from Book order by score desc as s where s.score=?", score);
 		return books;
 	}
 	
