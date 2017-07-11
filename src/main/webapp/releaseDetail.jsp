@@ -1,12 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
-<%@ page import="model.Book"%>
 <%@ page import="model.BookRelease"%>
-<%@ page import="model.BookComment"%>
+<%@ page import="model.Book"%>
 <%@ page import="model.User"%>
 <%@ page import="java.util.ArrayList"%>
-<%@ page import="java.util.HashMap"%>
-<%@ page import="java.util.Map"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <html>
 <head>
@@ -33,27 +30,21 @@
 </head>
 <body>
 	<%
+		BookRelease bookRelease = new BookRelease();
+			if (request.getAttribute("bookRelease") != null) {
+		bookRelease =(BookRelease) request.getAttribute("bookRelease");
+			}
+	%>
+	<%
 		Book book = new Book();
 			if (request.getAttribute("book") != null) {
 		book = (Book) request.getAttribute("book");
 			}
 	%>
 	<%
-		ArrayList<BookRelease> bookReleaseList = new ArrayList<BookRelease>();
-			if (request.getAttribute("bookReleases") != null) {
-		bookReleaseList = (ArrayList<BookRelease>) request.getAttribute("bookReleases");
-			}
-	%>
-	<%
-		ArrayList<BookComment> bookCommentList = new ArrayList<BookComment>();
-			if (request.getAttribute("bookComments") != null) {
-		bookCommentList = (ArrayList<BookComment>) request.getAttribute("bookComments");
-			}
-	%>
-	<%
-		Map<Integer,User> userList = new HashMap<Integer,User>();
-			if (request.getAttribute("users") != null) {
-		userList = (Map<Integer,User>) request.getAttribute("users");
+		User user = new User();
+			if (request.getAttribute("user") != null) {
+		user = (User) request.getAttribute("user");
 			}
 	%>
 	<div
@@ -119,7 +110,7 @@
 
 		<div class="row">
 			<div class="col-md-1"></div>
-			<div class="infors col-md-6">
+			<div class="infors col-md-7">
 				<div class="row">
 					<div class="col-md-3">
 						<h3>ISBN码:</h3>
@@ -155,115 +146,58 @@
 						<h3><%=book.getTranslator()%></h3>
 					</div>
 				</div>
+				<p></p>
+				<div class="row">
+					<div class="col-md-3">
+						<h3>借出人:</h3>
+					</div>
+					<div class="col-md-7">
+						<h3><%=user.getNickname()%></h3>
+					</div>
+				</div>
+				<p></p>
+				<div class="row">
+					<div class="col-md-3">
+						<h3>信用等级</h3>
+					</div>
+					<div class="col-md-7">
+						<h3><%=user.getCredit()%></h3>
+					</div>
+				</div>
+				<p></p>
+				<div class="row">
+					<div class="col-md-3">
+						<h3>积分</h3>
+					</div>
+					<div class="col-md-7">
+						<h3><%=bookRelease.getPrice()%></h3>
+					</div>
+				</div>
 			</div>
-			<div class="col-md-5">
+			<div class="col-md-4">
 				<a href='https://img3.doubanio.com/lpic/<%=book.getCoverSrc() %>'><img
 					class="img-responsive" id="cover1"
 					src="https://img3.doubanio.com/lpic/<%=book.getCoverSrc() %>" /></a>
-			</div>
-
-		</div>
-		<div class="row">
-			<p></p>
-		</div>
-		<div class="row">
-			<p></p>
-		</div>
-		<div class="row">
-			<p></p>
-			<div class="row">
-				<div class="col-md-1"></div>
-				<div class="covers col-md-5">
-					<div class="row">
-						<div class="col-md-9">
-							<span class="yx-header nav-header">图书借阅</span>
-						</div>
-						<div class="col-md-1">
-							<span><a class="btn btn-default btn-sm"
-								href="<%=path%>/Recommend">更多</a></span>
-						</div>
-						<div class="dataTable_wrapper">
-								<table class="table table-striped table-bordered table-hover"
-									id="dataTables">
-						<thead>
-								<tr>
-						<th>借出人</th>
-						<th>信用等级</th>
-						<th>积分</th>
-						<th></th>
-						</tr>
-						</thead>
-						<tbody>
-						    <%
-											for (int i = 0; (i < 4) && i < bookReleaseList.size(); i++) {
-																				BookRelease bookRelease = bookReleaseList.get(i);
-																				int id = bookRelease.getId();
-																				User user = userList.get(id);
-										%>
-							<tr>
-								<td><%=user.getNickname()%></td>
-								<td><%=user.getCredit()%></td>
-								<td><%=bookRelease.getPrice()%></td>
-								<p> </p>
-								<td><a href='releaseDetail?r_id=<%=bookRelease.getR_id()%>'>
-								    <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#">去看看</button></td>
-								</tr>
-										<%
-											}
-										%>
-									</tbody>
-								</table>
-							</div>
-					</div>
-					
-
-				</div>
-				<div class="covers col-md-5">
-					<div class="row">
-						<div class="col-md-9">
-							<span class="yx-header nav-header">图书评论</span>
-						</div>
-						<div class="col-md-1">
-							<button class="btn btn-default btn-sm" data-toggle="modal"
-								data-target="#myComment">我也想评</button>
-						</div>
-					</div>
-					<div class="cover">
-						<p></p>
-					</div>
-					<div class="cover">
-						<p></p>
-					</div>
-					<div class="cover">
-						<p></p>
-					</div>
+				<h4>书籍描述：</h4>
+				<p><%=bookRelease.getDiscription() %></p>
+				<div class = row>
+				 
+				    <div class = "col-md-5">
+				       <a href="#" class="btn btn-sm btn-primary btn-block" role="button">加入借书车</a>
+				    </div>
+				    <div class = "col-md-5">
+				       <a href="#" class="btn btn-sm btn-primary btn-block" role="button">立即借书</a>
+				    </div>
+				    <div class = "col-md-1"></div>
 				</div>
 			</div>
-		</div>
+			
 
-		<div class="modal fade" id="myComment" tabindex="-1" role="dialog"
-			aria-labelledby="BookComment" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal"
-							aria-hidden="true">&times;</button>
-						<h4 class="modal-title" id="myModalLabel"></h4>
-					</div>
-					<form class="modal-body form-bookcomment" action="sendBookComment">
-						<h2 class="form-bookcomment-heading">我的评论</h2>
-						<input type="number" class="form-bookcontrol" name="score"
-							placeholder=" 请输入评分（0-10分）" required="true" autofocus="" />
-						<textarea maxlength="140" rows="10" required="true"
-							class="form-control" id="discription" name="discription"
-							placeholder="请输入书籍评价（不超过140字符）"></textarea>
-						<button class="btn btn-lg btn-primary btn-block" type="submit">发表评论</button>
-					</form>
-				</div>
-				<!-- /.modal-content -->
-			</div>
-			<!-- /.modal -->
 		</div>
+		
+
+		
+		
 	</div>
 	<div
 		class="yx-nav navbar navbar-default navbar-left navbar-static-bottom yx-nav"
