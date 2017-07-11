@@ -175,9 +175,9 @@
 				</div>
 			</div>
 			<div class="col-md-4">
-				<a href='https://img3.doubanio.com/lpic/<%=book.getCoverSrc() %>'><img
+				<a href='releasePicture?r_id=<%=bookRelease.getR_id()%>'><img
 					class="img-responsive" id="cover1"
-					src="https://img3.doubanio.com/lpic/<%=book.getCoverSrc() %>" /></a>
+					src='releasePicture?r_id=<%=bookRelease.getR_id()%>'/></a>
 				<h4>书籍描述：</h4>
 				<p><%=bookRelease.getDiscription() %></p>
 				<div class = row>
