@@ -27,6 +27,7 @@
 			<result name="error">error.jsp</result>
 		</action>
 		
+		<!-- Get Districts -->
 		<action name="getDistricts" class="action.userActions.GetDistrictsAction">
 			<result type="json">
 				<param name="root">districts</param>
@@ -41,9 +42,9 @@
 		</action>
 		
 		<action name="releaseBook" class="action.bookAction.ReleaseBookAction">
-			<result name="success" type="redirect">releasesuccess.jsp</result>
+			<result name="success">/WEB-INF/view/releasesuccess.jsp</result>
 		</action>
-    <!-- Manage user -->
+    	<!-- Manage user -->
 		<action name="listUsers" class="action.userActions.AllUsersAction">
 			<result name="success">manageUser.jsp</result>
 		</action>
@@ -51,16 +52,20 @@
 			<result name="success">manageUser.jsp</result>
 		</action>
 		
-    <!-- Manage bookRelease -->
+    	<!-- Manage bookRelease -->
 		<action name="listBookReleases" class="action.bookAction.GetBookReleaseByStatusAction">
 			<result name="success">/WEB-INF/view/manageBook.jsp</result>
 		</action>
 		<action name="manageBook" class="action.bookAction.CheckBookAction">
 			<result name="success">/WEB-INF/view/manageBook.jsp</result>
 		</action>
-    <!-- Book Detail -->
+    	<!-- Book Detail -->
 		<action name="bookdetails" class="action.bookAction.BookDetailsAction">
 			<result name="success">book.jsp</result>
+		</action>
+		
+		<action name="booksInCategory" class="action.BooksInCategoryAction">
+			<result name="success">booksincategory.jsp</result>
 		</action>
 		
 		<!-- <action name="*">

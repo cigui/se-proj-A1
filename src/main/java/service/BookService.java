@@ -21,10 +21,7 @@ public interface BookService {
        
     public List<Book> SearchBook(String keyword);
     
-    public void DisplayBooks();
-    
-    public void DisplayBooksByCategory(String category);
-    
     public List<Book> getBookByScore();
 
+    public List<Book> getBooksInCategory(int cate);
 }
