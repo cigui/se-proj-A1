@@ -16,7 +16,8 @@
 <script
 	src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://cdn.bootcss.com/bootbox.js/4.4.0/bootbox.min.js"></script>
-<script src="<%=path%>/js/index.js"></script>
+<script
+	src="https://cdn.bootcss.com/jquery-validate/1.16.0/jquery.validate.min.js"></script>
 <link
 	href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
 	rel="stylesheet">
