@@ -12,7 +12,7 @@
         />
         <key-property name="isbn"
                       column="isbn"
-                      type="int"
+                      type="long"
         />
         </composite-id>
 	</class>

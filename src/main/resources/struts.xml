@@ -62,6 +62,11 @@
 		<action name="bookdetails" class="action.bookAction.BookDetailsAction">
 			<result name="success">book.jsp</result>
 		</action>
+	
+	<!-- Release Detail -->
+		<action name="releaseDetail" class="action.bookAction.ReleaseDetailAction">
+			<result name="success">releaseDetail.jsp</result>
+		</action>
 		
 		<!-- <action name="*">
 			<result>/{1}.jsp</result>
