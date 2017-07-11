@@ -3,6 +3,7 @@ package service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import dao.BookCateRelationshipDao;
 import dao.BookDao;
 import model.Book;
 import service.BookService;
@@ -10,6 +11,7 @@ import service.BookService;
 public class BookServiceImpl implements BookService{
 	
 	private BookDao bookDao;
+	private BookCateRelationshipDao bookCateRelationshipDao;
 
 	public BookDao getBookDao() {
 		return bookDao;
@@ -17,6 +19,14 @@ public class BookServiceImpl implements BookService{
 
 	public void setBookDao(BookDao bookDao) {
 		this.bookDao = bookDao;
+	}
+
+	public BookCateRelationshipDao getBookCateRelationshipDao() {
+		return bookCateRelationshipDao;
+	}
+
+	public void setBookCateRelationshipDao(BookCateRelationshipDao bookCateRelationshipDao) {
+		this.bookCateRelationshipDao = bookCateRelationshipDao;
 	}
 
 	public Long save(Book book) {
@@ -59,20 +69,18 @@ public class BookServiceImpl implements BookService{
 		resultList.addAll(getBookByAuthor(keyword));
 		return resultList;
 	}
-
-	public void DisplayBooks() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	public void DisplayBooksByCategory(String category) {
-		// TODO Auto-generated method stub
-		
-	}
 	
 	public List<Book> getBookByScore(){
 		return bookDao.getBookByScore();
 	}
 
+	public List<Book> getBooksInCategory(int cate) {
+		List<Long> isbns = bookCateRelationshipDao.getBooksIsbnByCate_id(cate);
+		List<Book> books = new ArrayList<Book>();
+		for (int i = 0; i < isbns.size(); i++) {
+			books.add(bookDao.getBookByIsbn(isbns.get(i)));
+		}
+		return books;
+	}
 
 }
