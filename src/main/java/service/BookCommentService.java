@@ -4,7 +4,7 @@ import model.BookComment;
 
 import java.util.List;
 
-public interface SendBookCommentService {
+public interface BookCommentService {
 
     public Integer save(BookComment bookComment);
 
@@ -12,7 +12,7 @@ public interface SendBookCommentService {
 
 	public void update(BookComment bookComment);
 
-	public List<BookComment> getBookCommentByISBN(int ISBN);
+	public List<BookComment> getBookCommentByISBN(long ISBN);
 	
 	public List<BookComment> getBookCommentById(int id);
 

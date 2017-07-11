@@ -11,18 +11,19 @@ import service.AdminService;
 public class CheckBookAction extends BaseAction implements SessionAware {
 	
 	private static final long serialVersionUID = 1L;
-	private int status;
+	private short status;
+	private int r_id;
 	private BookRelease bookRelease;
 	private AdminService adminService;
 	@SuppressWarnings("unused")
 	private Map<String, Object> session;
 	
 	
-	public int getStatus() {
+	public short getStatus() {
 		return status;
 	}
 	
-	public void setStatus(int status) {
+	public void setStatus(short status) {
 		this.status = status;
 	}
 	
@@ -48,8 +49,16 @@ public class CheckBookAction extends BaseAction implements SessionAware {
 	}
 	
 	public String execute() throws Exception {
-		adminService.checkBook(bookRelease, status);
+		adminService.checkBook(r_id, status);
 		return SUCCESS;
+	}
+
+	public int getR_id() {
+		return r_id;
+	}
+
+	public void setR_id(int r_id) {
+		this.r_id = r_id;
 	}
 
 }

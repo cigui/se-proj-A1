@@ -32,7 +32,7 @@ public class BookCommentDaoImpl extends HibernateDaoSupport implements BookComme
 	public List<BookComment> getBookCommentByIsbn(long isbn) {
 		@SuppressWarnings("unchecked")
 		List<BookComment> bookComments = (List<BookComment>) getHibernateTemplate().find(
-				"from BookComment as d where d.isbn=?", isbn);
+				"from BookComment as d where d.isbn="+isbn);
 		return bookComments;
 	}
 	

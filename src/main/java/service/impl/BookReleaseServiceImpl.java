@@ -43,7 +43,7 @@ public class BookReleaseServiceImpl implements BookReleaseService {
 		this.bookDao = bookDao;
 	}
 
-	public List<BookRelease> getBookReleaseByISBN(int ISBN) {
+	public List<BookRelease> getBookReleaseByISBN(long ISBN) {
 		return bookReleaseDao.getBookReleaseByIsbn(ISBN);
 	}
 

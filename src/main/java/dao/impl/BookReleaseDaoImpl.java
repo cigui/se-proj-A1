@@ -54,10 +54,10 @@ public class BookReleaseDaoImpl extends HibernateDaoSupport implements BookRelea
 		return bookReleases;
 	}
 	
-	public List<BookRelease> getBookReleaseByStatus(int status) {
+	public List<BookRelease> getBookReleaseByStatus() {
 		@SuppressWarnings("unchecked")
 		List<BookRelease> bookReleases = (List<BookRelease>) getHibernateTemplate().find(
-				"from BookRelease as s where s.status=?", status);
+				"from BookRelease where status=?", (short)0);
 		return bookReleases;
 	}
 

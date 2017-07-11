@@ -13,6 +13,14 @@ public class AdminServiceImpl implements AdminService {
 	private BookReleaseDao bookReleaseDao;
 	private UserDao userDao;
 	
+	public BookReleaseDao getBookReleaseDao() {
+		return bookReleaseDao;
+	}
+	
+	public void setBookReleaseDao(BookReleaseDao bookReleaseDao){
+		this.bookReleaseDao = bookReleaseDao;
+	}
+	
 	public Integer save(User user){
 		return userDao.save(user);
 	}
@@ -50,21 +58,22 @@ public class AdminServiceImpl implements AdminService {
 		bookReleaseDao.update(bookRelease);
 	}
 
-	public List<BookRelease> getBookReleaseByStatus(int status){
-		return bookReleaseDao.getBookReleaseByStatus(status);
+	public List<BookRelease> getBookReleaseByStatus(){
+		return bookReleaseDao.getBookReleaseByStatus();
 	}
 
 	public List<BookRelease> getAllBookReleases(){
 		return bookReleaseDao.getAllBookReleases();
 	}
 
-	public void checkBook(BookRelease bookRelease,int status){
+	public void checkBook(int r_id,short status){
+		BookRelease bookRelease = bookReleaseDao.getBookReleaseByR_id(r_id);
 		if (status == 1)	{
-			bookRelease.setStatus(1);
+			bookRelease.setStatus((short) 1);
 			bookReleaseDao.update(bookRelease);
 		}
 		if (status == 0)	{
-			bookRelease.setStatus(-1);
+			bookRelease.setStatus((short) -1);
 			bookReleaseDao.update(bookRelease);
 		}
 			

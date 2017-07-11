@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface BookReleaseService {
 	
-	public List<BookRelease> getBookReleaseByISBN(int ISBN);
+	public List<BookRelease> getBookReleaseByISBN(long ISBN);
 	
 	public List<BookRelease> getBookReleaseById(int id);
 	

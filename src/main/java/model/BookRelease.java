@@ -10,7 +10,6 @@ public class BookRelease {
 	private String discription;
 	private short status; // 0:not checked, 1:pass, -1:reject
 	private int price;
-	
 	public BookRelease(){
 		
 	}
@@ -78,8 +77,8 @@ public class BookRelease {
 		return status;
 	}
 
-	public void setStatus(short status) {
-		this.status = status;
+	public void setStatus(short i) {
+		this.status = i;
 	}
 
 	public int getPrice() {
