@@ -43,6 +43,17 @@
 			<result name="success" type="redirect">releasesuccess.jsp</result>
 		</action>
 		
+		
+		<action name="updateUserInformation" class="action.userActions.updateUserInformationAction">
+			<result name="success" type="redirect">index.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		
+		<action name="GetBeforeUpdateUserInformation" class="action.userActions.GetBeforeUpdateUserInformationAction">
+			<result name="success" >updateUserInformation.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		
 		<!-- <action name="*">
 			<result>/{1}.jsp</result>
 		</action> -->
