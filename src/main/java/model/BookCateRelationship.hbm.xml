@@ -4,16 +4,10 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-	<class name="model.BookComment" table="bookcomments">
+	<class name="model.BookCateRelationship" table="bookcaterelationship">
 		<composite-id>
-        <key-property name="cate_id"
-                      column="cate_id"
-                      type="int"
-        />
-        <key-property name="isbn"
-                      column="isbn"
-                      type="long"
-        />
-        </composite-id>
+			<key-property name="cate_id" column="cate_id" type="int" />
+			<key-property name="isbn" column="isbn" type="long" />
+		</composite-id>
 	</class>
 </hibernate-mapping>
