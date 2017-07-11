@@ -29,3 +29,13 @@ img {
 	height: auto;
 	max-height: 180px;
 }
+
+.infors {
+	max-height: 100%;
+	overflow: auto;
+}
+
+.infor{
+	max-height: 50px;
+	margin: 5px;
+}

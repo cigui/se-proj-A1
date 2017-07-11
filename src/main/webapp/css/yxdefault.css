@@ -35,8 +35,13 @@ body {
 	overflow: auto;
 }
 
-.yx-header {/* 
-	font-size: 26px; */
+
+.book-contianer{
+	
+}
+
+.yx-header {
+	font-size: 26px;
 	margin: 0 auto;
 }
 

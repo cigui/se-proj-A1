@@ -1,0 +1,44 @@
+body {
+  background: #eee;
+}
+
+.wrapper {
+  margin-top: 80px;
+  margin-bottom: 80px;
+}
+
+.form-bookcomment {
+  max-width: 380px;
+  padding: 15px 35px 45px;
+  margin: 0 auto;
+  background-color: #fff;
+}
+.form-bookcomment .form-bookcomment-heading,
+.form-bookcomment .checkbox {
+  margin-bottom: 30px;
+}
+.form-bookcomment .checkbox {
+  font-weight: normal;
+}
+.form-bookcomment .form-bookcontrol {
+  height: 100%;
+  position: relative;
+  font-size: 100px;
+  padding: 100px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.form-bookcomment .form-bookcontrol:focus {
+  z-index: 2;
+}
+.form-bookcomment input[type="text"] {
+  margin-bottom: -1px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.form-bookcomment input[type="number"] {
+  margin-bottom: 20px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}

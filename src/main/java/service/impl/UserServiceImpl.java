@@ -110,13 +110,17 @@ public class UserServiceImpl implements UserService {
 		}
 	}
 
+<<<<<<< HEAD
 
 	public void checkBookRelease(BookRelease bookRelease, int status) {
+=======
+	public void checkBookRelease(BookRelease bookRelease, short status) {
+>>>>>>> 03f7a833cb565f8f6cca655bf7af104c6f2349fa
 		if (status == 1) {
-			bookRelease.setStatus(1);
+			bookRelease.setStatus((short) 1);
 			bookReleaseDao.update(bookRelease);
 		} else if (status == 0) {
-			bookRelease.setStatus(-1);
+			bookRelease.setStatus((short) -1);
 			bookReleaseDao.update(bookRelease);
 		}
 	}

@@ -25,11 +25,11 @@ public interface AdminService {
 
 	public void update(BookRelease bookRelease);
 
-	public List<BookRelease> getBookReleaseByStatus(int status);
+	public List<BookRelease> getBookReleaseByStatus();
 
 	public List<BookRelease> getAllBookReleases();
 	
-	public void checkBook(BookRelease bookRelease,int status);
+	public void checkBook(int r_id,short status);
     
 
 }
