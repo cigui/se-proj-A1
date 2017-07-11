@@ -1,9 +1,6 @@
 package dao.impl;
 
 import java.util.List;
-
-import javax.management.Query;
-
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import dao.BookDao;
