@@ -76,8 +76,16 @@ public class BookReleaseDaoImpl extends HibernateDaoSupport implements BookRelea
 	
 	public Picture getPictureByR_id(int r_id) {
 		GridFSDBFile result = GridFsTemplate.findOne(new Query(Criteria.where("metadata.r_id").is(r_id)));
-		Picture picture =new Picture(result.getContentType(),result.getInputStream());
-		return picture;
+		if (result!= null){
+			Picture picture =new Picture(result.getContentType(),result.getInputStream());
+			return picture;
+		}
+		else{
+			GridFSDBFile result0 = GridFsTemplate.findOne(new Query(Criteria.where("filename").is("404.png")));
+			Picture picture =new Picture(result0.getContentType(),result0.getInputStream());
+			return picture;
+		}
+		
 	}
 	
 	public boolean uploadPicture(int r_id,File file,String contentType,String fileName){
