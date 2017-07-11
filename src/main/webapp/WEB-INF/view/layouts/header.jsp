@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
 
 <!DOCTYPE HTML>
 <html>
@@ -37,6 +38,9 @@
 			<s:if test="#session.logined">
 				<span>Hi, <s:property value='#session.userName' />!
 				</span>
+				<s:if test="#session.logined">
+					<a href="listUsers" class="btn btn-default btn-sm" role="button">管理中心</a>
+				</s:if>
 				<a href="profile" class="btn btn-default btn-sm" role="button">个人信息</a>
 				<a href="logout" class="btn btn-default btn-sm" role="button">登出</a>
 			</s:if>
