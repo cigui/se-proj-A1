@@ -19,5 +19,7 @@ public interface BookDao {
 	public List<Book> getBookByAuthor(String author);
 
 	public List<Book> getAllBooks();
+	
+	public List<Book> getBookByScore();
 
 }

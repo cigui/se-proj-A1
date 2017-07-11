@@ -1,13 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="model.Book"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>阅享</title>
 <%
 	String path = request.getContextPath();
+	ArrayList<Book> books = new ArrayList<Book>();
+	if (request.getAttribute("bestBooks") != null) {
+		books = (ArrayList<Book>) request.getAttribute("bestBooks");
+	}
 %>
 <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script
@@ -26,8 +34,10 @@
 </script> -->
 </head>
 <body>
+	<!-- Header -->
 	<div
-		class="yx-nav navbar navbar-default navbar-left navbar-static-top yx-nav" style="width:100%; margin-bottom:0">
+		class="yx-nav navbar navbar-default navbar-left navbar-static-top yx-nav"
+		style="width: 100%; margin-bottom: 0">
 		<a class="yx-brand navbar-brand" href="index" style="color: cadetblue">阅享图书交流平台</a>
 		<div class="yx-toolbar">
 			<a class="btn btn-default btn-sm" href="<%=path%>/releasebook.jsp">发布图书</a>
@@ -36,11 +46,10 @@
 				<button class="btn btn-sm btn-primary btn-block" type="submit">Search</button>
 			</form>
 			<s:if test="#session.logined">
-				<span>Hi, <s:property value='#session.userName' />!</span>
-				<a href="profile" class="btn btn-default btn-sm"
-					role="button">个人信息</a>
-				<a href="logout" class="btn btn-default btn-sm"
-					role="button">登出</a>
+				<span>Hi, <s:property value='#session.userName' />!
+				</span>
+				<a href="profile" class="btn btn-default btn-sm" role="button">个人信息</a>
+				<a href="logout" class="btn btn-default btn-sm" role="button">登出</a>
 			</s:if>
 			<s:else>
 				<button class="btn btn-default btn-sm" data-toggle="modal"
@@ -52,6 +61,7 @@
 		</div>
 	</div>
 
+	<!-- Modal for login -->
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
 		aria-labelledby="Login" aria-hidden="true">
 		<div class="modal-dialog">
@@ -75,6 +85,7 @@
 		<!-- /.modal -->
 	</div>
 
+	<!-- Body -->
 	<div class="yx-container container">
 		<div class="row">
 			<div class="col-xs-2 col-md-2">
@@ -95,14 +106,20 @@
 							href="<%=path%>/Recommend">更多</a></span>
 					</div>
 				</div>
-				<div class="cover">
-					<a href='#'><img src="<%=path%>/images/404.png" /></a>
-				</div>
-				<div class="cover">
-					<a href='#'><img src="<%=path%>/images/404.png" /></a>
-				</div>
-				<div class="cover">
-					<a href='#'><img src="<%=path%>/images/404.png" /></a>
+				<div class="row">
+					<%
+						for (int i = 0; (i < 3) && (i < books.size()); i++) {
+							Book book = books.get(i);
+					%>
+					<div class="col-xs-6 col-md-6">
+						<div class="cover">
+							<a href='bookdetails?isbn=<%=book.getIsbn()%>'><img
+								src="https://img3.doubanio.com/lpic/<%=book.getCoverSrc()%>" /></a>
+						</div>
+					</div>
+					<%
+						}
+					%>
 				</div>
 
 			</div>
@@ -115,22 +132,30 @@
 						<span><button class="btn btn-default btn-sm yx-guess">换一批</button></span>
 					</div>
 				</div>
-				<div class="cover">
-					<a id="link1" href='#'><img id="cover1"
-						src="<%=path%>/images/404.png" /></a>
-				</div>
-				<div class="cover">
-					<a id="link2" href='#'><img id="cover2"
-						src="<%=path%>/images/404.png" /></a>
-				</div>
-				<div class="cover">
-					<a id="link3" href='#'><img id="cover3"
-						src="<%=path%>/images/404.png" /></a>
+				<div class="row">
+					<%
+						for (int i = 0; (i < 3) && (i < books.size()); i++) {
+							Book book = books.get(i);
+					%>
+					<div class="col-xs-6 col-md-6">
+						<div class="cover">
+							<a id="link<%=i%>" href='#'><img
+								src="https://img3.doubanio.com/lpic/<%=book.getCoverSrc()%>"
+								id="cover<%=i%>" /></a>
+						</div>
+					</div>
+					<%
+						}
+					%>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="yx-nav navbar navbar-default navbar-left navbar-static-bottom yx-nav" style="width:100%; margin-bottom:0">
+
+	<!-- Footer -->
+	<div
+		class="yx-nav navbar navbar-default navbar-left navbar-static-bottom yx-nav"
+		style="width: 100%; margin-bottom: 0">
 		<div>联系我们：</div>
 		<span>QQ: 123456789</span> <span>Tel: 12345678</span> <span>Email:
 			123456789@qq.com</span>

@@ -69,6 +69,10 @@ public class BookServiceImpl implements BookService{
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public List<Book> getBookByScore(){
+		return bookDao.getBookByScore();
+	}
 
 
 }

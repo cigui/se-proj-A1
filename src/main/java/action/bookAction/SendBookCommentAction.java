@@ -6,7 +6,7 @@ import org.apache.struts2.interceptor.SessionAware;
 
 import action.BaseAction;
 import model.BookComment;
-import service.SendBookCommentService;
+import service.BookCommentService;
 
 public class SendBookCommentAction extends BaseAction implements SessionAware{
 
@@ -16,7 +16,7 @@ public class SendBookCommentAction extends BaseAction implements SessionAware{
 	private String discription;
 	private byte score;
 	private BookComment bookComment;
-	private SendBookCommentService sendBookCommentService;
+	private BookCommentService sendBookCommentService;
 	@SuppressWarnings("unused")
 	private Map<String, Object> session;
 
@@ -60,11 +60,11 @@ public class SendBookCommentAction extends BaseAction implements SessionAware{
 		this.bookComment = bookComment;
 	}
 
-	public SendBookCommentService getSendBookCommentService() {
+	public BookCommentService getSendBookCommentService() {
 		return sendBookCommentService;
 	}
 
-	public void setSendBookCommentService(SendBookCommentService sendBookCommentService) {
+	public void setSendBookCommentService(BookCommentService sendBookCommentService) {
 		this.sendBookCommentService = sendBookCommentService;
 	}
 	

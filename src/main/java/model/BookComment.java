@@ -1,6 +1,12 @@
 package model;
 
-public class BookComment {
+import java.io.Serializable;
+
+public class BookComment implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int id;
 	private long isbn;
 	private String discription;
