@@ -7,8 +7,7 @@
 <%@ include file="WEB-INF/view/layouts/header.jsp"%>
 
 <script>
-	var path = "<%=path%>
-	";
+	var path = "<%=path%>";
 	$(document).ready(function() {
 		var logined = "<s:property value='#session.logined' />";
 		if (logined) {
