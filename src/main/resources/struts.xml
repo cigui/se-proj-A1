@@ -26,6 +26,11 @@
 			<result name="success" type="redirect">welcome.jsp</result>
 			<result name="error">error.jsp</result>
 		</action>
+		<action name="checkEmail" class="action.userActions.CheckEmailAction">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
 		
 		<!-- Get Districts -->
 		<action name="getDistricts" class="action.userActions.GetDistrictsAction">
@@ -70,7 +75,7 @@
 		</action>
 		
 		<action name="booksInCategory" class="action.BooksInCategoryAction">
-			<result name="success">booksincategory.jsp</result>
+			<result name="success">/WEB-INF/view/booksincategory.jsp</result>
 		</action>
 		
 	<!-- Release Picture  -->
