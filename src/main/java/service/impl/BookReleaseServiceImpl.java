@@ -20,6 +20,7 @@ import dao.BookDao;
 import dao.BookReleaseDao;
 import model.Book;
 import model.BookRelease;
+import model.Picture;
 import service.BookReleaseService;
 
 public class BookReleaseServiceImpl implements BookReleaseService {
@@ -119,6 +120,10 @@ public class BookReleaseServiceImpl implements BookReleaseService {
 
 	public boolean uploadImage(int id, File image, String contentType, String fileName) {
 		return bookReleaseDao.uploadPicture(id, image, contentType, fileName);
+	}
+	
+	public Picture getPictureByR_id(int r_id){
+		return bookReleaseDao.getPictureByR_id(r_id);
 	}
 	
 }
