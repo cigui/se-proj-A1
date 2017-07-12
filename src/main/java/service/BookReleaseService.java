@@ -1,6 +1,7 @@
 package service;
 
 import model.BookRelease;
+import model.Picture;
 
 import java.io.File;
 import java.util.List;
@@ -18,5 +19,7 @@ public interface BookReleaseService {
     public boolean ReleaseBook(BookRelease bookRelease);
     
     public boolean uploadImage(int id, File image, String contentType, String fileName);
+    
+    public Picture getPictureByR_id(int r_id);
     
 }

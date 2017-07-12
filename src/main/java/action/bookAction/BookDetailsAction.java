@@ -69,7 +69,14 @@ public class BookDetailsAction extends BaseAction {
 
 	public String execute() throws Exception {
 		Book book = bookService.getBookByISBN(isbn);
-		List<BookRelease> bookReleases = bookReleaseService.getBookReleaseByISBN(isbn);
+		List<BookRelease> rowBookReleases = bookReleaseService.getBookReleaseByISBN(isbn);
+		List<BookRelease> bookReleases = new ArrayList<BookRelease>();
+		for (BookRelease item : rowBookReleases) {
+			int status = item.getStatus();
+			if(status==1){
+				bookReleases.add(item);
+			}
+		}
 		Map<Integer, User> users = new HashMap<Integer,User>();
 		for (BookRelease item : bookReleases) {
 			int id = item.getId();
