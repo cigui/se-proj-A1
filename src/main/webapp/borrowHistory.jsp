@@ -12,10 +12,6 @@
 <title>阅享</title>
 <%
 	String path = request.getContextPath();
-	ArrayList<BorrowHistory> historyList = new ArrayList<BorrowHistory>();
-	if (request.getAttribute("borrowHistory") != null) {
-		historyList = (ArrayList<BorrowHistory>) request.getAttribute("borrowHistory");
-	}
 %>
 <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script
@@ -32,6 +28,12 @@
 </script> -->
 </head>
 <body>
+	<%
+		ArrayList<BorrowHistory> historyList = new ArrayList<BorrowHistory>();
+		if (request.getAttribute("history") != null) {
+			historyList = (ArrayList<BorrowHistory>) request.getAttribute("history");
+		}
+	%>
 	<!-- Header -->
 	<div
 		class="yx-nav navbar navbar-default navbar-left navbar-static-top yx-nav"
@@ -56,8 +58,8 @@
 					<li class="yx-header nav-header">历史记录</li>
 					<li><a href="#">已发布的图书</a></li>
 					<li><a href="#">已借出的图书</a></li>
-					<li><a href="#">已下单的图书</a></li>
-					<li><a href="#">已借到的图书</a></li>
+					<li><a href="history?id=<%=session.getAttribute("userId")%>&status=0">已下单的图书</a></li>
+					<li><a href="history?id=<%=session.getAttribute("userId")%>&status=1">已借到的图书</a></li>
 				</ul>
 			</div>
 			<div class="covers col-md-10">
@@ -68,15 +70,39 @@
 							<tr>
 								<th>Location</th>
 								<th>Date</th>
-								<th>Book</th>
+								<th>Release id</th>
+								<th></th>
 							</tr>
 						</thead>
-						<tbody> </tbody>
+						<tbody>
+							<%
+								for (int i = 0; i < historyList.size(); i++) {
+									BorrowHistory history = historyList.get(i);
+							%>
+							<tr>
+							    <td><%=history.getLocation()%></td>
+								<td><%=history.getDate()%></td>
+								<td><%=history.getR_id()%></td>
+								<td>
+									<button class="btn btn-default ban" type="button">
+										<i class="fa fa-ban"></i>
+									</button>
+									<button class="btn btn-default unban" type="button">
+										<i class="fa fa-check"></i>
+									</button>
+								</td>
+							</tr>
+							<%
+								}
+							%>
+						</tbody>
 					</table>
 				</div>
 			</div>
 		</div>
 	</div>
+	
+	<script src="<%=path%>/js/borrowHistory.js"></script>
 
 	<!-- Footer -->
 	<div
