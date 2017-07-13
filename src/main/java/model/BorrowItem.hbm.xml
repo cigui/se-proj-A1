@@ -4,9 +4,9 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-	<class name="model.BorrowItem" table="borrowingitems">
+	<class name="model.BorrowItem" table="borrowitems">
 		<composite-id>
-        <key-property name="id" column="id" ype="int" />
+        <key-property name="id" column="id" type="int" />
         <key-property name="r_id" column="r_id" type="int" />
         </composite-id>
 	</class>

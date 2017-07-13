@@ -56,6 +56,12 @@
 		userList = (Map<Integer,User>) request.getAttribute("users");
 			}
 	%>
+	<%
+		Map<Integer,User> userCommentList = new HashMap<Integer,User>();
+			if (request.getAttribute("userComments") != null) {
+		userCommentList = (Map<Integer,User>) request.getAttribute("userComments");
+			}
+	%>
 	<div
 		class="yx-nav navbar navbar-default navbar-left navbar-static-top yx-nav style="
 		width:100%; margin-bottom:0""
@@ -228,15 +234,34 @@
 								data-target="#myComment">我也想评</button>
 						</div>
 					</div>
-					<div class="cover">
-						<p></p>
-					</div>
-					<div class="cover">
-						<p></p>
-					</div>
-					<div class="cover">
-						<p></p>
-					</div>
+					<div class="dataTable_wrapper">
+								<table class="table table-striped table-bordered table-hover"
+									id="dataTables">
+						<thead>
+								<tr>
+						<th>评论人</th>
+						<th>TA的评论</th>
+						<th>TA的评分</th>
+						</tr>
+						</thead>
+						<tbody>
+						    <%
+											for (int i = 0; (i < 4) && i < bookCommentList.size(); i++) {
+																				BookComment bookComment = bookCommentList.get(i);
+																				int id = bookComment.getId();
+																				User userComment = userCommentList.get(id);
+										%>
+							<tr>
+								<td><%=userComment.getNickname()%></td>
+								<td><%=bookComment.getDiscription()%></td>
+								<td><%=bookComment.getScore()%></td>
+								</tr>
+										<%
+											}
+										%>
+									</tbody>
+								</table>
+							</div>
 				</div>
 			</div>
 		</div>

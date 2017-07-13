@@ -2,6 +2,7 @@ package dao.impl;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import dao.BookCommentDao;
@@ -30,10 +31,12 @@ public class BookCommentDaoImpl extends HibernateDaoSupport implements BookComme
 	}
 	
 	public List<BookComment> getBookCommentByIsbn(long isbn) {
+		Query q = getSession().createQuery("from BookComment as t where t.isbn=:isbn");
+		q.setLong("isbn", isbn);
 		@SuppressWarnings("unchecked")
-		List<BookComment> bookComments = (List<BookComment>) getHibernateTemplate().find(
-				"from BookComment as d where d.isbn="+isbn);
+		List<BookComment> bookComments = (List<BookComment>) q.list();
 		return bookComments;
+
 	}
 	
 	public List<BookComment> getAllBookComments() {
