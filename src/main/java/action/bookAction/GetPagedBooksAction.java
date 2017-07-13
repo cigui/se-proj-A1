@@ -1,11 +1,13 @@
 package action.bookAction;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import action.BaseAction;
 import model.Book;
+import model.PagedBookInfo;
 import service.BookService;
 
 public class GetPagedBooksAction extends BaseAction {
@@ -73,7 +75,14 @@ public class GetPagedBooksAction extends BaseAction {
 	public String byCategory() {
 		
 		/* 从数据库中取出限制条数的数据 */
-		List<Book> result = bookService.getBooksByCategoryLimits(cate, start, length);
+		List<Book> books = bookService.getBooksByCategoryLimits(cate, start, length);
+		
+		/* 将数据包装，供分页显示 */
+		List<PagedBookInfo> result = new ArrayList<PagedBookInfo>();
+		for (Book book : books) {
+			PagedBookInfo p = new PagedBookInfo(book.getIsbn(), book.getAuthor(), book.getTitle());
+			result.add(p);
+		}
 		
 		/* 总条数 */
 		/* 

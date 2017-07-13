@@ -133,7 +133,7 @@
             },
             columns: [ // 对应上面thead里面的序列
                 {"data": "isbn" },
-                {"data": "title" },
+                {"data": "titleHref" },
                 {"data": "author"}
             ]
 		});
