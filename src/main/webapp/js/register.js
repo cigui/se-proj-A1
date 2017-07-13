@@ -1,4 +1,24 @@
 $(function() {
+	/* 检查邮箱是否重复注册 */
+	$('#email').change(function(){
+		var email = $('#email').val();
+		$.ajax({
+			url : 'checkEmail',
+			processData : true,
+			dataType : "json",
+			data : {
+				email : email
+			},
+			success : function(data) {
+				if (data.dup==true) {
+					bootbox.alert('该邮箱已被注册！');
+					$('#email').val("");
+				}
+			}
+		});
+	})
+	
+	
 	// 中文字两个字节
 	$.validator.addMethod("byteRangeLength", function(value, element, param) {
 		var length = value.length;
