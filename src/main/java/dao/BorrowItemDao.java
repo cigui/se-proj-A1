@@ -6,7 +6,7 @@ import model.BorrowItem;
 
 public interface BorrowItemDao {
 
-	public Integer save(BorrowItem borrowItem);
+	public BorrowItem save(BorrowItem borrowItem);
 
 	public void delete(BorrowItem borrowItem);
 

@@ -45,10 +45,11 @@
 				<value>model/BookRelease.hbm.xml</value>
 				<value>model/BookComment.hbm.xml</value>				
 				<value>model/BookCateRelationship.hbm.xml</value>
+				<value>model/BorrowItem.hbm.xml</value>
 <!--
 				<value>model/BorrowHistory.hbm.xml</value>
 				<value>model/BorrowComment.hbm.xml</value>
-				<value>model/BorrowItem.hbm.xml</value>
+				
 -->
 				<value>model/Category.hbm.xml</value>
 				<value>model/District.hbm.xml</value>
@@ -78,9 +79,7 @@
 	<bean id="borrowHistoryDao" class="dao.impl.BorrowHistoryDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-	<bean id="borrowItemDao" class="dao.impl.BorrowItemDaoImpl">
-		<property name="sessionFactory" ref="sessionFactory" />
-	</bean>
+	
 -->
 	<bean id="bookDao" class="dao.impl.BookDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
@@ -103,6 +102,9 @@
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 	<bean id="bookCateRelationshipDao" class="dao.impl.BookCateRelationshipDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="borrowItemDao" class="dao.impl.BorrowItemDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
@@ -129,6 +131,9 @@
 	</bean>
 	<bean id="categoryService" class="service.impl.CategoryServiceImpl">
 		<property name="categoryDao" ref="categoryDao"></property>
+	</bean>
+	<bean id="addBookToCartService" class="service.impl.AddBookToCartServiceImpl">
+		<property name="borrowItemDao" ref="borrowItemDao"></property>
 	</bean>
 <!-- 	<bean id="appService" class="service.impl.AppServiceImpl">
 		DAO
@@ -158,6 +163,7 @@
 		<aop:pointcut id="districtServiceBeanPointcut" expression="bean(districtService)" />
 		<aop:pointcut id="bookCommentServiceBeanPointcut" expression="bean(bookCommentService)" />
 		<aop:pointcut id="categoryServiceBeanPointcut" expression="bean(categoryService)" />
+		<aop:pointcut id="addBookToCartServiceBeanPointcut" expression="bean(addBookToCartService)" />
 		<!-- <aop:advisor advice-ref="txAdvice" pointcut-ref="userServiceBeanPointcut" /> -->
 	</aop:config>
 

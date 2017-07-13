@@ -5,7 +5,7 @@ import model.BorrowItem;
 import java.util.List;
 
 public interface AddBookToCartService {
-    public Integer save(BorrowItem borrowItem);
+    public BorrowItem save(BorrowItem borrowItem);
 
 	public void delete(BorrowItem borrowItem);
 
