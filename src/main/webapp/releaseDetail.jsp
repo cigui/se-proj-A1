@@ -183,7 +183,36 @@
 				<div class = row>
 				 
 				    <div class = "col-md-5">
-				       <a href="#" class="btn btn-sm btn-primary btn-block" role="button">加入借书车</a>
+				       <button id="join" class="btn btn-sm btn-primary btn-block" >加入借书车</button>
+				       <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>  
+                       <script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>  
+                       <script src="http://bootboxjs.com/bootbox.js"></script>
+                       <script>
+                       var id = "<s:property value='#session.userId'/>";
+                       var r_id = <%=bookRelease.getR_id()%>;
+                       $(document).on("click", "#join", function (e){
+                    	   jQuery.ajax({
+       						url : 'addBookToCart',
+       						processData : true,
+       						dataType :  "json",
+       						data : {
+       							id : id,
+       							r_id : r_id
+       						},
+                    	   success : function(data) {
+                    		   console.log(data);
+                    		if (data == "good"){
+                    			 bootbox.alert("加入成功"); 
+   							}
+   							if (data == "error"){
+   								bootbox.alert("加入失败：请检查借出车是否已存在该书籍");
+   							}
+   							
+   							}
+                          });
+                    	   
+                       });
+                       </script>  
 				    </div>
 				    <div class = "col-md-5">
 				       <a href="#" class="btn btn-sm btn-primary btn-block" role="button">立即借书</a>
