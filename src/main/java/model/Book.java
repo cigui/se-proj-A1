@@ -9,6 +9,7 @@ public class Book {
 	private String translator;
 	private String coverSrc;
 	private Double score;
+	private int numRaters;
 	
 
 	@Override
@@ -35,7 +36,8 @@ public class Book {
 		
 	}
 	
-	public Book(long isbn,String title,String author,String publisher,String translator,String coverSrc, Double score){
+	public Book(long isbn, String title, String author, String publisher, String translator, String coverSrc,
+			Double score, int numRaters) {
 		this.isbn = isbn;
 		this.title = title;
 		this.author = author;
@@ -43,6 +45,7 @@ public class Book {
 		this.translator = translator;
 		this.coverSrc = coverSrc;
 		this.score = score;
+		this.numRaters = numRaters;
 	}
 
 
@@ -101,6 +104,14 @@ public class Book {
 
 	public void setScore(Double score) {
 		this.score = score;
+	}
+
+	public int getNumRaters() {
+		return numRaters;
+	}
+
+	public void setNumRaters(int numRaters) {
+		this.numRaters = numRaters;
 	}
 
 	

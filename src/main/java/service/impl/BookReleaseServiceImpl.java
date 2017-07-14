@@ -98,11 +98,12 @@ public class BookReleaseServiceImpl implements BookReleaseService {
 					List<String> translators = (ArrayList<String>)b.get("translator");
 					String translator = (translators.size()==0? null:(String)translators.get(0));
 					String image = (String)((Map<String, Object>)b.get("images")).get("large");
+					Double score = Double.valueOf((String)((Map<String, Object>)b.get("rating")).get("average"));
+					int numRaters = ((Double)((Map<String, Object>)b.get("rating")).get("numRaters")).intValue();
 					/* coverSrc只取url最后文件名部分，减少数据库冗余 */
 					/* url格式示例：https://img3.doubanio.com\/lpic\/s3597391.jpg */
 					String coverSrc = image.substring(image.lastIndexOf("/")+1, image.length());
-					Byte score = null;
-					Book newbook = new Book(isbn, title, author, publisher, translator, coverSrc, score);
+					Book newbook = new Book(isbn, title, author, publisher, translator, coverSrc, score, numRaters);
 					bookDao.save(newbook);
 				} catch (Exception e) {
 					e.printStackTrace();
