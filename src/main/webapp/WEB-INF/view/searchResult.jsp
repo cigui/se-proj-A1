@@ -6,7 +6,10 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <!-- Header -->
 <%@ include file="layouts/header.jsp"%>
-
+<script
+	src="https://cdn.bootcss.com/datatables/1.10.15/js/jquery.dataTables.min.js"></script>
+<script
+	src="https://cdn.bootcss.com/datatables/1.10.15/js/dataTables.bootstrap.js"></script>
 
 <%
 	ArrayList<Book> books = new ArrayList<Book>();
@@ -52,6 +55,11 @@
 	</div>
 </div>
 
+<script>
+$('#dataTables').DataTable({
+	responsive : true
+});
+</script>
 
 <!-- Footer -->
 <%@ include file="layouts/footer.jsp"%>
