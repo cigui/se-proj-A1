@@ -29,6 +29,13 @@ public class BorrowHistoryDaoImpl extends HibernateDaoSupport implements BorrowH
 		return borrowHistories;
 	}
 	
+	public List<BorrowHistory> getBorrowHistoryByIdAndStatus(int id, int status) {
+		@SuppressWarnings("unchecked")
+		List<BorrowHistory> borrowHistories = (List<BorrowHistory>) getHibernateTemplate().find(
+				"from BorrowHistory as b where b.id=? and b.orderStatus=?", id, status);
+		return borrowHistories;
+	}
+	
 	public BorrowHistory getBorrowHistoryByH_id(int h_id) {
 		@SuppressWarnings("unchecked")
 		List<BorrowHistory> borrowHistories = (List<BorrowHistory>) getHibernateTemplate().find(
