@@ -12,6 +12,7 @@ public class AddBookToCartAction extends BaseAction {
 	private static final long serialVersionUID = 1L;
 	private int id;
 	private int r_id;
+	private String success;
 	private AddBookToCartService addBookToCartService;
 
 	public int getId() {
@@ -38,10 +39,25 @@ public class AddBookToCartAction extends BaseAction {
 		this.addBookToCartService = addBookToCartService;
 	}
 
+	public String getSuccess() {
+		return success;
+	}
+
+	public void setSuccess(String success) {
+		this.success = success;
+	}
+
 	public String execute() throws Exception {
 		BorrowItem borrowItem = new BorrowItem(id, r_id);
-		addBookToCartService.save(borrowItem);
+		if(addBookToCartService.AddBookToCart(borrowItem)){
+			addBookToCartService.save(borrowItem);
+			setSuccess("good");
+		}
+		else{
+			setSuccess("error");
+		}
 		return SUCCESS;
+		
 	}
 		
 	

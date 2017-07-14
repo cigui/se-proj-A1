@@ -38,6 +38,10 @@ public class BookCommentServiceImpl implements BookCommentService {
 	 
 	 public void SendBookComment(int id,long isbn,String discription,byte score){
 		 BookComment bookComment = new BookComment(id,isbn,discription,score);
+		 List<BookComment> bookCommentsExist = bookCommentDao.getBookCommentById(id);
+		 for (BookComment item : bookCommentsExist){
+			 
+		 }
 		 bookCommentDao.save(bookComment);
 		 
 	 }
