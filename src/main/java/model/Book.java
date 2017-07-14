@@ -8,7 +8,7 @@ public class Book {
 	private String publisher;
 	private String translator;
 	private String coverSrc;
-	private Byte score;
+	private Double score;
 	
 
 	@Override
@@ -35,7 +35,7 @@ public class Book {
 		
 	}
 	
-	public Book(long isbn,String title,String author,String publisher,String translator,String coverSrc, Byte score){
+	public Book(long isbn,String title,String author,String publisher,String translator,String coverSrc, Double score){
 		this.isbn = isbn;
 		this.title = title;
 		this.author = author;
@@ -95,11 +95,11 @@ public class Book {
 		this.coverSrc = coverSrc;
 	}
 
-	public Byte getScore() {
+	public Double getScore() {
 		return score;
 	}
 
-	public void setScore(Byte score) {
+	public void setScore(Double score) {
 		this.score = score;
 	}
 

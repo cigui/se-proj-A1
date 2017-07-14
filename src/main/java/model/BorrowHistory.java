@@ -9,6 +9,7 @@ public class BorrowHistory {
 	private Integer id;
 	private int h_id;
 	private Integer r_id;
+	private Byte score;
 	
 	public BorrowHistory(){
 		
@@ -70,6 +71,14 @@ public class BorrowHistory {
 
 	public void setR_id(Integer r_id) {
 		this.r_id = r_id;
+	}
+
+	public Byte getScore() {
+		return score;
+	}
+
+	public void setScore(Byte score) {
+		this.score = score;
 	}
 
 }

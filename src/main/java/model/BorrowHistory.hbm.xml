@@ -14,5 +14,6 @@
     	<property name="date"/> 
     	<property name="location"/> 
     	<property name="orderStatus"/> 
+    	<property name="score" type="java.lang.Byte"/> 
 	</class>
 </hibernate-mapping>
