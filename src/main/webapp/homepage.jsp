@@ -46,18 +46,10 @@
 				<button class="btn btn-sm btn-primary btn-block" type="submit">Search</button>
 			</form>
 			<s:if test="#session.logined">
-<<<<<<< HEAD
-				<span>Hi, <s:property value='#session.userName' />!</span>
-				<a href="GetBeforeUpdateUserInformation" class="btn btn-default btn-sm"
-					role="button">个人信息</a>
-				<a href="logout" class="btn btn-default btn-sm"
-					role="button">登出</a>
-=======
-				<span>Hi, <s:property value='#session.userName' />!
+			<span>Hi, <s:property value='#session.userName' />!
 				</span>
-				<a href="profile" class="btn btn-default btn-sm" role="button">个人信息</a>
+				<a href="GetBeforeUpdateUserInformation" class="btn btn-default btn-sm" role="button">个人信息</a>
 				<a href="logout" class="btn btn-default btn-sm" role="button">登出</a>
->>>>>>> 03f7a833cb565f8f6cca655bf7af104c6f2349fa
 			</s:if>
 			<s:else>
 				<button class="btn btn-default btn-sm" data-toggle="modal"
@@ -68,6 +60,7 @@
 			</s:else>
 		</div>
 	</div>
+
 
 	<!-- Modal for login -->
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"

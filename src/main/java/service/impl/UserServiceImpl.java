@@ -7,6 +7,7 @@ import dao.BookReleaseDao;
 import dao.UserDao;
 import model.BookRelease;
 import model.User;
+import model.Picture;
 import service.UserService;
 
 public class UserServiceImpl implements UserService {
@@ -46,6 +47,10 @@ public class UserServiceImpl implements UserService {
 		return userDao.getUserById(id);
 	}
 
+    public Picture getPictureById(int id){
+    	return userDao.getPictureById(id);
+    }
+	
 	public User getUserByEmail(String email) {
 		return userDao.getUserByEmail(email);
 	}
@@ -110,12 +115,12 @@ public class UserServiceImpl implements UserService {
 		}
 	}
 
-<<<<<<< HEAD
 
-	public void checkBookRelease(BookRelease bookRelease, int status) {
-=======
+
+
+
 	public void checkBookRelease(BookRelease bookRelease, short status) {
->>>>>>> 03f7a833cb565f8f6cca655bf7af104c6f2349fa
+
 		if (status == 1) {
 			bookRelease.setStatus((short) 1);
 			bookReleaseDao.update(bookRelease);

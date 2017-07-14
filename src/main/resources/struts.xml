@@ -63,8 +63,8 @@
 			<result name="success">book.jsp</result>
 		</action>
 		
-		
-		<action name="updateUserInformation" class="action.userActions.updateUserInformationAction">
+    <!-- Update User Information -->
+		<action name="updateUserInformation" class="action.userActions.UpdateUserInformationAction">
 			<result name="success" type="redirect">index.jsp</result>
 			<result name="error">error.jsp</result>
 		</action>
@@ -73,6 +73,14 @@
 			<result name="success" >updateUserInformation.jsp</result>
 			<result name="error">error.jsp</result>
 		</action>
+		
+		<action name="GetAvatar" class="action.userActions.GetPictureAction">
+		<result type="stream">
+			<param name="contentType">contentType</param>
+			<param name="inputName">inputStream</param>
+			<param name="bufferSize">4096</param>
+		</result>
+	</action>
 		
 		<!-- <action name="*">
 			<result>/{1}.jsp</result>

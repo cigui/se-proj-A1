@@ -66,9 +66,11 @@ $(function() {
 	
     $(":radio[name='gender'][value='" + pregender + "']").prop("checked", "checked");
     
-    $("#province  option[value='" + preprovince + "'] ").attr("selected",true)
-    $("#city  option[value='precity'] ").attr("selected",true)
-    $("#district  option[value='predistrict'] ").attr("selected",true)
+    
+    
+    $("#district  option[value='" + predistrict + "'] ").attr("selected",true);
+    $("#city  option[value='" + precity + "'] ").attr("selected",true);
+    $("#province  option[value='" + preprovince + "'] ").attr("selected",true);
     
     
 	$.getJSON("getDistricts", {

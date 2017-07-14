@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="model.User" %>
 <%@ page import="model.District" %>
+<%@ page import="model.Picture" %>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -61,11 +62,13 @@
 		     <% District province = new District();
 			   if (request.getAttribute("province") != null) {
 		       province = (District) request.getAttribute("province");}%>	
+		      
 		       <script>var prepassword="<%=user.getPassword()%>"
 			           var pregender="<%=user.getGender()%>"
 				       var predistrict="<%=district.getName()%>"
 				       var precity="<%=city.getName()%>"  
 				       var preprovince="<%=province.getName()%>"
+					   var id=<%=user.getId()%>
 			   </script>	
 			  
 					<div class="form-group">
@@ -133,7 +136,7 @@
 						
 						<div class="col-md-6">
 							<div class="form-group" style="text-align: center">
-								<img id="preview" src="<%=path%>/images/picture-1.jpg" 
+								<img id="preview" src="GetAvatar?id" 
 								 style="width:256px; height:256px; max-width:256px; max-height:256px"/>
 							</div>
 							<div class="form-group" style="text-align: center">
