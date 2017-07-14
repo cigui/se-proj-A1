@@ -56,6 +56,12 @@
 		userList = (Map<Integer,User>) request.getAttribute("users");
 			}
 	%>
+	<%
+		Map<Integer,User> userCommentList = new HashMap<Integer,User>();
+			if (request.getAttribute("userComments") != null) {
+		userCommentList = (Map<Integer,User>) request.getAttribute("userComments");
+			}
+	%>
 	<div
 		class="yx-nav navbar navbar-default navbar-left navbar-static-top yx-nav style="
 		width:100%; margin-bottom:0""
@@ -195,7 +201,7 @@
 						</thead>
 						<tbody>
 						    <%
-											for (int i = 0; i < bookReleaseList.size(); i++) {
+											for (int i = 0; (i < 4) && i < bookReleaseList.size(); i++) {
 																				BookRelease bookRelease = bookReleaseList.get(i);
 																				int id = bookRelease.getId();
 																				User user = userList.get(id);
@@ -204,8 +210,9 @@
 								<td><%=user.getNickname()%></td>
 								<td><%=user.getCredit()%></td>
 								<td><%=bookRelease.getPrice()%></td>
-								<td><button class="btn btn-default btn-sm" data-toggle="modal"
-								data-target="#">去看看</button></td>
+								<p> </p>
+								<td><a href='releaseDetail?r_id=<%=bookRelease.getR_id()%>'>
+								    <button class="btn btn-default btn-sm" data-toggle="modal" data-target="#">去看看</button></td>
 								</tr>
 										<%
 											}
@@ -227,15 +234,34 @@
 								data-target="#myComment">我也想评</button>
 						</div>
 					</div>
-					<div class="cover">
-						<p></p>
-					</div>
-					<div class="cover">
-						<p></p>
-					</div>
-					<div class="cover">
-						<p></p>
-					</div>
+					<div class="dataTable_wrapper">
+								<table class="table table-striped table-bordered table-hover"
+									id="dataTables">
+						<thead>
+								<tr>
+						<th>评论人</th>
+						<th>TA的评论</th>
+						<th>TA的评分</th>
+						</tr>
+						</thead>
+						<tbody>
+						    <%
+											for (int i = 0; (i < 4) && i < bookCommentList.size(); i++) {
+																				BookComment bookComment = bookCommentList.get(i);
+																				int id = bookComment.getId();
+																				User userComment = userCommentList.get(id);
+										%>
+							<tr>
+								<td><%=userComment.getNickname()%></td>
+								<td><%=bookComment.getDiscription()%></td>
+								<td><%=bookComment.getScore()%></td>
+								</tr>
+										<%
+											}
+										%>
+									</tbody>
+								</table>
+							</div>
 				</div>
 			</div>
 		</div>

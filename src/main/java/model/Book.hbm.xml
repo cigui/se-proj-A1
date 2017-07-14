@@ -13,8 +13,7 @@
     	<property name="publisher"/> 
     	<property name="translator"/> 
     	<property name="coverSrc"/> 
-    	<property name="score" type = "java.lang.Byte"/>
-    	
-    	
+    	<property name="score" type = "java.lang.Double"/>
+    	<property name="numRaters"/> 
 	</class>
 </hibernate-mapping>
