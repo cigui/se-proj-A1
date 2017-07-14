@@ -60,6 +60,8 @@ public class BookServiceImpl implements BookService{
 	}
 
 	public List<Book> SearchBook(String keyword) {
+		
+		/* 使用Set进行查询结果去重，注意在Book里应该重载equals和hashCode方法 */
 		Set<Book> resultSet = new HashSet<Book>();
 		List<Book> resultList = new ArrayList<Book>();
 		try{
