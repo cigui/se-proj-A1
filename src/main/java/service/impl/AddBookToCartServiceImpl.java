@@ -18,7 +18,7 @@ public class AddBookToCartServiceImpl implements AddBookToCartService{
 		this.borrowItemDao = borrowItemDao;
 	}
 
-	public Integer save(BorrowItem borrowItem) {
+	public BorrowItem save(BorrowItem borrowItem) {
 		return borrowItemDao.save(borrowItem);
 	}
 
@@ -46,11 +46,10 @@ public class AddBookToCartServiceImpl implements AddBookToCartService{
 
 		int size = userList.size();
 		for(int i = 0; i < size; i++){
-			if(borrowItem == userList.get(i)){
+			if((borrowItem.getId() == userList.get(i).getId()) &&(borrowItem.getR_id() == userList.get(i).getR_id())){
 				return false;
 			}
 		}
-		save(borrowItem);
 		return true;
 	}
 }

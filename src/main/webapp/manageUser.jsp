@@ -29,6 +29,7 @@
 <script>
 	var admin = "<s:property value='#session.role'/>";
 	var path = "<%=path%>";
+	var users = "<%=request.getAttribute("users")%>";
 	$(document).ready(function() {
 		/*if (admin != 2) {
 			bootbox.alert("滚吧王八羔子", function() {
@@ -45,7 +46,7 @@
 	<%
 		ArrayList<User> userList = new ArrayList<User>();
 			if (request.getAttribute("users") != null) {
-		userList = (ArrayList<User>) request.getAttribute("users");
+				userList = (ArrayList<User>) request.getAttribute("users");
 			}
 	%>
 	<div
@@ -68,45 +69,45 @@
 				</ul>
 			</div>
 			<div class="covers col-md-10">
-							<div class="dataTable_wrapper">
-								<table class="table table-striped table-bordered table-hover"
-									id="dataTables">
-									<thead>
-										<tr>
-										    <th>ID</th>
-											<th>Nickname</th>
-											<th>Role</th>
-											<th>Credit</th>
-											<th></th>
-										</tr>
-									</thead>
-									<tbody>
-										<%
-											for (int i = 0; i < userList.size(); i++) {
-																				User user = userList.get(i);
-										%>
-										<tr>
-										    <td><%=user.getId()%></td>
-											<td><%=user.getNickname()%></td>
-											<td><%=user.getRole()%></td>
-											<td><%=user.getCredit()%></td>
-											<td>
-												<button class="btn btn-default ban" type="button"
-													data-id="<%=user.getId()%>">
-													<i class="fa fa-ban"></i>
-												</button>
-												<button class="btn btn-default unban" type="button"
-													data-id="<%=user.getId()%>">
-													<i class="fa fa-check"></i>
-												</button>
-											</td>
-										</tr>
-										<%
-											}
-										%>
-									</tbody>
-								</table>
-							</div>
+				<div class="dataTable_wrapper">
+					<table class="table table-striped table-bordered table-hover"
+						id="dataTables">
+						<thead>
+							<tr>
+							    <th>ID</th>
+								<th>Nickname</th>
+								<th>Role</th>
+								<th>Credit</th>
+								<th><a href="listUsers"><i class="fa fa-refresh"></i></a></th>
+							</tr>
+						</thead>
+						<tbody>
+							<%
+								for (int i = 0; i < userList.size(); i++) {
+																	User user = userList.get(i);
+							%>
+							<tr>
+							    <td><%=user.getId()%></td>
+								<td><%=user.getNickname()%></td>
+								<td><%=user.getRole()%></td>
+								<td><%=user.getCredit()%></td>
+								<td>
+									<button class="btn btn-default ban" type="button"
+										data-id="<%=user.getId()%>">
+										<i class="fa fa-ban"></i>
+									</button>
+									<button class="btn btn-default unban" type="button"
+										data-id="<%=user.getId()%>">
+										<i class="fa fa-check"></i>
+									</button>
+								</td>
+							</tr>
+							<%
+								}
+							%>
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</div>
 	</div>

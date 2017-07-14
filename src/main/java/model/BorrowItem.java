@@ -1,6 +1,12 @@
 package model;
 
-public class BorrowItem {
+import java.io.Serializable;
+
+public class BorrowItem implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int id;
 	private int r_id;
 	
