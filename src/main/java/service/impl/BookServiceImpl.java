@@ -74,13 +74,26 @@ public class BookServiceImpl implements BookService{
 		return bookDao.getBookByScore();
 	}
 
-	public List<Book> getBooksInCategory(int cate) {
+	public List<Book> getBooksByCategory(int cate) {
 		List<Long> isbns = bookCateRelationshipDao.getBooksIsbnByCate_id(cate);
 		List<Book> books = new ArrayList<Book>();
 		for (int i = 0; i < isbns.size(); i++) {
 			books.add(bookDao.getBookByIsbn(isbns.get(i)));
 		}
 		return books;
+	}
+
+	public List<Book> getBooksByCategoryLimits(int cate, int start, int length) {
+		List<Long> isbns = bookCateRelationshipDao.getBooksIsbnByCate_idLimits(cate, start, length);
+		List<Book> books = new ArrayList<Book>();
+		for (int i = 0; i < isbns.size(); i++) {
+			books.add(bookDao.getBookByIsbn(isbns.get(i)));
+		}
+		return books;
+	}
+
+	public int countBooksInCategory(int cate) {
+		return bookCateRelationshipDao.countBooksInCate(cate);
 	}
 
 }

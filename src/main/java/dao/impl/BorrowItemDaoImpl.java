@@ -10,8 +10,8 @@ import model.BorrowItem;
 @SuppressWarnings("deprecation")
 public class BorrowItemDaoImpl extends HibernateDaoSupport implements BorrowItemDao {
 
-	public Integer save(BorrowItem borrowItem) {
-		return (Integer) getHibernateTemplate().save(borrowItem);
+	public BorrowItem save(BorrowItem borrowItem) {
+		return (BorrowItem) getHibernateTemplate().save(borrowItem);
 	}
 
 	public void delete(BorrowItem borrowItem) {

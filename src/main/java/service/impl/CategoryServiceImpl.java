@@ -34,4 +34,8 @@ public class CategoryServiceImpl implements CategoryService {
 		return categoryDao.getAllCategories();
 	}
 
+	public Category getCategoryById(int id) {
+		return categoryDao.getCategoryByCate_id(id);
+	}
+
 }

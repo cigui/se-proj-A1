@@ -26,6 +26,11 @@
 			<result name="success" type="redirect">welcome.jsp</result>
 			<result name="error">error.jsp</result>
 		</action>
+		<action name="checkEmail" class="action.userActions.CheckEmailAction">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
 		
 		<!-- Get Districts -->
 		<action name="getDistricts" class="action.userActions.GetDistrictsAction">
@@ -69,8 +74,13 @@
 			<result name="success">releaseDetail.jsp</result>
 		</action>
 		
-		<action name="booksInCategory" class="action.BooksInCategoryAction">
-			<result name="success">booksincategory.jsp</result>
+		<action name="booksInCategory" class="action.bookAction.BooksInCategoryAction">
+			<result name="success">/WEB-INF/view/booksincategory.jsp</result>
+		</action>
+		<action name="getPagedBooks*" class="action.bookAction.GetPagedBooksAction" method="{1}">
+			<result name="success" type="json">
+				<param name="root">resultMap</param>
+			</result>
 		</action>
 		
 	<!-- Release Picture  -->
@@ -81,10 +91,19 @@
 			<param name="bufferSize">4096</param>
 		</result>
 	    </action>
+	    
+	<!-- Add Book To Cart -->
+	    <action name="addBookToCart" class="action.bookAction.AddBookToCartAction">
+			<result name="success" type = "json">
+			    <param name="root">success</param>
+			</result>
+			</action> 
+
 	    <!-- Borrow History  -->
 	    <action name="history" class="action.orderAction.ListHistoryOrderAction">
 			<result name="success">borrowHistory.jsp</result>
 		</action>
+
 		
 		<!-- <action name="*">
 			<result>/{1}.jsp</result>

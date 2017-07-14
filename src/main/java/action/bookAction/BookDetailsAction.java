@@ -84,10 +84,17 @@ public class BookDetailsAction extends BaseAction {
 			users.put(id, newUser);
 		}
 		List<BookComment>bookComments = bookCommentService.getBookCommentByISBN(isbn);
+		Map<Integer, User> userComments = new HashMap<Integer,User>();
+		for (BookComment item : bookComments) {
+			int id = item.getId();
+			User newUserComment = userService.getUserById(id);
+			userComments.put(id, newUserComment);
+		}
 		request().setAttribute("book", book);
 		request().setAttribute("bookReleases", bookReleases);
 		request().setAttribute("bookComments", bookComments);
 		request().setAttribute("users", users);
+		request().setAttribute("userComments", userComments);
 		return SUCCESS;
 	}
 
