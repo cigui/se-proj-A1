@@ -24,6 +24,7 @@
 <link href="<%=path%>/css/login_style.css" rel="stylesheet">
 <link href="<%=path%>/css/yxdefault.css" rel="stylesheet">
 <link href="<%=path%>/css/index.css" rel="stylesheet">
+<link href="<%=path%>/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	<div

@@ -9,12 +9,12 @@ import service.BorrowHistoryService;
 public class BorrowHistoryServiceImpl implements BorrowHistoryService {
 
 	private BorrowHistoryDao borrowHistoryDao;
-
-	public BorrowHistoryDao getBorrowHistoryDao() {
-		return borrowHistoryDao;
+	
+	public BorrowHistoryServiceImpl(){
+		
 	}
-
-	public void setBorrowHistoryDao(BorrowHistoryDao borrowHistoryDao) {
+	
+	public BorrowHistoryServiceImpl(BorrowHistoryDao borrowHistoryDao){
 		this.borrowHistoryDao = borrowHistoryDao;
 	}
 	
