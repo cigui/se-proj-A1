@@ -9,6 +9,27 @@ public class Book {
 	private String translator;
 	private String coverSrc;
 	private Byte score;
+	
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o){
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;	
+		}
+		if (isbn != ((Book)o).isbn){
+			return false;
+		}
+		return true;
+	}
+
+	@Override
+	public int hashCode() {
+		int result = ((Long)isbn).hashCode();
+		return result;
+	}
 
 	public Book(){
 		

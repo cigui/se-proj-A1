@@ -74,6 +74,7 @@
 			<result name="success">releaseDetail.jsp</result>
 		</action>
 		
+		<!-- Books in category -->
 		<action name="booksInCategory" class="action.bookAction.BooksInCategoryAction">
 			<result name="success">/WEB-INF/view/booksincategory.jsp</result>
 		</action>
@@ -81,6 +82,10 @@
 			<result name="success" type="json">
 				<param name="root">resultMap</param>
 			</result>
+		</action>
+		
+		<action name="searchBook" class="action.bookAction.SearchBookAction">
+			<result name="success">/WEB-INF/view/searchResult.jsp</result>
 		</action>
 		
 	<!-- Release Picture  -->
