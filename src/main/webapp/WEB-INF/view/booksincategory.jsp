@@ -90,29 +90,6 @@
             paging: true,// 分页
             ordering: false,// 是否启用排序
             searching: false,// dataTables搜索
-            language: {
-                lengthMenu: '每页 <select class="form-control input-xsmall">' + 
-                '<option value="5">5</option>' + 
-                '<option value="10">10</option>' + 
-                '<option value="20">20</option>' + 
-                '<option value="30">30</option>' + 
-                '<option value="40">40</option>' + 
-                '<option value="50">50</option>' + 
-                '</select>条记录',// 分页大小显示。
-                
-                paginate: {//分页的样式内容。
-                    previous: "上一页",
-                    next: "下一页",
-                    first: "第一页",
-                    last: "最后"
-                },
-
-                zeroRecords: "没有内容",//table tbody内容为空时，tbody的内容。
-                //下面三者构成了总体的左下角的内容。
-                info: "总共 _PAGES_ 页，显示第 _START_ 到第 _END_ 条 ，共 _MAX_ 条 ",// 左下角的信息显示，大写的词为关键字。
-                infoEmpty: "0条记录",// 为空时左下角的显示。
-                infoFiltered: ""
-            },
             ajax : {
             	 type: "post", // 默认get，但据说datatable默认构造的参数很长，有可能超过get的最大长度。
                  url: "<%=path%>/getPagedBooksbyCategory",
