@@ -8,11 +8,11 @@
 	<constant name="struts.devMode" value="true" />
 	<package name="process" extends="json-default">
 		<default-action-ref name="index"></default-action-ref>
-		
+
 		<action name="index" class="action.IndexAction">
 			<result name="success">/homepage.jsp</result>
 		</action>
-		
+
 		<!-- Login, Logout & Register -->
 		<action name="login" class="action.userActions.LoginAction">
 			<result name="success" type="redirect">index</result>
@@ -31,88 +31,90 @@
 				<param name="root">result</param>
 			</result>
 		</action>
-		
+
 		<!-- Get Districts -->
 		<action name="getDistricts" class="action.userActions.GetDistrictsAction">
 			<result type="json">
 				<param name="root">districts</param>
 			</result>
 		</action>
-		
+
 
 		<action name="getBook" class="action.bookAction.GetBookAction">
 			<result type="json">
 				<param name="root">result</param>
 			</result>
 		</action>
-		
+
 		<action name="releaseBook" class="action.bookAction.ReleaseBookAction">
 			<result name="success">/WEB-INF/view/releasesuccess.jsp</result>
 		</action>
-    	<!-- Manage user -->
+		<!-- Manage user -->
 		<action name="listUsers" class="action.userActions.AllUsersAction">
 			<result name="success">manageUser.jsp</result>
 		</action>
 		<action name="manageUser" class="action.userActions.ManageUserAction">
 			<result name="success">manageUser.jsp</result>
 		</action>
-		
-    	<!-- Manage bookRelease -->
+
+		<!-- Manage bookRelease -->
 		<action name="listBookReleases" class="action.bookAction.GetBookReleaseByStatusAction">
 			<result name="success">/WEB-INF/view/manageBook.jsp</result>
 		</action>
 		<action name="manageBook" class="action.bookAction.CheckBookAction">
 			<result name="success">/WEB-INF/view/manageBook.jsp</result>
 		</action>
-    	<!-- Book Detail -->
+		<!-- Book Detail -->
 		<action name="bookdetails" class="action.bookAction.BookDetailsAction">
 			<result name="success">book.jsp</result>
 		</action>
-	
-	<!-- Release Detail -->
+
+		<!-- Release Detail -->
 		<action name="releaseDetail" class="action.bookAction.ReleaseDetailAction">
 			<result name="success">releaseDetail.jsp</result>
 		</action>
-		
+
 		<!-- Books in category -->
 		<action name="booksInCategory" class="action.bookAction.BooksInCategoryAction">
 			<result name="success">/WEB-INF/view/booksincategory.jsp</result>
 		</action>
-		<action name="getPagedBooks*" class="action.bookAction.GetPagedBooksAction" method="{1}">
+		<action name="getPagedBooks*" class="action.bookAction.GetPagedBooksAction"
+			method="{1}">
 			<result name="success" type="json">
 				<param name="root">resultMap</param>
 			</result>
 		</action>
-		
+
 		<action name="searchBook" class="action.bookAction.SearchBookAction">
 			<result name="success">/WEB-INF/view/searchResult.jsp</result>
 		</action>
-		
-	<!-- Release Picture  -->
-	    <action name="releasePicture" class="action.bookAction.ReleasePictureAction">
-		<result type="stream">
-			<param name="contentType">contentType</param>
-			<param name="inputStream">inputStream</param>
-			<param name="bufferSize">4096</param>
-		</result>
-	    </action>
-	    
-	<!-- Add Book To Cart -->
-	    <action name="addBookToCart" class="action.bookAction.AddBookToCartAction">
-			<result name="success" type = "json">
-			    <param name="root">success</param>
-			</result>
-			</action> 
+		<action name="*Recommended" class="action.bookAction.GetRecommendedAction" method="{1}">
+			<result name="success">/WEB-INF/view/recommendedBooks.jsp</result>
+		</action>
 
-	    <!-- Borrow History  -->
-	    <action name="history" class="action.orderAction.ListHistoryOrderAction">
+		<!-- Release Picture -->
+		<action name="releasePicture" class="action.bookAction.ReleasePictureAction">
+			<result type="stream">
+				<param name="contentType">contentType</param>
+				<param name="inputStream">inputStream</param>
+				<param name="bufferSize">4096</param>
+			</result>
+		</action>
+
+		<!-- Add Book To Cart -->
+		<action name="addBookToCart" class="action.bookAction.AddBookToCartAction">
+			<result name="success" type="json">
+				<param name="root">success</param>
+			</result>
+		</action>
+
+		<!-- Borrow History -->
+		<action name="history" class="action.orderAction.ListHistoryOrderAction">
 			<result name="success">borrowHistory.jsp</result>
 		</action>
 
-		
-		<!-- <action name="*">
-			<result>/{1}.jsp</result>
-		</action> -->
-		
+
+		<!-- <action name="*"> <result>/{1}.jsp</result> </action> -->
+
 	</package>
 </struts>
