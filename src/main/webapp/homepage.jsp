@@ -43,7 +43,7 @@
 				</div>
 				<div class="col-xs-1 col-md-1">
 					<span><a class="btn btn-default btn-sm"
-						href="<%=path%>/moreRecommended">更多</a></span>
+						href="<%=path%>/recommended">更多</a></span>
 				</div>
 			</div>
 			<div class="row">

@@ -15,8 +15,7 @@ public class GetRecommendedAction extends BaseAction{
 	private static final long serialVersionUID = 1L;
 	private BookService bookService;
 	private CategoryService categoryService;
-	private int cur;
-	private int limit;
+	private int page;
 	public BookService getBookService() {
 		return bookService;
 	}
@@ -30,26 +29,20 @@ public class GetRecommendedAction extends BaseAction{
 	public void setCategoryService(CategoryService categoryService) {
 		this.categoryService = categoryService;
 	}
-	public int getCur() {
-		return cur;
-	}
-	public void setCur(int cur) {
-		this.cur = cur;
-	}
-	public int getLimit() {
-		return limit;
-	}
-	public void setLimit(int limit) {
-		this.limit = limit;
-	}
 	
-	
-	public String more() {
-		List<Book> result = bookService.getBookByScore();
+	public int getPage() {
+		return page;
+	}
+	public void setPage(int page) {
+		this.page = page;
+	}
+	public String execute() {
+		List<Book> result = bookService.getRecommendedBooks(page);
 		List<Category> categories = categoryService.getAllCategories();
 		request().setAttribute("categories", categories);
 		request().setAttribute("books", result);
-		request().setAttribute("cur", 0);
+		request().setAttribute("cur", page);
+		request().setAttribute("maxPage", bookService.getMaxPage());
 		return SUCCESS;
 	}
 }

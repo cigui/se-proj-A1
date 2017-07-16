@@ -48,7 +48,6 @@
 				<value>model/BorrowItem.hbm.xml</value>
 <!--
 				<value>model/BorrowComment.hbm.xml</value>
-				
 -->
 				<value>model/Category.hbm.xml</value>
 				<value>model/District.hbm.xml</value>
@@ -115,6 +114,7 @@
 	<bean id="bookService" class="service.impl.BookServiceImpl">
 		<property name="bookDao" ref="bookDao"></property>
 		<property name="bookCateRelationshipDao" ref="bookCateRelationshipDao"></property>
+		<property name="itemsPerPage" value="12"></property>
 	</bean>
 	<bean id="adminService" class="service.impl.AdminServiceImpl">
 		<property name="bookReleaseDao" ref="bookReleaseDao"></property>

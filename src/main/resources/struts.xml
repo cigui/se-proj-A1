@@ -88,7 +88,7 @@
 		<action name="searchBook" class="action.bookAction.SearchBookAction">
 			<result name="success">/WEB-INF/view/searchResult.jsp</result>
 		</action>
-		<action name="*Recommended" class="action.bookAction.GetRecommendedAction" method="{1}">
+		<action name="recommended" class="action.bookAction.GetRecommendedAction">
 			<result name="success">/WEB-INF/view/recommendedBooks.jsp</result>
 		</action>
 

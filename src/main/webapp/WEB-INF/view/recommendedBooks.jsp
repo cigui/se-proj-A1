@@ -11,6 +11,7 @@
 	ArrayList<Book> books = new ArrayList<Book>();
 	ArrayList<Category> categories = new ArrayList<Category>();
 	int currentPage = 0;
+	int maxPage = 0;
 	if (request.getAttribute("books") != null) {
 		books = (ArrayList<Book>) request.getAttribute("books");
 	}
@@ -19,6 +20,9 @@
 	}
 	if (request.getAttribute("cur") != null) {
 		currentPage = (Integer) request.getAttribute("cur");
+	}
+	if (request.getAttribute("maxPage") != null) {
+		maxPage = (Integer) request.getAttribute("maxPage");
 	}
 %>
 
@@ -57,9 +61,17 @@
 			</div>
 			<div class="row">
 				<ul class="pager">
+					<% if (currentPage == 0) { %>
+					<li><span>Previous</span]></li>
+					<% } else { %>
 					<li><a
-						href="previousRecommended?cur=<%=currentPage%>&limit=10">Previous</a></li>
-					<li><a href="nextRecommended?cur=<%=currentPage%>&limit=10">Next</a></li>
+						href="recommended?page=<%=currentPage - 1%>">Previous</a></li>
+					<% } %>
+					<% if (currentPage == maxPage) { %>
+					<li><span">Next</span></li>
+					<% } else { %>
+					<li><a href="recommended?page=<%=currentPage + 1%>">Next</a></li>
+					<% } %>
 				</ul>
 			</div>
 		</div>
