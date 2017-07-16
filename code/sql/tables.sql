@@ -71,6 +71,7 @@ create table Books
    translator           varchar(40),
    coverSrc             varchar(40),
    score                DOUBLE NULL,
+   numRaters            int NULL,
    primary key (isbn)
 );
 
