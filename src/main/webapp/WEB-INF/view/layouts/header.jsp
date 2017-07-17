@@ -39,7 +39,7 @@
 			<s:if test="#session.logined">
 				<span>Hi, <s:property value='#session.userName' />!
 				</span>
-				<s:if test="#session.logined">
+				<s:if test="#session.isAdmin">
 					<a href="listUsers" class="btn btn-default btn-sm" role="button">管理中心</a>
 				</s:if>
 				<a href="profile" class="btn btn-default btn-sm" role="button">个人信息</a>
