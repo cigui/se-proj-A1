@@ -11,5 +11,7 @@ public interface BorrowHistoryService {
 
 	public void update(BorrowHistory borrowHistory);
 	
+	public BorrowHistory getBorrowHistoryByH_id(int id);
+	
 	public List<BorrowHistory> getBorrowHistory(int id, int status);
 }

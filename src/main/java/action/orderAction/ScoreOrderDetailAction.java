@@ -1,12 +1,10 @@
 package action.orderAction;
 
-import java.util.List;
-
 import action.BaseAction;
 import model.BorrowHistory;
 import service.BorrowHistoryService;
 
-public class ListHistoryOrderAction extends BaseAction {
+public class ScoreOrderDetailAction extends BaseAction {
 
 	/**
 	 * Created on July 12th, 2017
@@ -14,7 +12,7 @@ public class ListHistoryOrderAction extends BaseAction {
 	 */
 	private static final long serialVersionUID = 1L;
 	private int id;
-	private int status;
+	private byte score;
 	private BorrowHistoryService borrowHistoryService;
 	
 	public int getId() {
@@ -25,14 +23,14 @@ public class ListHistoryOrderAction extends BaseAction {
 		this.id = id;
 	}
 	
-	public int getStatus() {
-		return status;
+	public byte getScore() {
+		return score;
 	}
-	
-	public void setStatus(int status) {
-		this.status = status;
+
+	public void setScore(byte score) {
+		this.score = score;
 	}
-	
+
 	public BorrowHistoryService getBorrowHistoryService() {
 		return borrowHistoryService;
 	}
@@ -43,8 +41,9 @@ public class ListHistoryOrderAction extends BaseAction {
 
 	@Override
 	public String execute() throws Exception {
-		List<BorrowHistory> historyList = borrowHistoryService.getBorrowHistory(id, status);
-		request().setAttribute("history", historyList);
+		BorrowHistory bh = borrowHistoryService.getBorrowHistoryByH_id(id);
+		bh.setScore(score);
+		borrowHistoryService.update(bh);
 		return SUCCESS;
 	}
 }

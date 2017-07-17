@@ -108,9 +108,16 @@
 			</result>
 		</action>
 
+
 		<!-- Borrow History -->
 		<action name="history" class="action.orderAction.ListHistoryOrderAction">
 			<result name="success">borrowHistory.jsp</result>
+		</action>
+    <action name="borrowDetail" class="action.orderAction.HistoryOrderDetailAction">
+			<result name="success">historyDetail.jsp</result>
+		</action>
+		<action name="score" class="action.orderAction.ScoreOrderDetailAction">
+      <result name="success">historyDetail.jsp</result>
 		</action>
 		
     <!-- User Info -->
@@ -121,7 +128,8 @@
 		<action name="GetBeforeUpdateUserInformation" class="action.userActions.GetBeforeUpdateUserInformationAction">
 			<result name="success" >updateUserInformation.jsp</result>
 			<result name="error">error.jsp</result>
-		</action>
+    </action>
+
 		
 		<!-- <action name="*">
 			<result>/{1}.jsp</result>
