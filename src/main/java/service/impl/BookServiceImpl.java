@@ -14,6 +14,8 @@ public class BookServiceImpl implements BookService{
 	
 	private BookDao bookDao;
 	private BookCateRelationshipDao bookCateRelationshipDao;
+	private int itemsPerPage;
+	private Integer maxPage = null;
 
 	public BookDao getBookDao() {
 		return bookDao;
@@ -29,6 +31,14 @@ public class BookServiceImpl implements BookService{
 
 	public void setBookCateRelationshipDao(BookCateRelationshipDao bookCateRelationshipDao) {
 		this.bookCateRelationshipDao = bookCateRelationshipDao;
+	}
+
+	public int getItemsPerPage() {
+		return itemsPerPage;
+	}
+
+	public void setItemsPerPage(int itemsPerPage) {
+		this.itemsPerPage = itemsPerPage;
 	}
 
 	public Long save(Book book) {
@@ -104,4 +114,18 @@ public class BookServiceImpl implements BookService{
 		return bookCateRelationshipDao.countBooksInCate(cate);
 	}
 
+	public List<Book> getRecommendedBooks(int page) {
+		int offset = page * itemsPerPage;
+		return bookDao.getBookByScoreLimits(offset, itemsPerPage);
+	}
+
+	public int getMaxPage() {
+		if (maxPage == null) {
+			int count = (int) bookDao.getBooksCount();
+			maxPage = count%itemsPerPage == 0 ? count/itemsPerPage : count/itemsPerPage+1;
+			/* page 从0算起 */
+			maxPage--;
+		}
+		return maxPage;
+	}
 }

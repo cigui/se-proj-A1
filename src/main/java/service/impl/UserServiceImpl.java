@@ -109,6 +109,7 @@ public class UserServiceImpl implements UserService {
 		}
 	}
 
+
 	public void checkBookRelease(BookRelease bookRelease, short status) {
 		if (status == 1) {
 			bookRelease.setStatus((short) 1);
