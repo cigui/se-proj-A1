@@ -108,7 +108,12 @@
 	    <action name="history" class="action.orderAction.ListHistoryOrderAction">
 			<result name="success">borrowHistory.jsp</result>
 		</action>
-
+		<action name="borrowDetail" class="action.orderAction.HistoryOrderDetailAction">
+			<result name="success">historyDetail.jsp</result>
+		</action>
+		<action name="score" class="action.orderAction.ScoreOrderDetailAction">
+			<result name="success">historyDetail.jsp</result>
+		</action>
 		
 		<!-- <action name="*">
 			<result>/{1}.jsp</result>

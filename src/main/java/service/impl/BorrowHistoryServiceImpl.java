@@ -9,7 +9,7 @@ import service.BorrowHistoryService;
 public class BorrowHistoryServiceImpl implements BorrowHistoryService {
 
 	private BorrowHistoryDao borrowHistoryDao;
-	
+
 	public BorrowHistoryServiceImpl(){
 		
 	}
@@ -31,8 +31,13 @@ public class BorrowHistoryServiceImpl implements BorrowHistoryService {
 		borrowHistoryDao.update(borrowHistory);
 		
 	}
+	
+	public BorrowHistory getBorrowHistoryByH_id(int id) {
+		return borrowHistoryDao.getBorrowHistoryByH_id(id);
+	}
 
 	public List<BorrowHistory> getBorrowHistory(int id, int status) {
 		return borrowHistoryDao.getBorrowHistoryByIdAndStatus(id,status);
 	}
+
 }
