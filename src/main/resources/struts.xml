@@ -31,6 +31,10 @@
 				<param name="root">result</param>
 			</result>
 		</action>
+		<action name="activate" class="action.userActions.ActivateUserAction">
+			<result name="success">activateSuccess.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
 
 		<!-- Get Districts -->
 		<action name="getDistricts" class="action.userActions.GetDistrictsAction">
