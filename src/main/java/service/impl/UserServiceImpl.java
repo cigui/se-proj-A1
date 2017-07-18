@@ -107,13 +107,15 @@ public class UserServiceImpl implements UserService {
 				+ activateUrl + "?token=" + md5Token + "&email=" + dest + "</a>";
 		EmailUtil.sendMail(dest, title, content);
 
-		/* 将用户信息存入数据库 */
+		/* 设置激活期限，限制一天内完成激活 */
 		java.util.Date date = new java.util.Date(System.currentTimeMillis());
 		Calendar calendar = new GregorianCalendar();
 		calendar.setTime(date);
 		calendar.add(Calendar.DATE, 1);// 把日期往后增加一天.整数往后推,负数往前移动
 		Date activateDue = new Date(calendar.getTime().getTime()); // 这个时间就是日期往后推一天的结果
 		user.setActivateDue(activateDue);
+		
+		/* 将用户信息存入数据库 */
 		int userId = userDao.save(user);
 		user.setId(userId);
 		return true;

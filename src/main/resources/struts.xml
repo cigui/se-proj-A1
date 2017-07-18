@@ -32,8 +32,8 @@
 			</result>
 		</action>
 		<action name="activate" class="action.userActions.ActivateUserAction">
-			<result name="success">activateSuccess.jsp</result>
-			<result name="error">error.jsp</result>
+			<result name="success">WEB-INF/view/activate/activateSuccess.jsp</result>
+			<result name="error">WEB-INF/view/error.jsp</result>
 		</action>
 
 		<!-- Get Districts -->
@@ -51,7 +51,8 @@
 		</action>
 
 		<action name="releaseBook" class="action.bookAction.ReleaseBookAction">
-			<result name="success">/WEB-INF/view/releasesuccess.jsp</result>
+			<result name="success">/WEB-INF/view/release/releasesuccess.jsp</result>
+			<result name="error">/WEB-INF/view/error.jsp</result>
 		</action>
 		<!-- Manage user -->
 		<action name="listUsers" class="action.userActions.AllUsersAction">
@@ -88,7 +89,8 @@
 				<param name="root">resultMap</param>
 			</result>
 		</action>
-
+		
+		<!-- Searching & Recommending -->
 		<action name="searchBook" class="action.bookAction.SearchBookAction">
 			<result name="success">/WEB-INF/view/searchResult.jsp</result>
 		</action>
