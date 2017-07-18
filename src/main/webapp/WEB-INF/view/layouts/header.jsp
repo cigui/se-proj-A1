@@ -24,6 +24,7 @@
 <link href="<%=path%>/css/login_style.css" rel="stylesheet">
 <link href="<%=path%>/css/yxdefault.css" rel="stylesheet">
 <link href="<%=path%>/css/index.css" rel="stylesheet">
+<link href="<%=path%>/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	<div
@@ -32,14 +33,14 @@
 		<a class="yx-brand navbar-brand" href="index" style="color: cadetblue">阅享图书交流平台</a>
 		<div class="yx-toolbar">
 			<a class="btn btn-default btn-sm" href="<%=path%>/releasebook.jsp">发布图书</a>
-			<form class="yx-search-bar">
+			<form class="yx-search-bar" action="<%=path%>/searchBook">
 				<input type="text" name="searchString" placeholder="查询图书" />
 				<button class="btn btn-sm btn-primary btn-block" type="submit">Search</button>
 			</form>
 			<s:if test="#session.logined">
 				<span>Hi, <s:property value='#session.userName' />!
 				</span>
-				<s:if test="#session.logined">
+				<s:if test="#session.isAdmin">
 					<a href="listUsers" class="btn btn-default btn-sm" role="button">管理中心</a>
 				</s:if>
 				<a href="profile" class="btn btn-default btn-sm" role="button">个人信息</a>

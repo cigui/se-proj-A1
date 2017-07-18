@@ -47,13 +47,12 @@
 				<value>model/BookCateRelationship.hbm.xml</value>
 				<value>model/BorrowItem.hbm.xml</value>
 <!--
-				<value>model/BorrowHistory.hbm.xml</value>
 				<value>model/BorrowComment.hbm.xml</value>
-				
 -->
 				<value>model/Category.hbm.xml</value>
 				<value>model/District.hbm.xml</value>
 				<value>model/User.hbm.xml</value>
+				<value>model/BorrowHistory.hbm.xml</value>
 			</list>
 		</property>
 		<!-- Hibernate SessionFactory -->
@@ -76,10 +75,6 @@
 	<bean id="borrowCommentDao" class="dao.impl.BorrowCommentDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-	<bean id="borrowHistoryDao" class="dao.impl.BorrowHistoryDaoImpl">
-		<property name="sessionFactory" ref="sessionFactory" />
-	</bean>
-	
 -->
 	<bean id="bookDao" class="dao.impl.BookDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
@@ -104,9 +99,13 @@
 	<bean id="bookCateRelationshipDao" class="dao.impl.BookCateRelationshipDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-	<bean id="borrowItemDao" class="dao.impl.BorrowItemDaoImpl">
+  <bean id="borrowHistoryDao" class="dao.impl.BorrowHistoryDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
+  <bean id="borrowItemDao" class="dao.impl.BorrowItemDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
 
 	<!-- Service -->
 	<bean id="userService" class="service.impl.UserServiceImpl">
@@ -115,6 +114,7 @@
 	<bean id="bookService" class="service.impl.BookServiceImpl">
 		<property name="bookDao" ref="bookDao"></property>
 		<property name="bookCateRelationshipDao" ref="bookCateRelationshipDao"></property>
+		<property name="itemsPerPage" value="12"></property>
 	</bean>
 	<bean id="adminService" class="service.impl.AdminServiceImpl">
 		<property name="bookReleaseDao" ref="bookReleaseDao"></property>
@@ -132,8 +132,11 @@
 	<bean id="categoryService" class="service.impl.CategoryServiceImpl">
 		<property name="categoryDao" ref="categoryDao"></property>
 	</bean>
-	<bean id="addBookToCartService" class="service.impl.AddBookToCartServiceImpl">
+  <bean id="addBookToCartService" class="service.impl.AddBookToCartServiceImpl">
 		<property name="borrowItemDao" ref="borrowItemDao"></property>
+  </bean>
+	<bean id="borrowHistoryService" class="service.impl.BorrowHistoryServiceImpl">
+		<constructor-arg name="borrowHistoryDao" ref="borrowHistoryDao"></constructor-arg>
 	</bean>
 	
 <!-- 	<bean id="appService" class="service.impl.AppServiceImpl">
@@ -165,6 +168,7 @@
 		<aop:pointcut id="bookCommentServiceBeanPointcut" expression="bean(bookCommentService)" />
 		<aop:pointcut id="categoryServiceBeanPointcut" expression="bean(categoryService)" />
 		<aop:pointcut id="addBookToCartServiceBeanPointcut" expression="bean(addBookToCartService)" />
+		<aop:pointcut id="borrowHistoryServiceBeanPointcut" expression="bean(borrowHistoryService)" />
 		<!-- <aop:advisor advice-ref="txAdvice" pointcut-ref="userServiceBeanPointcut" /> -->
 	</aop:config>
 

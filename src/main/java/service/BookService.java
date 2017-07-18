@@ -22,6 +22,14 @@ public interface BookService {
     public List<Book> SearchBook(String keyword);
     
     public List<Book> getBookByScore();
+    
+    public List<Book> getRecommendedBooks(int page);
+    
+    public int getMaxPage();
 
-    public List<Book> getBooksInCategory(int cate);
+    public List<Book> getBooksByCategory(int cate);
+    
+    public List<Book> getBooksByCategoryLimits(int cate, int start, int length);
+    
+    public int countBooksInCategory(int cate);
 }

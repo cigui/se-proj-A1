@@ -15,7 +15,11 @@ public interface BookCateRelationshipDao {
 	public List<Integer> getCategoriesIdByIsbn(long isbn);
 	
 	public List<Long> getBooksIsbnByCate_id(int cate_id);
+	
+	public List<Long> getBooksIsbnByCate_idLimits(int cate_id, int offset, int maxCount);
 
+	public int countBooksInCate(int cate_id);
+	
 	public List<BookCateRelationship> getAllBookCateRelationships();
 
 }

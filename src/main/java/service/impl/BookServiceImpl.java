@@ -1,7 +1,9 @@
 package service.impl;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import dao.BookCateRelationshipDao;
 import dao.BookDao;
@@ -12,6 +14,8 @@ public class BookServiceImpl implements BookService{
 	
 	private BookDao bookDao;
 	private BookCateRelationshipDao bookCateRelationshipDao;
+	private int itemsPerPage;
+	private Integer maxPage = null;
 
 	public BookDao getBookDao() {
 		return bookDao;
@@ -27,6 +31,14 @@ public class BookServiceImpl implements BookService{
 
 	public void setBookCateRelationshipDao(BookCateRelationshipDao bookCateRelationshipDao) {
 		this.bookCateRelationshipDao = bookCateRelationshipDao;
+	}
+
+	public int getItemsPerPage() {
+		return itemsPerPage;
+	}
+
+	public void setItemsPerPage(int itemsPerPage) {
+		this.itemsPerPage = itemsPerPage;
 	}
 
 	public Long save(Book book) {
@@ -58,6 +70,9 @@ public class BookServiceImpl implements BookService{
 	}
 
 	public List<Book> SearchBook(String keyword) {
+		
+		/* 使用Set进行查询结果去重，注意在Book里应该重载equals和hashCode方法 */
+		Set<Book> resultSet = new HashSet<Book>();
 		List<Book> resultList = new ArrayList<Book>();
 		try{
 			resultList.add(getBookByISBN(Long.parseLong(keyword)));
@@ -67,6 +82,9 @@ public class BookServiceImpl implements BookService{
 		}
 		resultList.addAll(getBookByTitle(keyword));
 		resultList.addAll(getBookByAuthor(keyword));
+		resultSet.addAll(resultList);
+		resultList.clear();
+		resultList.addAll(resultSet);
 		return resultList;
 	}
 	
@@ -74,7 +92,7 @@ public class BookServiceImpl implements BookService{
 		return bookDao.getBookByScore();
 	}
 
-	public List<Book> getBooksInCategory(int cate) {
+	public List<Book> getBooksByCategory(int cate) {
 		List<Long> isbns = bookCateRelationshipDao.getBooksIsbnByCate_id(cate);
 		List<Book> books = new ArrayList<Book>();
 		for (int i = 0; i < isbns.size(); i++) {
@@ -83,4 +101,31 @@ public class BookServiceImpl implements BookService{
 		return books;
 	}
 
+	public List<Book> getBooksByCategoryLimits(int cate, int start, int length) {
+		List<Long> isbns = bookCateRelationshipDao.getBooksIsbnByCate_idLimits(cate, start, length);
+		List<Book> books = new ArrayList<Book>();
+		for (int i = 0; i < isbns.size(); i++) {
+			books.add(bookDao.getBookByIsbn(isbns.get(i)));
+		}
+		return books;
+	}
+
+	public int countBooksInCategory(int cate) {
+		return bookCateRelationshipDao.countBooksInCate(cate);
+	}
+
+	public List<Book> getRecommendedBooks(int page) {
+		int offset = page * itemsPerPage;
+		return bookDao.getBookByScoreLimits(offset, itemsPerPage);
+	}
+
+	public int getMaxPage() {
+		if (maxPage == null) {
+			int count = (int) bookDao.getBooksCount();
+			maxPage = count%itemsPerPage == 0 ? count/itemsPerPage : count/itemsPerPage+1;
+			/* page 从0算起 */
+			maxPage--;
+		}
+		return maxPage;
+	}
 }

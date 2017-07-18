@@ -2,6 +2,7 @@ package dao.impl;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import dao.BookDao;
@@ -25,14 +26,15 @@ public class BookDaoImpl extends HibernateDaoSupport implements BookDao {
 	public List<Book> getBookByTitle(String title) {
 		@SuppressWarnings("unchecked")
 		List<Book> books = (List<Book>) getHibernateTemplate().find(
-				"from Book as t where t.title like", title);
+				"from Book as t where t.title like ?", "%"+title+"%");
 		return books;
 	}
 	
 	public List<Book> getBookByAuthor(String author) {
 		@SuppressWarnings("unchecked")
 		List<Book> books = (List<Book>) getHibernateTemplate().find(
-				"from Book as t where t.auther like", author);
+
+				"from Book as t where t.author like ?", "%"+author+"%");
 		return books;
 	}
 	
@@ -56,6 +58,21 @@ public class BookDaoImpl extends HibernateDaoSupport implements BookDao {
 		List<Book> books = (List<Book>) getHibernateTemplate()
 		    .find("from Book order by score desc");
 		return books;
+	}
+
+	public List<Book> getBookByScoreLimits(int offset, int maxCount) {
+		Query q = getSession().createQuery("from Book order by score desc");
+		q.setFirstResult(offset);
+		q.setMaxResults(maxCount);
+		@SuppressWarnings("unchecked")
+		List<Book> books = (List<Book>)q.list();
+		return books;
+	}
+
+	public long getBooksCount() {
+		Query q = getSession().createQuery("select count(*) from Book");
+		long count = (Long) q.uniqueResult();
+		return count;
 	}
 	
 }

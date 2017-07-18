@@ -74,8 +74,7 @@ public class UserServiceImpl implements UserService {
 		return false;
 	}
 
-	public boolean dupEmail(String email, User user) {
-
+	public boolean dupEmail(String email) {
 		if (getUserByEmail(email) != null) {
 			return true;
 		} else {
@@ -109,6 +108,7 @@ public class UserServiceImpl implements UserService {
 			}
 		}
 	}
+
 
 	public void checkBookRelease(BookRelease bookRelease, short status) {
 		if (status == 1) {

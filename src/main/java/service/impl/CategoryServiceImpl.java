@@ -9,6 +9,7 @@ import service.CategoryService;
 public class CategoryServiceImpl implements CategoryService {
 
 	private CategoryDao categoryDao;
+	List<Category> categories;
 	
 	public CategoryDao getCategoryDao() {
 		return categoryDao;
@@ -31,7 +32,14 @@ public class CategoryServiceImpl implements CategoryService {
 	}
 
 	public List<Category> getAllCategories() {
-		return categoryDao.getAllCategories();
+		if (categories == null) {
+			categories = categoryDao.getAllCategories();
+		}
+		return categories;
+	}
+
+	public Category getCategoryById(int id) {
+		return categoryDao.getCategoryByCate_id(id);
 	}
 
 }

@@ -1,24 +1,4 @@
 $(function() {
-	/* 检查邮箱是否重复注册 */
-	$('#email').change(function(){
-		var email = $('#email').val();
-		$.ajax({
-			url : 'checkEmail',
-			processData : true,
-			dataType : "json",
-			data : {
-				email : email
-			},
-			success : function(data) {
-				if (data.dup==true) {
-					bootbox.alert('该邮箱已被注册！');
-					$('#email').val("");
-				}
-			}
-		});
-	})
-	
-	
 	// 中文字两个字节
 	$.validator.addMethod("byteRangeLength", function(value, element, param) {
 		var length = value.length;
@@ -34,41 +14,43 @@ $(function() {
 			return true;
 		}
 	});
-	$("#registerForm").validate({
+	$("#UpdateUserInformationForm").validate({
 		rules : {
 			nickName : {
 				required : true,
 				byteRangeLength : 14
 			},
-			email : {
-				required : true,
-				email : true
-			},
-			password : {
-				required : true,
-				minlength : 6
-			},
-			confirmPassword : {
-				required : true,
-				minlength : 6,
-				equalTo : "#password"
-			},
-			province : "required",
-			city : "required",
-			district : "required"
+			
+			oldpassword : {
+					required : true,
+					minlength : 6,
+					equalTo : prepassword
+				},
+				password : {
+					required : true,
+					minlength : 6
+				},
+				confirmPassword : {
+					required : true,
+					minlength : 6,
+					equalTo : "#password"
 		},
+		province : "required",
+		city : "required",
+		district : "required"},
 		messages : {
 			nickName : {
 				required : "请输入姓名",
 				byteRangeLength : 14
 			},
-			email : {
-				required : "请输入Email地址",
-				email : "请输入正确的email地址"
+			oldpassword : {
+				
+					equalTo : "与原密码不一致"
 			},
 			password : {
 				required : "请输入密码",
 				minlength : "密码不能小于6个字 符"
+					
 			},
 			province : "请输入省份",
 			city : "请输入城市",
@@ -79,9 +61,16 @@ $(function() {
 				minlength : "确认密码不能小于6个字符",
 				equalTo : "两次输入密码不一致"
 			}
-		}
-	});
-
+		},
+		});
+	
+    $(":radio[name='gender'][value='" + pregender + "']").prop("checked", "checked");
+    
+    $("#province  option[value='" + preprovince + "'] ").attr("selected",true)
+    $("#city  option[value='precity'] ").attr("selected",true)
+    $("#district  option[value='predistrict'] ").attr("selected",true)
+    
+    
 	$.getJSON("getDistricts", {
 		parentId : 0
 	}, function(data) {

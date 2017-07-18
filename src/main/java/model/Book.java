@@ -8,13 +8,36 @@ public class Book {
 	private String publisher;
 	private String translator;
 	private String coverSrc;
-	private Byte score;
+	private Double score;
+	private int numRaters;
+	
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o){
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;	
+		}
+		if (isbn != ((Book)o).isbn){
+			return false;
+		}
+		return true;
+	}
+
+	@Override
+	public int hashCode() {
+		int result = ((Long)isbn).hashCode();
+		return result;
+	}
 
 	public Book(){
 		
 	}
 	
-	public Book(long isbn,String title,String author,String publisher,String translator,String coverSrc, Byte score){
+	public Book(long isbn, String title, String author, String publisher, String translator, String coverSrc,
+			Double score, int numRaters) {
 		this.isbn = isbn;
 		this.title = title;
 		this.author = author;
@@ -22,6 +45,7 @@ public class Book {
 		this.translator = translator;
 		this.coverSrc = coverSrc;
 		this.score = score;
+		this.numRaters = numRaters;
 	}
 
 
@@ -74,12 +98,20 @@ public class Book {
 		this.coverSrc = coverSrc;
 	}
 
-	public Byte getScore() {
+	public Double getScore() {
 		return score;
 	}
 
-	public void setScore(Byte score) {
+	public void setScore(Double score) {
 		this.score = score;
+	}
+
+	public int getNumRaters() {
+		return numRaters;
+	}
+
+	public void setNumRaters(int numRaters) {
+		this.numRaters = numRaters;
 	}
 
 	

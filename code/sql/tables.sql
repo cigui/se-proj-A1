@@ -8,8 +8,6 @@ drop table if exists BookCateRelationship;
 
 drop table if exists BookComments;
 
-drop table if exists BorrowComments;
-
 drop table if exists BorrowItems;
 
 drop table if exists BorrowHistory;
@@ -72,19 +70,9 @@ create table Books
    publisher            varchar(40) not null,
    translator           varchar(40),
    coverSrc             varchar(40),
-   score                tinyint,
+   score                DOUBLE NULL,
+   numRaters            int NULL,
    primary key (isbn)
-);
-
-/*==============================================================*/
-/* Table: BorrowComments                                        */
-/*==============================================================*/
-create table BorrowComments
-(
-   h_id                 int not null,
-   borrowComment        varchar(140),
-   score                tinyint,
-   primary key (h_id)
 );
 
 /*==============================================================*/
@@ -98,6 +86,7 @@ create table BorrowHistory
    h_id                 int not null auto_increment,
    id                   int,
    r_id                 int,
+   score                tinyint,
    primary key (h_id)
 );
 
@@ -148,6 +137,8 @@ create table Users
    credit               int not null,
    fav_category         int,
    gender               tinyint,
+   token                varchar(32),
+   activateDue          date,
    primary key (id),
    UNIQUE INDEX `email` (`email` ASC)
 );
@@ -169,9 +160,6 @@ alter table BookReleases add constraint FK_Relationship_3 foreign key (isbn)
 
 alter table BookReleases add constraint FK_Relationship_4 foreign key (id)
       references Users (id) on delete restrict on update restrict;
-
-alter table BorrowComments add constraint FK_Relationship_13 foreign key (h_id)
-      references BorrowHistory (h_id) on delete restrict on update restrict;
 
 alter table BorrowHistory add constraint FK_Relationship_10 foreign key (r_id)
       references BookReleases (r_id) on delete restrict on update restrict;
