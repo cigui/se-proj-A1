@@ -127,7 +127,7 @@
 						</div>
 						<div class="col-md-1">
 							<span><a class="btn btn-default btn-sm"
-								href="<%=path%>/Recommend">更多</a></span>
+								href="moreRelease?isbn=<%=book.getIsbn()%>">更多</a></span>
 						</div>
 						<div class="dataTable_wrapper">
 								<table class="table table-striped table-bordered table-hover"
@@ -135,7 +135,7 @@
 						<thead>
 								<tr>
 						<th>借出人</th>
-						<th>信用等级</th>
+						<th>信用积分</th>
 						<th>积分</th>
 						<th></th>
 						</tr>

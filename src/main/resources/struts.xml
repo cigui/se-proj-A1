@@ -148,6 +148,13 @@
 			<result name="error">error.jsp</result>
 		</action>
 		
+		<!-- More Release -->
+		<action name="moreRelease" class="action.bookAction.MoreReleaseAction">
+		   <result>
+		     moreRelease.jsp
+			</result>
+		</action>
+		
 		<!-- <action name="*">
 			<result>/{1}.jsp</result>
 		</action> -->
