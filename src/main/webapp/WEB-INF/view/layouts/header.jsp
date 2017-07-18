@@ -52,8 +52,8 @@
 					</button>
 					<ul class="dropdown-menu dropdown-menu-right" style="min-width: 100%;">
 						<li><a href="profile">个人信息</a></li>
-						<li><a href="personalRelease">我的发布</a></li>
-						<li><a href="history">我的借书</a></li>
+						<li><a href="history">我的历史</a></li>
+						<li><a href="#">我的借书车</a></li>
 						<li role="separator" class="divider"></li>
 						<li><a href="logout">登出</a></li>
 					</ul>
