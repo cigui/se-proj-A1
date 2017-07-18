@@ -32,7 +32,7 @@
 		style="width: 100%; margin-bottom: 0">
 		<a class="yx-brand navbar-brand" href="index" style="color: cadetblue">阅享图书交流平台</a>
 		<div class="yx-toolbar">
-			<a class="btn btn-default btn-sm" href="<%=path%>/releasebook.jsp">发布图书</a>
+			<a class="btn btn-default btn-sm" href="<%=path%>/goReleaseBook">发布图书</a>
 			<form class="yx-search-bar" action="<%=path%>/searchBook">
 				<input type="text" name="searchString" placeholder="查询图书" />
 				<button class="btn btn-sm btn-primary btn-block" type="submit">Search</button>
@@ -50,7 +50,7 @@
 				<button class="btn btn-default btn-sm" data-toggle="modal"
 					data-target="#myModal">登录</button>
 				<span> or </span>
-				<a href="<%=path%>/register.jsp" class="btn btn-default btn-sm"
+				<a href="<%=path%>/goRegister" class="btn btn-default btn-sm"
 					role="button">注册</a>
 			</s:else>
 		</div>
