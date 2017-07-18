@@ -15,7 +15,7 @@ public class BookCommentServiceImpl implements BookCommentService {
 		this.bookCommentDao = bookCommentDao;
 	 }
 	 
-	 public Integer save(BookComment bookComment){
+	 public BookComment save(BookComment bookComment){
 		 return bookCommentDao.save(bookComment);
 	 }
 	 
@@ -39,10 +39,18 @@ public class BookCommentServiceImpl implements BookCommentService {
 	 public void SendBookComment(int id,long isbn,String discription,byte score){
 		 BookComment bookComment = new BookComment(id,isbn,discription,score);
 		 List<BookComment> bookCommentsExist = bookCommentDao.getBookCommentById(id);
+		 int k = 0;
 		 for (BookComment item : bookCommentsExist){
-			 
+			if (item.getIsbn() == isbn){
+				k=1;
+			}
 		 }
-		 bookCommentDao.save(bookComment);
+		 if (k == 1){
+			 bookCommentDao.update(bookComment);
+		 }
+		 if (k == 0){
+			 bookCommentDao.save(bookComment);
+		 }
 		 
 	 }
 	 

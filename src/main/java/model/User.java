@@ -1,5 +1,7 @@
 package model;
 
+import java.sql.Date;
+
 public class User {
 	private int id;
 	private int l_id;
@@ -11,6 +13,8 @@ public class User {
 	private int credit;
 	private Integer fav_category;
 	private Byte gender;
+	private String token;
+	private Date activateDue;
 	
 	public User(){
 		
@@ -24,7 +28,8 @@ public class User {
 		this.gender = gender;
 	}
 
-	public User(int id, int l_id, String nickname, String password, String email, int role, int points, int credit, int fav_category, Byte gender){
+	public User(int id, int l_id, String nickname, String password, 
+			String email, int role, int points, int credit, int fav_category, Byte gender){
 		this.id = id;
 		this.l_id = l_id;
 		this.nickname = nickname;
@@ -116,6 +121,22 @@ public class User {
 
 	public void setGender(Byte gender) {
 		this.gender = gender;
+	}
+
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
+	}
+
+	public Date getActivateDue() {
+		return activateDue;
+	}
+
+	public void setActivateDue(Date activateDue) {
+		this.activateDue = activateDue;
 	}
 	
 }

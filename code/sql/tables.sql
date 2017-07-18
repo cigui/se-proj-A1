@@ -137,6 +137,8 @@ create table Users
    credit               int not null,
    fav_category         int,
    gender               tinyint,
+   token                varchar(32),
+   activateDue          date,
    primary key (id),
    UNIQUE INDEX `email` (`email` ASC)
 );

@@ -11,8 +11,8 @@ import model.BookComment;
 @SuppressWarnings("deprecation")
 public class BookCommentDaoImpl extends HibernateDaoSupport implements BookCommentDao {
 
-	public Integer save(BookComment bookComment) {
-		return (Integer) getHibernateTemplate().save(bookComment);
+	public BookComment save(BookComment bookComment) {
+		return (BookComment) getHibernateTemplate().save(bookComment);
 	}
 
 	public void delete(BookComment bookComment) {
