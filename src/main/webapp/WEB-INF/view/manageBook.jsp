@@ -61,8 +61,9 @@
 			<div class="col-md-2">
 				<ul class="nav nav-list">
 					<li class="yx-header nav-header">管理</li>
-					<li class=active><a href="listUsers"><i class="fa fa-user"></i>用户管理</a></li>
+					<li><a href="listUsers"><i class="fa fa-user"></i>用户管理</a></li>
 					<li class=active><a href="listBookReleases"><i class="fa fa-book"></i>图书发布管理</a></li>
+					<li><a href="listCates"><i class="fa fa-bookmark"></i>图书分类管理</a></li>
 				</ul>
 			</div>
 			<div class="covers col-md-10">
