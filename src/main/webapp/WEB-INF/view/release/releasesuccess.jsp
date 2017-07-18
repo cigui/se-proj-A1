@@ -4,9 +4,8 @@
 <%@ page import="model.Book"%>
 <%@ page import="model.Category"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
-<!DOCTYPE>
 <!-- Header -->
-<%@ include file="layouts/header.jsp"%>
+<%@ include file="../layouts/header.jsp"%>
 <!-- Body -->
 <div class="yx-container container">
 	<div class="page-header">
@@ -27,4 +26,4 @@
 	</div>
 </div>
 <!-- Footer -->
-<%@ include file="layouts/footer.jsp"%>
+<%@ include file="../layouts/footer.jsp"%>
