@@ -138,6 +138,7 @@
 	<bean id="borrowHistoryService" class="service.impl.BorrowHistoryServiceImpl">
 		<constructor-arg name="borrowHistoryDao" ref="borrowHistoryDao"></constructor-arg>
 	</bean>
+	
 <!-- 	<bean id="appService" class="service.impl.AppServiceImpl">
 		DAO
 		<property name="bookDao" ref="bookDao"></property>

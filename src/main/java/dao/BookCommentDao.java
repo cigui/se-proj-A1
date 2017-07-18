@@ -6,7 +6,7 @@ import model.BookComment;
 
 public interface BookCommentDao {
 
-	public Integer save(BookComment bookComment);
+	public BookComment save(BookComment bookComment);
 
 	public void delete(BookComment bookComment);
 

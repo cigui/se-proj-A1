@@ -1,11 +1,15 @@
 package action.bookAction;
 
 
+import java.util.Map;
+
+import org.apache.struts2.interceptor.SessionAware;
+
 import action.BaseAction;
 import model.BookComment;
 import service.BookCommentService;
 
-public class SendBookCommentAction extends BaseAction{
+public class SendBookCommentAction extends BaseAction implements SessionAware{
 
 	private static final long serialVersionUID = 1L;
 	private int id;
@@ -13,7 +17,8 @@ public class SendBookCommentAction extends BaseAction{
 	private String discription;
 	private byte score;
 	private BookComment bookComment;
-	private BookCommentService sendBookCommentService;
+	private BookCommentService bookCommentService;
+	private Map<String, Object> session;
 
 	public int getId() {
 		return id;
@@ -55,21 +60,27 @@ public class SendBookCommentAction extends BaseAction{
 		this.bookComment = bookComment;
 	}
 
-	public BookCommentService getSendBookCommentService() {
-		return sendBookCommentService;
+	public BookCommentService getBookCommentService() {
+		return bookCommentService;
 	}
 
-	public void setSendBookCommentService(BookCommentService sendBookCommentService) {
-		this.sendBookCommentService = sendBookCommentService;
+	public void setBookCommentService(BookCommentService bookCommentService) {
+		this.bookCommentService = bookCommentService;
 	}
 
 	
 	@Override
 	public String execute() throws Exception {
-		
-		sendBookCommentService.SendBookComment(id, isbn, discription, score);
+		int sessionId = (Integer) session.get("userId");
+		setId(sessionId);
+		bookCommentService.SendBookComment(id, isbn, discription, score);
 		
 		return SUCCESS;
+	}
+
+	public void setSession(Map<String, Object> arg0) {
+		this.session = arg0;
+		
 	}
 
 }
