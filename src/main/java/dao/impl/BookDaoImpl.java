@@ -33,6 +33,7 @@ public class BookDaoImpl extends HibernateDaoSupport implements BookDao {
 	public List<Book> getBookByAuthor(String author) {
 		@SuppressWarnings("unchecked")
 		List<Book> books = (List<Book>) getHibernateTemplate().find(
+
 				"from Book as t where t.author like ?", "%"+author+"%");
 		return books;
 	}

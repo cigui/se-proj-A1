@@ -10,11 +10,11 @@ public class BorrowHistoryServiceImpl implements BorrowHistoryService {
 
 	private BorrowHistoryDao borrowHistoryDao;
 
-	public BorrowHistoryDao getBorrowHistoryDao() {
-		return borrowHistoryDao;
+	public BorrowHistoryServiceImpl(){
+		
 	}
-
-	public void setBorrowHistoryDao(BorrowHistoryDao borrowHistoryDao) {
+	
+	public BorrowHistoryServiceImpl(BorrowHistoryDao borrowHistoryDao){
 		this.borrowHistoryDao = borrowHistoryDao;
 	}
 	
@@ -31,8 +31,13 @@ public class BorrowHistoryServiceImpl implements BorrowHistoryService {
 		borrowHistoryDao.update(borrowHistory);
 		
 	}
+	
+	public BorrowHistory getBorrowHistoryByH_id(int id) {
+		return borrowHistoryDao.getBorrowHistoryByH_id(id);
+	}
 
 	public List<BorrowHistory> getBorrowHistory(int id, int status) {
 		return borrowHistoryDao.getBorrowHistoryByIdAndStatus(id,status);
 	}
+
 }
