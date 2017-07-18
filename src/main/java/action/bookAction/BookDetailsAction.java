@@ -69,7 +69,14 @@ public class BookDetailsAction extends BaseAction {
 
 	public String execute() throws Exception {
 		Book book = bookService.getBookByISBN(isbn);
-		List<BookRelease> bookReleases = bookReleaseService.getBookReleaseByISBN(isbn);
+		List<BookRelease> rowBookReleases = bookReleaseService.getBookReleaseByISBN(isbn);
+		List<BookRelease> bookReleases = new ArrayList<BookRelease>();
+		for (BookRelease item : rowBookReleases) {
+			int status = item.getStatus();
+			if(status==1){
+				bookReleases.add(item);
+			}
+		}
 		Map<Integer, User> users = new HashMap<Integer,User>();
 		for (BookRelease item : bookReleases) {
 			int id = item.getId();
@@ -77,10 +84,17 @@ public class BookDetailsAction extends BaseAction {
 			users.put(id, newUser);
 		}
 		List<BookComment>bookComments = bookCommentService.getBookCommentByISBN(isbn);
+		Map<Integer, User> userComments = new HashMap<Integer,User>();
+		for (BookComment item : bookComments) {
+			int id = item.getId();
+			User newUserComment = userService.getUserById(id);
+			userComments.put(id, newUserComment);
+		}
 		request().setAttribute("book", book);
 		request().setAttribute("bookReleases", bookReleases);
 		request().setAttribute("bookComments", bookComments);
 		request().setAttribute("users", users);
+		request().setAttribute("userComments", userComments);
 		return SUCCESS;
 	}
 

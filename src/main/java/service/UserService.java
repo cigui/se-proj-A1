@@ -29,7 +29,7 @@ public interface UserService {
     
     public boolean register(User user);
    
-    public boolean dupEmail(String email,User user);
+    public boolean dupEmail(String email);
   
     public boolean uploadImage(int id, File image, String fileName, String contentType);
     

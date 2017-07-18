@@ -26,7 +26,13 @@
 			<result name="success" type="redirect">welcome.jsp</result>
 			<result name="error">error.jsp</result>
 		</action>
+		<action name="checkEmail" class="action.userActions.CheckEmailAction">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
 		
+		<!-- Get Districts -->
 		<action name="getDistricts" class="action.userActions.GetDistrictsAction">
 			<result type="json">
 				<param name="root">districts</param>
@@ -41,9 +47,9 @@
 		</action>
 		
 		<action name="releaseBook" class="action.bookAction.ReleaseBookAction">
-			<result name="success" type="redirect">releasesuccess.jsp</result>
+			<result name="success">/WEB-INF/view/releasesuccess.jsp</result>
 		</action>
-    <!-- Manage user -->
+    	<!-- Manage user -->
 		<action name="listUsers" class="action.userActions.AllUsersAction">
 			<result name="success">manageUser.jsp</result>
 		</action>
@@ -51,17 +57,58 @@
 			<result name="success">manageUser.jsp</result>
 		</action>
 		
-    <!-- Manage bookRelease -->
+    	<!-- Manage bookRelease -->
 		<action name="listBookReleases" class="action.bookAction.GetBookReleaseByStatusAction">
 			<result name="success">/WEB-INF/view/manageBook.jsp</result>
 		</action>
 		<action name="manageBook" class="action.bookAction.CheckBookAction">
 			<result name="success">/WEB-INF/view/manageBook.jsp</result>
 		</action>
-    <!-- Book Detail -->
+    	<!-- Book Detail -->
 		<action name="bookdetails" class="action.bookAction.BookDetailsAction">
 			<result name="success">book.jsp</result>
 		</action>
+	
+	<!-- Release Detail -->
+		<action name="releaseDetail" class="action.bookAction.ReleaseDetailAction">
+			<result name="success">releaseDetail.jsp</result>
+		</action>
+		
+		<!-- Books in category -->
+		<action name="booksInCategory" class="action.bookAction.BooksInCategoryAction">
+			<result name="success">/WEB-INF/view/booksincategory.jsp</result>
+		</action>
+		<action name="getPagedBooks*" class="action.bookAction.GetPagedBooksAction" method="{1}">
+			<result name="success" type="json">
+				<param name="root">resultMap</param>
+			</result>
+		</action>
+		
+		<action name="searchBook" class="action.bookAction.SearchBookAction">
+			<result name="success">/WEB-INF/view/searchResult.jsp</result>
+		</action>
+		
+	<!-- Release Picture  -->
+	    <action name="releasePicture" class="action.bookAction.ReleasePictureAction">
+		<result type="stream">
+			<param name="contentType">contentType</param>
+			<param name="inputStream">inputStream</param>
+			<param name="bufferSize">4096</param>
+		</result>
+	    </action>
+	    
+	<!-- Add Book To Cart -->
+	    <action name="addBookToCart" class="action.bookAction.AddBookToCartAction">
+			<result name="success" type = "json">
+			    <param name="root">success</param>
+			</result>
+			</action> 
+
+	    <!-- Borrow History  -->
+	    <action name="history" class="action.orderAction.ListHistoryOrderAction">
+			<result name="success">borrowHistory.jsp</result>
+		</action>
+
 		
     <!-- Update User Information -->
 		<action name="updateUserInformation" class="action.userActions.UpdateUserInformationAction">
