@@ -84,12 +84,7 @@
 								<td><%=history.getDate()%></td>
 								<td><%=history.getR_id()%></td>
 								<td>
-									<button class="btn btn-default ban" type="button">
-										<i class="fa fa-ban"></i>
-									</button>
-									<button class="btn btn-default unban" type="button">
-										<i class="fa fa-check"></i>
-									</button>
+									<a href="borrowDetail?id=<%=history.getH_id()%>">Detail</a>
 								</td>
 							</tr>
 							<%

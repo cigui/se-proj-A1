@@ -29,7 +29,8 @@
 					for (int i = 0; i < categories.size(); i++) {
 						Category cate = categories.get(i);
 				%>
-				<li><a href="booksInCategory?cate=<%=cate.getCate_id()%>"><%=cate.getName()%></a></li>
+				<li><a
+					href="<%=path%>/booksInCategory?cate=<%=cate.getCate_id()%>"><%=cate.getName()%></a></li>
 				<%
 					}
 				%>
@@ -42,7 +43,7 @@
 				</div>
 				<div class="col-xs-1 col-md-1">
 					<span><a class="btn btn-default btn-sm"
-						href="<%=path%>/Recommend">更多</a></span>
+						href="<%=path%>/recommended">更多</a></span>
 				</div>
 			</div>
 			<div class="row">
@@ -52,7 +53,8 @@
 				%>
 				<div class="col-xs-6 col-md-6">
 					<div class="cover">
-						<a href='bookdetails?isbn=<%=book.getIsbn()%>'><img
+						<a href='<%=path%>/bookdetails?isbn=<%=book.getIsbn()%>'><img
+							class="img-responsive"
 							src="https://img3.doubanio.com/lpic/<%=book.getCoverSrc()%>" /></a>
 					</div>
 				</div>
@@ -60,7 +62,6 @@
 					}
 				%>
 			</div>
-
 		</div>
 		<div class="covers col-xs-5 col-md-5">
 			<div class="row">
@@ -78,7 +79,7 @@
 				%>
 				<div class="col-xs-6 col-md-6">
 					<div class="cover">
-						<a id="link<%=i%>" href='#'><img
+						<a id="link<%=i%>" href='#'><img class="img-responsive"
 							src="https://img3.doubanio.com/lpic/<%=book.getCoverSrc()%>"
 							id="cover<%=i%>" /></a>
 					</div>

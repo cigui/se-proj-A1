@@ -128,7 +128,7 @@ public class RegisterAction extends BaseAction implements SessionAware {
 				return ERROR;
 			};
 			if (avatar != null){
-				userService.uploadImage(user.getId(),avatar, avatarFileName, avatarContentType);
+				userService.uploadImage(user.getId(),avatar, avatarContentType, avatarFileName);
 			}
 			session.put("logined", true);
 			session.put("userName", user.getNickname());

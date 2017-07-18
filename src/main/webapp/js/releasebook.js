@@ -84,6 +84,9 @@ $(function(){
 						$('#infoTranslator').text(data.translator);
 						$('#cover').attr("src",data.images.large);
 						/*console.log(data);*/
+					},
+					error : function() {
+						bootbox.alert("请求失败，请检查输入是否正确！");
 					}
 				});
 			}
