@@ -66,6 +66,15 @@
 		</property>
 	</bean>
 
+	<!-- Utils -->
+	<bean id="emailUtil" class="utils.EmailUtil">
+		<property name="host" value="smtp.163.com" />
+		<property name="userName" value="summerProj@163.com" />
+		<property name="pwd" value="seprojA1" />
+	</bean>
+
+
+
 	<!-- DAO Bean -->
 <!--
  	<bean id="bookCateRelationshipDao" class="dao.impl.BookCateRelationshipDaoImpl">
@@ -110,6 +119,7 @@
 	<!-- Service -->
 	<bean id="userService" class="service.impl.UserServiceImpl">
 		<property name="userDao" ref="userDao"></property>
+		<property name="activateUrl" value="http://localhost:8080/se-proj-A1/activate" />
 	</bean>
 	<bean id="bookService" class="service.impl.BookServiceImpl">
 		<property name="bookDao" ref="bookDao"></property>

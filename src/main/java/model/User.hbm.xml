@@ -18,5 +18,7 @@
     	<property name="credit"/> 
     	<property name="fav_category" type="java.lang.Integer"/> 
     	<property name="gender" type="java.lang.Byte"/> 
+    	<property name="token"/> 
+    	<property name="activateDue" type="java.sql.Date"/>
 	</class>
 </hibernate-mapping>
