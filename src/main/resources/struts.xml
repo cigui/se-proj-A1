@@ -135,7 +135,7 @@
 			<result name="success">historyDetail.jsp</result>
 		</action>
 		<action name="score" class="action.orderAction.ScoreOrderDetailAction">
-      		<result name="success">historyDetail.jsp</result>
+			<result name="success">historyDetail.jsp</result>
 		</action>
 		
     	<!-- User Info -->
@@ -148,6 +148,17 @@
 			<result name="error">error.jsp</result>
 		</action>
 		
+		<!-- Manage category -->
+		<action name="listCates" class="action.categoryAction.ListCategoryAction">
+			<result name="success">manageCategory.jsp</result>
+		</action>
+		<action name="updateCate" class="action.categoryAction.UpdateCategoryAction">
+			<result name="success">manageCategory.jsp</result>
+		</action>
+		<action name="addCate" class="action.categoryAction.AddCategoryAction">
+			<result name="success">manageCategory.jsp</result>
+		</action>
+
 		<!-- <action name="*">
 			<result>/{1}.jsp</result>
 		</action> -->
