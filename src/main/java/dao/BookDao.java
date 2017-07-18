@@ -21,5 +21,9 @@ public interface BookDao {
 	public List<Book> getAllBooks();
 	
 	public List<Book> getBookByScore();
+	
+	public List<Book> getBookByScoreLimits(int offset, int maxCount);
+	
+	public long getBooksCount();
 
 }

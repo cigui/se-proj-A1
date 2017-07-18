@@ -115,11 +115,15 @@ public class UserServiceImpl implements UserService {
 	}
 
 
+<<<<<<< HEAD
 
 
 
 	public void checkBookRelease(BookRelease bookRelease, short status) {
 
+=======
+	public void checkBookRelease(BookRelease bookRelease, short status) {
+>>>>>>> 5d88b679e12530feece98b53ee4a708f3b5e19e9
 		if (status == 1) {
 			bookRelease.setStatus((short) 1);
 			bookReleaseDao.update(bookRelease);
