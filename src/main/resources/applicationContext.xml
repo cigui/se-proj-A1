@@ -135,6 +135,7 @@
 	<bean id="addBookToCartService" class="service.impl.AddBookToCartServiceImpl">
 		<property name="borrowItemDao" ref="borrowItemDao"></property>
 	</bean>
+	
 <!-- 	<bean id="appService" class="service.impl.AppServiceImpl">
 		DAO
 		<property name="bookDao" ref="bookDao"></property>

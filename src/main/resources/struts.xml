@@ -88,7 +88,12 @@
 			    <param name="root">success</param>
 			</result>
 			</action> 
-		
+			
+    <!-- Send Book Comment -->
+		<action name="sendBookComment" class="action.bookAction.SendBookCommentAction">
+		   <result>
+			</result>
+		</action>
 		<!-- <action name="*">
 			<result>/{1}.jsp</result>
 		</action> -->
