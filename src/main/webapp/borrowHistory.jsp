@@ -2,34 +2,40 @@
 	pageEncoding="utf-8"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ page import="model.BorrowHistory"%>
+<%@ page import="model.BookRelease" %>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
-<html>
 <!-- Header -->
 <%@ include file="WEB-INF/view/layouts/header.jsp"%>
-<body>
+
 	<%
+		int release_history = 0; //0:history, 1:release
 		ArrayList<BorrowHistory> historyList = new ArrayList<BorrowHistory>();
 		if (request.getAttribute("history") != null) {
 			historyList = (ArrayList<BorrowHistory>) request.getAttribute("history");
 		}
+		
+		ArrayList<BookRelease> releaseList = new ArrayList<BookRelease>();
+		if (request.getAttribute("release") != null) {
+			releaseList = (ArrayList<BookRelease>) request.getAttribute("release");
+			release_history = 1;
+		}
 	%>
-	<!-- Header -->
-	
-	
+
 	<div class="yx-container container">
 		<div class="row">
 			<div class="col-xs-2 col-md-2">
 				<ul class="nav nav-list">
 					<li class="yx-header nav-header">历史记录</li>
-					<li><a href="#">已发布的图书</a></li>
-					<li><a href="#">已借出的图书</a></li>
+					<li><a href="release?id=<%=session.getAttribute("userId")%>&status=0">已发布的图书</a></li>
+					<li><a href="release?id=<%=session.getAttribute("userId")%>&status=1">已借出的图书</a></li>
 					<li><a href="history?id=<%=session.getAttribute("userId")%>&status=0">已下单的图书</a></li>
 					<li><a href="history?id=<%=session.getAttribute("userId")%>&status=1">已借到的图书</a></li>
 				</ul>
 			</div>
 			<div class="covers col-md-10">
 				<div class="dataTable_wrapper">
+					<%if(release_history == 0) {%>
 					<table class="table table-striped table-bordered table-hover"
 						id="dataTables">
 						<thead>
@@ -58,6 +64,38 @@
 							%>
 						</tbody>
 					</table>
+					<%} else {%>
+					<table class="table table-striped table-bordered table-hover"
+						id="dataTables">
+						<thead>
+							<tr>
+								<th>ISBN</th>
+								<th>Description</th>
+								<th>Price</th>
+								<th>Status</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<%
+								for (int i = 0; i < releaseList.size(); i++) {
+									BookRelease release = releaseList.get(i);
+							%>
+							<tr>
+							    <td><%=release.getIsbn()%></td>
+								<td><%=release.getDiscription()%></td>
+								<td><%=release.getPrice()%></td>
+								<td><%=release.getStatus()%></td>
+								<td>
+									<a href="releaseDetail?r_id=<%=release.getR_id()%>">Detail</a>
+								</td>
+							</tr>
+							<%
+								}
+							%>
+						</tbody>
+					</table>
+					<%} %>
 				</div>
 			</div>
 		</div>
@@ -65,14 +103,6 @@
 	
 	<script src="<%=path%>/js/borrowHistory.js"></script>
 
-	<!-- Footer -->
-	<div
-		class="yx-nav navbar navbar-default navbar-left navbar-static-bottom yx-nav"
-		style="width: 100%; margin-bottom: 0">
-		<div>联系我们：</div>
-		<span>QQ: 123456789</span> <span>Tel: 12345678</span> <span>Email:
-			123456789@qq.com</span>
-	</div>
-
-</body>
-</html>
+	
+<!-- Footer -->
+<%@ include file="WEB-INF/view/layouts/footer.jsp"%>
