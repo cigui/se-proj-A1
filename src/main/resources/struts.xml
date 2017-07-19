@@ -138,6 +138,9 @@
 		<action name="score" class="action.orderAction.ScoreOrderDetailAction">
 			<result name="success">historyDetail.jsp</result>
 		</action>
+		<action name="release" class="action.bookAction.ListBookReleaseAction">
+			<result name="success">borrowHistory.jsp</result>
+		</action>
 		
     	<!-- User Info -->
 		<action name="updateUserInformation" class="action.userActions.updateUserInformationAction">

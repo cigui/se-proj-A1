@@ -18,6 +18,8 @@ public interface BookReleaseDao {
 	
 	public List<BookRelease> getBookReleaseById(int id);
 	
+	public List<BookRelease> getBookReleaseByIdAndStatus(int id, short status);
+	
 	public BookRelease getBookReleaseByR_id(int r_id);
 	
 	public List<BookRelease> getBookReleaseByStatus();
