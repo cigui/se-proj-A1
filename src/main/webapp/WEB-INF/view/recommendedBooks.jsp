@@ -49,10 +49,10 @@
 					for (int i = 0; i < books.size(); i++) {
 						Book book = books.get(i);
 				%>
-				<div class="col-xs-3 col-md-3">
+				<div class="col-xs-6 col-md-3">
 					<div class="cover">
 						<a href="bookdetails?isbn=<%=book.getIsbn()%>">
-							<img class="img-responsive" src="https://img3.doubanio.com/lpic/<%=book.getCoverSrc()%>" /></a>
+							<img class="img-responsive" style="margin: 2px;" src="https://img3.doubanio.com/lpic/<%=book.getCoverSrc()%>" /></a>
 					</div>
 				</div>
 				<%

@@ -30,7 +30,7 @@
 			<result name="error">WEB-INF/view/error.jsp</result>
 		</action>
 		<action name="register" class="action.userActions.RegisterAction">
-			<result name="success" type="redirect">WEB-INF/view/register/welcome.jsp</result>
+			<result name="success">WEB-INF/view/register/welcome.jsp</result>
 			<result name="error">WEB-INF/view/error.jsp</result>
 		</action>
 		<action name="checkEmail" class="action.userActions.CheckEmailAction">
