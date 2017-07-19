@@ -24,7 +24,8 @@
 <link href="<%=path%>/css/login_style.css" rel="stylesheet">
 <link href="<%=path%>/css/yxdefault.css" rel="stylesheet">
 <link href="<%=path%>/css/index.css" rel="stylesheet">
-<link href="<%=path%>/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="<%=path%>/css/font-awesome.min.css" rel="stylesheet"
+	type="text/css">
 </head>
 <body>
 	<div
@@ -32,7 +33,7 @@
 		style="width: 100%; margin-bottom: 0">
 		<a class="yx-brand navbar-brand" href="index" style="color: cadetblue">阅享图书交流平台</a>
 		<div class="yx-toolbar">
-			<a class="btn btn-default btn-sm" href="<%=path%>/releasebook.jsp">发布图书</a>
+			<a class="btn btn-default btn-sm" href="<%=path%>/goReleaseBook">发布图书</a>
 			<form class="yx-search-bar" action="<%=path%>/searchBook">
 				<input type="text" name="searchString" placeholder="查询图书" />
 				<button class="btn btn-sm btn-primary btn-block" type="submit">Search</button>
@@ -43,14 +44,26 @@
 				<s:if test="#session.isAdmin">
 					<a href="listUsers" class="btn btn-default btn-sm" role="button">管理中心</a>
 				</s:if>
-				<a href="GetBeforeUpdateUserInformation" class="btn btn-default btn-sm" role="button" >个人信息</a>
-				<a href="logout" class="btn btn-default btn-sm" role="button">登出</a>
+				<div class="btn-group">
+					<button type="button" class="btn btn-sm btn-default dropdown-toggle"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<!-- <img class="img-responsive" src=""/> -->
+						<i class="fa fa-navicon"></i>
+					</button>
+					<ul class="dropdown-menu dropdown-menu-right" style="min-width: 100%;">
+						<li><a href="profile">个人信息</a></li>
+						<li><a href="history">我的历史</a></li>
+						<li><a href="#">我的借书车</a></li>
+						<li role="separator" class="divider"></li>
+						<li><a href="logout">登出</a></li>
+					</ul>
+				</div>
 			</s:if>
 			<s:else>
 				<button class="btn btn-default btn-sm" data-toggle="modal"
 					data-target="#myModal">登录</button>
 				<span> or </span>
-				<a href="<%=path%>/register.jsp" class="btn btn-default btn-sm"
+				<a href="<%=path%>/goRegister" class="btn btn-default btn-sm"
 					role="button">注册</a>
 			</s:else>
 		</div>
