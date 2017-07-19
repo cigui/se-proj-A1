@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.Map;
 import action.BaseAction;
 import model.User;
+import model.Picture;
 import service.UserService;
 import org.apache.struts2.interceptor.SessionAware;
 
