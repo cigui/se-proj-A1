@@ -9,7 +9,20 @@ import service.CategoryService;
 public class CategoryServiceImpl implements CategoryService {
 
 	private CategoryDao categoryDao;
-	List<Category> categories;
+	private List<Category> categories;
+	
+	public List<Category> getCategories() {
+		return categories;
+	}
+	
+	public void setCategories(List<Category> categories) {
+		this.categories = categories;
+	}
+	
+	public void setCategoriesById(int id, Category c) {
+		this.categories.set(id, c);
+	}
+	
 	
 	public CategoryDao getCategoryDao() {
 		return categoryDao;

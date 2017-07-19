@@ -4,7 +4,7 @@
 <!DOCTYPE>
 
 <!-- Header -->
-<%@ include file="WEB-INF/view/layouts/header.jsp"%>
+<%@ include file="../layouts/header.jsp"%>
 
 <script>
 	var path = "<%=path%>";
@@ -115,4 +115,4 @@
 </div>
 
 <!-- Footer -->
-<%@ include file="WEB-INF/view/layouts/footer.jsp"%>
+<%@ include file="../layouts/footer.jsp"%>
