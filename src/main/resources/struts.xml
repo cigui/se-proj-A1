@@ -143,8 +143,8 @@
 		</action>
 		
     	<!-- User Info -->
-		<action name="updateUserInformation" class="action.userActions.updateUserInformationAction">
-			<result name="success" type="redirect">index.jsp</result>
+		<action name="updateUserInformation" class="action.userActions.UpdateUserInformationAction">
+			<result name="success" type="redirect">index</result>
 			<result name="error">error.jsp</result>
 		</action>
 		<action name="GetBeforeUpdateUserInformation" class="action.userActions.GetBeforeUpdateUserInformationAction">
