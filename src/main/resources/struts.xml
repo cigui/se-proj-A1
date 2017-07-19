@@ -116,7 +116,8 @@
 
     	<!-- Send Book Comment -->
 		<action name="sendBookComment" class="action.bookAction.SendBookCommentAction">
-		   <result>
+		   <result name="success" type="json">
+				<param name="root">success</param>
 			</result>
 		</action>
 
@@ -151,6 +152,15 @@
 			<result name="error">error.jsp</result>
 		</action>
 		
+
+		<!-- More Release -->
+		<action name="moreRelease" class="action.bookAction.MoreReleaseAction">
+		   <result>
+		     moreRelease.jsp
+			</result>
+		</action>
+		
+
 		<!-- Manage category -->
 		<action name="listCates" class="action.categoryAction.ListCategoryAction">
 			<result name="success">manageCategory.jsp</result>
@@ -161,6 +171,14 @@
 		<action name="addCate" class="action.categoryAction.AddCategoryAction">
 			<result name="success">manageCategory.jsp</result>
 		</action>
+		
+		<action name="GetAvatar" class="action.userActions.GetPictureAction">
+		<result type="stream">
+			<param name="contentType">contentType</param>
+			<param name="inputName">inputStream</param>
+			<param name="bufferSize">4096</param>
+		</result>
+	</action>
 
 		<!-- <action name="*">
 			<result>/{1}.jsp</result>

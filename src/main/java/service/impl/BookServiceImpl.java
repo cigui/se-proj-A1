@@ -54,7 +54,12 @@ public class BookServiceImpl implements BookService{
 	}
 
 	public Book getBookByISBN(long ISBN) {
-		return bookDao.getBookByIsbn(ISBN);
+		
+		Book book =  bookDao.getBookByIsbn(ISBN);
+		if (book.getTranslator()==null){
+			book.setTranslator("无");
+		}
+		return book;
 	}
 
 	public List<Book> getBookByTitle(String title) {
