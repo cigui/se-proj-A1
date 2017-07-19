@@ -88,7 +88,7 @@
 
 		<!-- Books in category -->
 		<action name="booksInCategory" class="action.bookAction.BooksInCategoryAction">
-			<result name="success">WEB-INF/view/booksincategory.jsp</result>
+			<result name="success">WEB-INF/view/booksInCategory.jsp</result>
 		</action>
 		<action name="getPagedBooks*" class="action.bookAction.GetPagedBooksAction"
 			method="{1}">
