@@ -18,6 +18,7 @@ public class SendBookCommentAction extends BaseAction implements SessionAware{
 	private byte score;
 	private BookComment bookComment;
 	private BookCommentService bookCommentService;
+	private String success;
 	private Map<String, Object> session;
 
 	public int getId() {
@@ -69,12 +70,20 @@ public class SendBookCommentAction extends BaseAction implements SessionAware{
 	}
 
 	
+	public String getSuccess() {
+		return success;
+	}
+
+	public void setSuccess(String success) {
+		this.success = success;
+	}
+
 	@Override
 	public String execute() throws Exception {
 		int sessionId = (Integer) session.get("userId");
 		setId(sessionId);
 		bookCommentService.SendBookComment(id, isbn, discription, score);
-		
+		setSuccess("good");
 		return SUCCESS;
 	}
 

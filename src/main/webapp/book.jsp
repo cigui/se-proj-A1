@@ -13,7 +13,7 @@
 <%@ include file="WEB-INF/view/layouts/header.jsp"%>
 
 	<script>
-	var user = "<s:property value='#session.id'/>";
+	var user = "<s:property value='#session.userId'/>";
 	var path = "<%=path%>";
 	$(document).ready(function() {
 		
@@ -217,9 +217,8 @@
 						<h4 class="modal-title" id="myModalLabel"></h4>
 					</div>
 					
-					<form id="registerForm" class="form-horizontal"
-				        style="text-align: center" action="sendBookComment" method="post"
-				        enctype="multipart/form-data">
+					<div id="registerForm" class="form-horizontal"
+				        style="text-align: center" >
 						<h2 class="form-bookcomment-heading">我的评论</h2>
 						<div class="form-group">
 							<label for="nickName" class="col-md-2 control-label">ISBN</label>
@@ -231,7 +230,7 @@
 						<div class="form-group">
 							<label for="nickName" class="col-md-2 control-label">我的评分</label>
 							<div class="col-md-9">
-								<input type="number" class="form-control" name="score"
+								<input type="number" class="form-control" id="score" name = "score"
 							            placeholder=" 请输入评分（0-10分）" min="0" max="10"/>
 							</div>
 						</div>
@@ -246,12 +245,12 @@
 						
 						<div class="form-group">
 						    <div class="col-md-3"></div>
-						    <div class="col-md-6"><button id = "comment" class="btn btn-sm btn-primary btn-block" type="submit">发表评论</button></div>
+						    <div class="col-md-6"><button id = "comment" class="btn btn-sm btn-primary btn-block">发表评论</button></div>
 							
 						</div>
 						
 						
-					</form>
+					</div>
 				</div>
 				<!-- /.modal-content -->
 			</div>
@@ -261,7 +260,23 @@
 	<!-- Footer -->
 <script>
 $("#comment").click(function(){
-	bootbox.alert(评论成功)
+	var isbn = $("#isbn").val();
+	var score = $("#score").val();
+	var discription = $("#discription").val();
+	$.getJSON("sendBookComment",
+			{
+		      isbn: isbn,
+		      score: score,
+		      discription: discription
+		      
+			},function(data){
+				  if (data == "good"){
+					  bootbox.alert("评论成功",
+							  function(){
+						  location.reload();
+					  });
+				  }
+			  });
 })
 </script>
 <%@ include file="WEB-INF/view/layouts/footer.jsp"%>

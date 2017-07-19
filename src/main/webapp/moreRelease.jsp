@@ -66,7 +66,7 @@
 						</thead>
 						<tbody>
 						    <%
-											for (int i = 0; (i < 4) && i < bookReleaseList.size(); i++) {
+											for (int i = 0; i < bookReleaseList.size(); i++) {
 																				BookRelease bookRelease = bookReleaseList.get(i);
 																				int id = bookRelease.getId();
 																				User user = userList.get(id);
