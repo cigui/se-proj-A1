@@ -27,10 +27,9 @@
                 <thead>
                 <tr>
                     <td>
-                        <button type="button" class="btn btn-default btn-sm" v-if="all_checked" v-on:click="uncheck_all()">全不选</button>
-                        <button type="button" class="btn btn-default btn-sm" v-else v-on:click="check_all()">全选</button>
+                        
+                        <button type="button" class="btn btn-default btn-sm" v-on:click="check_all()">全选</button>
                     </td>
-                    <td>封面</td>
                     <td>书名</td>
                     <td>单价</td>
                     <td>数量</td>
@@ -41,7 +40,6 @@
                 <tbody>
                     <tr v-for="item in items">
                         <td class="vmid"><input type="checkbox" v-model="item.checked"></td>
-                        <td><img v-bind:src="'<%=path%>/cover?id=' + item.bookId" class="cart-cover"></td>
                         <td class="vmid">{{item.book.name}}</td>
                         <td class="vmid">{{item.book.price}}</td>
                         <td class="vmid">
@@ -66,7 +64,6 @@
             </table>
             <div class="clearfix">
                 <a href="<%=path%>/index" class="btn btn-info pull-left">返回购书</a>
-                <button class="btn btn-success pull-left" v-on:click="save_cart()">暂存</button>
                 <button class="btn btn-primary pull-right" v-bind:disabled="!allow_checkout" v-on:click="checkout()">提交订单</button>
                 <p class="cart-sum pull-right">合计: {{total}}元</p>
             </div>
