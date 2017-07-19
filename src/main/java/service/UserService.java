@@ -1,6 +1,7 @@
 package service;
 
 import model.User;
+import model.Picture;
 
 import java.io.File;
 import java.util.List;
@@ -19,6 +20,8 @@ public interface UserService {
 	public User getUserById(int id);
 	
 	public User getUserByEmail(String email);
+	
+	public Picture getPictureById(int id);
 
 	public List<User> getAllUsers();
     
