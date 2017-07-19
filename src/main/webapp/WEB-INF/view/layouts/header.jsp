@@ -43,7 +43,7 @@
 				<s:if test="#session.isAdmin">
 					<a href="listUsers" class="btn btn-default btn-sm" role="button">管理中心</a>
 				</s:if>
-				<a href="updateUserInformation.jsp" class="btn btn-default btn-sm" role="button">个人信息</a>
+				<a href="GetBeforeUpdateUserInformation" class="btn btn-default btn-sm" role="button" >个人信息</a>
 				<a href="logout" class="btn btn-default btn-sm" role="button">登出</a>
 			</s:if>
 			<s:else>

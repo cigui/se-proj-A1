@@ -120,14 +120,10 @@
       <result name="success">historyDetail.jsp</result>
 		</action>
 		
-<<<<<<< HEAD
+
     <!-- Update User Information -->
 		<action name="updateUserInformation" class="action.userActions.UpdateUserInformationAction">
-=======
-    <!-- User Info -->
-		<action name="updateUserInformation" class="action.userActions.updateUserInformationAction">
->>>>>>> 5d88b679e12530feece98b53ee4a708f3b5e19e9
-			<result name="success" type="redirect">index.jsp</result>
+			<result name="success" type="redirect">index</result>
 			<result name="error">error.jsp</result>
 		</action>
 		<action name="GetBeforeUpdateUserInformation" class="action.userActions.GetBeforeUpdateUserInformationAction">
