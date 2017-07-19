@@ -88,7 +88,7 @@
 
 		<!-- Books in category -->
 		<action name="booksInCategory" class="action.bookAction.BooksInCategoryAction">
-			<result name="success">WEB-INF/view/booksincategory.jsp</result>
+			<result name="success">WEB-INF/view/booksInCategory.jsp</result>
 		</action>
 		<action name="getPagedBooks*" class="action.bookAction.GetPagedBooksAction"
 			method="{1}">
@@ -137,6 +137,9 @@
 		</action>
 		<action name="score" class="action.orderAction.ScoreOrderDetailAction">
 			<result name="success">historyDetail.jsp</result>
+		</action>
+		<action name="release" class="action.bookAction.ListBookReleaseAction">
+			<result name="success">borrowHistory.jsp</result>
 		</action>
 		
     	<!-- User Info -->

@@ -51,6 +51,10 @@ public class BookReleaseServiceImpl implements BookReleaseService {
 	public List<BookRelease> getBookReleaseById(int id) {
 		return bookReleaseDao.getBookReleaseById(id);
 	}
+	
+	public List<BookRelease> getBookReleaseByIdAndStatus(int id, short status) {
+		return bookReleaseDao.getBookReleaseByIdAndStatus(id, status);
+	}
 
 	public BookRelease getBookReleaseByR_id(int r_id) {
 		return bookReleaseDao.getBookReleaseByR_id(r_id);

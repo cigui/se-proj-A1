@@ -3,29 +3,9 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>阅享</title>
-<%
-	String path = request.getContextPath();
-%>
-<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
-<script
-	src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="https://cdn.bootcss.com/bootbox.js/4.4.0/bootbox.min.js"></script>
-<script src="<%=path%>/js/index.js"></script>
-<script src="<%=path%>/js/manageBook.js"></script>
-<link
-	href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
-	rel="stylesheet">
-<link href="<%=path%>/css/login_style.css" rel="stylesheet">
-<link href="<%=path%>/css/yxdefault.css" rel="stylesheet">
-<link href="<%=path%>/css/index.css" rel="stylesheet">
-<link href="<%=path%>/css/font-awesome.min.css"
-	rel="stylesheet" type="text/css">
-</head>
+<!-- Header -->
+<%@ include file="layouts/header.jsp"%>
 <script>
 	var admin = "<s:property value='#session.role'/>";
 	var path = "<%=path%>";
@@ -46,15 +26,7 @@
 		bookReleaseList = (ArrayList<BookRelease>) request.getAttribute("bookrelease");
 			}
 	%>
-	<div
-		class="yx-nav navbar navbar-default navbar-left navbar-static-top yx-nav" style="width:100%; margin-bottom:0">
-		<a class="yx-brand navbar-brand" href="index" style="color: cadetblue">阅享图书交流平台</a>
-		<div>
-			<span>Hi, <%=session.getAttribute("userName")%>!</span>
-			<a href="profile" class="btn btn-default btn-sm"
-				role="button">个人信息</a>
-		</div>
-	</div>
+	
 
 	<div class="yx-container container">
 		<div class="row">
