@@ -1,58 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@ page import="model.User" %>
+<%@ page import="model.District" %>
+<%@ page import="model.Picture" %>
 <%@ taglib prefix="s" uri="/struts-tags"%>
-<!DOCTYPE HTML>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>阅享 - 借书车</title>
-<%
-	String ctx = request.getContextPath();
-%>
 
-<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
-<script
-	src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="https://cdn.bootcss.com/bootbox.js/4.4.0/bootbox.min.js"></script>
-<script
-	src="https://cdn.bootcss.com/jquery-validate/1.16.0/jquery.validate.min.js"></script>
+<!-- Header -->
+<%@ include file="WEB-INF/view/layouts/header.jsp"%>
+<script src="<%=path%>/js/shoppingCart.js"></script>
 
-<link
-	href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
-	rel="stylesheet">
-<link href="<%=ctx%>/css/login_style.css" rel="stylesheet">
-<link href="<%=ctx%>/css/yxdefault.css" rel="stylesheet">
-<link href="<%=ctx%>/css/releasebook.css" rel="stylesheet">
-<style type="text/css">
-.error {
-	color: red;
-	font-weight: normal
-}
-</style>
-</head>
-<body>
-	<div
-		class="yx-nav navbar navbar-default navbar-left navbar-static-top yx-nav" style="width:100%; margin-bottom:0">
-		<a class="yx-brand navbar-brand" href="index" style="color: cadetblue">阅享图书交流平台</a>
-		<div class="yx-toolbar">
-			<a class="btn btn-default btn-sm" href="<%=ctx%>/ReleaseBook">发布图书</a>
-			<form class="yx-search-bar">
-				<input type="text" name="searchString" placeholder="查询图书" />
-				<button class="btn btn-sm btn-primary btn-block" type="submit">Search</button>
-			</form>
-			<span>Hi, <s:property value='#session.userName' />!
-			</span> <a href="profile" class="btn btn-default btn-sm" role="button">个人信息</a>
-			<a href="logout" class="btn btn-default btn-sm" role="button">登出</a>
+<body>  
+<div class="yx-container container">
+			<div class="row">
+			<br>
 		</div>
-	</div>
-
-	
-   
-<div id='cart' class="container">
-    
-    <h2>我的购物车</h2>
-    <form id="cart-form" role="form" method="POST" action="<%=ctx%>/cart/checkout">
+	    <div class="page-header">
+			<h1 class="text-primary">
+				我的借书车
+			</h1>
+		</div>
+		
+  <div id='cart' class="container">
+     <form id="cart-form" role="form" method="POST" action="submitCart">
         <div v-if="items.length > 0">
             <table class="table table-striped table-bordered">
                 <thead>
@@ -72,7 +41,7 @@
                 <tbody>
                     <tr v-for="item in items">
                         <td class="vmid"><input type="checkbox" v-model="item.checked"></td>
-                        <td><img v-bind:src="'<%=ctx%>/cover?id=' + item.bookId" class="cart-cover"></td>
+                        <td><img v-bind:src="'<%=path%>/cover?id=' + item.bookId" class="cart-cover"></td>
                         <td class="vmid">{{item.book.name}}</td>
                         <td class="vmid">{{item.book.price}}</td>
                         <td class="vmid">
@@ -96,7 +65,7 @@
                 </tbody>
             </table>
             <div class="clearfix">
-                <a href="<%=ctx%>/index" class="btn btn-info pull-left">返回购书</a>
+                <a href="<%=path%>/index" class="btn btn-info pull-left">返回购书</a>
                 <button class="btn btn-success pull-left" v-on:click="save_cart()">暂存</button>
                 <button class="btn btn-primary pull-right" v-bind:disabled="!allow_checkout" v-on:click="checkout()">提交订单</button>
                 <p class="cart-sum pull-right">合计: {{total}}元</p>
@@ -104,14 +73,15 @@
         </div>
         <div v-else>
             您的购物车还是空的！
-            <a href="<%=ctx%>/index" class="btn btn-info">马上去购书</a>
+            <a href="<%=path%>/index" class="btn btn-info">马上去购书</a>
         </div>
     </form>
 </div>
+</div>
 
-<script type="text/javascript" src="<%=ctx%>/js/vue.js"></script>
+<script type="text/javascript" src="<%=path%>/js/vue.js"></script>
 <script type="text/javascript">
-    $.get('<%=ctx%>/cart/data', function(data, status) {
+    $.get('<%=path%>/cart/data', function(data, status) {
         items = JSON.parse(data);
         items.forEach(function (item) {
             item.checked = true;
@@ -174,7 +144,7 @@
                 },
                 save_cart: function () {
                     var self = this;
-                    $.post('<%=ctx%>/cart/save', self.encode_cart(), function(data, status) {
+                    $.post('<%=path%>/cart/save', self.encode_cart(), function(data, status) {
                         var response = JSON.parse(data);
                         if (response.success) {
                             self.msg = {
@@ -200,7 +170,7 @@
                     });
 
                     var self = this;
-                    $.post('<%=ctx%>/cart/save', cart, function(data, status) {
+                    $.post('<%=path%>/cart/save', cart, function(data, status) {
                         var response = JSON.parse(data);
                         if (response.success) {
                             document.getElementById("cart-form").submit();
