@@ -4,7 +4,6 @@ import java.io.File;
 import java.util.Map;
 import action.BaseAction;
 import model.User;
-import model.Picture;
 import service.UserService;
 import org.apache.struts2.interceptor.SessionAware;
 
@@ -129,7 +128,7 @@ public class UpdateUserInformationAction extends BaseAction implements SessionAw
 	        user.setGender(gender);
 			userService.update(user);
 			if (avatar != null){
-				userService.uploadImage(user.getId(),avatar, avatarFileName, avatarContentType);
+				userService.uploadImage(user.getId(),avatar, avatarContentType, avatarFileName);
 			}
 			session.put("logined", true);
 			session.put("userName", user.getNickname());
