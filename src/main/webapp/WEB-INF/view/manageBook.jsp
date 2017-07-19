@@ -18,6 +18,7 @@
 		}*/
 	});
 </script>
+<script src="<%=path%>/js/manageBook.js"></script>
 
 <body>
 	<%
