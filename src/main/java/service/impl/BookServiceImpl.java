@@ -5,6 +5,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.commons.lang.xwork.StringUtils;
+
 import dao.BookCateRelationshipDao;
 import dao.BookDao;
 import model.Book;
@@ -56,7 +58,7 @@ public class BookServiceImpl implements BookService{
 	public Book getBookByISBN(long ISBN) {
 		
 		Book book =  bookDao.getBookByIsbn(ISBN);
-		if (book.getTranslator()==null){
+		if (book != null && book.getTranslator()==null){
 			book.setTranslator("无");
 		}
 		return book;
@@ -79,11 +81,11 @@ public class BookServiceImpl implements BookService{
 		/* 使用Set进行查询结果去重，注意在Book里应该重载equals和hashCode方法 */
 		Set<Book> resultSet = new HashSet<Book>();
 		List<Book> resultList = new ArrayList<Book>();
-		try{
-			resultList.add(getBookByISBN(Long.parseLong(keyword)));
-		}
-		catch(NumberFormatException nf){
-			//do nothing
+		
+		if (StringUtils.isNumeric(keyword)){
+			Book tmp = bookDao.getBookByIsbn(Long.parseLong(keyword));
+			if (tmp != null)
+			resultList.add(tmp);
 		}
 		resultList.addAll(getBookByTitle(keyword));
 		resultList.addAll(getBookByAuthor(keyword));

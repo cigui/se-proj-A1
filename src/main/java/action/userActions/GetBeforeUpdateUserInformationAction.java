@@ -1,11 +1,9 @@
 package action.userActions;
 
-import java.io.File;
 import java.util.Map;
 import action.BaseAction;
 import model.User;
 import model.District;
-import model.Picture;
 import service.DistrictService;
 import service.UserService;
 import org.apache.struts2.interceptor.SessionAware;
