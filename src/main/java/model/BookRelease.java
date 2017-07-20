@@ -8,7 +8,7 @@ public class BookRelease {
 	private long isbn;
 	private Date publish_date;
 	private String discription;
-	private short status; // 0:not checked, 1:pass, -1:reject
+	private short status; // 0:not checked, 1:pass, -1:reject, 2:borrowed
 	private int price;
 	public BookRelease(){
 		

@@ -72,6 +72,10 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 		try{
 			FileInputStream inputStream = new FileInputStream(file);
 			DBObject metadata = new BasicDBObject("id",id);
+			GridFSDBFile oldFile = GridFsTemplate.findOne(new Query(Criteria.where("metadata.id").is(id)));
+			if (oldFile != null) {
+				GridFsTemplate.delete(new Query(Criteria.where("metadata.id").is(id)));
+			}
 			GridFsTemplate.store(inputStream, fileName, contentType, metadata);
 			return true;
 		}catch(Exception e){
