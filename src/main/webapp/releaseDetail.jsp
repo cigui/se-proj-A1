@@ -117,8 +117,17 @@
 					<script>
 						var id = "<s:property value='#session.userId'/>";
 						var r_id = <%=bookRelease.getR_id()%>;
+						var logined = "<s:property value='#session.logined'/>";
+						var r_id =<%=bookRelease.getR_id()%>;
+					
+						
 						$(document).on("click", "#join", function(e) {
-							jQuery.ajax({
+							if (logined == false){
+								bootbox.alert("请先登陆");
+							}
+							else{
+								jQuery.ajax({
+							
 								url : 'addBookToCart',
 								processData : true,
 								dataType : "json",
@@ -137,6 +146,8 @@
 
 								}
 							});
+							}
+        
 						});
 					</script>
 				</div>
@@ -144,7 +155,6 @@
 					<button id="borrowNow" class="btn btn-sm btn-primary btn-block" role="button">立即借书</button>
 					<script>
  						$("#borrowNow").click(function(){
- 							var logined = "<s:property value='#session.logined' />";
  							if (logined == false) {
  								bootbox.alert("请先登录！", function() {
  									location.href = "<%=path%>/index";//location.href实现客户端页面的跳转  

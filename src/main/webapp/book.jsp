@@ -263,7 +263,13 @@ $("#comment").click(function(){
 	var isbn = $("#isbn").val();
 	var score = $("#score").val();
 	var discription = $("#discription").val();
-	$.getJSON("sendBookComment",
+	var logined = "<s:property value='#session.logined'/>";
+	if (logined == false){
+		bootbox.alert("请先登陆");
+	}
+	else{
+		$.getJSON("sendBookComment",
+	
 			{
 		      isbn: isbn,
 		      score: score,
@@ -276,7 +282,11 @@ $("#comment").click(function(){
 						  location.reload();
 					  });
 				  }
+				   if (data == "error"){
+					  bootbox.alert("评论失败,请核对评分是否正确输入");
+				  } 
 			  });
+	}
 })
 </script>
 <%@ include file="WEB-INF/view/layouts/footer.jsp"%>
