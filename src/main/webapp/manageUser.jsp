@@ -60,14 +60,22 @@
 						<tbody>
 							<%
 								for (int i = 0; i < userList.size(); i++) {
-																	User user = userList.get(i);
+									User user = userList.get(i);
+									String s = null;
+									switch(user.getRole()){
+									case 0: s="未激活"; break;
+									case 1: s="普通用户";break;
+									case 2: s="管理员";break;
+									case -1: s="被禁用户";break;
+									}
 							%>
 							<tr>
 							    <td><%=user.getId()%></td>
 								<td><%=user.getNickname()%></td>
-								<td><%=user.getRole()%></td>
+								<td><%=s%></td>
 								<td><%=user.getCredit()%></td>
 								<td>
+									<%if(user.getRole()!=2){ %>
 									<button class="btn btn-default ban" type="button"
 										data-id="<%=user.getId()%>">
 										<i class="fa fa-ban"></i>
@@ -76,11 +84,10 @@
 										data-id="<%=user.getId()%>">
 										<i class="fa fa-check"></i>
 									</button>
+									<%} %>
 								</td>
 							</tr>
-							<%
-								}
-							%>
+							<%} %>
 						</tbody>
 					</table>
 				</div>

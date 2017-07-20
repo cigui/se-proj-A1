@@ -79,12 +79,19 @@
 							<%
 								for (int i = 0; i < releaseList.size(); i++) {
 									BookRelease release = releaseList.get(i);
+									String s = null;
+									switch((int)release.getStatus()){
+									case 0: s="未审核"; break;
+									case 1: s="审核通过";break;
+									case 2: s="已借出";break;
+									case -1: s="审核不通过";break;
+									}
 							%>
 							<tr>
 							    <td><%=release.getIsbn()%></td>
 								<td><%=release.getDiscription()%></td>
 								<td><%=release.getPrice()%></td>
-								<td><%=release.getStatus()%></td>
+								<td><%=s%></td>
 								<td>
 									<a href="releaseDetail?r_id=<%=release.getR_id()%>">Detail</a>
 								</td>
