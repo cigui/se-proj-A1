@@ -38,7 +38,7 @@
 		</div>
 		<div class="covers col-xs-5 col-md-5">
 			<div class="row">
-				<div class="col-xs-5 col-md-9">
+				<div class="col-xs-7 col-md-9">
 					<span class="yx-header nav-header">首页推荐</span>
 				</div>
 				<div class="col-xs-1 col-md-1">
@@ -51,7 +51,7 @@
 					for (int i = 0; (i < 6) && (i < books.size()); i++) {
 						Book book = books.get(i);
 				%>
-				<div class="col-xs-6 col-md-6">
+				<div class="col-xs-12 col-md-6">
 					<div class="cover">
 						<a href='<%=path%>/bookdetails?isbn=<%=book.getIsbn()%>'><img
 							class="img-responsive"
@@ -65,7 +65,7 @@
 		</div>
 		<div class="covers col-xs-5 col-md-5">
 			<div class="row">
-				<div class="col-xs-5 col-md-9">
+				<div class="col-xs-7 col-md-9">
 					<span class="yx-header nav-header">猜你喜欢</span>
 				</div>
 				<div class="col-xs-1 col-md-1">
@@ -77,7 +77,7 @@
 					for (int i = 0; (i < 6) && (i < books.size()); i++) {
 						Book book = books.get(i);
 				%>
-				<div class="col-xs-6 col-md-6">
+				<div class="col-xs-12 col-md-6">
 					<div class="cover">
 						<a id="link<%=i%>" href='#'><img class="img-responsive"
 							src="https://img3.doubanio.com/lpic/<%=book.getCoverSrc()%>"

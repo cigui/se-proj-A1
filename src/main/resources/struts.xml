@@ -30,7 +30,7 @@
 			<result name="error">WEB-INF/view/error.jsp</result>
 		</action>
 		<action name="register" class="action.userActions.RegisterAction">
-			<result name="success" type="redirect">WEB-INF/view/register/welcome.jsp</result>
+			<result name="success">WEB-INF/view/register/welcome.jsp</result>
 			<result name="error">WEB-INF/view/error.jsp</result>
 		</action>
 		<action name="checkEmail" class="action.userActions.CheckEmailAction">
@@ -88,7 +88,7 @@
 
 		<!-- Books in category -->
 		<action name="booksInCategory" class="action.bookAction.BooksInCategoryAction">
-			<result name="success">WEB-INF/view/booksincategory.jsp</result>
+			<result name="success">WEB-INF/view/booksInCategory.jsp</result>
 		</action>
 		<action name="getPagedBooks*" class="action.bookAction.GetPagedBooksAction"
 			method="{1}">
@@ -116,7 +116,8 @@
 
     	<!-- Send Book Comment -->
 		<action name="sendBookComment" class="action.bookAction.SendBookCommentAction">
-		   <result>
+		   <result name="success" type="json">
+				<param name="root">success</param>
 			</result>
 		</action>
 
@@ -142,8 +143,8 @@
 		</action>
 		
     	<!-- User Info -->
-		<action name="updateUserInformation" class="action.userActions.updateUserInformationAction">
-			<result name="success" type="redirect">index.jsp</result>
+		<action name="updateUserInformation" class="action.userActions.UpdateUserInformationAction">
+			<result name="success" type="redirect">index</result>
 			<result name="error">error.jsp</result>
 		</action>
 		<action name="GetBeforeUpdateUserInformation" class="action.userActions.GetBeforeUpdateUserInformationAction">
@@ -151,6 +152,15 @@
 			<result name="error">error.jsp</result>
 		</action>
 		
+
+		<!-- More Release -->
+		<action name="moreRelease" class="action.bookAction.MoreReleaseAction">
+		   <result>
+		     moreRelease.jsp
+			</result>
+		</action>
+		
+
 		<!-- Manage category -->
 		<action name="listCates" class="action.categoryAction.ListCategoryAction">
 			<result name="success">manageCategory.jsp</result>
@@ -161,6 +171,14 @@
 		<action name="addCate" class="action.categoryAction.AddCategoryAction">
 			<result name="success">manageCategory.jsp</result>
 		</action>
+		
+		<action name="GetAvatar" class="action.userActions.GetPictureAction">
+		<result type="stream">
+			<param name="contentType">contentType</param>
+			<param name="inputName">inputStream</param>
+			<param name="bufferSize">4096</param>
+		</result>
+	</action>
 
 		<!-- <action name="*">
 			<result>/{1}.jsp</result>

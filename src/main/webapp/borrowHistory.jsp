@@ -7,6 +7,7 @@
 
 <!-- Header -->
 <%@ include file="WEB-INF/view/layouts/header.jsp"%>
+
 	<%
 		int release_history = 0; //0:history, 1:release
 		ArrayList<BorrowHistory> historyList = new ArrayList<BorrowHistory>();

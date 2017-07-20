@@ -9,6 +9,7 @@ import java.util.List;
 import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
 
+import model.Picture;
 import dao.UserDao;
 import model.User;
 import service.UserService;
@@ -51,6 +52,10 @@ public class UserServiceImpl implements UserService {
 		return userDao.getUserById(id);
 	}
 
+	public Picture getPictureById(int id){
+	    	return userDao.getPictureById(id);
+	    }
+	  
 	public User getUserByEmail(String email) {
 		return userDao.getUserByEmail(email);
 	}

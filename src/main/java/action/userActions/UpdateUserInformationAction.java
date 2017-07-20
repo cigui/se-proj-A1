@@ -124,11 +124,11 @@ public class UpdateUserInformationAction extends BaseAction implements SessionAw
 			User user = userService.getUserByEmail(email);
 	        user.setL_id(district);
 			user.setNickname(nickName);
-	        user.setPassword(password);		
+	        //user.setPassword(password);		
 	        user.setGender(gender);
 			userService.update(user);
 			if (avatar != null){
-				userService.uploadImage(user.getId(),avatar, avatarFileName, avatarContentType);
+				userService.uploadImage(user.getId(),avatar, avatarContentType, avatarFileName);
 			}
 			session.put("logined", true);
 			session.put("userName", user.getNickname());

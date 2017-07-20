@@ -31,7 +31,7 @@
 	<div
 		class="yx-nav navbar navbar-default navbar-left navbar-static-top yx-nav"
 		style="width: 100%; margin-bottom: 0">
-		<a class="yx-brand navbar-brand" href="index" style="color: cadetblue">阅享图书交流平台</a>
+		<a class="yx-brand navbar-brand" href="<%=path%>" style="color: cadetblue">阅享图书交流平台</a>
 		<div class="yx-toolbar">
 			<a class="btn btn-default btn-sm" href="<%=path%>/goReleaseBook">发布图书</a>
 			<form class="yx-search-bar" action="<%=path%>/searchBook">
@@ -47,11 +47,10 @@
 				<div class="btn-group">
 					<button type="button" class="btn btn-sm btn-default dropdown-toggle"
 						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						<!-- <img class="img-responsive" src=""/> -->
 						<i class="fa fa-navicon"></i>
 					</button>
 					<ul class="dropdown-menu dropdown-menu-right" style="min-width: 100%;">
-						<li><a href="profile">个人信息</a></li>
+						<li><a href="GetBeforeUpdateUserInformation">个人信息</a></li>
 						<li><a href="history">我的历史</a></li>
 						<li><a href="#">我的借书车</a></li>
 						<li role="separator" class="divider"></li>

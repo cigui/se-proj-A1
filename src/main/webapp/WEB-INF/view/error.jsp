@@ -1,8 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
-<%@ page import="java.util.ArrayList"%>
-<%@ page import="model.Book"%>
-<%@ page import="model.Category"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
 <!-- Header -->

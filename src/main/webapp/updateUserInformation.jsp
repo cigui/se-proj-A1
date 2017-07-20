@@ -1,38 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <%@ page import="model.User" %>
 <%@ page import="model.District" %>
+<%@ page import="model.Picture" %>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>阅享 - 编辑个人信息</title>
-<%
-	String path = request.getContextPath();
-%>
-<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
-<script	src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="https://cdn.bootcss.com/bootbox.js/4.4.0/bootbox.min.js"></script>
-<script src="https://cdn.bootcss.com/jquery-validate/1.16.0/jquery.validate.min.js"></script>
+
+   
+<!-- Header -->
+<%@ include file="WEB-INF/view/layouts/header.jsp"%>
 <script src="<%=path%>/js/updateUserInformation.js"></script>
 
-<link
-	href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
-	rel="stylesheet">
-<link href="<%=path%>/css/login_style.css" rel="stylesheet">
-<link href="<%=path%>/css/yxdefault.css" rel="stylesheet">
-<link href="<%=path%>/css/index.css" rel="stylesheet">
-<link href="<%=path%>/css/register.css" rel="stylesheet">
-<style type="text/css">.error{color: red; font-weight: normal}</style>
-</head>
-
 <body>
-	<div
-		class="yx-nav navbar navbar-default navbar-left navbar-fixed-top yx-nav">
-		<a class="yx-brand navbar-brand" href="index" style="color: cadetblue">阅享图书交流平台</a>
-	</div>
+	
 	<div class="yx-container container">
 			<div class="row">
 			<br>
@@ -49,23 +29,25 @@
 				</div>
 				<form id="UpdateUserInformationForm" class="form-horizontal" style="text-align: center" action="updateUserInformation" method="post"
 						enctype="multipart/form-data" onsubmit="document.getElementById('sub').disabled=true;">
-		    <% User user = new User();
-			   if (request.getAttribute("user") != null) {
-		       user = (User) request.getAttribute("user");}%>	
-		    <% District district = new District();
-			   if (request.getAttribute("district") != null) {
-		       district = (District) request.getAttribute("district");}%>	
-            <% District city = new District();
-			   if (request.getAttribute("city") != null) {
-		       city = (District) request.getAttribute("city");}%>	
-		     <% District province = new District();
-			   if (request.getAttribute("province") != null) {
-		       province = (District) request.getAttribute("province");}%>	
+		   
+		      <% User user = new User();
+   if (request.getAttribute("user") != null) {
+   user = (User) request.getAttribute("user");}%>	
+<% District district = new District();
+   if (request.getAttribute("district") != null) {
+   district = (District) request.getAttribute("district");}%>	
+<% District city = new District();
+   if (request.getAttribute("city") != null) {
+   city = (District) request.getAttribute("city");}%>	
+<% District province = new District();
+   if (request.getAttribute("province") != null) {
+   province = (District) request.getAttribute("province");}%>	
 		       <script>var prepassword="<%=user.getPassword()%>"
 			           var pregender="<%=user.getGender()%>"
 				       var predistrict="<%=district.getName()%>"
 				       var precity="<%=city.getName()%>"  
 				       var preprovince="<%=province.getName()%>"
+					   var id=<%=user.getId()%>
 			   </script>	
 			  
 					<div class="form-group">
@@ -73,21 +55,21 @@
 						    <div class="form-group">
 							<label for="email" class="col-md-2 control-label">电子邮箱(*)</label>
 								<div class="col-md-6">
-								<input type="text" class="form-control" id="email" name="email" disabled value="<%=user.getEmail()%>">
+								<input type="text" class="form-control" id="email" name="email" readonly value="<%=user.getEmail()%>">
 								</div>
 							</div>
 							
 							<div class="form-group">
 								<label for="email" class="col-md-2 control-label">积分(*)</label>
 								<div class="col-md-6">
-								<input type="text" class="form-control" id="points" name="points" disabled value="<%=user.getPoints()%>">
+								<input type="text" class="form-control" id="points" name="points" readonly value="<%=user.getPoints()%>">
 								</div>
 							</div>
 							
 							<div class="form-group">
 								<label for="email" class="col-md-2 control-label">信用(*)</label>
 								<div class="col-md-6">
-								<input type="text" class="form-control" id="credit" name="credit" disabled value="<%=user.getCredit()%>">
+								<input type="text" class="form-control" id="credit" name="credit" readonly value="<%=user.getCredit()%>">
 								</div>
 							</div>
 							
@@ -133,7 +115,9 @@
 						
 						<div class="col-md-6">
 							<div class="form-group" style="text-align: center">
-								<img id="preview" src="<%=path%>/images/picture-1.jpg" 
+							    
+							    <img  id="preview"
+					             src='GetAvatar?id=<%=user.getId()%>'
 								 style="width:256px; height:256px; max-width:256px; max-height:256px"/>
 							</div>
 							<div class="form-group" style="text-align: center">
@@ -143,9 +127,9 @@
 							</div>
 						</div>
 						<button class="btn btn-default btn-sm" data-toggle="modal"
-					                data-target="#myModal">修改密码</button>
+					                data-target="#myModal2">修改密码</button>
 					                
-					<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+					<div class="modal fade" id="myModal2" tabindex="-1" role="dialog"
 		                  aria-labelledby="Login" aria-hidden="true">
 		               <div class="modal-dialog">
 			               <div class="modal-content">
@@ -154,7 +138,7 @@
 						                  aria-hidden="true">&times;</button>
 					              <h4 class="modal-title" id="myModalLabel"></h4>
 				              </div>
-				                <form class="modal-body form-signin" action="login">
+				                <form class="modal-body form-signin" action="updateUserInformation" method="post">
 					             <h2 class="form-signin-heading">重置密码</h2>
 					               <input type="password" class="form-control" id="oldpassword" name="oldpassword"
 				           		 placeholder="请输入旧密码" required="true" autofocus="" /> 
@@ -177,7 +161,7 @@
 				</form>
 			</div>
 		</div>
-	</div>
+
 
 </body>
 </html>

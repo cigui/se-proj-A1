@@ -1,6 +1,5 @@
 package action.userActions;
 
-import java.io.File;
 import java.util.Map;
 import action.BaseAction;
 import model.User;
@@ -38,7 +37,6 @@ public class GetBeforeUpdateUserInformationAction extends BaseAction implements 
 	public void setDistrictService(DistrictService districtService) {
 		this.districtService = districtService;
 	}
-	
 	
 	
 	

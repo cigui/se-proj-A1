@@ -24,7 +24,7 @@ $(function() {
 			oldpassword : {
 					required : true,
 					minlength : 6,
-					equalTo : prepassword
+					equalTo : prepassword 
 				},
 				password : {
 					required : true,
@@ -40,7 +40,7 @@ $(function() {
 		district : "required"},
 		messages : {
 			nickName : {
-				required : "请输入姓名",
+				required : "请输入昵称",
 				byteRangeLength : 14
 			},
 			oldpassword : {
@@ -54,8 +54,7 @@ $(function() {
 			},
 			province : "请输入省份",
 			city : "请输入城市",
-			district : "请输入区\县"
-			,
+			district : "请输入区\县",
 			confirmPassword : {
 				required : "请输入确认密码",
 				minlength : "确认密码不能小于6个字符",
@@ -66,12 +65,14 @@ $(function() {
 	
     $(":radio[name='gender'][value='" + pregender + "']").prop("checked", "checked");
     
-    $("#province  option[value='" + preprovince + "'] ").attr("selected",true)
-    $("#city  option[value='precity'] ").attr("selected",true)
-    $("#district  option[value='predistrict'] ").attr("selected",true)
     
     
-	$.getJSON("getDistricts", {
+    $("#district  option[value='" + predistrict + "'] ").attr("selected",true);
+    $("#city  option[value='" + precity + "'] ").attr("selected",true);
+    $("#province  option[value='" + preprovince + "'] ").attr("selected",true);
+    
+    
+    $.getJSON("getDistricts", {
 		parentId : 0
 	}, function(data) {
 		var province = $('#province');
