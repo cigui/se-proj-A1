@@ -142,6 +142,16 @@
 			<result name="success">borrowHistory.jsp</result>
 		</action>
 		
+		<!-- Shopping Cart -->
+		<action name="getCart" class="action.orderAction.GetCartAction">
+			<result name="success" type="redirect">shoppingCart.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<action name="commitOrder" class="action.orderAction.CommitOrderAction">
+			<result name="success" type="redirect">index.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		
     	<!-- User Info -->
 		<action name="updateUserInformation" class="action.userActions.UpdateUserInformationAction">
 			<result name="success" type="redirect">index</result>

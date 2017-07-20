@@ -21,7 +21,7 @@
 		</div>
 		
   <div id='cart' class="container">
-     <form id="cart-form" role="form" method="POST" action="submitCart">
+     <form id="cart-form" role="form" method="POST" action="commitOrder">
         <div v-if="items.length > 0">
             <table class="table table-striped table-bordered">
                 <thead>

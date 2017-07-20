@@ -69,7 +69,7 @@ $(function() {
     
     $("#district  option[value='" + predistrict + "'] ").attr("selected",true);
     $("#city  option[value='" + precity + "'] ").attr("selected",true);
-    $("#province  option[value='" + preprovince + "'] ").attr("selected",true);
+    
     
     
     $.getJSON("getDistricts", {
@@ -83,7 +83,7 @@ $(function() {
 					+ data[i].name + "</option>");
 		}
 	});
-
+    
 	$('#province').change(
 			function() {
 				var id = $('#province').val();
@@ -109,7 +109,7 @@ $(function() {
 					}
 				})
 			});
-
+	$("#province  option[value='" + preprovince + "'] ").attr("selected",true);
 	$('#city').change(
 			function() {
 				var id = $('#city').val();
