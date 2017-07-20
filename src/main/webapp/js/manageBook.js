@@ -41,13 +41,13 @@ $(function() {
 		bootbox.confirm({
 			buttons : {
 				confirm : {
-					label : 'Unban'
+					label : 'Pass'
 				},
 				cancel : {
 					label : 'Cancel'
 				}
 			},
-			message : 'Sure to unban this BookRelease?',
+			message : 'Sure to pass this BookRelease?',
 			callback : function(result) {
 				if (result) {
 					var dataset = e.currentTarget.dataset;
@@ -62,7 +62,7 @@ $(function() {
 						},
 						success : function(data) {
 							bootbox.alert({
-								message : 'Unban Successfully! ',
+								message : 'Pass Successfully! ',
 								callback : function() {
 									location.reload();
 								}
