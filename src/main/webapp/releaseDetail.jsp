@@ -124,7 +124,9 @@
 							if (logined == false){
 								bootbox.alert("请先登陆");
 							}
-							jQuery.ajax({
+							else{
+								jQuery.ajax({
+							
 								url : 'addBookToCart',
 								processData : true,
 								dataType : "json",
@@ -143,7 +145,8 @@
 
 								}
 							});
-
+							}
+        
 						});
 					</script>
 				</div>
