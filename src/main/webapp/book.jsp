@@ -267,7 +267,9 @@ $("#comment").click(function(){
 	if (logined == false){
 		bootbox.alert("请先登陆");
 	}
-	$.getJSON("sendBookComment",
+	else{
+		$.getJSON("sendBookComment",
+	
 			{
 		      isbn: isbn,
 		      score: score,
@@ -284,6 +286,7 @@ $("#comment").click(function(){
 					  bootbox.alert("评论失败,请核对评分是否正确输入");
 				  } 
 			  });
+	}
 })
 </script>
 <%@ include file="WEB-INF/view/layouts/footer.jsp"%>
