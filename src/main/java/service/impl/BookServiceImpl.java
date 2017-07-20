@@ -82,7 +82,7 @@ public class BookServiceImpl implements BookService{
 		Set<Book> resultSet = new HashSet<Book>();
 		List<Book> resultList = new ArrayList<Book>();
 		
-		if (StringUtils.isNumeric(keyword)){
+		if (StringUtils.isNumeric(keyword) && (!keyword.equals(""))){
 			Book tmp = bookDao.getBookByIsbn(Long.parseLong(keyword));
 			if (tmp != null)
 			resultList.add(tmp);
