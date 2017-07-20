@@ -3,7 +3,7 @@ package model;
 import java.sql.Timestamp;
 
 public class BorrowHistory {
-	private int orderStatus;
+	private int orderStatus; // 0: not sent, 1: sent but not got, 2: got but not scored, 3: scored
 	private String location;
 	private Timestamp date;
 	private Integer id;
@@ -15,14 +15,12 @@ public class BorrowHistory {
 		
 	}
 	
-	public BorrowHistory(int orderStatus,String location,Timestamp date, Integer id, Integer h_id,Integer r_id){
+	public BorrowHistory(int orderStatus,String location, Integer id, Integer r_id){
 		this.orderStatus = orderStatus;
 		this.location = location;
-		this.date = date;
 		this.id = id;
-		this.h_id = h_id;
 		this.r_id = r_id;
-		
+		this.date = new Timestamp(System.currentTimeMillis()); 
 	}
 
 	public int getOrderStatus() {

@@ -127,6 +127,13 @@
 				<param name="root">success</param>
 			</result>
 		</action>
+		<!-- Borrow Right Now -->
+		<action name="borrowNow" class="action.orderAction.CommitOrderAction">
+			<result name="success" type="json">
+				<param name="root">resultMap</param>
+			</result>
+		</action>
+
 
 		<!-- Borrow History -->
 		<action name="history" class="action.orderAction.ListHistoryOrderAction">
