@@ -14,4 +14,6 @@ public interface BorrowHistoryService {
 	public BorrowHistory getBorrowHistoryByH_id(int id);
 	
 	public List<BorrowHistory> getBorrowHistory(int id, int status);
+	
+	public String borrow(int id, int r_id, String location);
 }
