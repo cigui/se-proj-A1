@@ -1,5 +1,7 @@
 <%@ page import="java.util.ArrayList"%>
+<%@ page import="java.util.HashMap"%>
 <%@ page import="model.BookRelease"%>
+<%@ page import="model.Book"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
@@ -27,6 +29,12 @@
 		bookReleaseList = (ArrayList<BookRelease>) request.getAttribute("bookrelease");
 			}
 	%>
+	<%
+		HashMap<Long,Book> books = new HashMap<Long,Book>();
+	    if (request.getAttribute("books")!=null){
+	    	books = (HashMap<Long,Book>) request.getAttribute("books");
+	    }
+	%>
 	
 
 	<div class="yx-container container">
@@ -45,11 +53,9 @@
 									id="dataTables">
 									<thead>
 										<tr>
-										    <th>ID</th>
+										    <th>UserID</th>
+										    <th>Title</th>
 											<th>isbn</th>
-											<th>publish_date</th>
-											<th>discription</th>
-											<th>price</th>
 											<th>status</th>
 											<th><a href="listBookReleases"><i class="fa fa-refresh"></i></a></th>
 										</tr>
@@ -58,14 +64,14 @@
 										<%
 											for (int i = 0; i < bookReleaseList.size(); i++) {
 																				BookRelease bookrelease = bookReleaseList.get(i);
+																				long isbn = bookrelease.getIsbn();
+																				Book book = books.get(isbn);
 										%>
 										<tr>
 										    <td><%=bookrelease.getId()%></td>
+										    <td><a href = "checkReleaseDetail?r_id = <%=bookrelease.getR_id()%>"><%=book.getTitle() %></a></td>
 											<td><%=bookrelease.getIsbn()%></td>
-											<td><%=bookrelease.getPublish_date()%></td>
-											<td><%=bookrelease.getDiscription()%></td>
-											<td><%=bookrelease.getPrice()%></td>
-											<td><%=bookrelease.getStatus()%></td>
+											<td>未审核</td>
 											<td>
 												<button class="btn btn-default ban" type="button"
 													data-id="<%=bookrelease.getR_id()%>">

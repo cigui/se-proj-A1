@@ -263,6 +263,10 @@ $("#comment").click(function(){
 	var isbn = $("#isbn").val();
 	var score = $("#score").val();
 	var discription = $("#discription").val();
+	var logined = "<s:property value='#session.logined'/>";
+	if (logined == false){
+		bootbox.alert("请先登陆");
+	}
 	$.getJSON("sendBookComment",
 			{
 		      isbn: isbn,
@@ -276,6 +280,9 @@ $("#comment").click(function(){
 						  location.reload();
 					  });
 				  }
+				   if (data == "error"){
+					  bootbox.alert("评论失败,请核对评分是否正确输入");
+				  } 
 			  });
 })
 </script>

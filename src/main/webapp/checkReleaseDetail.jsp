@@ -1,35 +1,59 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
 <%@ page import="model.BookRelease"%>
 <%@ page import="model.Book"%>
 <%@ page import="model.User"%>
-<%@ page import="java.util.ArrayList"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <html>
 <!-- Header -->
 <%@ include file="WEB-INF/view/layouts/header.jsp"%>
-<%
-	BookRelease bookRelease = new BookRelease();
-	if (request.getAttribute("bookRelease") != null) {
+<script>
+	var admin = "<s:property value='#session.role'/>";
+	var path = "<%=path%>";
+	var bookreleases = "<%=request.getAttribute("bookreleases")%>"
+	$(document).ready(function() {
+		/*if (admin != 2) {
+			bootbox.alert("滚吧王八羔子", function() {
+				location.href = "index";
+			})
+		}*/
+	});
+</script>
+
+<body>
+	<%
+		BookRelease bookRelease = new BookRelease();
+			if (request.getAttribute("bookRelease") != null) {
 		bookRelease = (BookRelease) request.getAttribute("bookRelease");
-	}
-%>
-<%
-	Book book = new Book();
-	if (request.getAttribute("book") != null) {
-		book = (Book) request.getAttribute("book");
-	}
-%>
-<%
+			}
+	%>
+	<%
+		Book book = new Book();
+	    if (request.getAttribute("book")!=null){
+	    	book = (Book) request.getAttribute("book");
+	    }
+	%>
+	<%
 	User user = new User();
 	if (request.getAttribute("user") != null) {
 		user = (User) request.getAttribute("user");
 	}
-%>
+    %>
+	
 
-
-<div class="yx-container container">
-	<div class="row">
+	<div class="yx-container container">
+		<div class="row">
+			<div class="col-md-2">
+				<ul class="nav nav-list">
+					<li class="yx-header nav-header">管理</li>
+					<li><a href="listUsers"><i class="fa fa-user"></i>用户管理</a></li>
+					<li class=active><a href="listBookReleases"><i class="fa fa-book"></i>图书发布管理</a></li>
+					<li><a href="listCates"><i class="fa fa-bookmark"></i>图书分类管理</a></li>
+				</ul>
+			</div>
+			<div class="covers col-md-10">
+							<div class="dataTable_wrapper">
+							<div class="row">
 		<div class="col-md-1"></div>
 		<div class="col-md-7">
 			<h1>
@@ -109,51 +133,13 @@
 				class="img-responsive" id="cover1"
 				src='releasePicture?r_id=<%=bookRelease.getR_id()%>' /></a>
 			<h4>书籍描述：</h4>
-			<p><%=bookRelease.getDiscription()%></p>
-			<div class=row>
-
-				<div class="col-md-5">
-					<button id="join" class="btn btn-sm btn-primary btn-block">加入借书车</button>
-					<script>
-						var id = "<s:property value='#session.userId'/>";
-						var logined = "<s:property value='#session.logined'/>";
-						var r_id =<%=bookRelease.getR_id()%>;
-					
-						
-						$(document).on("click", "#join", function(e) {
-							if (logined == false){
-								bootbox.alert("请先登陆");
-							}
-							jQuery.ajax({
-								url : 'addBookToCart',
-								processData : true,
-								dataType : "json",
-								data : {
-									id : id,
-									r_id : r_id
-								},
-								success : function(data) {
-									console.log(data);
-									if (data == "good") {
-										bootbox.alert("加入成功");
-									}
-									if (data == "error") {
-										bootbox.alert("加入失败：请检查借出车是否已存在该书籍");
-									}
-
-								}
-							});
-
-						});
-					</script>
-				</div>
-				<div class="col-md-5">
-					<a href="#" class="btn btn-sm btn-primary btn-block" role="button">立即借书</a>
-				</div>
-				<div class="col-md-1"></div>
+			<p><%=bookRelease.getDiscription()%></p>	
+							</div>
 			</div>
 		</div>
 	</div>
-</div>
+	</div>
+	</div>
+	
 <!-- Footer -->
 <%@ include file="WEB-INF/view/layouts/footer.jsp"%>
