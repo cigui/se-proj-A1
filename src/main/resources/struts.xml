@@ -149,6 +149,13 @@
 		<action name="release" class="action.bookAction.ListBookReleaseAction">
 			<result name="success">borrowHistory.jsp</result>
 		</action>
+		<action name="confirm" class="action.orderAction.ConfirmOrderAction">
+			<result name="success">historyDetail.jsp</result>
+		</action>
+		<action name="myReleaseDetail" class="action.orderAction.MyReleaseDetailAction">
+			<result name="success">releaseDetail.jsp</result>
+			<result name="error">/WEB-INF/view/error.jsp</result>
+		</action>
 		
     	<!-- User Info -->
 		<action name="updateUserInformation" class="action.userActions.UpdateUserInformationAction">

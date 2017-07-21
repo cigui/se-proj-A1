@@ -103,7 +103,7 @@
 								<td><%=release.getPrice()%></td>
 								<td><%=s%></td>
 								<td>
-									<a href="releaseDetail?r_id=<%=release.getR_id()%>">Detail</a>
+									<a href="myReleaseDetail?r_id=<%=release.getR_id()%>">Detail</a>
 								</td>
 							</tr>
 							<%
