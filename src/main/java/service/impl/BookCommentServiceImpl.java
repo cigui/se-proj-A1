@@ -57,6 +57,16 @@ public class BookCommentServiceImpl implements BookCommentService {
 	 public List<BookComment> getBookCommentByISBN(long ISBN){
 		 return bookCommentDao.getBookCommentByIsbn(ISBN);
 	 }
+	 
+	 public boolean isNumeric0(String str){
+		 for (int i=str.length();--i>=0;){
+			 int chr=str.charAt(i);
+			 if (chr<48||chr>57){
+				 return false;
+			 }
+		 }
+		 return true;
+	 }
 
 }
 

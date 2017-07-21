@@ -12,22 +12,13 @@ import service.BookCommentService;
 public class SendBookCommentAction extends BaseAction implements SessionAware{
 
 	private static final long serialVersionUID = 1L;
-	private int id;
 	private long isbn;
 	private String discription;
-	private byte score;
+	private String score;
 	private BookComment bookComment;
 	private BookCommentService bookCommentService;
 	private String success;
 	private Map<String, Object> session;
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
 
 	public long getIsbn() {
 		return isbn;
@@ -45,11 +36,11 @@ public class SendBookCommentAction extends BaseAction implements SessionAware{
 		this.discription = discription;
 	}
 
-	public byte getScore() {
+	public String getScore() {
 		return score;
 	}
 
-	public void setScore(byte score) {
+	public void setScore(String score) {
 		this.score = score;
 	}
 
@@ -81,10 +72,23 @@ public class SendBookCommentAction extends BaseAction implements SessionAware{
 	@Override
 	public String execute() throws Exception {
 		int sessionId = (Integer) session.get("userId");
-		setId(sessionId);
-		bookCommentService.SendBookComment(id, isbn, discription, score);
-		setSuccess("good");
-		return SUCCESS;
+		if (bookCommentService.isNumeric0(score) == false){
+			setSuccess("error");
+			return SUCCESS;
+		}
+		int score0 = Integer.parseInt(score);
+		Integer IO = new Integer(score0);
+		byte score1 = IO.byteValue();
+		if (score0>0 && score0<=10){
+			bookCommentService.SendBookComment(sessionId, isbn, discription, score1);
+			setSuccess("good");
+			return SUCCESS;
+		}
+		else {
+			setSuccess("error");
+			return SUCCESS;
+		}
+		
 	}
 
 	public void setSession(Map<String, Object> arg0) {
