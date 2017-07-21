@@ -35,7 +35,7 @@
 					<h3>状态</h3>
 				</div>
 				<div class="col-md-7">
-					<h3><%=borrowHistory.getOrderStatus() %></h3>
+					<h3><%=(borrowHistory.getOrderStatus()==0?"未收到":"已收到") %></h3>
 				</div>
 			</div>
 			<p></p>
@@ -80,6 +80,11 @@
 					<h3><%=borrowHistory.getScore() %></h3>
 					<%} %>
 				</div>
+			</div>
+			<%} else {%>
+			<div class="row">
+				<input type="hidden" class="form-control" name="hid" value="<%=borrowHistory.getH_id()%>">
+				<button id="confirm" type="submit" class="btn btn-info">确认收货</button>
 			</div>
 			<%} %>
 		</div>
