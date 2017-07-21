@@ -77,6 +77,7 @@ public  class GetCartAction extends BaseAction implements SessionAware {
 			BookRelease br = bookReleaseService.getBookReleaseByR_id(r_id);
 			prices.put(r_id, br.getPrice());
 		} 
+		request().setAttribute("bi", bi);
 		request().setAttribute("books", books);
         request().setAttribute("prices", prices);		
 		return SUCCESS;
