@@ -12,5 +12,6 @@ public interface BorrowItemsService {
 
 	public List<BorrowItem> getBorrowItemById(int id);
  
+	public BorrowItem getBorrowItem(int id, int r_id);
 }
 

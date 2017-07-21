@@ -36,4 +36,10 @@ public class BorrowItemDaoImpl extends HibernateDaoSupport implements BorrowItem
 		return borrowItems;
 	}
 	
+	public BorrowItem getBorrowItem(int id, int r_id){
+		BorrowItem bi = (BorrowItem)getHibernateTemplate().find(
+				"from BorrowItem as b where b.id=? and b.r_id=?", id,r_id);
+		return bi;
+	}
+	
 }

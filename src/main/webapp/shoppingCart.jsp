@@ -64,7 +64,8 @@
 							<td class="c-number"><%="1"%></td>
 							<td class="c-ops">
 							<button class="btn btn-default bs-delete" data-bid=<%=item.getR_id()%>>Delete</button>
-							<input type="checkbox" name="checkbox" data-bid=<%=item.getR_id()%> data-num=<%=1%> /></td>
+							<input type="checkbox" name="checkbox" data-bid=<%=item.getR_id()%> data-num=<%=1%> />
+							</td>
 						</tr>
 						<%
 							}
