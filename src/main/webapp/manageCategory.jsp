@@ -8,6 +8,9 @@
 
 <!-- Header -->
 <%@ include file="WEB-INF/view/layouts/header.jsp"%>
+<script src="<%=path%>/js/jquery.dataTables.min.js"></script>
+<script src="<%=path%>/js/dataTables.bootstrap.min.js"></script>
+<link href="<%=path%>/css/dataTables.bootstrap.min.css" rel="stylesheet">
 <script src="<%=path%>/js/manageCategory.js"></script>
 
 <script>
@@ -18,6 +21,7 @@
 				location.href = "index";
 			})
 		}*/
+		$('#dataTables').DataTable();
 	});
 </script>
 
@@ -41,7 +45,7 @@
 			</div>
 			<div class="covers col-md-10">
 				<div class="dataTable_wrapper">
-					<table class="table table-striped table-bordered table-hover"
+					<table class="table table-striped table-bordered"
 						id="dataTables">
 						<thead>
 							<tr>

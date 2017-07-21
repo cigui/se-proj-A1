@@ -7,6 +7,15 @@
 
 <!-- Header -->
 <%@ include file="WEB-INF/view/layouts/header.jsp"%>
+<script src="<%=path%>/js/jquery.dataTables.min.js"></script>
+<script src="<%=path%>/js/dataTables.bootstrap.min.js"></script>
+<link href="<%=path%>/css/dataTables.bootstrap.min.css" rel="stylesheet">
+
+<script>
+	$(document).ready(function() {
+		$('#dataTables').DataTable();
+	});
+</script>
 
 	<%
 		int release_history = 0; //0:history, 1:release
@@ -36,7 +45,7 @@
 			<div class="covers col-md-10">
 				<div class="dataTable_wrapper">
 					<%if(release_history == 0) {%>
-					<table class="table table-striped table-bordered table-hover"
+					<table class="table table-striped table-bordered"
 						id="dataTables">
 						<thead>
 							<tr>
@@ -65,7 +74,7 @@
 						</tbody>
 					</table>
 					<%} else {%>
-					<table class="table table-striped table-bordered table-hover"
+					<table class="table table-striped table-bordered"
 						id="dataTables">
 						<thead>
 							<tr>

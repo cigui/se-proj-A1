@@ -8,13 +8,17 @@
 
 <!-- Header -->
 <%@ include file="WEB-INF/view/layouts/header.jsp"%>
+<script src="<%=path%>/js/jquery.dataTables.min.js"></script>
+<script src="<%=path%>/js/dataTables.bootstrap.min.js"></script>
 <script src="<%=path%>/js/manageUser.js"></script>
+<link href="<%=path%>/css/dataTables.bootstrap.min.css" rel="stylesheet">
 
 <script>
 	var admin = "<s:property value='#session.role'/>";
 	var path = "<%=path%>";
 	var users = "<%=request.getAttribute("users")%>";
 	$(document).ready(function() {
+		$('#dataTables').DataTable();
 		/*if (admin != 2) {
 			bootbox.alert("滚吧王八羔子", function() {
 				location.href = "index";
@@ -46,7 +50,7 @@
 			</div>
 			<div class="covers col-md-10">
 				<div class="dataTable_wrapper">
-					<table class="table table-striped table-bordered table-hover"
+					<table class="table table-striped table-bordered"
 						id="dataTables">
 						<thead>
 							<tr>
