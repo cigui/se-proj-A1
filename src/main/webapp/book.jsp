@@ -119,8 +119,7 @@
 		</div>
 		<div class="row">
 			<div class="row">
-				<div class="col-md-1"></div>
-				<div class="covers col-md-5">
+				<div class="covers col-md-5 col-md-offset-1" >
 					<div class="row">
 						<div class="col-md-9">
 							<span class="yx-header nav-header">图书借阅</span>
