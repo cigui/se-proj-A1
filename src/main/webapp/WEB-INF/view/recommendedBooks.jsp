@@ -29,20 +29,10 @@
 <!-- Body -->
 <div class="yx-container container">
 	<div class="row">
-		<div class="col-xs-2 col-md-2">
-			<ul class="nav nav-list">
-				<li class="yx-header nav-header">图书分类</li>
-				<%
-					for (int i = 0; i < categories.size(); i++) {
-						Category cate = categories.get(i);
-				%>
-				<li><a
-					href="<%=path%>/booksInCategory?cate=<%=cate.getCate_id()%>"><%=cate.getName()%></a></li>
-				<%
-					}
-				%>
-			</ul>
-		</div>
+	
+		<!-- Category Navigator -->
+		<%@ include file="layouts/navigator.jsp"%>
+		
 		<div class="col-xs-10 col-md-10">
 			<div class="row">
 				<%
