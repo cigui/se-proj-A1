@@ -174,7 +174,7 @@
 								data-target="#myComment">我也想评</button>
 						</div>
 						<div class="col-md-2">
-							<button class="btn btn-default btn-sm" ><a href="moreBookComment?isbn=<%=book.getIsbn()%>">更多评论</a></button>
+							<a href="moreBookComment?isbn=<%=book.getIsbn()%>" class="btn btn-default btn-sm" >更多评论</a>
 						</div>
 					</div>
 					<div class="dataTable_wrapper">
