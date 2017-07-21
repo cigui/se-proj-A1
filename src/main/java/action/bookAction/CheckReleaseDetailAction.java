@@ -1,6 +1,5 @@
 package action.bookAction;
 
-
 import action.BaseAction;
 import model.Book;
 import model.BookRelease;
@@ -9,7 +8,7 @@ import service.BookReleaseService;
 import service.BookService;
 import service.UserService;
 
-public class ReleaseDetailAction extends BaseAction {
+public class CheckReleaseDetailAction extends BaseAction{
 
 	/**
 	 * 
@@ -35,7 +34,7 @@ public class ReleaseDetailAction extends BaseAction {
 	public void setBookReleaseService(BookReleaseService bookReleaseService) {
 		this.bookReleaseService = bookReleaseService;
 	}
-	
+
 	public BookService getBookService() {
 		return bookService;
 	}
@@ -44,7 +43,6 @@ public class ReleaseDetailAction extends BaseAction {
 		this.bookService = bookService;
 	}
 	
-
 	public UserService getUserService() {
 		return userService;
 	}
@@ -54,22 +52,18 @@ public class ReleaseDetailAction extends BaseAction {
 	}
 
 	public String execute() throws Exception {
-		BookRelease bookRelease = bookReleaseService.getBookReleaseByR_id(r_id);
-		long isbn = bookRelease.getIsbn();
-		int id = bookRelease.getId();
-		int status = bookRelease.getStatus();
-		Book book = bookService.getBookByISBN(isbn);
-		User user = userService.getUserById(id);
-		request().setAttribute("bookRelease", bookRelease);
-		request().setAttribute("book", book);
-		request().setAttribute("user", user);
-		if (status == 0){
-			return ERROR;
-		}
-		else {
-			return SUCCESS;
-		}
+		BookRelease bookrelease = bookReleaseService.getBookReleaseByR_id(r_id);
+		long isbn = bookrelease.getIsbn();
+        Book book = bookService.getBookByISBN(isbn);
+        int id = bookrelease.getId();
+        User user = userService.getUserById(id);
+        request().setAttribute("bookRelease", bookrelease);
+        request().setAttribute("book", book);
+        request().setAttribute("user", user);
+        
+        
+		
+		return SUCCESS;
 	}
-	
 
 }

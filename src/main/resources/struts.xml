@@ -84,6 +84,7 @@
 		<!-- Release Detail -->
 		<action name="releaseDetail" class="action.bookAction.ReleaseDetailAction">
 			<result name="success">releaseDetail.jsp</result>
+			<result name="error">/WEB-INF/view/error.jsp</result>
 		</action>
 
 		<!-- Books in category -->
@@ -127,6 +128,13 @@
 				<param name="root">success</param>
 			</result>
 		</action>
+		<!-- Borrow Right Now -->
+		<action name="borrowNow" class="action.orderAction.CommitOrderAction">
+			<result name="success" type="json">
+				<param name="root">resultMap</param>
+			</result>
+		</action>
+
 
 		<!-- Borrow History -->
 		<action name="history" class="action.orderAction.ListHistoryOrderAction">
@@ -179,7 +187,14 @@
 			<param name="bufferSize">4096</param>
 		</result>
 	</action>
-
+        
+        <!-- More Release -->
+		<action name="checkReleaseDetail" class="action.bookAction.CheckReleaseDetailAction">
+		   <result>
+		     checkReleaseDetail.jsp
+			</result>
+		</action>
+        
 		<!-- <action name="*">
 			<result>/{1}.jsp</result>
 		</action> -->

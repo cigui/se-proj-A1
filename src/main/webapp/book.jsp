@@ -221,16 +221,16 @@
 				        style="text-align: center" >
 						<h2 class="form-bookcomment-heading">我的评论</h2>
 						<div class="form-group">
-							<label for="nickName" class="col-md-2 control-label">ISBN</label>
+							<label for="isbn" class="col-md-2 control-label">ISBN</label>
 							<div class="col-md-9">
 								<input type="number" class="form-control" id="isbn"
 									name="isbn" value = "<%=book.getIsbn() %>" readonly>
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="nickName" class="col-md-2 control-label">我的评分</label>
+							<label for="score" class="col-md-2 control-label">我的评分</label>
 							<div class="col-md-9">
-								<input type="number" class="form-control" id="score" name = "score"
+								<input type="text" class="form-control" id="score" name = "score"
 							            placeholder=" 请输入评分（0-10分）" min="0" max="10"/>
 							</div>
 						</div>
@@ -263,7 +263,13 @@ $("#comment").click(function(){
 	var isbn = $("#isbn").val();
 	var score = $("#score").val();
 	var discription = $("#discription").val();
-	$.getJSON("sendBookComment",
+	var logined = "<s:property value='#session.logined'/>";
+	if (logined == false){
+		bootbox.alert("请先登陆");
+	}
+	else{
+		$.getJSON("sendBookComment",
+	
 			{
 		      isbn: isbn,
 		      score: score,
@@ -276,7 +282,11 @@ $("#comment").click(function(){
 						  location.reload();
 					  });
 				  }
+				   if (data == "error"){
+					  bootbox.alert("评论失败,请核对评分是否正确输入");
+				  } 
 			  });
+	}
 })
 </script>
 <%@ include file="WEB-INF/view/layouts/footer.jsp"%>

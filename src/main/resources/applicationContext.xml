@@ -12,43 +12,40 @@
 	http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
 	http://www.springframework.org/schema/data/mongo
 	http://www.springframework.org/schema/data/mongo/spring-mongo-1.0.xsd">
-	
+
 
 	<!-- Bean -->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
 		destroy-method="close" p:driverClass="com.mysql.jdbc.Driver"
-		p:jdbcUrl="jdbc:mysql://localhost:3306/proj" p:user="root"
-		p:password="123456" p:maxPoolSize="40" p:minPoolSize="1"
-		p:initialPoolSize="1" p:maxIdleTime="20" />
-    
-    <mongo:mongo host="localhost" port="27017"/>
+		p:jdbcUrl="jdbc:mysql://localhost:3306/proj" p:user="root" p:password="123456"
+		p:maxPoolSize="40" p:minPoolSize="1" p:initialPoolSize="1"
+		p:maxIdleTime="20" />
 
-    <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
-    <constructor-arg ref="mongo"/>
-    <constructor-arg name="databaseName" value="db"/>
-    </bean>
-    
-    <mongo:db-factory id="mongoDbFactory" dbname="db" />
-    <mongo:mapping-converter id="converter" />
+	<mongo:mongo host="localhost" port="27017" />
 
-    <bean id="gridFsTemplate" class="org.springframework.data.mongodb.gridfs.GridFsTemplate">
-	      <constructor-arg ref="mongoDbFactory" />
-	      <constructor-arg ref="converter" />
-    </bean>
-    
+	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+		<constructor-arg ref="mongo" />
+		<constructor-arg name="databaseName" value="db" />
+	</bean>
+
+	<mongo:db-factory id="mongoDbFactory" dbname="db" />
+	<mongo:mapping-converter id="converter" />
+
+	<bean id="gridFsTemplate" class="org.springframework.data.mongodb.gridfs.GridFsTemplate">
+		<constructor-arg ref="mongoDbFactory" />
+		<constructor-arg ref="converter" />
+	</bean>
+
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean"
 		p:dataSource-ref="dataSource">
 		<property name="mappingResources">
 			<list>
- 				<value>model/Book.hbm.xml</value>
+				<value>model/Book.hbm.xml</value>
 				<value>model/BookRelease.hbm.xml</value>
-				<value>model/BookComment.hbm.xml</value>				
+				<value>model/BookComment.hbm.xml</value>
 				<value>model/BookCateRelationship.hbm.xml</value>
 				<value>model/BorrowItem.hbm.xml</value>
-<!--
-				<value>model/BorrowComment.hbm.xml</value>
--->
 				<value>model/Category.hbm.xml</value>
 				<value>model/District.hbm.xml</value>
 				<value>model/User.hbm.xml</value>
@@ -76,15 +73,8 @@
 
 
 	<!-- DAO Bean -->
-<!--
- 	<bean id="bookCateRelationshipDao" class="dao.impl.BookCateRelationshipDaoImpl">
-		<property name="sessionFactory" ref="sessionFactory" />
-	</bean>
-	
-	<bean id="borrowCommentDao" class="dao.impl.BorrowCommentDaoImpl">
-		<property name="sessionFactory" ref="sessionFactory" />
-	</bean>
--->
+	<!-- <bean id="bookCateRelationshipDao" class="dao.impl.BookCateRelationshipDaoImpl"> 
+		<property name="sessionFactory" ref="sessionFactory" /> </bean> -->
 	<bean id="bookDao" class="dao.impl.BookDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
@@ -92,7 +82,7 @@
 		<property name="sessionFactory" ref="sessionFactory" />
 		<property name="GridFsTemplate" ref="gridFsTemplate" />
 	</bean>
-    <bean id="userDao" class="dao.impl.UserDaoImpl">
+	<bean id="userDao" class="dao.impl.UserDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 		<property name="GridFsTemplate" ref="gridFsTemplate" />
 	</bean>
@@ -108,10 +98,10 @@
 	<bean id="bookCateRelationshipDao" class="dao.impl.BookCateRelationshipDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-  <bean id="borrowHistoryDao" class="dao.impl.BorrowHistoryDaoImpl">
+	<bean id="borrowHistoryDao" class="dao.impl.BorrowHistoryDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-  <bean id="borrowItemDao" class="dao.impl.BorrowItemDaoImpl">
+	<bean id="borrowItemDao" class="dao.impl.BorrowItemDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
@@ -142,20 +132,15 @@
 	<bean id="categoryService" class="service.impl.CategoryServiceImpl">
 		<property name="categoryDao" ref="categoryDao"></property>
 	</bean>
-  <bean id="addBookToCartService" class="service.impl.AddBookToCartServiceImpl">
+	<bean id="addBookToCartService" class="service.impl.AddBookToCartServiceImpl">
 		<property name="borrowItemDao" ref="borrowItemDao"></property>
-  </bean>
-	<bean id="borrowHistoryService" class="service.impl.BorrowHistoryServiceImpl">
-		<constructor-arg name="borrowHistoryDao" ref="borrowHistoryDao"></constructor-arg>
 	</bean>
-	
-<!-- 	<bean id="appService" class="service.impl.AppServiceImpl">
-		DAO
-		<property name="bookDao" ref="bookDao"></property>
-		<property name="orderDao" ref="orderDao"></property>
-		<property name="orderitemDao" ref="orderitemDao"></property>
+	<bean id="borrowHistoryService" class="service.impl.BorrowHistoryServiceImpl">
 		<property name="userDao" ref="userDao"></property>
-	</bean> -->
+		<property name="borrowItemDao" ref="borrowItemDao"></property>
+		<property name="bookReleaseDao" ref="bookReleaseDao"></property>
+		<property name="borrowHistoryDao" ref="borrowHistoryDao"></property>
+	</bean>
 
 	<!-- HibernateTransactionManager -->
 	<bean id="transactionManager"
@@ -173,13 +158,20 @@
 		<aop:pointcut id="userServiceBeanPointcut" expression="bean(userService)" />
 		<aop:pointcut id="bookServiceBeanPointcut" expression="bean(bookService)" />
 		<aop:pointcut id="adminServiceBeanPointcut" expression="bean(adminService)" />
-		<aop:pointcut id="bookReleaseServiceBeanPointcut" expression="bean(bookReleaseService)" />
-		<aop:pointcut id="districtServiceBeanPointcut" expression="bean(districtService)" />
-		<aop:pointcut id="bookCommentServiceBeanPointcut" expression="bean(bookCommentService)" />
-		<aop:pointcut id="categoryServiceBeanPointcut" expression="bean(categoryService)" />
-		<aop:pointcut id="addBookToCartServiceBeanPointcut" expression="bean(addBookToCartService)" />
-		<aop:pointcut id="borrowHistoryServiceBeanPointcut" expression="bean(borrowHistoryService)" />
-		<!-- <aop:advisor advice-ref="txAdvice" pointcut-ref="userServiceBeanPointcut" /> -->
+		<aop:pointcut id="bookReleaseServiceBeanPointcut"
+			expression="bean(bookReleaseService)" />
+		<aop:pointcut id="districtServiceBeanPointcut"
+			expression="bean(districtService)" />
+		<aop:pointcut id="bookCommentServiceBeanPointcut"
+			expression="bean(bookCommentService)" />
+		<aop:pointcut id="categoryServiceBeanPointcut"
+			expression="bean(categoryService)" />
+		<aop:pointcut id="addBookToCartServiceBeanPointcut"
+			expression="bean(addBookToCartService)" />
+		<aop:pointcut id="borrowHistoryServiceBeanPointcut"
+			expression="bean(borrowHistoryService)" />
+		<!-- <aop:advisor advice-ref="txAdvice" pointcut-ref="userServiceBeanPointcut" 
+			/> -->
 	</aop:config>
 
 </beans>
