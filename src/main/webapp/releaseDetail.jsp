@@ -116,6 +116,7 @@
 					<button id="join" class="btn btn-sm btn-primary btn-block">加入借书车</button>
 					<script>
 						var id = "<s:property value='#session.userId'/>";
+						var r_id = <%=bookRelease.getR_id()%>;
 						var logined = "<s:property value='#session.logined'/>";
 						var r_id =<%=bookRelease.getR_id()%>;
 					
@@ -135,7 +136,7 @@
 									r_id : r_id
 								},
 								success : function(data) {
-									console.log(data);
+									/* console.log(data); */
 									if (data == "good") {
 										bootbox.alert("加入成功");
 									}
@@ -151,7 +152,42 @@
 					</script>
 				</div>
 				<div class="col-md-5">
-					<a href="#" class="btn btn-sm btn-primary btn-block" role="button">立即借书</a>
+					<button id="borrowNow" class="btn btn-sm btn-primary btn-block" role="button">立即借书</button>
+					<script>
+ 						$("#borrowNow").click(function(){
+ 							if (logined == false) {
+ 								bootbox.alert("请先登录！", function() {
+ 									location.href = "<%=path%>/index";//location.href实现客户端页面的跳转  
+ 								});
+ 							} else {
+ 								bootbox.prompt({
+									title : "请输入您的收货地址",
+									callback : function(result) {
+										$.getJSON("borrowNow", {
+											id : id,
+											r_id : r_id,
+											location : result
+										}, function(data) {
+											var result = data.result;
+											if (result == "success") {
+												bootbox.alert("借书成功！", function(){
+													location.href = "<%=path%>/index";
+												});
+											} else if (result == "points") {
+												bootbox.alert("积分不足，无法借书:(");
+											} else if (result == "borrowed") {
+												bootbox.alert("该书已被借出:(");
+											} else if (result == "location") {
+												bootbox.alert("请先输入收货地址！");
+											} else {
+												bootbox.alert("未知错误:(");
+											}
+										});
+									}
+								});
+ 							}
+						}); 
+					</script>
 				</div>
 				<div class="col-md-1"></div>
 			</div>
