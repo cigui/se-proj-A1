@@ -113,7 +113,14 @@
 			<div class=row>
 
 				<div class="col-md-5">
-					<button id="join" class="btn btn-sm btn-primary btn-block">加入借书车</button>
+				<%
+				    int id = bookRelease.getId();
+				    int userId = (Integer) session.getAttribute("userId");
+				    if (id != userId){  %>
+				    	<button id="join" class="btn btn-sm btn-primary btn-block">加入借书车</button>
+				<%     }
+				%>
+					
 					<script>
 						var id = "<s:property value='#session.userId'/>";
 						var r_id = <%=bookRelease.getR_id()%>;
@@ -152,7 +159,13 @@
 					</script>
 				</div>
 				<div class="col-md-5">
-					<button id="borrowNow" class="btn btn-sm btn-primary btn-block" role="button">立即借书</button>
+				<%
+				   
+				    if (id != userId){  %>
+				    	<button id="borrowNow" class="btn btn-sm btn-primary btn-block" role="button">立即借书</button>
+				<%     }
+				%>
+					
 					<script>
  						$("#borrowNow").click(function(){
  							if (logined == false) {

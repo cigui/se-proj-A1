@@ -46,4 +46,13 @@ public class BookCommentDaoImpl extends HibernateDaoSupport implements BookComme
 		return bookComments;
 	}
 	
+	public List<BookComment> getBookCommentByIsbnLimited(long isbn,int maxCount){
+		Query q = getSession().createQuery("from BookComment as t  where t.isbn=:isbn");
+		q.setLong("isbn", isbn);
+		q.setMaxResults(maxCount);
+		@SuppressWarnings("unchecked")
+		List<BookComment> bookcomments = (List<BookComment>)q.list();
+		return bookcomments;
+	}
+	
 }
