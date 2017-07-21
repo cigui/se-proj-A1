@@ -19,5 +19,7 @@ public interface BookCommentService {
 	public List<BookComment> getAllBookComments();
     
 	public void SendBookComment(int id,long isbn,String discription,byte score);
+	
+	public boolean isNumeric0(String str);
     
 }
