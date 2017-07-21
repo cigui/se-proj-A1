@@ -36,6 +36,10 @@ public class BookCommentServiceImpl implements BookCommentService {
 		 return bookCommentDao.getAllBookComments();
 	 }
 	 
+	 public List<BookComment> getBookCommentByIsbnLimited(long isbn,int maxCount){
+		 return bookCommentDao.getBookCommentByIsbnLimited(isbn, maxCount);
+	 }
+	 
 	 public void SendBookComment(int id,long isbn,String discription,byte score){
 		 BookComment bookComment = new BookComment(id,isbn,discription,score);
 		 List<BookComment> bookCommentsExist = bookCommentDao.getBookCommentById(id);

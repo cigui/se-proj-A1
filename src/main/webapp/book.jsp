@@ -167,12 +167,15 @@
 				</div>
 				<div class="covers col-md-5">
 					<div class="row">
-						<div class="col-md-9">
+						<div class="col-md-7">
 							<span class="yx-header nav-header">图书评论</span>
 						</div>
-						<div class="col-md-1">
+						<div class="col-md-2">
 							<button class="btn btn-default btn-sm" data-toggle="modal"
 								data-target="#myComment">我也想评</button>
+						</div>
+						<div class="col-md-2">
+							<button class="btn btn-default btn-sm" ><a href="moreBookComment?isbn=<%=book.getIsbn()%>">更多评论</a></button>
 						</div>
 					</div>
 					<div class="dataTable_wrapper">
@@ -180,21 +183,21 @@
 									id="dataTables">
 						<thead>
 								<tr>
-						<th>评论人</th>
-						<th>TA的评论</th>
-						<th>TA的评分</th>
+						<th width = 20%>评论人</th>
+						<th width = 55%>TA的评论</th>
+						<th width = 25%>TA的评分</th>
 						</tr>
 						</thead>
 						<tbody>
 						    <%
-											for (int i = 0; (i < 4) && i < bookCommentList.size(); i++) {
+											for (int i = 0;i < bookCommentList.size(); i++) {
 																				BookComment bookComment = bookCommentList.get(i);
 																				int id = bookComment.getId();
 																				User userComment = userCommentList.get(id);
 										%>
 							<tr>
 								<td><%=userComment.getNickname()%></td>
-								<td><%=bookComment.getDiscription()%></td>
+								<td style="word-break:break-all"><%=bookComment.getDiscription()%></td>
 								<td><%=bookComment.getScore()%></td>
 								</tr>
 										<%
@@ -239,7 +242,7 @@
 							<div class="col-md-9">
 								<textarea maxlength="140" rows="10" required="true"
 							         class="form-control" id="discription" name="discription"
-							         placeholder="请输入书籍评价（不超过140字符）"></textarea>
+							         placeholder="请输入书籍评价（不超过140字符）" maxlength="140"></textarea>
 							</div>
 						</div>
 						
