@@ -57,7 +57,7 @@ $(function() {
 				);
 				var jsonstr = JSON.stringify(checkedItems);
 				console.log(jsonstr);
-				$.getJSON("commitOrder",
+				$.getJSON("placeOrder",
 				{	
 					id : id,
 					json : jsonstr

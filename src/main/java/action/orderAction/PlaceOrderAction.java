@@ -1,16 +1,14 @@
 package action.orderAction;
 
-import java.sql.Timestamp;
 import java.util.Map;
 import action.BaseAction;
 import model.BorrowItem;
-import model.User;
 import model.BorrowHistory;
 import service.BorrowItemsService;
 import service.BorrowHistoryService;
 import org.apache.struts2.interceptor.SessionAware;
 
-public class CommitOrderAction extends BaseAction implements SessionAware {
+public class PlaceOrderAction extends BaseAction implements SessionAware {
 
 	private static final long serialVersionUID = 1L;
 	private BorrowHistoryService borrowHistoryService;
@@ -20,8 +18,7 @@ public class CommitOrderAction extends BaseAction implements SessionAware {
 	private int r_id;
 	private int orderStatus;
 	private String location;
-	private Timestamp date;
-	private int h_id;
+
 
 	public int getId() {
 		return id;
@@ -59,14 +56,6 @@ public class CommitOrderAction extends BaseAction implements SessionAware {
 		this.location = location;
 	}
 	
-	public Timestamp getDate() {
-		return date;
-	}
-
-
-	public void setDate(Timestamp date) {
-		this.date = date;
-	}
 	
 	public BorrowItemsService getBorrowItemService() {
 		return borrowItemsService;
@@ -96,8 +85,12 @@ public class CommitOrderAction extends BaseAction implements SessionAware {
 			int id = (Integer) session.get("userId");
 			BorrowItem bi = borrowItemsService.getBorrowItem(id, r_id);
 			borrowItemsService.delete(bi);
-			BorrowHistory bh = new BorrowHistory(orderStatus, location, date,  id,  h_id, r_id);
-			
+			BorrowHistory bh = new BorrowHistory(orderStatus, location, id, r_id);
+			bh.setOrderStatus(0);
+			bh.setLocation(location);
+			bh.setId(id);
+			bh.setR_id(r_id);
+			borrowHistoryService.update(bh);
 			
 			return SUCCESS;
 		} catch (Exception e) {

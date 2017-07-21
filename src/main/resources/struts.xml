@@ -147,9 +147,14 @@
 			<result name="success" type="redirect">shoppingCart.jsp</result>
 			<result name="error">error.jsp</result>
 		</action>
-		<action name="commitOrder" class="action.orderAction.CommitOrderAction">
-			<result name="success" type="redirect">index.jsp</result>
+		<action name="placeOrder" class="action.orderAction.PlaceOrderAction">
+			<result name="success" type="redirect">index</result>
 			<result name="error">error.jsp</result>
+		</action>
+		<action name="deleteFromShoppingCart" class="action.orderAction.deleteFromShoppingCart">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
 		</action>
 		
     	<!-- User Info -->
