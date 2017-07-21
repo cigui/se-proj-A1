@@ -59,7 +59,7 @@ public class MyReleaseDetailAction extends BaseAction {
 		int id = bookRelease.getId();
 		Book book = bookService.getBookByISBN(isbn);
 		User user = userService.getUserById(id);
-		if (user.getId() == (int) session().getAttribute("userId")) {
+		if (user.getId() == (Integer) session().getAttribute("userId")) {
 			request().setAttribute("bookRelease", bookRelease);
 			request().setAttribute("book", book);
 			request().setAttribute("user", user);
