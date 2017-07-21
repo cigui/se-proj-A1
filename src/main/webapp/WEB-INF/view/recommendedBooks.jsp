@@ -56,6 +56,13 @@
 					</div>
 				</div>
 				<%
+					if (i % 2 == 1) {
+				%>
+				<div class="clearfix visible-xs-block"></div>
+				<% 		
+					}
+				%>
+				<%
 					}
 				%>
 			</div>
