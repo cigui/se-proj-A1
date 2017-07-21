@@ -83,7 +83,7 @@ public class BookDetailsAction extends BaseAction {
 			User newUser = userService.getUserById(id);
 			users.put(id, newUser);
 		}
-		List<BookComment>bookComments = bookCommentService.getBookCommentByISBN(isbn);
+		List<BookComment>bookComments = bookCommentService.getBookCommentByIsbnLimited(isbn,3);
 		Map<Integer, User> userComments = new HashMap<Integer,User>();
 		for (BookComment item : bookComments) {
 			int id = item.getId();

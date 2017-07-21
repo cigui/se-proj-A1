@@ -67,7 +67,7 @@
 	</bean>
 
 	<!-- Utils -->
-	<bean id="emailUtil" class="utils.EmailUtil">
+	<bean id="emailUtil" class="utils.EmailUtil">  
 		<property name="host" value="smtp.163.com" />
 		<property name="userName" value="summerProj@163.com" />
 		<property name="pwd" value="seprojA1" />

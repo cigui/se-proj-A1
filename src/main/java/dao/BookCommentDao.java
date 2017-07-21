@@ -17,5 +17,7 @@ public interface BookCommentDao {
 	public List<BookComment> getBookCommentById(int id);
 
 	public List<BookComment> getAllBookComments();
+	
+	public List<BookComment> getBookCommentByIsbnLimited(long isbn,int maxCount);
 
 }

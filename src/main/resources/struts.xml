@@ -181,10 +181,17 @@
 		</result>
 	</action>
         
-        <!-- More Release -->
+        <!-- Check Release Detail -->
 		<action name="checkReleaseDetail" class="action.bookAction.CheckReleaseDetailAction">
 		   <result>
 		     checkReleaseDetail.jsp
+			</result>
+		</action>
+		
+		<!-- More Book Comment -->
+		<action name="moreBookComment" class="action.bookAction.MoreBookCommentAction">
+		   <result>
+		     moreBookComment.jsp
 			</result>
 		</action>
         
