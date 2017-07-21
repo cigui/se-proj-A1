@@ -8,13 +8,17 @@
 
 <!-- Header -->
 <%@ include file="WEB-INF/view/layouts/header.jsp"%>
+<script src="<%=path%>/js/jquery.dataTables.min.js"></script>
+<script src="<%=path%>/js/dataTables.bootstrap.min.js"></script>
 <script src="<%=path%>/js/manageUser.js"></script>
+<link href="<%=path%>/css/dataTables.bootstrap.min.css" rel="stylesheet">
 
 <script>
 	var admin = "<s:property value='#session.role'/>";
 	var path = "<%=path%>";
 	var users = "<%=request.getAttribute("users")%>";
 	$(document).ready(function() {
+		$('#dataTables').DataTable();
 		/*if (admin != 2) {
 			bootbox.alert("滚吧王八羔子", function() {
 				location.href = "index";
@@ -46,7 +50,7 @@
 			</div>
 			<div class="covers col-md-10">
 				<div class="dataTable_wrapper">
-					<table class="table table-striped table-bordered table-hover"
+					<table class="table table-striped table-bordered"
 						id="dataTables">
 						<thead>
 							<tr>
@@ -60,14 +64,22 @@
 						<tbody>
 							<%
 								for (int i = 0; i < userList.size(); i++) {
-																	User user = userList.get(i);
+									User user = userList.get(i);
+									String s = null;
+									switch(user.getRole()){
+									case 0: s="未激活"; break;
+									case 1: s="普通用户";break;
+									case 2: s="管理员";break;
+									case -1: s="被禁用户";break;
+									}
 							%>
 							<tr>
 							    <td><%=user.getId()%></td>
 								<td><%=user.getNickname()%></td>
-								<td><%=user.getRole()%></td>
+								<td><%=s%></td>
 								<td><%=user.getCredit()%></td>
 								<td>
+									<%if(user.getRole()!=2){ %>
 									<button class="btn btn-default ban" type="button"
 										data-id="<%=user.getId()%>">
 										<i class="fa fa-ban"></i>
@@ -76,11 +88,10 @@
 										data-id="<%=user.getId()%>">
 										<i class="fa fa-check"></i>
 									</button>
+									<%} %>
 								</td>
 							</tr>
-							<%
-								}
-							%>
+							<%} %>
 						</tbody>
 					</table>
 				</div>
