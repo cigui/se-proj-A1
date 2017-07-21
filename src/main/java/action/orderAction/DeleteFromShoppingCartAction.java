@@ -6,7 +6,7 @@ import model.BorrowItem;
 import service.BorrowItemsService;
 import org.apache.struts2.interceptor.SessionAware;
 
-public class deleteFromShoppingCart extends BaseAction implements SessionAware {
+public class DeleteFromShoppingCartAction extends BaseAction implements SessionAware {
 
 	private static final long serialVersionUID = 1L;
 	private BorrowItemsService borrowItemsService;

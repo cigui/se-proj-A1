@@ -37,7 +37,7 @@ public class BorrowItemsServiceImpl implements BorrowItemsService{
 	}
 	
 	public BorrowItem getBorrowItem(int id, int r_id){
-		return borrowItemDao.getBorrowItem(id, r_id);
+		return borrowItemDao.getSpecificItem(id, r_id);
 	}
 
 	

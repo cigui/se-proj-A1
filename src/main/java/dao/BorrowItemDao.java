@@ -16,6 +16,6 @@ public interface BorrowItemDao {
 
 	public List<BorrowItem> getAllBorrowItems();
 	
-	public BorrowItem getBorrowItem(int id, int r_id);
+	public BorrowItem getSpecificItem(int id, int r_id);
 
 }

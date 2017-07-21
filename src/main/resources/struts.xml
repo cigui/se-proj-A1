@@ -151,7 +151,7 @@
 			<result name="success" type="redirect">index</result>
 			<result name="error">error.jsp</result>
 		</action>
-		<action name="deleteFromShoppingCart" class="action.orderAction.deleteFromShoppingCart">
+		<action name="deleteFromShoppingCart" class="action.orderAction.DeleteFromShoppingCartAction">
 			<result type="json">
 				<param name="root">result</param>
 			</result>
