@@ -7,6 +7,15 @@
 
 <!-- Header -->
 <%@ include file="WEB-INF/view/layouts/header.jsp"%>
+<script src="<%=path%>/js/jquery.dataTables.min.js"></script>
+<script src="<%=path%>/js/dataTables.bootstrap.min.js"></script>
+<link href="<%=path%>/css/dataTables.bootstrap.min.css" rel="stylesheet">
+
+<script>
+	$(document).ready(function() {
+		$('#dataTables').DataTable();
+	});
+</script>
 
 	<%
 		int release_history = 0; //0:history, 1:release
@@ -36,7 +45,7 @@
 			<div class="covers col-md-10">
 				<div class="dataTable_wrapper">
 					<%if(release_history == 0) {%>
-					<table class="table table-striped table-bordered table-hover"
+					<table class="table table-striped table-bordered"
 						id="dataTables">
 						<thead>
 							<tr>
@@ -65,7 +74,7 @@
 						</tbody>
 					</table>
 					<%} else {%>
-					<table class="table table-striped table-bordered table-hover"
+					<table class="table table-striped table-bordered"
 						id="dataTables">
 						<thead>
 							<tr>
@@ -80,14 +89,21 @@
 							<%
 								for (int i = 0; i < releaseList.size(); i++) {
 									BookRelease release = releaseList.get(i);
+									String s = null;
+									switch((int)release.getStatus()){
+									case 0: s="未审核"; break;
+									case 1: s="审核通过";break;
+									case 2: s="已借出";break;
+									case -1: s="审核不通过";break;
+									}
 							%>
 							<tr>
 							    <td><%=release.getIsbn()%></td>
 								<td><%=release.getDiscription()%></td>
 								<td><%=release.getPrice()%></td>
-								<td><%=release.getStatus()%></td>
+								<td><%=s%></td>
 								<td>
-									<a href="releaseDetail?r_id=<%=release.getR_id()%>">Detail</a>
+									<a href="myReleaseDetail?r_id=<%=release.getR_id()%>">Detail</a>
 								</td>
 							</tr>
 							<%

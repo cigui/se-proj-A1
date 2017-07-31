@@ -149,6 +149,28 @@
 		<action name="release" class="action.bookAction.ListBookReleaseAction">
 			<result name="success">borrowHistory.jsp</result>
 		</action>
+		<action name="confirm" class="action.orderAction.ConfirmOrderAction">
+			<result name="success">historyDetail.jsp</result>
+		</action>
+		<action name="myReleaseDetail" class="action.orderAction.MyReleaseDetailAction">
+			<result name="success">releaseDetail.jsp</result>
+			<result name="error">/WEB-INF/view/error.jsp</result>
+		</action>
+		
+		<!-- Shopping Cart -->
+		<action name="getCart" class="action.orderAction.GetCartAction">
+			<result name="success" type="redirect">shoppingCart.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<action name="placeOrder" class="action.orderAction.PlaceOrderAction">
+			<result name="success" type="redirect">index</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<action name="deleteFromShoppingCart" class="action.orderAction.DeleteFromShoppingCartAction">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
 		
     	<!-- User Info -->
 		<action name="updateUserInformation" class="action.userActions.UpdateUserInformationAction">

@@ -8,7 +8,28 @@
 <!-- Header -->
 <%@ include file="WEB-INF/view/layouts/header.jsp"%>
 <script src="<%=path%>/js/shoppingCart.js"></script>
-
+<%@ page import="java.util.Map"%>
+<%@ page import="java.util.List"%>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="java.util.HashMap"%>
+<%@ page import="model.Book"%>
+<%@ page import="model.BookRelease"%>
+<%@ page import="model.BorrowItem"%>
+<%
+	ArrayList<BorrowItem> bi = new ArrayList<BorrowItem>();
+	Map<Integer, String> books = new HashMap<Integer, String>();
+	Map<Integer, Integer> prices = new HashMap<Integer, Integer>();
+	if (request.getAttribute("bi") != null) {
+		bi = (ArrayList<BorrowItem>) request.getAttribute("bi");
+	}
+	if (request.getAttribute("books") != null) {
+		books = (Map<Integer, String>) request.getAttribute("books");
+	}
+	if (request.getAttribute("prices") != null) {
+		prices = (Map<Integer, Integer>) request.getAttribute("prices");
+	}
+%>
+<script src="<%=path%>/js/shoppingCart.js"></script>
 <body>  
 <div class="yx-container container">
 			<div class="row">
@@ -21,167 +42,45 @@
 		</div>
 		
   <div id='cart' class="container">
-     <form id="cart-form" role="form" method="POST" action="submitCart">
-        <div v-if="items.length > 0">
-            <table class="table table-striped table-bordered">
-                <thead>
-                <tr>
-                    <td>
-                        
-                        <button type="button" class="btn btn-default btn-sm" v-on:click="check_all()">全选</button>
-                    </td>
-                    <td>书名</td>
-                    <td>单价</td>
-                    <td>数量</td>
-                    <td>小计</td>
-                    <td>操作</td>
-                </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="item in items">
-                        <td class="vmid"><input type="checkbox" v-model="item.checked"></td>
-                        <td class="vmid">{{item.book.name}}</td>
-                        <td class="vmid">{{item.book.price}}</td>
-                        <td class="vmid">
-                            <div class="input-group cart-num">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button" v-on:click="sub_one($index)">-</button>
-                                </span>
-                                <input type="text" class="form-control" v-bind:name="item.checked ? item.bookId : null" v-model="item.num" number>
-                                <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button" v-on:click="add_one($index)">+</button>
-                                </span>
-                            </div>
-                        </td>
-                        <td class="vmid">{{item.book.price * item.num}}</td>
-                        <td class="vmid">
-                            <button class="btn btn-danger" v-on:click="remove_item($index)">
-                                <span class="glyphicon glyphicon-trash"></span>
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="clearfix">
-                <a href="<%=path%>/index" class="btn btn-info pull-left">返回购书</a>
-                <button class="btn btn-primary pull-right" v-bind:disabled="!allow_checkout" v-on:click="checkout()">提交订单</button>
-                <p class="cart-sum pull-right">合计: {{total}}元</p>
-            </div>
-        </div>
-        <div v-else>
-            您的购物车还是空的！
-            <a href="<%=path%>/index" class="btn btn-info">马上去购书</a>
-        </div>
-    </form>
-</div>
-</div>
+     <form id="cart-form" role="form" method="POST" action="commitOrder">
+       <div class="bs-body">
+			<div class="bs-center container">
+				<div class="panel panel-info">
+					<table class="table table-striped" id="cart-tb">
+						<tr>	
+							<th>Title</th>						
+							<th>Price</th>
+							<th>Number</th>
+							<th>Operation</th>
+						</tr>
 
-<script type="text/javascript" src="<%=path%>/js/vue.js"></script>
-<script type="text/javascript">
-    $.get('<%=path%>/cart/data', function(data, status) {
-        items = JSON.parse(data);
-        items.forEach(function (item) {
-            item.checked = true;
-        });
+						<%
+								for (BorrowItem item : bi) {
+						%>
+						<tr class="cart-item">
+							
+							<td class="c-title"><%=books.get(item.getR_id())%></td>
+							<td class="c-price"><%=prices.get(item.getR_id())%></td>
+							<td class="c-number"><%="1"%></td>
+							<td class="c-ops">
+							<button class="btn btn-default bs-delete" data-bid=<%=item.getR_id()%>>Delete</button>
+							<input type="checkbox" name="checkbox" data-bid=<%=item.getR_id()%> data-num=<%=1%> />
+							</td>
+						</tr>
+						<%
+							}
+						%>
+					</table>
 
-        var vm = new Vue({
-            el: '#cart',
-            data: {
-                items: items,
-                allow_checkout: true,
-                msg: null
-            },
-            computed: {
-                total: function () {
-                    var res = 0;
-                    this.items.forEach(function(item) {
-                        if (item.checked) {
-                            res += item.book.price * item.num;
-                        }
-                    });
-                    return res;
-                },
-                all_checked: function () {
-                    return this.items.every(function (item) {
-                        return item.checked;
-                    });
-                }
-            },
-            methods: {
-                remove_item: function (id) {
-                    this.items.splice(id, 1);
-                },
-                add_one: function (id) {
-                    this.items[id].num += 1;
-                },
-                sub_one: function (id) {
-                    if (this.items[id].num > 1) {
-                        this.items[id].num -= 1;
-                    }
-                },
-                check_all: function () {
-                    this.items.forEach(function (item) {
-                        item.checked = true;
-                    });
-                },
-                uncheck_all: function () {
-                    this.items.forEach(function (item) {
-                        item.checked = false;
-                    });
-                },
-                clear_msg: function() {
-                    this.msg = null;
-                },
-                encode_cart: function () {
-                    var res = {};
-                    this.items.forEach(function(item) {
-                        res[item.bookId] = item.num;
-                    });
-                    return res;
-                },
-                save_cart: function () {
-                    var self = this;
-                    $.post('<%=path%>/cart/save', self.encode_cart(), function(data, status) {
-                        var response = JSON.parse(data);
-                        if (response.success) {
-                            self.msg = {
-                                type: 'success',
-                                text: '暂存成功'
-                            };
-                        } else {
-                            self.msg = {
-                                type: 'danger',
-                                text: '暂存失败'
-                            };
-                        }
-                    });
-                },
-                checkout: function () {
-                    console.log("called");
-                    this.allow_checkout = false;
-                    var cart = {};
-                    this.items.forEach(function(item) {
-                        if (!item.checked) {
-                            cart[item.bookId] = item.num;
-                        }
-                    });
+					<hr />
 
-                    var self = this;
-                    $.post('<%=path%>/cart/save', cart, function(data, status) {
-                        var response = JSON.parse(data);
-                        if (response.success) {
-                            document.getElementById("cart-form").submit();
-                        } else {
-                            self.allow_checkout = true;
-                            self.msg = {
-                                type: 'danger',
-                                text: '提交失败'
-                            };
-                        }
-                    });
-                }
-            }
-        });
-    });
-</script>
-    
+					<div class="panel-body">
+						<div class="row btn-row">
+							<div class="col-md-3" style="float: right">
+								<button class="btn btn-block btn-primary bs-place" >Place Order</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
