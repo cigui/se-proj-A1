@@ -17,3 +17,4 @@ public interface BorrowHistoryService {
 	
 	public String borrow(int id, int r_id, String location);
 
+}

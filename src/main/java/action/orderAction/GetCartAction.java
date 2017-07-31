@@ -24,7 +24,6 @@ public  class GetCartAction extends BaseAction implements SessionAware {
 	private BorrowItemsService borrowItemsService;
 	private BookService bookService;
 	
-	@SuppressWarnings("unused")
 	private Map<String, Object> session;
 	
 	public  BookReleaseService getbookReleaseService() {
