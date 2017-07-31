@@ -115,7 +115,8 @@
 				<div class="col-md-5">
 				<%
 				    int id = bookRelease.getId();
-				    int userId = (Integer) session.getAttribute("userId");
+					Integer userIdI = (Integer) session.getAttribute("userId");
+				    int userId = userIdI==null ? 0 : userIdI;
 				    if (id != userId){  %>
 				    	<button id="join" class="btn btn-sm btn-primary btn-block">加入借书车</button>
 				<%     }

@@ -36,7 +36,6 @@ public class BorrowItemDaoImpl extends HibernateDaoSupport implements BorrowItem
 		return borrowItems;
 	}
 
-
 	public BorrowItem getSpecificItem(int id, int r_id) {
 		@SuppressWarnings("unchecked")
 		List<BorrowItem> borrowItems = (List<BorrowItem>) getHibernateTemplate()
