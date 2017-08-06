@@ -2,16 +2,27 @@ package service.impl;
 
 import java.io.File;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
 
 import model.Picture;
+import dao.BorrowHistoryDao;
+import dao.BorrowItemDao;
+import dao.BookReleaseDao;
+import dao.BookCateRelationshipDao;
 import dao.UserDao;
 import model.User;
+import model.BorrowItem;
+import model.BorrowHistory;
 import service.UserService;
 import utils.MD5Util;
 import utils.EmailUtil;
@@ -19,6 +30,10 @@ import utils.EmailUtil;
 public class UserServiceImpl implements UserService {
 
 	private UserDao userDao;
+	private BorrowItemDao borrowItemDao;
+	private BorrowHistoryDao borrowHistoryDao;
+	private BookReleaseDao bookReleaseDao;
+	private BookCateRelationshipDao bookCateRelationshipDao;
 	private String activateUrl;
 
 	public UserDao getUserDao() {
@@ -28,6 +43,38 @@ public class UserServiceImpl implements UserService {
 	public void setUserDao(UserDao userDao) {
 		this.userDao = userDao;
 	}
+	public BorrowItemDao getBorrowItemDao() {
+		return borrowItemDao;
+	}
+
+	public void setBorrowItemDao(BorrowItemDao borrowItemDao) {
+		this.borrowItemDao = borrowItemDao;
+	}
+
+	public BorrowHistoryDao getBorrowHistoryDao() {
+		return borrowHistoryDao;
+	}
+
+	public void setBorrowHistoryDao(BorrowHistoryDao borrowHistoryDao) {
+		this.borrowHistoryDao = borrowHistoryDao;
+	}
+
+	public BookReleaseDao getBookReleaseDao() {
+		return bookReleaseDao;
+	}
+
+	public void setBookReleaseDao(BookReleaseDao bookReleaseDao) {
+		this.bookReleaseDao = bookReleaseDao;
+	}
+
+	public BookCateRelationshipDao getBookCateRelationshipDao() {
+		return bookCateRelationshipDao;
+	}
+
+	public void setBookCateRelationshipDao(BookCateRelationshipDao bookCateRelationshipDao) {
+		this.bookCateRelationshipDao = bookCateRelationshipDao;
+	}
+
 	public String getActivateUrl() {
 		return activateUrl;
 	}
@@ -156,6 +203,69 @@ public class UserServiceImpl implements UserService {
 				update(u);
 			}
 		}
+	}
+
+	@Override
+	public void updateFavCate(User user) {
+		int id = user.getId();
+		List<BorrowHistory> bhList = borrowHistoryDao.getBorrowHistoryById(id);
+		List<BorrowItem> biList = borrowItemDao.getBorrowItemById(id);
+		List<Long> isbnList = new ArrayList<Long>();
+		
+		//get recent 5 records in borrow history
+		if (bhList != null) {
+			int s = bhList.size() - 5 > 0 ? bhList.size() - 5 : 0;
+			for(int i = s;i < bhList.size();i++){
+				int rid = bhList.get(i).getR_id();
+				long isbn = bookReleaseDao.getBookReleaseByR_id(rid).getIsbn();
+				isbnList.add(isbn);
+			}
+		}
+		
+		//get recent 5 records in borrow item
+		if (biList != null) {
+			int s = biList.size() - 5 > 0 ? biList.size() - 5 : 0;
+			for(int i = s;i < biList.size();i++){
+				int rid = biList.get(i).getR_id();
+				long isbn = bookReleaseDao.getBookReleaseByR_id(rid).getIsbn();
+				isbnList.add(isbn);
+			}
+		}
+		
+		//count frequency of each category
+		Map<Integer,Integer> cateCount = new HashMap<Integer,Integer>();
+		for (int i = 0; i < isbnList.size(); i++) {
+			List<Integer> cates = bookCateRelationshipDao.getCategoriesIdByIsbn(isbnList.get(i));
+			if (cates != null) {
+				for (int j = 0; j < cates.size(); j++) {
+					int cate = cates.get(j);
+					if (cateCount.containsKey(cate)) {
+						int count = cateCount.get(cate) + 1;
+						cateCount.put(cate, count);
+					} else {
+						cateCount.put(cate, 1);
+					}
+				}
+			}
+		}
+		
+		//get most frequent category
+		Integer maxCate = null;
+		Integer count = 0;
+		Iterator<Entry<Integer, Integer>> it = cateCount.entrySet().iterator();
+		while (it.hasNext()) {
+			Map.Entry<Integer, Integer> entry = it.next();
+			Integer key = entry.getKey();
+			Integer value = entry.getValue();
+			
+			if (value > count) {
+				maxCate = key;
+				count = value;
+			}
+		}
+
+		user.setFav_category(maxCate);
+		userDao.update(user);
 	}
 
 }

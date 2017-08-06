@@ -1,11 +1,14 @@
 package action;
 
+import java.util.Collections;
 import java.util.List;
 
 import model.Book;
 import model.Category;
+import model.User;
 import service.BookService;
 import service.CategoryService;
+import service.UserService;
 
 public class IndexAction extends BaseAction {
 
@@ -15,9 +18,18 @@ public class IndexAction extends BaseAction {
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	private UserService userService;
 	private BookService bookService;
 	private CategoryService categoryService;
 	
+	public UserService getUserService() {
+		return userService;
+	}
+
+	public void setUserService(UserService userService) {
+		this.userService = userService;
+	}
+
 	public BookService getBookService() {
 		return bookService;
 	}
@@ -39,6 +51,14 @@ public class IndexAction extends BaseAction {
 		List<Category> categories = categoryService.getAllCategories();
 		request().setAttribute("bestBooks", bestBooks);
 		request().setAttribute("categories", categories);
+		
+		if(session().getAttribute("userId") != null){
+			User u = userService.getUserById((int)session().getAttribute("userId"));
+			List<Book> recBooks = bookService.getBooksByCategory(u.getFav_category());
+			Collections.shuffle(recBooks);
+			request().setAttribute("recommendBooks", recBooks);
+		}
+		
 		return SUCCESS;
 	}
 }
