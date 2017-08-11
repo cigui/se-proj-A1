@@ -55,7 +55,9 @@ public class IndexAction extends BaseAction {
 		if(session().getAttribute("userId") != null){
 			User u = userService.getUserById((Integer)session().getAttribute("userId"));
 			List<Book> recBooks = bookService.getBooksByCategory(u.getFav_category());
-			Collections.shuffle(recBooks);
+			if (recBooks != null){ 
+				Collections.shuffle(recBooks);
+			}
 			request().setAttribute("recommendBooks", recBooks);
 		}
 		

@@ -27,7 +27,7 @@ public interface BookService {
     
     public int getMaxPage();
 
-    public List<Book> getBooksByCategory(int cate);
+    public List<Book> getBooksByCategory(Integer cate);
     
     public List<Book> getBooksByCategoryLimits(int cate, int start, int length);
     
