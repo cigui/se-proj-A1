@@ -53,6 +53,7 @@
 						<li><a href="GetBeforeUpdateUserInformation">个人信息</a></li>
 						<li><a href="history">我的历史</a></li>
 						<li><a href="getCart">我的借书车</a></li>
+						<li><a href="near">附近的书</a></li>
 						<li role="separator" class="divider"></li>
 						<li><a href="logout">登出</a></li>
 					</ul>
