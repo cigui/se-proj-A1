@@ -7,7 +7,7 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <html>
 <!-- Header -->
-<%@ include file="WEB-INF/view/layouts/header.jsp"%>
+<%@ include file="../layouts/header.jsp"%>
 <%
 	BookRelease bookRelease = new BookRelease();
 	if (request.getAttribute("bookRelease") != null) {
@@ -24,6 +24,12 @@
 	User user = new User();
 	if (request.getAttribute("user") != null) {
 		user = (User) request.getAttribute("user");
+	}
+%>
+<%
+	String district = null;
+	if (request.getAttribute("district") != null) {
+		district = (String) request.getAttribute("district");
 	}
 %>
 
@@ -83,6 +89,15 @@
 				</div>
 				<div class="col-md-7">
 					<h3><%=user.getNickname()%></h3>
+				</div>
+			</div>
+			<p></p>
+			<div class="row">
+				<div class="col-md-3">
+					<h3>借出人所在地:</h3>
+				</div>
+				<div class="col-md-7">
+					<h3><%=district%></h3>
 				</div>
 			</div>
 			<p></p>
@@ -209,4 +224,4 @@
 	</div>
 </div>
 <!-- Footer -->
-<%@ include file="WEB-INF/view/layouts/footer.jsp"%>
+<%@ include file="../layouts/footer.jsp"%>
