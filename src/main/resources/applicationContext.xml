@@ -110,6 +110,10 @@
 	<bean id="userService" class="service.impl.UserServiceImpl">
 		<property name="userDao" ref="userDao"></property>
 		<property name="activateUrl" value="http://localhost:8080/se-proj-A1/activate" />
+		<property name="borrowItemDao" ref="borrowItemDao"></property>
+		<property name="borrowHistoryDao" ref="borrowHistoryDao"></property>
+		<property name="bookReleaseDao" ref="bookReleaseDao"></property>
+		<property name="bookCateRelationshipDao" ref="bookCateRelationshipDao"></property>
 	</bean>
 	<bean id="bookService" class="service.impl.BookServiceImpl">
 		<property name="bookDao" ref="bookDao"></property>

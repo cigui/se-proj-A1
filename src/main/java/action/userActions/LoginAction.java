@@ -1,10 +1,12 @@
 package action.userActions;
 
+import java.util.List;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
 import action.BaseAction;
+import model.Book;
 import model.User;
 import service.UserService;
 
@@ -59,6 +61,10 @@ public class LoginAction extends BaseAction implements SessionAware {
 			if (userService.isAdmin(u)){
 				session.put("isAdmin", true);
 			}
+			
+			//Recommend
+			userService.updateFavCate(u);
+			
 			return SUCCESS;
 		}
 		return ERROR;

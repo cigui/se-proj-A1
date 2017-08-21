@@ -99,7 +99,10 @@ public class BookServiceImpl implements BookService{
 		return bookDao.getBookByScore();
 	}
 
-	public List<Book> getBooksByCategory(int cate) {
+	public List<Book> getBooksByCategory(Integer cate) {
+		if (cate == null) {
+			return null;
+		}
 		List<Long> isbns = bookCateRelationshipDao.getBooksIsbnByCate_id(cate);
 		List<Book> books = new ArrayList<Book>();
 		for (int i = 0; i < isbns.size(); i++) {
