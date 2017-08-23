@@ -118,6 +118,7 @@ create table District
    l_id                 smallint(5) not null,
    name                 varchar(20) not null,
    parent_id            smallint(5) not null,
+   `code`               int,
    `order`              tinyint(2),
    primary key (l_id)
 );
