@@ -129,6 +129,7 @@
 	</bean>
 	<bean id="districtService" class="service.impl.DistrictServiceImpl">
 		<property name="districtDao" ref="districtDao"></property>
+		<property name="apikey" value="4aO1nGc6pVGhrKEuPDz4qd5QhTW9OIt5"></property>
 	</bean>
 	<bean id="bookCommentService" class="service.impl.BookCommentServiceImpl">
 		<property name="bookCommentDao" ref="bookCommentDao"></property>
