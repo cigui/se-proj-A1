@@ -13,16 +13,12 @@
 		<action name="index" class="action.IndexAction">
 			<result name="success">WEB-INF/view/index.jsp</result>
 		</action>
-		
-		<!-- Books Nearby Action -->
-		<action name="near" class="action.BooksNearbyAction">
-			<result name="success">WEB-INF/view/booksNearby.jsp</result>
-		</action>
 
 		<!-- Dispatcher Action -->
 		<action name="go*" class="action.DispatcherAction" method="{1}">
 			<result name="register">WEB-INF/view/register/register.jsp</result>
 			<result name="releaseBook">WEB-INF/view/release/releaseBook.jsp</result>
+			<result name="booksNearby">WEB-INF/view/booksNearby.jsp</result>
 		</action>
 
 		<!-- Login, Logout & Register -->
@@ -55,8 +51,15 @@
 				<param name="root">districts</param>
 			</result>
 		</action>
+		
+		<!-- Get user location -->
+		<action name="location" class="action.userActions.GetLocationAction">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
 
-
+		<!-- Get ONE book -->
 		<action name="getBook" class="action.bookAction.GetBookAction">
 			<result type="json">
 				<param name="root">result</param>

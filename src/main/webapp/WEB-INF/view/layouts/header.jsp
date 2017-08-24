@@ -34,6 +34,7 @@
 		<a class="yx-brand navbar-brand" href="<%=path%>" style="color: cadetblue">阅享图书交流平台</a>
 		<div class="yx-toolbar">
 			<a class="btn btn-default btn-sm" href="<%=path%>/goReleaseBook">发布图书</a>
+			<a class="btn btn-default btn-sm" href="<%=path%>/goBooksNearby">附近的书</a>
 			<form class="yx-search-bar" action="<%=path%>/searchBook">
 				<input type="text" name="searchString" placeholder="查询图书" />
 				<button class="btn btn-sm btn-default btn-block" type="submit"><i class="fa fa-search"></i></button>
@@ -53,7 +54,6 @@
 						<li><a href="GetBeforeUpdateUserInformation">个人信息</a></li>
 						<li><a href="history">我的历史</a></li>
 						<li><a href="getCart">我的借书车</a></li>
-						<li><a href="near">附近的书</a></li>
 						<li role="separator" class="divider"></li>
 						<li><a href="logout">登出</a></li>
 					</ul>
