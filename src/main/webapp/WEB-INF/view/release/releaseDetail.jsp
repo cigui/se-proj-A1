@@ -3,6 +3,7 @@
 <%@ page import="model.BookRelease"%>
 <%@ page import="model.Book"%>
 <%@ page import="model.User"%>
+<%@ page import="model.Location"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <html>
@@ -27,9 +28,9 @@
 	}
 %>
 <%
-	String district = null;
-	if (request.getAttribute("district") != null) {
-		district = (String) request.getAttribute("district");
+	Location location = null;
+	if (request.getAttribute("location") != null) {
+		location = (Location) request.getAttribute("location");
 	}
 %>
 
@@ -97,7 +98,7 @@
 					<h3>借出人所在地:</h3>
 				</div>
 				<div class="col-md-7">
-					<h3><%=district%></h3>
+					<h3><%=location.getProvince()%>省<%=location.getCity()%>市<%=location.getDistrict()%>区</h3>
 				</div>
 			</div>
 			<p></p>

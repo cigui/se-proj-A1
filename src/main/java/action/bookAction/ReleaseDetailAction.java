@@ -73,7 +73,7 @@ public class ReleaseDetailAction extends BaseAction {
 		request().setAttribute("bookRelease", bookRelease);
 		request().setAttribute("book", book);
 		request().setAttribute("user", user);
-		request().setAttribute("district", districtService.getDistrictById(user.getL_id()).getName());
+		request().setAttribute("location", districtService.getLocationById(user.getL_id()));
 		if (status == 0){
 			return ERROR;
 		}
