@@ -17,7 +17,7 @@
 	<!-- Bean -->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
 		destroy-method="close" p:driverClass="com.mysql.jdbc.Driver"
-		p:jdbcUrl="jdbc:mysql://localhost:3306/proj" p:user="root" p:password="123456"
+		p:jdbcUrl="jdbc:mysql://localhost:3306/proj" p:user="root" p:password="123456" 
 		p:maxPoolSize="40" p:minPoolSize="1" p:initialPoolSize="1"
 		p:maxIdleTime="20" />
 
@@ -173,7 +173,7 @@
 		<aop:pointcut id="addBookToCartServiceBeanPointcut"
 			expression="bean(addBookToCartService)" />
 		<aop:pointcut id="borrowHistoryServiceBeanPointcut"
-			expression="bean(borrowHistoryService)" />
+			expression="bean(borrowHistoryService)" /> 
 		<!-- <aop:advisor advice-ref="txAdvice" pointcut-ref="userServiceBeanPointcut" 
 			/> -->
 	</aop:config>

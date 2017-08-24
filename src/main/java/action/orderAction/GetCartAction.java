@@ -22,7 +22,7 @@ public  class GetCartAction extends BaseAction implements SessionAware {
 	private static final long serialVersionUID = 1L;
 	private BookReleaseService bookReleaseService;
 	private BorrowItemsService borrowItemsService;
-	private BookService bookService;
+	private BookService bookService; 
 	
 	private Map<String, Object> session;
 	
