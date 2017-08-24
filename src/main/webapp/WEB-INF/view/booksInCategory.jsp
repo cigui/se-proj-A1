@@ -35,7 +35,7 @@
 		<!-- Category Navigator -->
 		<%@ include file="layouts/navigator.jsp"%>
 		
-		<div class="covers col-xs-10 col-md-10">
+		<div class="col-xs-10 col-md-10">
 			<div class="page-header">
 				<h2 class="text-primary">
 					<%=currentCate.getName()%>
