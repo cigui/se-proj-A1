@@ -56,6 +56,11 @@ create table BookReleases
    discription          varchar(140),
    status               smallint not null,
    price                int not null,
+   cityCode             int,
+   districtCode         int,
+   category1            int,
+   category2            int,
+   category3            int,
    primary key (r_id)
 );
 
