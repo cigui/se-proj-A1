@@ -3,11 +3,12 @@
 <%@ page import="model.BookRelease"%>
 <%@ page import="model.Book"%>
 <%@ page import="model.User"%>
+<%@ page import="model.Location"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <html>
 <!-- Header -->
-<%@ include file="WEB-INF/view/layouts/header.jsp"%>
+<%@ include file="../layouts/header.jsp"%>
 <%
 	BookRelease bookRelease = new BookRelease();
 	if (request.getAttribute("bookRelease") != null) {
@@ -24,6 +25,12 @@
 	User user = new User();
 	if (request.getAttribute("user") != null) {
 		user = (User) request.getAttribute("user");
+	}
+%>
+<%
+	Location location = null;
+	if (request.getAttribute("location") != null) {
+		location = (Location) request.getAttribute("location");
 	}
 %>
 
@@ -83,6 +90,15 @@
 				</div>
 				<div class="col-md-7">
 					<h3><%=user.getNickname()%></h3>
+				</div>
+			</div>
+			<p></p>
+			<div class="row">
+				<div class="col-md-3">
+					<h3>借出人所在地:</h3>
+				</div>
+				<div class="col-md-7">
+					<h3><%=location.getProvince()%>省<%=location.getCity()%>市<%=location.getDistrict()%>区</h3>
 				</div>
 			</div>
 			<p></p>
@@ -209,4 +225,4 @@
 	</div>
 </div>
 <!-- Footer -->
-<%@ include file="WEB-INF/view/layouts/footer.jsp"%>
+<%@ include file="../layouts/footer.jsp"%>
