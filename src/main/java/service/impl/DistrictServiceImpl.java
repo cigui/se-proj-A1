@@ -96,6 +96,7 @@ public class DistrictServiceImpl implements DistrictService {
 			result.setProvince((String) addressComponent.get("province"));
 			result.setCity((String) addressComponent.get("city"));
 			result.setDistrict((String) addressComponent.get("district"));
+			result.setCode(Integer.valueOf((String)addressComponent.get("adcode")));
 			return result;
 		} catch (Exception e) {
 			e.printStackTrace();

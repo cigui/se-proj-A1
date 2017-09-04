@@ -106,5 +106,34 @@ public class BookReleaseDaoImpl extends HibernateDaoSupport implements BookRelea
 			return false;
 		}
 	}
+
+	public int countBookReleasesByCode(int code) {
+		org.hibernate.Query q = null;
+		if (code % 100 != 0) {
+			q = getSession().createQuery("select count(*) from BookRelease as t where t.districtCode=?");
+		}
+		else {
+			q = getSession().createQuery("select count(*) from BookRelease as t where t.cityCode=?");
+		}
+		q.setParameter(0, code);
+		int count= ((Number)q.uniqueResult()).intValue();  
+		return count;
+	}
+
+	public List<BookRelease> getBookReleaseByCodeLimits(int code, int offset, int maxCount) {
+		org.hibernate.Query q = null;
+		if (code % 100 != 0) {
+			q = getSession().createQuery("from BookRelease as t where t.districtCode=?");
+		}
+		else {
+			q = getSession().createQuery("from BookRelease as t where t.cityCode=?");
+		}
+		q.setParameter(0, code);
+		q.setFirstResult(offset);
+		q.setMaxResults(maxCount);
+		@SuppressWarnings("unchecked")
+		List<BookRelease> result = (List<BookRelease>)q.list();
+		return result;
+	}
 	
 }

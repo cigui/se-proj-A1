@@ -8,10 +8,10 @@ import action.BaseAction;
 import model.User;
 import service.UserService;
 
-public class LoginAction extends BaseAction implements SessionAware {
+public class LogAction extends BaseAction implements SessionAware {
 
 	/**
-	 * Created on July 3rd, 2017
+	 * Modified on Sept. 4th, 2017
 	 * By Zhou Xin
 	 */
 	private static final long serialVersionUID = 1L;
@@ -48,8 +48,7 @@ public class LoginAction extends BaseAction implements SessionAware {
 		this.session = arg0;
 	}
 
-	@Override
-	public String execute() throws Exception {
+	public String in() throws Exception {
 		if (userService.login(email, pwd)) {
 			User u = userService.getUserByEmail(email);
 			session.put("logined", true);
@@ -68,4 +67,13 @@ public class LoginAction extends BaseAction implements SessionAware {
 		return ERROR;
 	}
 
+	public String out() throws Exception {
+		session.remove("logined");
+		session.remove("userName");
+		session.remove("userId");
+		session.remove("role");
+		session.remove("isAdmin");
+		return SUCCESS;
+	}
+	
 }

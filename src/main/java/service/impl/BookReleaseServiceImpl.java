@@ -22,6 +22,7 @@ import dao.DistrictDao;
 import dao.UserDao;
 import model.Book;
 import model.BookRelease;
+import model.PagedBookReleaseInfo;
 import model.Picture;
 import service.BookReleaseService;
 
@@ -157,5 +158,20 @@ public class BookReleaseServiceImpl implements BookReleaseService {
 	public Picture getPictureByR_id(int r_id){
 		return bookReleaseDao.getPictureByR_id(r_id);
 	}
+
 	
+	public List<PagedBookReleaseInfo> getPagedBookReleaseInfoByCode(Integer code, int start, int length) {
+		List<BookRelease> bookReleases = bookReleaseDao.getBookReleaseByCodeLimits(code, start, length);
+		List<PagedBookReleaseInfo> result = new ArrayList<PagedBookReleaseInfo>();
+		for (BookRelease br : bookReleases) {
+			Book book = bookDao.getBookByIsbn(br.getIsbn());
+			PagedBookReleaseInfo p = new PagedBookReleaseInfo(br.getR_id(), book.getAuthor(), book.getTitle(), br.getPrice());
+			result.add(p);
+		}
+		return result;
+	}
+
+	public int countBookReleasesByCode(Integer code) {
+		return bookReleaseDao.countBookReleasesByCode(code);
+	}
 }

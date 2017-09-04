@@ -7,7 +7,8 @@ public class Location {
 	private String province;
 	private String city;
 	private String district;
-
+	private Integer code;
+	
 	public String getProvince() {
 		return province;
 	}
@@ -30,6 +31,14 @@ public class Location {
 
 	public void setDistrict(String district) {
 		this.district = district;
+	}
+
+	public Integer getCode() {
+		return code;
+	}
+
+	public void setCode(Integer code) {
+		this.code = code;
 	}
 
 }

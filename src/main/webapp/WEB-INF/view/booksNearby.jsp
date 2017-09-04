@@ -6,6 +6,10 @@
 <!-- Header -->
 <%@ include file="layouts/header.jsp"%>
 
+<script
+	src="https://cdn.bootcss.com/datatables/1.10.15/js/jquery.dataTables.min.js"></script>
+<script
+	src="https://cdn.bootcss.com/datatables/1.10.15/js/dataTables.bootstrap.js"></script>
 <script src="http://api.map.baidu.com/getscript?v=2.0&ak=SA3Q9ZknFdGWsB3niFOoZVWNY9azOOzO&services=&t=20170803155555"></script>
 <script src="<%=path%>/js/booksNearby.js"></script>
 
@@ -21,9 +25,9 @@
 					id="dataTables">
 					<thead>
 						<tr>
-							<td>ISBN</td>
 							<td>书籍名称</td>
 							<td>作者</td>
+							<td>积分</td>
 						</tr>
 					</thead>
 				</table>
