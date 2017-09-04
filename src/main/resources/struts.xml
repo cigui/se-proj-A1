@@ -100,7 +100,17 @@
 		<action name="booksInCategory" class="action.bookAction.BooksInCategoryAction">
 			<result name="success">WEB-INF/view/booksInCategory.jsp</result>
 		</action>
+		
+		<!-- Get Paged Books -->
 		<action name="getPagedBooks*" class="action.bookAction.GetPagedBooksAction"
+			method="{1}">
+			<result name="success" type="json">
+				<param name="root">resultMap</param>
+			</result>
+		</action>
+		
+		<!-- Get Paged Book Releases -->
+		<action name="getPagedBookReleases*" class="action.bookAction.GetPagedBookReleasesAction"
 			method="{1}">
 			<result name="success" type="json">
 				<param name="root">resultMap</param>

@@ -24,9 +24,10 @@ $(function() {
 		}, function(result) {
 			city = result.city;
 			district = result.district;
+			code = result.code;
 			$("div.yx-msg").text(
-					"根据定位结果，您所在位置为" + city + district + "，下面为您推荐该市借出的图书");
-			
+					"根据定位结果，您所在位置为" + city + district + "，下面为您推荐该区借出的图书");
+			/*$('#dataTables').fadeIn();*/
 			$('#dataTables').DataTable({
 				serverSide: true,// 从服务器端获取数据动态加载
 				processing: true,// 载入数据时显示“载入中”
@@ -35,14 +36,14 @@ $(function() {
 	            searching: false,// dataTables搜索
 	            ajax : {
 	            	 type: "post", // 默认get，但据说datatable默认构造的参数很长，有可能超过get的最大长度。
-	                 url: "<%=path%>/getPagedBooksbyCity",
+	                 url: "getPagedBookReleasesbyCode",
 	                 dataSrc: "data", // 默认data，也可以写其他的，格式化table的时候取里面的数据
 	                 data: function (d) { // d是原始的发送给服务器的数据，默认很长。
 	                        var param = {};
 	                        param.draw = d.draw; 
 	                        param.start = d.start; // 开始的序号
 	                        param.length = d.length; // 要取的数据的条数
-	                        param.cate = cate;
+	                        param.code = code;
 	                        /* 下面一段代码用于实现页面表单搜索并提交，但这里暂不实现 */
 	                        /* var formData = $("#queryForm").serializeArray(); // 把form里面的数据序列化成数组
 	                        formData.forEach(function (e) {
@@ -52,9 +53,9 @@ $(function() {
 	                 }
 	            },
 	            columns: [ // 对应上面thead里面的序列
-	                {"data": "isbn" },
 	                {"data": "titleHref" },
-	                {"data": "author"}
+	                {"data": "author"},
+	                {"data": "price" }
 	            ]
 			});
 		});
