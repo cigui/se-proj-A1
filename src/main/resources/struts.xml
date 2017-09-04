@@ -21,19 +21,19 @@
 			<result name="booksNearby">WEB-INF/view/booksNearby.jsp</result>
 		</action>
 
-		<!-- Login, Logout & Register -->
-		<action name="login" class="action.userActions.LoginAction">
+		<!-- Login & Logout -->
+		<action name="log*" class="action.userActions.LogAction" method="{1}">
 			<result name="success" type="redirect">index</result>
 			<result name="error">WEB-INF/view/error.jsp</result>
 		</action>
-		<action name="logout" class="action.userActions.LogoutAction">
-			<result name="success" type="redirect">index</result>
-			<result name="error">WEB-INF/view/error.jsp</result>
-		</action>
+		
+		<!-- Register -->
 		<action name="register" class="action.userActions.RegisterAction">
 			<result name="success">WEB-INF/view/register/welcome.jsp</result>
 			<result name="error">WEB-INF/view/error.jsp</result>
 		</action>
+		
+		<!-- Check Email & Activate Email -->
 		<action name="checkEmail" class="action.userActions.CheckEmailAction">
 			<result name="success" type="json">
 				<param name="root">result</param>
@@ -66,10 +66,13 @@
 			</result>
 		</action>
 
+
+		<!-- Release a book -->
 		<action name="releaseBook" class="action.bookAction.ReleaseBookAction">
 			<result name="success">WEB-INF/view/release/releaseSuccess.jsp</result>
 			<result name="error">WEB-INF/view/error.jsp</result>
 		</action>
+		
 		<!-- Manage user -->
 		<action name="listUsers" class="action.userActions.AllUsersAction">
 			<result name="success">manageUser.jsp</result>
@@ -85,6 +88,7 @@
 		<action name="manageBook" class="action.bookAction.CheckBookAction">
 			<result name="success">/WEB-INF/view/manageBook.jsp</result>
 		</action>
+		
 		<!-- Book Detail -->
 		<action name="bookdetails" class="action.bookAction.BookDetailsAction">
 			<result name="success">book.jsp</result>
@@ -159,18 +163,28 @@
 		<action name="history" class="action.orderAction.ListHistoryOrderAction">
 			<result name="success">borrowHistory.jsp</result>
 		</action>
+		
+		<!-- Borrow order Detail -->
 		<action name="borrowDetail" class="action.orderAction.HistoryOrderDetailAction">
 			<result name="success">historyDetail.jsp</result>
 		</action>
+		
+		<!-- Score a detail -->
 		<action name="score" class="action.orderAction.ScoreOrderDetailAction">
 			<result name="success">historyDetail.jsp</result>
 		</action>
+		
+		<!-- Release history -->
 		<action name="release" class="action.bookAction.ListBookReleaseAction">
 			<result name="success">borrowHistory.jsp</result>
 		</action>
+		
+		<!-- Confirm an order -->
 		<action name="confirm" class="action.orderAction.ConfirmOrderAction">
 			<result name="success">historyDetail.jsp</result>
 		</action>
+		
+		<!-- My Release Detail -->
 		<action name="myReleaseDetail" class="action.orderAction.MyReleaseDetailAction">
 			<result name="success">releaseDetail.jsp</result>
 			<result name="error">/WEB-INF/view/error.jsp</result>
@@ -222,6 +236,7 @@
 			<result name="success">manageCategory.jsp</result>
 		</action>
 
+		<!-- Get Avatar -->
 		<action name="GetAvatar" class="action.userActions.GetPictureAction">
 			<result type="stream">
 				<param name="contentType">contentType</param>
