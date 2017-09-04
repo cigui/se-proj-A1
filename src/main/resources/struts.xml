@@ -186,7 +186,7 @@
 		
 		<!-- My Release Detail -->
 		<action name="myReleaseDetail" class="action.orderAction.MyReleaseDetailAction">
-			<result name="success">releaseDetail.jsp</result>
+			<result name="success">/WEB-INF/view/release/releaseDetail.jsp</result>
 			<result name="error">/WEB-INF/view/error.jsp</result>
 		</action>
 

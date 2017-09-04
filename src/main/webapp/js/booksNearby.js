@@ -44,11 +44,6 @@ $(function() {
 	                        param.start = d.start; // 开始的序号
 	                        param.length = d.length; // 要取的数据的条数
 	                        param.code = code;
-	                        /* 下面一段代码用于实现页面表单搜索并提交，但这里暂不实现 */
-	                        /* var formData = $("#queryForm").serializeArray(); // 把form里面的数据序列化成数组
-	                        formData.forEach(function (e) {
-	                            param[e.name] = e.value;
-	                        }); */
 	                        return param; // 自定义需要传递的参数。
 	                 }
 	            },
