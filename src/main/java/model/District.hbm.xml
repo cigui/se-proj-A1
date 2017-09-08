@@ -12,6 +12,7 @@
 		<property name="name"/> 
     	<property name="parent_id"/> 
     	<property name="order"/> 
+    	<property name="code"/> 
     	
 	</class>
 </hibernate-mapping>

@@ -27,7 +27,8 @@ $(function(){
 				byteRangeLength : 140
 			},
 			price : "required",
-			publishDate : "required"
+			publishDate : "required",
+			category1 : "required"	
 		},
 		/* 验证错误信息  */
 		messages : {
@@ -40,7 +41,8 @@ $(function(){
 				byteRangeLength : "描述不能超过140字节！（单个汉字占两个字节）"
 			},
 			price : "请输入积分定价",
-			publishDate : "请输入出版日期"
+			publishDate : "请输入出版日期",
+			category1 : "请至少输入1个分类"
 		}
 	});
 	

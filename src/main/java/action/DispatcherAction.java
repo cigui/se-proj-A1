@@ -16,4 +16,8 @@ public class DispatcherAction extends ActionSupport{
 	public String ReleaseBook() {
 		return "releaseBook";
 	}
+	
+	public String BooksNearby() {
+		return "booksNearby";
+	}
 }

@@ -18,8 +18,11 @@ import com.google.gson.Gson;
 
 import dao.BookDao;
 import dao.BookReleaseDao;
+import dao.DistrictDao;
+import dao.UserDao;
 import model.Book;
 import model.BookRelease;
+import model.PagedBookReleaseInfo;
 import model.Picture;
 import service.BookReleaseService;
 
@@ -27,6 +30,8 @@ public class BookReleaseServiceImpl implements BookReleaseService {
 
 	private BookReleaseDao bookReleaseDao;
 	private BookDao bookDao;
+	private UserDao userDao;
+	private DistrictDao districtDao;
 	
 	public BookReleaseDao getBookReleaseDao() {
 		return bookReleaseDao;
@@ -42,6 +47,22 @@ public class BookReleaseServiceImpl implements BookReleaseService {
 
 	public void setBookDao(BookDao bookDao) {
 		this.bookDao = bookDao;
+	}
+
+	public UserDao getUserDao() {
+		return userDao;
+	}
+
+	public void setUserDao(UserDao userDao) {
+		this.userDao = userDao;
+	}
+
+	public DistrictDao getDistrictDao() {
+		return districtDao;
+	}
+
+	public void setDistrictDao(DistrictDao districtDao) {
+		this.districtDao = districtDao;
 	}
 
 	public List<BookRelease> getBookReleaseByISBN(long ISBN) {
@@ -114,6 +135,13 @@ public class BookReleaseServiceImpl implements BookReleaseService {
 					return false;
 				}
 			}
+			
+			/* 获取地址信息（市、区行政编码）并存入 */
+			int l_id = userDao.getUserById(bookRelease.getId()).getL_id();
+			int districtCode = districtDao.getDistrictById(l_id).getCode();
+			int cityCode = (districtCode / 100) * 100;
+			bookRelease.setCityCode(cityCode);
+			bookRelease.setDistrictCode(districtCode);
 			int r_id = bookReleaseDao.save(bookRelease);
 			bookRelease.setR_id(r_id);
 			return true;
@@ -130,5 +158,20 @@ public class BookReleaseServiceImpl implements BookReleaseService {
 	public Picture getPictureByR_id(int r_id){
 		return bookReleaseDao.getPictureByR_id(r_id);
 	}
+
 	
+	public List<PagedBookReleaseInfo> getPagedBookReleaseInfoByCode(Integer code, int start, int length) {
+		List<BookRelease> bookReleases = bookReleaseDao.getBookReleaseByCodeLimits(code, start, length);
+		List<PagedBookReleaseInfo> result = new ArrayList<PagedBookReleaseInfo>();
+		for (BookRelease br : bookReleases) {
+			Book book = bookDao.getBookByIsbn(br.getIsbn());
+			PagedBookReleaseInfo p = new PagedBookReleaseInfo(br.getR_id(), book.getAuthor(), book.getTitle(), br.getPrice());
+			result.add(p);
+		}
+		return result;
+	}
+
+	public int countBookReleasesByCode(Integer code) {
+		return bookReleaseDao.countBookReleasesByCode(code);
+	}
 }

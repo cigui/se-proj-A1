@@ -29,5 +29,8 @@ public interface BookReleaseDao {
 	public Picture getPictureByR_id(int r_id);
 	
 	public boolean uploadPicture(int r_id,File file,String contentType,String fileName);
+	
+	public int countBookReleasesByCode(int code);
 
+	public List<BookRelease> getBookReleaseByCodeLimits(int code, int offset, int maxCount);
 }
