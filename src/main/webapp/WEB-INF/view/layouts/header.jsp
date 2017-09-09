@@ -34,9 +34,10 @@
 		<a class="yx-brand navbar-brand" href="<%=path%>" style="color: cadetblue">阅享图书交流平台</a>
 		<div class="yx-toolbar">
 			<a class="btn btn-default btn-sm" href="<%=path%>/goReleaseBook">发布图书</a>
+			<a class="btn btn-default btn-sm" href="<%=path%>/goBooksNearby">附近的书</a>
 			<form class="yx-search-bar" action="<%=path%>/searchBook">
 				<input type="text" name="searchString" placeholder="查询图书" />
-				<button class="btn btn-sm btn-primary btn-block" type="submit">Search</button>
+				<button class="btn btn-sm btn-default btn-block" type="submit"><i class="fa fa-search"></i></button>
 			</form>
 			<s:if test="#session.logined">
 				<span>Hi, <s:property value='#session.userName' />!

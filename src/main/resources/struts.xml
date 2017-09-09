@@ -8,7 +8,7 @@
 	<constant name="struts.devMode" value="true" />
 	<package name="process" extends="json-default">
 		<default-action-ref name="index"></default-action-ref>
-		
+
 		<!-- Index Action -->
 		<action name="index" class="action.IndexAction">
 			<result name="success">WEB-INF/view/index.jsp</result>
@@ -18,28 +18,30 @@
 		<action name="go*" class="action.DispatcherAction" method="{1}">
 			<result name="register">WEB-INF/view/register/register.jsp</result>
 			<result name="releaseBook">WEB-INF/view/release/releaseBook.jsp</result>
+			<result name="booksNearby">WEB-INF/view/booksNearby.jsp</result>
+		</action>
+
+		<!-- Login & Logout -->
+		<action name="log*" class="action.userActions.LogAction" method="{1}">
+			<result name="success" type="redirect">index</result>
+			<result name="error">WEB-INF/view/error.jsp</result>
 		</action>
 		
-		<!-- Login, Logout & Register -->
-		<action name="login" class="action.userActions.LoginAction">
-			<result name="success" type="redirect">index</result>
-			<result name="error">WEB-INF/view/error.jsp</result>
-		</action>
-		<action name="logout" class="action.userActions.LogoutAction">
-			<result name="success" type="redirect">index</result>
-			<result name="error">WEB-INF/view/error.jsp</result>
-		</action>
+		<!-- Register -->
 		<action name="register" class="action.userActions.RegisterAction">
 			<result name="success">WEB-INF/view/register/welcome.jsp</result>
 			<result name="error">WEB-INF/view/error.jsp</result>
 		</action>
+		
+		<!-- Check Email & Activate Email -->
 		<action name="checkEmail" class="action.userActions.CheckEmailAction">
 			<result name="success" type="json">
 				<param name="root">result</param>
 			</result>
 		</action>
 		<action name="activate" class="action.userActions.ActivateUserAction">
-			<result name="success">WEB-INF/view/activate/activateSuccess.jsp</result>
+			<result name="success">WEB-INF/view/activate/activateSuccess.jsp
+			</result>
 			<result name="error">WEB-INF/view/error.jsp</result>
 		</action>
 
@@ -49,18 +51,28 @@
 				<param name="root">districts</param>
 			</result>
 		</action>
+		
+		<!-- Get user location -->
+		<action name="location" class="action.userActions.GetLocationAction">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
 
-
+		<!-- Get ONE book -->
 		<action name="getBook" class="action.bookAction.GetBookAction">
 			<result type="json">
 				<param name="root">result</param>
 			</result>
 		</action>
 
+
+		<!-- Release a book -->
 		<action name="releaseBook" class="action.bookAction.ReleaseBookAction">
 			<result name="success">WEB-INF/view/release/releaseSuccess.jsp</result>
 			<result name="error">WEB-INF/view/error.jsp</result>
 		</action>
+		
 		<!-- Manage user -->
 		<action name="listUsers" class="action.userActions.AllUsersAction">
 			<result name="success">manageUser.jsp</result>
@@ -76,6 +88,7 @@
 		<action name="manageBook" class="action.bookAction.CheckBookAction">
 			<result name="success">/WEB-INF/view/manageBook.jsp</result>
 		</action>
+		
 		<!-- Book Detail -->
 		<action name="bookdetails" class="action.bookAction.BookDetailsAction">
 			<result name="success">book.jsp</result>
@@ -83,7 +96,7 @@
 
 		<!-- Release Detail -->
 		<action name="releaseDetail" class="action.bookAction.ReleaseDetailAction">
-			<result name="success">releaseDetail.jsp</result>
+			<result name="success">/WEB-INF/view/release/releaseDetail.jsp</result>
 			<result name="error">/WEB-INF/view/error.jsp</result>
 		</action>
 
@@ -91,6 +104,8 @@
 		<action name="booksInCategory" class="action.bookAction.BooksInCategoryAction">
 			<result name="success">WEB-INF/view/booksInCategory.jsp</result>
 		</action>
+		
+		<!-- Get Paged Books -->
 		<action name="getPagedBooks*" class="action.bookAction.GetPagedBooksAction"
 			method="{1}">
 			<result name="success" type="json">
@@ -98,6 +113,14 @@
 			</result>
 		</action>
 		
+		<!-- Get Paged Book Releases -->
+		<action name="getPagedBookReleases*" class="action.bookAction.GetPagedBookReleasesAction"
+			method="{1}">
+			<result name="success" type="json">
+				<param name="root">resultMap</param>
+			</result>
+		</action>
+
 		<!-- Searching & Recommending -->
 		<action name="searchBook" class="action.bookAction.SearchBookAction">
 			<result name="success">WEB-INF/view/searchResult.jsp</result>
@@ -115,9 +138,9 @@
 			</result>
 		</action>
 
-    	<!-- Send Book Comment -->
+		<!-- Send Book Comment -->
 		<action name="sendBookComment" class="action.bookAction.SendBookCommentAction">
-		   <result name="success" type="json">
+			<result name="success" type="json">
 				<param name="root">success</param>
 			</result>
 		</action>
@@ -140,23 +163,33 @@
 		<action name="history" class="action.orderAction.ListHistoryOrderAction">
 			<result name="success">borrowHistory.jsp</result>
 		</action>
+		
+		<!-- Borrow order Detail -->
 		<action name="borrowDetail" class="action.orderAction.HistoryOrderDetailAction">
 			<result name="success">historyDetail.jsp</result>
 		</action>
+		
+		<!-- Score a detail -->
 		<action name="score" class="action.orderAction.ScoreOrderDetailAction">
 			<result name="success">historyDetail.jsp</result>
 		</action>
+		
+		<!-- Release history -->
 		<action name="release" class="action.bookAction.ListBookReleaseAction">
 			<result name="success">borrowHistory.jsp</result>
 		</action>
+		
+		<!-- Confirm an order -->
 		<action name="confirm" class="action.orderAction.ConfirmOrderAction">
 			<result name="success">historyDetail.jsp</result>
 		</action>
+		
+		<!-- My Release Detail -->
 		<action name="myReleaseDetail" class="action.orderAction.MyReleaseDetailAction">
-			<result name="success">releaseDetail.jsp</result>
+			<result name="success">/WEB-INF/view/release/releaseDetail.jsp</result>
 			<result name="error">/WEB-INF/view/error.jsp</result>
 		</action>
-		
+
 		<!-- Shopping Cart -->
 		<action name="getCart" class="action.orderAction.GetCartAction">
 			<result name="success" type="redirect">shoppingCart.jsp</result>
@@ -171,25 +204,26 @@
 				<param name="root">result</param>
 			</result>
 		</action>
-		
-    	<!-- User Info -->
+
+		<!-- User Info -->
 		<action name="updateUserInformation" class="action.userActions.UpdateUserInformationAction">
 			<result name="success" type="redirect">index</result>
 			<result name="error">error.jsp</result>
 		</action>
-		<action name="GetBeforeUpdateUserInformation" class="action.userActions.GetBeforeUpdateUserInformationAction">
-			<result name="success" >updateUserInformation.jsp</result>
+		<action name="GetBeforeUpdateUserInformation"
+			class="action.userActions.GetBeforeUpdateUserInformationAction">
+			<result name="success">updateUserInformation.jsp</result>
 			<result name="error">error.jsp</result>
 		</action>
-		
+
 
 		<!-- More Release -->
 		<action name="moreRelease" class="action.bookAction.MoreReleaseAction">
-		   <result>
-		     moreRelease.jsp
+			<result>
+				moreRelease.jsp
 			</result>
 		</action>
-		
+
 
 		<!-- Manage category -->
 		<action name="listCates" class="action.categoryAction.ListCategoryAction">
@@ -201,31 +235,30 @@
 		<action name="addCate" class="action.categoryAction.AddCategoryAction">
 			<result name="success">manageCategory.jsp</result>
 		</action>
-		
+
+		<!-- Get Avatar -->
 		<action name="GetAvatar" class="action.userActions.GetPictureAction">
-		<result type="stream">
-			<param name="contentType">contentType</param>
-			<param name="inputName">inputStream</param>
-			<param name="bufferSize">4096</param>
-		</result>
-	</action>
-        
-        <!-- Check Release Detail -->
-		<action name="checkReleaseDetail" class="action.bookAction.CheckReleaseDetailAction">
-		   <result>
-		     checkReleaseDetail.jsp
+			<result type="stream">
+				<param name="contentType">contentType</param>
+				<param name="inputName">inputStream</param>
+				<param name="bufferSize">4096</param>
 			</result>
 		</action>
-		
+
+		<!-- Check Release Detail -->
+		<action name="checkReleaseDetail" class="action.bookAction.CheckReleaseDetailAction">
+			<result>
+				checkReleaseDetail.jsp
+			</result>
+		</action>
+
 		<!-- More Book Comment -->
 		<action name="moreBookComment" class="action.bookAction.MoreBookCommentAction">
-		   <result>
-		     moreBookComment.jsp
+			<result>
+				moreBookComment.jsp
 			</result>
 		</action>
-        
-		<!-- <action name="*">
-			<result>/{1}.jsp</result>
-		</action> -->
+
+		<!-- <action name="*"> <result>/{1}.jsp</result> </action> -->
 	</package>
 </struts>

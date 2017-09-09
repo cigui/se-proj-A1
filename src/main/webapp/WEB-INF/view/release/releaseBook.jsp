@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
+<%@page
+	import="org.springframework.web.context.support.WebApplicationContextUtils"%>
+<%@page import="org.springframework.context.ApplicationContext"%>
+<%@page import="service.CategoryService"%>
+<%@page import="java.util.List"%>
+<%@page import="model.Category"%>
 <!DOCTYPE HTML>
 <style type="text/css">
 
@@ -11,13 +17,12 @@
 }
 
 /* 去除number类型的输入框右边的上下小箭头 */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
 }
 
-input[type="number"]{
-	-moz-appearance:textfield;
+input[type="number"] {
+	-moz-appearance: textfield;
 }
 </style>
 <!-- Header -->
@@ -38,11 +43,19 @@ input[type="number"]{
 
 <script src="<%=path%>/js/releasebook.js"></script>
 
+<%
+	ApplicationContext ctx = WebApplicationContextUtils
+			.getWebApplicationContext(request.getSession().getServletContext());
+	CategoryService categoryService = (CategoryService) ctx.getBean("categoryService");
+	List<Category> categories = categoryService.getCategories();
+%>
+
+
 <!-- Body -->
 <div class="yx-container container">
 	<div class="page-header">
 		<h2 class="text-primary">
-			书籍信息填写<br> <small>您只需填写书籍的ISBN码，我们会获取书籍的标题、作者等详细信息:)</small>
+			书籍信息填写<br> <small>您只需填写书籍的ISBN码，我们会获取书籍的标题、作者等信息:)</small>
 		</h2>
 	</div>
 
@@ -76,9 +89,39 @@ input[type="number"]{
 						<div class="form-group">
 							<label for="discription" class="col-md-2 control-label">书籍描述(*)</label>
 							<div class="col-md-8">
-								<textarea maxlength="140" rows="10" required="true"
+								<textarea maxlength="140" rows="8" required="true"
 									class="form-control" id="discription" name="discription"
 									placeholder="请输入书籍描述（该书新旧程度、注意事项等等，不超过140字符）"></textarea>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="categories" class="col-md-2 control-label">图书分类</label>
+							<div class="col-md-2">
+								<label> <select id="category1" name="category1"
+									class="form-control" required="true">
+									<option disabled selected value></option>
+								<% for (Category c : categories) { %>
+									<option value="<%=c.getCate_id()%>"><%=c.getName()%></option>
+								<% } %>
+									</select></label>
+							</div>
+							<div class="col-md-2">
+								<label> <select id="category2" name="category2"
+									class="form-control">
+									<option disabled selected value></option>
+								<% for (Category c : categories) { %>
+									<option value="<%=c.getCate_id()%>"><%=c.getName()%></option>
+								<% } %>
+									</select></label>
+							</div>
+							<div class="col-md-2">
+								<label> <select id="category3" name="category3"
+									class="form-control">
+									<option disabled selected value></option>
+								<% for (Category c : categories) { %>
+									<option value="<%=c.getCate_id()%>"><%=c.getName()%></option>
+								<% } %>
+									</select></label>
 							</div>
 						</div>
 						<div class="form-group">

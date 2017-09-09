@@ -205,7 +205,6 @@ public class UserServiceImpl implements UserService {
 		}
 	}
 
-	@Override
 	public void updateFavCate(User user) {
 		int id = user.getId();
 		List<BorrowHistory> bhList = borrowHistoryDao.getBorrowHistoryById(id);

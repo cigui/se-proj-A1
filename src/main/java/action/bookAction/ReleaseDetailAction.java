@@ -7,6 +7,7 @@ import model.BookRelease;
 import model.User;
 import service.BookReleaseService;
 import service.BookService;
+import service.DistrictService;
 import service.UserService;
 
 public class ReleaseDetailAction extends BaseAction {
@@ -19,6 +20,7 @@ public class ReleaseDetailAction extends BaseAction {
 	private BookReleaseService bookReleaseService;
 	private BookService bookService;
 	private UserService userService;
+	private DistrictService districtService;
 	
 	public int getR_id() {
 		return r_id;
@@ -53,6 +55,14 @@ public class ReleaseDetailAction extends BaseAction {
 		this.userService = userService;
 	}
 
+	public DistrictService getDistrictService() {
+		return districtService;
+	}
+
+	public void setDistrictService(DistrictService districtService) {
+		this.districtService = districtService;
+	}
+
 	public String execute() throws Exception {
 		BookRelease bookRelease = bookReleaseService.getBookReleaseByR_id(r_id);
 		long isbn = bookRelease.getIsbn();
@@ -63,6 +73,7 @@ public class ReleaseDetailAction extends BaseAction {
 		request().setAttribute("bookRelease", bookRelease);
 		request().setAttribute("book", book);
 		request().setAttribute("user", user);
+		request().setAttribute("location", districtService.getLocationById(user.getL_id()));
 		if (status == 0){
 			return ERROR;
 		}

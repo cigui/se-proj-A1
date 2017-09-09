@@ -21,6 +21,9 @@ public class ReleaseBookAction extends BaseAction implements SessionAware {
 	private String discription;
 	private int price;
 	private Date publishDate;
+	private Integer category1;
+	private Integer category2;
+	private Integer category3;
 	private File image;
 	private String imageContentType;
 	private String imageFileName;
@@ -55,6 +58,36 @@ public class ReleaseBookAction extends BaseAction implements SessionAware {
 
 	public void setPublishDate(Date publishDate) {
 		this.publishDate = publishDate;
+	}
+
+
+	public Integer getCategory1() {
+		return category1;
+	}
+
+
+	public void setCategory1(Integer category1) {
+		this.category1 = category1;
+	}
+
+
+	public Integer getCategory2() {
+		return category2;
+	}
+
+
+	public void setCategory2(Integer category2) {
+		this.category2 = category2;
+	}
+
+
+	public Integer getCategory3() {
+		return category3;
+	}
+
+
+	public void setCategory3(Integer category3) {
+		this.category3 = category3;
 	}
 
 
@@ -114,7 +147,7 @@ public class ReleaseBookAction extends BaseAction implements SessionAware {
 	public String execute() throws Exception {
 		try {
 			int userId = (Integer)session.get("userId");
-			BookRelease bookRelease = new BookRelease(userId, isbn, publishDate, discription, price);
+			BookRelease bookRelease = new BookRelease(userId, isbn, publishDate, discription, price, category1, category2, category3);
 			if (!bookReleaseService.ReleaseBook(bookRelease)) {
 				return ERROR;
 			};

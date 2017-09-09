@@ -15,5 +15,10 @@
     	<property name="discription"/> 
     	<property name="status"/> 
     	<property name="price"/>
+    	<property name="cityCode" type="java.lang.Integer"/>
+    	<property name="districtCode" type="java.lang.Integer"/>
+    	<property name="category1" type="java.lang.Integer"/>
+    	<property name="category2" type="java.lang.Integer"/>
+    	<property name="category3" type="java.lang.Integer"/>
 	</class>
 </hibernate-mapping>

@@ -14,7 +14,7 @@ public interface DistrictDao {
 
 	public District getDistrictById(int id);
 	
-	public List<District> getDistrictByParent_id(int parent_id);
+	public List<District> getDistrictsByParent_id(int parent_id);
 
 	public List<District> getAllDistricts();
 

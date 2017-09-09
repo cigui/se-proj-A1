@@ -4,6 +4,7 @@ public class District {
 	private int id;
 	private String name;
 	private int parent_id;
+	private int code;
 	private byte order;
 	
 	public District(){
@@ -47,6 +48,14 @@ public class District {
 
 	public void setOrder(byte order) {
 		this.order = order;
+	}
+
+	public int getCode() {
+		return code;
+	}
+
+	public void setCode(int code) {
+		this.code = code;
 	}
 
 	
