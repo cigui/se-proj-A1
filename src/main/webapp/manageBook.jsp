@@ -5,14 +5,21 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <!-- Header -->
-<%@ include file="layouts/header.jsp"%>
+
+<%@ include file="WEB-INF/view/layouts/header.jsp"%>
+<script src="<%=path%>/js/jquery.dataTables.min.js"></script>
+<script src="<%=path%>/js/dataTables.bootstrap.min.js"></script>
+<script src="<%=path%>/js/manageUser.js"></script>
+<link href="<%=path%>/css/dataTables.bootstrap.min.css" rel="stylesheet">
 <script>
 	var admin = "<s:property value='#session.role'/>";
 	var path = "<%=path%>";
 	var bookreleases = "<%=request.getAttribute("bookreleases")%>"
 	$(document).ready(function() {
+		$('#dataTables').DataTable();
 		/*if (admin != 2) {
 			bootbox.alert("滚吧王八羔子", function() {
 				location.href = "index";
@@ -49,7 +56,7 @@
 			</div>
 			<div class="covers col-md-10">
 							<div class="dataTable_wrapper">
-								<table class="table table-striped table-bordered table-hover"
+								<table class="table table-striped table-bordered"
 									id="dataTables">
 									<thead>
 										<tr>
@@ -92,11 +99,4 @@
 			</div>
 		</div>
 	</div>
-	<div
-		class="yx-nav navbar navbar-default navbar-left navbar-static-bottom yx-nav" style="width:100%; margin-bottom:0">
-		<div>联系我们：</div>
-		<span>QQ: 123456789</span> <span>Tel: 12345678</span> <span>Email:
-			123456789@qq.com</span>
-	</div>
-</body>
-</html>
+<%@ include file="WEB-INF/view/layouts/footer.jsp"%>

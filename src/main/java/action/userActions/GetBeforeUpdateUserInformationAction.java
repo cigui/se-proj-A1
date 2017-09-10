@@ -54,7 +54,7 @@ public class GetBeforeUpdateUserInformationAction extends BaseAction implements 
 			District city = districtService.getDistrictById(city_id);
 			int province_id = city.getParent_id();
 			District province = districtService.getDistrictById(province_id);
-			request().setAttribute("distrcit", district);
+			request().setAttribute("district", district);
 			request().setAttribute("city", city);
 			request().setAttribute("province", province);
 			
