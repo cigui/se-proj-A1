@@ -7,14 +7,14 @@ import model.User;
 import service.UserService;
 import org.apache.struts2.interceptor.SessionAware;
 
-public class UpdateUserInformationAction extends BaseAction implements SessionAware{
+public class UpdateLocationAction extends BaseAction implements SessionAware{
 	/**
 	 * Modified on 6th, July, 2017
 	 * By Yu Haifeng
 	 */
 	private static final long serialVersionUID = 1L;//用于版本控制 
 	private UserService userService;
-	//private int district;
+	private int district;
 	private String nickName;
 	private String email;
 	private String password;
@@ -25,7 +25,7 @@ public class UpdateUserInformationAction extends BaseAction implements SessionAw
 	private Map<String, Object> session;
 	
 	
-	/*
+	
 	  public int getDistrict() {
 		return district;
 	}
@@ -34,7 +34,7 @@ public class UpdateUserInformationAction extends BaseAction implements SessionAw
 	public void setDistrict(int district) {
 		this.district = district;
 	}
-	*/
+	
 
 
 	public String getNickName() {
@@ -124,14 +124,12 @@ public class UpdateUserInformationAction extends BaseAction implements SessionAw
 	public String execute() throws Exception {
 		try {
 			User user = userService.getUserByEmail(email);
-	        //user.setL_id(district);
-			user.setNickname(nickName);
+	        user.setL_id(district);
+			//user.setNickname(nickName);
 	        //user.setPassword(password);		
-	        user.setGender(gender);
+	        //user.setGender(gender);
 			userService.update(user);
-			if (avatar != null){
-				userService.uploadImage(user.getId(),avatar, avatarContentType, avatarFileName);
-			}
+			
 			session.put("logined", true);
 			session.put("userName", user.getNickname());
 			session.put("userId", user.getId()); 

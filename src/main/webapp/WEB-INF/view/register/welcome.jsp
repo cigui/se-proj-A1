@@ -42,7 +42,7 @@
 					<button class="btn btn-sm btn-primary btn-block" type="submit">Search</button>
 				</form>
 				<span>Hi, <s:property value='#session.userName' />!
-				</span> <a href="profile" class="btn btn-default btn-sm" role="button">个人信息</a>
+				</span> <a href="GetBeforeUpdateUserInformation" class="btn btn-default btn-sm" role="button">个人信息</a>
 				<a href="logout" class="btn btn-default btn-sm" role="button">登出</a>
 			</div>
 		</div>
@@ -57,7 +57,7 @@
 			</div>
 			<div class="row">
 				<div class="col-md-6" style="text-align: center">
-					<a href="profile" class="btn btn-primary btn-lg">编辑个人信息</a>
+					<a href="GetBeforeUpdateUserInformation" class="btn btn-primary btn-lg">编辑个人信息</a>
 				</div>
 				<div class="col-md-6" style="text-align: center">
 					<a href="index" class="btn btn-primary btn-lg">回到首页</a>

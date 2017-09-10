@@ -7,7 +7,7 @@ import model.User;
 import service.UserService;
 import org.apache.struts2.interceptor.SessionAware;
 
-public class UpdateUserInformationAction extends BaseAction implements SessionAware{
+public class UpdatePasswordAction extends BaseAction implements SessionAware{
 	/**
 	 * Modified on 6th, July, 2017
 	 * By Yu Haifeng
@@ -125,13 +125,11 @@ public class UpdateUserInformationAction extends BaseAction implements SessionAw
 		try {
 			User user = userService.getUserByEmail(email);
 	        //user.setL_id(district);
-			user.setNickname(nickName);
-	        //user.setPassword(password);		
-	        user.setGender(gender);
+			//user.setNickname(nickName);
+	        user.setPassword(password);		
+	        //user.setGender(gender);
 			userService.update(user);
-			if (avatar != null){
-				userService.uploadImage(user.getId(),avatar, avatarContentType, avatarFileName);
-			}
+			
 			session.put("logined", true);
 			session.put("userName", user.getNickname());
 			session.put("userId", user.getId()); 
