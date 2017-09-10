@@ -83,10 +83,10 @@
 
 		<!-- Manage bookRelease -->
 		<action name="listBookReleases" class="action.bookAction.GetBookReleaseByStatusAction">
-			<result name="success">/WEB-INF/view/manageBook.jsp</result>
+			<result name="success">manageBook.jsp</result>
 		</action>
 		<action name="manageBook" class="action.bookAction.CheckBookAction">
-			<result name="success">/WEB-INF/view/manageBook.jsp</result>
+			<result name="success">manageBook.jsp</result>
 		</action>
 		
 		<!-- Book Detail -->
