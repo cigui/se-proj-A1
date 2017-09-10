@@ -10,7 +10,7 @@
 
 
 <!-- Header -->
-<%@ include file="WEB-INF/view/layouts/header.jsp"%>
+<%@ include file="layouts/header.jsp"%>
 <script src="<%=path%>/js/historyDetail.js"></script>
 <%
 	BorrowHistory borrowHistory = (BorrowHistory)request.getAttribute("borrowHistory");
@@ -92,4 +92,4 @@
 </div>
 
 <!-- Footer -->
-<%@ include file="WEB-INF/view/layouts/footer.jsp"%>
+<%@ include file="layouts/footer.jsp"%>
