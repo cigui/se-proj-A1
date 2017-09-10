@@ -6,7 +6,7 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
 <!-- Header -->
-<%@ include file="WEB-INF/view/layouts/header.jsp"%>
+<%@ include file="layouts/header.jsp"%>
 <script src="<%=path%>/js/jquery.dataTables.min.js"></script>
 <script src="<%=path%>/js/dataTables.bootstrap.min.js"></script>
 <link href="<%=path%>/css/dataTables.bootstrap.min.css" rel="stylesheet">
@@ -121,4 +121,4 @@
 
 	
 <!-- Footer -->
-<%@ include file="WEB-INF/view/layouts/footer.jsp"%>
+<%@ include file="layouts/footer.jsp"%>
