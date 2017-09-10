@@ -22,110 +22,58 @@ $(function() {
 			},
 			
 			oldpassword : {
-					required : true,
-					minlength : 6,
-					equalTo : prepassword 
-				},
+				
+				minlength : 6,
+				equalTo : prepassword
+				
+				
+				
+			},
 				password : {
-					required : true,
+					
 					minlength : 6
+					
+					
 				},
 				confirmPassword : {
-					required : true,
+					
 					minlength : 6,
 					equalTo : "#password"
 		},
 		province : "required",
 		city : "required",
-		district : "required"},
+		district : "required"
+			},
+			
 		messages : {
 			nickName : {
 				required : "请输入昵称",
 				byteRangeLength : 14
 			},
-			oldpassword : {
+           oldpassword : {
 				
-					equalTo : "与原密码不一致"
-			},
-			password : {
-				required : "请输入密码",
-				minlength : "密码不能小于6个字 符"
+				minlength : "密码不能小于6个字符",
+				equalTo : "与旧密码不一致"
 					
 			},
-			province : "请输入省份",
-			city : "请输入城市",
-			district : "请输入区\县",
+			password : {
+				
+				minlength : "密码不能小于6个字符"
+					
+			},
 			confirmPassword : {
-				required : "请输入确认密码",
 				minlength : "确认密码不能小于6个字符",
 				equalTo : "两次输入密码不一致"
 			}
 		},
 		});
 	
-    $(":radio[name='gender'][value='" + pregender + "']").prop("checked", "checked");
     
     
     
-    $("#district  option[value='" + predistrict + "'] ").attr("selected",true);
-    $("#city  option[value='" + precity + "'] ").attr("selected",true);
+    $("#gender option[value='" + pregender + "']").attr("selected","selected");
     
-    
-    
-    $.getJSON("getDistricts", {
-		parentId : 0
-	}, function(data) {
-		var province = $('#province');
-		province.empty();
-		province.append("<option disabled selected value></option>");
-		for (var i = 0; i < data.length; i++) {
-			province.append("<option value='" + data[i].id + "'>"
-					+ data[i].name + "</option>");
-		}
-	});
-    
-	$('#province').change(
-			function() {
-				var id = $('#province').val();
-				/* 直辖市id为1,2,3,4 */
-				if (id < 5) {
-					$('#city').attr("name", "district");
-					$('#district').attr("required", false);
-				}
-				else {
-					$('#city').attr("name", "city");
-					$('#district').attr("required", true);
-				}
-				$.getJSON("getDistricts", {
-					parentId : id
-				}, function(data) {
-					var city = $('#city');
-					city.removeAttr("disabled");
-					city.empty();
-					city.append("<option disabled selected value></option>");
-					for (var i = 0; i < data.length; i++) {
-						city.append("<option value='" + data[i].id + "'>"
-								+ data[i].name + "</option>");
-					}
-				})
-			});
-	$("#province  option[value='" + preprovince + "'] ").attr("selected",true);
-	$('#city').change(
-			function() {
-				var id = $('#city').val();
-				$.getJSON("getDistricts",{
-					parentId : id
-				}, function(data) {
-					var district = $('#district');
-					district.removeAttr("disabled");
-					district.empty();
-					district.append("<option disabled selected value></option>");
-					for (var i = 0; i < data.length; i++) {
-						district.append("<option value='"+ data[i].id+ "'>"
-								+ data[i].name + "</option>");
-					}
-				})
-			});
+
 
 	$("#avatar").change(function() {
 		var objUrl = getObjectURL(this.files[0]);

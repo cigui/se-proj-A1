@@ -210,9 +210,27 @@
 			<result name="success" type="redirect">index</result>
 			<result name="error">error.jsp</result>
 		</action>
+		<action name="updatePassword" class="action.userActions.UpdatePasswordAction">
+			<result name="success" type="redirect">index</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<action name="updateLocation" class="action.userActions.UpdateLocationAction">
+			<result name="success" type="redirect">index</result>
+			<result name="error">error.jsp</result>
+		</action>
 		<action name="GetBeforeUpdateUserInformation"
 			class="action.userActions.GetBeforeUpdateUserInformationAction">
 			<result name="success">updateUserInformation.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<action name="GetBeforeUpdatePassword"
+			class="action.userActions.GetBeforeUpdatePasswordAction">
+			<result name="success">updatePassword.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<action name="GetBeforeUpdateLocation"
+			class="action.userActions.GetBeforeUpdateLocationAction">
+			<result name="success">updateLocation.jsp</result>
 			<result name="error">error.jsp</result>
 		</action>
 
