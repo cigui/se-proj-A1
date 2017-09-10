@@ -11,11 +11,16 @@
 <html>
 <!-- Header -->
 <%@ include file="WEB-INF/view/layouts/header.jsp"%>
+<script src="<%=path%>/js/jquery.dataTables.min.js"></script>
+<script src="<%=path%>/js/dataTables.bootstrap.min.js"></script>
+<script src="<%=path%>/js/manageUser.js"></script>
+<link href="<%=path%>/css/dataTables.bootstrap.min.css" rel="stylesheet">
 
 	<script>
 	var user = "<s:property value='#session.id'/>";
 	var path = "<%=path%>";
 	$(document).ready(function() {
+		$('#dataTables').DataTable();
 		
 		if (user == null) {
 			
