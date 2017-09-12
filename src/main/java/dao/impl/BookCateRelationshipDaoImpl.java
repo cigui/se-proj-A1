@@ -11,8 +11,8 @@ import model.BookCateRelationship;
 @SuppressWarnings("deprecation")
 public class BookCateRelationshipDaoImpl extends HibernateDaoSupport implements BookCateRelationshipDao {
 
-	public Integer save(BookCateRelationship bookCateRelationship) {
-		return (Integer) getHibernateTemplate().save(bookCateRelationship);
+	public BookCateRelationship save(BookCateRelationship bookCateRelationship) {
+		return (BookCateRelationship) getHibernateTemplate().save(bookCateRelationship);
 	}
 
 	public void delete(BookCateRelationship bookCateRelationship) {

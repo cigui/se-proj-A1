@@ -122,6 +122,7 @@
 	</bean>
 	<bean id="adminService" class="service.impl.AdminServiceImpl">
 		<property name="bookReleaseDao" ref="bookReleaseDao"></property>
+		<property name="bookCateRelationshipDao" ref="bookCateRelationshipDao"></property>
 	</bean>
 	<bean id="bookReleaseService" class="service.impl.BookReleaseServiceImpl">
 		<property name="bookDao" ref="bookDao"></property>

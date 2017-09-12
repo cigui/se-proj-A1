@@ -6,7 +6,7 @@ import model.BookCateRelationship;
 
 public interface BookCateRelationshipDao {
 
-	public Integer save(BookCateRelationship bookCateRelationship);
+	public BookCateRelationship save(BookCateRelationship bookCateRelationship);
 
 	public void delete(BookCateRelationship bookCateRelationship);
 

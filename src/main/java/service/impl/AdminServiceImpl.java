@@ -82,14 +82,15 @@ public class AdminServiceImpl implements AdminService {
 		if (status == 1)	{
 			bookRelease.setStatus((short) 1);
 			bookReleaseDao.update(bookRelease);
+			long isbn = bookRelease.getIsbn();
 			int category1 = bookRelease.getCategory1();
 			int category2 = bookRelease.getCategory2();
 			int category3 = bookRelease.getCategory3();
-			BookCateRelationship BCR1 = new BookCateRelationship(r_id,category1);
+			BookCateRelationship BCR1 = new BookCateRelationship(isbn,category1);
 			bookCateRelationshipDao.save(BCR1);
-			BookCateRelationship BCR2 = new BookCateRelationship(r_id,category2);
+			BookCateRelationship BCR2 = new BookCateRelationship(isbn,category2);
 			bookCateRelationshipDao.save(BCR2);
-			BookCateRelationship BCR3 = new BookCateRelationship(r_id,category3);
+			BookCateRelationship BCR3 = new BookCateRelationship(isbn,category3);
 			bookCateRelationshipDao.save(BCR3);
 		}
 		if (status == 0)	{

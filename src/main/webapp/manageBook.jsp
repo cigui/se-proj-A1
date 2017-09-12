@@ -12,7 +12,6 @@
 <%@ include file="WEB-INF/view/layouts/header.jsp"%>
 <script src="<%=path%>/js/jquery.dataTables.min.js"></script>
 <script src="<%=path%>/js/dataTables.bootstrap.min.js"></script>
-<script src="<%=path%>/js/manageUser.js"></script>
 <link href="<%=path%>/css/dataTables.bootstrap.min.css" rel="stylesheet">
 <script>
 	var admin = "<s:property value='#session.role'/>";
