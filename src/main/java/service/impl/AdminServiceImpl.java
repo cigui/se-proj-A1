@@ -2,8 +2,10 @@ package service.impl;
 
 import java.util.List;
 
+import dao.BookCateRelationshipDao;
 import dao.BookReleaseDao;
 import dao.UserDao;
+import model.BookCateRelationship;
 import model.BookRelease;
 import model.User;
 import service.AdminService;
@@ -12,6 +14,7 @@ public class AdminServiceImpl implements AdminService {
 	
 	private BookReleaseDao bookReleaseDao;
 	private UserDao userDao;
+	private BookCateRelationshipDao bookCateRelationshipDao;
 	
 	public BookReleaseDao getBookReleaseDao() {
 		return bookReleaseDao;
@@ -21,6 +24,14 @@ public class AdminServiceImpl implements AdminService {
 		this.bookReleaseDao = bookReleaseDao;
 	}
 	
+	public BookCateRelationshipDao getBookCateRelationshipDao() {
+		return bookCateRelationshipDao;
+	}
+
+	public void setBookCateRelationshipDao(BookCateRelationshipDao bookCateRelationshipDao) {
+		this.bookCateRelationshipDao = bookCateRelationshipDao;
+	}
+
 	public Integer save(User user){
 		return userDao.save(user);
 	}
@@ -71,6 +82,15 @@ public class AdminServiceImpl implements AdminService {
 		if (status == 1)	{
 			bookRelease.setStatus((short) 1);
 			bookReleaseDao.update(bookRelease);
+			int category1 = bookRelease.getCategory1();
+			int category2 = bookRelease.getCategory2();
+			int category3 = bookRelease.getCategory3();
+			BookCateRelationship BCR1 = new BookCateRelationship(r_id,category1);
+			bookCateRelationshipDao.save(BCR1);
+			BookCateRelationship BCR2 = new BookCateRelationship(r_id,category2);
+			bookCateRelationshipDao.save(BCR2);
+			BookCateRelationship BCR3 = new BookCateRelationship(r_id,category3);
+			bookCateRelationshipDao.save(BCR3);
 		}
 		if (status == 0)	{
 			bookRelease.setStatus((short) -1);
