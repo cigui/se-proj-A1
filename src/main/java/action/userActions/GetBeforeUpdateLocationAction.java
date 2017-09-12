@@ -3,12 +3,11 @@ package action.userActions;
 import java.util.Map;
 import action.BaseAction;
 import model.User;
-import model.District;
 import service.DistrictService;
 import service.UserService;
 import org.apache.struts2.interceptor.SessionAware;
 
-public class GetBeforeUpdateUserInformationAction extends BaseAction implements SessionAware{
+public class GetBeforeUpdateLocationAction extends BaseAction implements SessionAware{
 	/**
 	 * Modified on 7th, July, 2017
 	 * By Yu Haifeng
@@ -47,19 +46,10 @@ public class GetBeforeUpdateUserInformationAction extends BaseAction implements 
 	public String execute() throws Exception {
 			int id = (Integer) session.get("userId");
 			User user = userService.getUserById(id);
-			int l_id = user.getL_id();
 			request().setAttribute("user", user);
-			District district = districtService.getDistrictById(l_id);
-			int city_id = district.getParent_id();
-			District city = districtService.getDistrictById(city_id);
-			int province_id = city.getParent_id();
-			District province = districtService.getDistrictById(province_id);
-			request().setAttribute("district", district);
-			request().setAttribute("city", city);
-			request().setAttribute("province", province);
+			
 			
 			
 			return SUCCESS;
 		}
 	}
-
