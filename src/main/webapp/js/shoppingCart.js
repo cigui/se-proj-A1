@@ -17,8 +17,8 @@ $(function() {
 						if (result) {
 							$.getJSON('deleteFromShoppingCart',
 								{
-									id : id,
-									r_id : r_id,
+								id : id,
+								r_id : r_id	
 								},
 								function(json) {
 									if (json.error=="undefined") {
@@ -43,6 +43,7 @@ $(function() {
 			});
 		}
 	);
+	
 	$("button.bs-place").click(
 			function() {
 				var checkedItems = [];
@@ -50,35 +51,39 @@ $(function() {
 					function() {
 						if (this.checked) {
 							var r_id = $(this).data("bid");
-							var cnt = $(this).data("num");
-							checkedItems.push(isbn);
+							checkedItems.push(r_id);
 						}
 					}
 				);
+				
 				var jsonstr = JSON.stringify(checkedItems);
 				console.log(jsonstr);
-				$.getJSON("placeOrder",
-				{	
-					id : id,
-					json : jsonstr
-				},
-				function(data){
-					if (data.error == "stock") {
-						bootbox.alert({
-							message : '部分书籍库存不足，请至订单页面查看详细信息！',
-							callback : function() {
-								location.reload();
-							}
-						});
-					} else {
-						bootbox.alert({
-							message : '成功下单！',
-							callback : function() {
-								location.reload();
+				
+				bootbox.prompt({
+					title : "请输入您的收货地址",
+					callback : function(result) {
+						$.getJSON("placeOrder", {
+							id : id,
+							json : jsonstr,
+							location : result
+						}, function(json) {
+							if (json.error=="undefined") {
+								bootbox.alert({
+									message : '未知错误！',
+									callback : function() {
+										location.reload();
+									}
+								});
+							} else {
+								bootbox.alert({
+									message : '借书成功！',
+									callback : function() {
+										location.href = "index";
+									}
+								});
 							}
 						});
 					}
 				});
-			}
-		)
+				});
 	})

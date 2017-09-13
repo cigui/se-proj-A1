@@ -1,13 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
-<%@ page import="model.User" %>
-<%@ page import="model.District" %>
-<%@ page import="model.Picture" %>
-<%@ taglib prefix="s" uri="/struts-tags"%>
-
-<!-- Header -->
-<%@ include file="WEB-INF/view/layouts/header.jsp"%>
-<script src="<%=path%>/js/shoppingCart.js"></script>
 <%@ page import="java.util.Map"%>
 <%@ page import="java.util.List"%>
 <%@ page import="java.util.ArrayList"%>
@@ -15,6 +7,10 @@
 <%@ page import="model.Book"%>
 <%@ page import="model.BookRelease"%>
 <%@ page import="model.BorrowItem"%>
+<%@ page import="model.User" %>
+<%@ page import="model.BorrowHistory" %>
+<%@ taglib prefix="s" uri="/struts-tags"%>
+
 <%
 	ArrayList<BorrowItem> bi = new ArrayList<BorrowItem>();
 	Map<Integer, String> books = new HashMap<Integer, String>();
@@ -29,8 +25,20 @@
 		prices = (Map<Integer, Integer>) request.getAttribute("prices");
 	}
 %>
+
+<!-- Header -->
+<%@ include file="WEB-INF/view/layouts/header.jsp"%>
 <script src="<%=path%>/js/shoppingCart.js"></script>
-<body>  
+<script src="<%=path%>/js/jquery.dataTables.min.js"></script>
+<script src="<%=path%>/js/dataTables.bootstrap.min.js"></script>
+<link href="<%=path%>/css/dataTables.bootstrap.min.css" rel="stylesheet">
+<script>
+	var id = "<s:property value='#session.userId' />";
+	var logined = "<s:property value='#session.logined' />";
+</script>
+<!-- Body -->
+<body>	
+
 <div class="yx-container container">
 			<div class="row">
 			<br>
@@ -41,16 +49,17 @@
 			</h1>
 		</div>
 		
-  <div id='cart' class="container">
-     <form id="cart-form" role="form" method="POST" action="commitOrder">
-       <div class="bs-body">
+			<div class="col-md-12">
+				<div class="row">
+					<br>
+				</div>
+			<div class="bs-body">
 			<div class="bs-center container">
 				<div class="panel panel-info">
 					<table class="table table-striped" id="cart-tb">
-						<tr>	
-							<th>Title</th>						
+						<tr>
+							<th>Title</th>
 							<th>Price</th>
-							<th>Number</th>
 							<th>Operation</th>
 						</tr>
 
@@ -61,11 +70,9 @@
 							
 							<td class="c-title"><%=books.get(item.getR_id())%></td>
 							<td class="c-price"><%=prices.get(item.getR_id())%></td>
-							<td class="c-number"><%="1"%></td>
 							<td class="c-ops">
-							<button class="btn btn-default bs-delete" data-bid=<%=item.getR_id()%>>Delete</button>
-							<input type="checkbox" name="checkbox" data-bid=<%=item.getR_id()%> data-num=<%=1%> />
-							</td>
+							<button class="btn btn-default bs-delete" data-bid=<%=item.getR_id()%> >Delete</button>
+							<input type="checkbox" name="checkbox" data-bid=<%=item.getR_id()%>  /></td>
 						</tr>
 						<%
 							}
@@ -83,4 +90,12 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div>	
+				
+     		
+</div>
+</div>		
+</body>	
+
+<!-- Footer -->
+<%@ include file="WEB-INF/view/layouts/footer.jsp"%>

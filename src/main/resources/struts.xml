@@ -75,18 +75,18 @@
 		
 		<!-- Manage user -->
 		<action name="listUsers" class="action.userActions.AllUsersAction">
-			<result name="success">WEB-INF/view/manageUser.jsp</result>
+			<result name="success">manageUser.jsp</result>
 		</action>
 		<action name="manageUser" class="action.userActions.ManageUserAction">
-			<result name="success">WEB-INF/view/manageUser.jsp</result>
+			<result name="success">manageUser.jsp</result>
 		</action>
 
 		<!-- Manage bookRelease -->
 		<action name="listBookReleases" class="action.bookAction.GetBookReleaseByStatusAction">
-			<result name="success">manageBook.jsp</result>
+			<result name="success">/WEB-INF/view/manageBook.jsp</result>
 		</action>
 		<action name="manageBook" class="action.bookAction.CheckBookAction">
-			<result name="success">manageBook.jsp</result>
+			<result name="success">/WEB-INF/view/manageBook.jsp</result>
 		</action>
 		
 		<!-- Book Detail -->
@@ -161,27 +161,27 @@
 
 		<!-- Borrow History -->
 		<action name="history" class="action.orderAction.ListHistoryOrderAction">
-			<result name="success">WEB-INF/view/borrowHistory.jsp</result>
+			<result name="success">borrowHistory.jsp</result>
 		</action>
 		
 		<!-- Borrow order Detail -->
 		<action name="borrowDetail" class="action.orderAction.HistoryOrderDetailAction">
-			<result name="success">WEB-INF/view/historyDetail.jsp</result>
+			<result name="success">historyDetail.jsp</result>
 		</action>
 		
 		<!-- Score a detail -->
 		<action name="score" class="action.orderAction.ScoreOrderDetailAction">
-			<result name="success">WEB-INF/view/historyDetail.jsp</result>
+			<result name="success">historyDetail.jsp</result>
 		</action>
 		
 		<!-- Release history -->
 		<action name="release" class="action.bookAction.ListBookReleaseAction">
-			<result name="success">WEB-INF/view/borrowHistory.jsp</result>
+			<result name="success">borrowHistory.jsp</result>
 		</action>
 		
 		<!-- Confirm an order -->
 		<action name="confirm" class="action.orderAction.ConfirmOrderAction">
-			<result name="success">WEB-INF/view/historyDetail.jsp</result>
+			<result name="success">historyDetail.jsp</result>
 		</action>
 		
 		<!-- My Release Detail -->
@@ -192,16 +192,20 @@
 
 		<!-- Shopping Cart -->
 		<action name="getCart" class="action.orderAction.GetCartAction">
-			<result name="success" type="redirect">shoppingCart.jsp</result>
+			<result name="success" >shoppingCart.jsp</result>
 			<result name="error">error.jsp</result>
 		</action>
 		<action name="placeOrder" class="action.orderAction.PlaceOrderAction">
-			<result name="success" type="redirect">index</result>
-			<result name="error">error.jsp</result>
+			<result name="success" type="json">
+				<param name="root">resultMap</param>
+			</result>
 		</action>
 		<action name="deleteFromShoppingCart" class="action.orderAction.DeleteFromShoppingCartAction">
-			<result type="json">
-				<param name="root">result</param>
+			<result name="success" type="json">
+				<param name="root">resultMap</param>
+			</result>
+			<result name="error" type="json">
+				<param name="root">resultMap</param>
 			</result>
 		</action>
 
@@ -245,13 +249,13 @@
 
 		<!-- Manage category -->
 		<action name="listCates" class="action.categoryAction.ListCategoryAction">
-			<result name="success">/WEB-INF/view/manageCategory.jsp</result>
+			<result name="success">manageCategory.jsp</result>
 		</action>
 		<action name="updateCate" class="action.categoryAction.UpdateCategoryAction">
-			<result name="success">/WEB-INF/view/manageCategory.jsp</result>
+			<result name="success">manageCategory.jsp</result>
 		</action>
 		<action name="addCate" class="action.categoryAction.AddCategoryAction">
-			<result name="success">/WEB-INF/view/manageCategory.jsp</result>
+			<result name="success">manageCategory.jsp</result>
 		</action>
 
 		<!-- Get Avatar -->

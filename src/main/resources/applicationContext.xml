@@ -11,7 +11,7 @@
 	http://www.springframework.org/schema/aop 
 	http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
 	http://www.springframework.org/schema/data/mongo
-	http://www.springframework.org/schema/data/mongo/spring-mongo-1.0.xsd"> 
+	http://www.springframework.org/schema/data/mongo/spring-mongo-1.0.xsd">
 
 
 	<!-- Bean -->
@@ -122,7 +122,6 @@
 	</bean>
 	<bean id="adminService" class="service.impl.AdminServiceImpl">
 		<property name="bookReleaseDao" ref="bookReleaseDao"></property>
-		<property name="bookCateRelationshipDao" ref="bookCateRelationshipDao"></property>
 	</bean>
 	<bean id="bookReleaseService" class="service.impl.BookReleaseServiceImpl">
 		<property name="bookDao" ref="bookDao"></property>
@@ -148,6 +147,9 @@
 		<property name="borrowItemDao" ref="borrowItemDao"></property>
 		<property name="bookReleaseDao" ref="bookReleaseDao"></property>
 		<property name="borrowHistoryDao" ref="borrowHistoryDao"></property>
+	</bean>
+	<bean id="borrowItemsService" class="service.impl.BorrowItemsServiceImpl">
+		<property name="borrowItemDao" ref="borrowItemDao"></property>
 	</bean>
 
 	<!-- HibernateTransactionManager -->
@@ -178,6 +180,8 @@
 			expression="bean(addBookToCartService)" />
 		<aop:pointcut id="borrowHistoryServiceBeanPointcut"
 			expression="bean(borrowHistoryService)" /> 
+		<aop:pointcut id="borrowItemsServiceBeanPointcut"
+			expression="bean(borrowItemsService)" /> 
 		<!-- <aop:advisor advice-ref="txAdvice" pointcut-ref="userServiceBeanPointcut" 
 			/> -->
 	</aop:config>

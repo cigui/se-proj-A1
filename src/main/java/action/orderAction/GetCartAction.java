@@ -1,6 +1,7 @@
 package action.orderAction;
 
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,13 +21,22 @@ public  class GetCartAction extends BaseAction implements SessionAware {
 	 */
 	
 	private static final long serialVersionUID = 1L;
+	private int id;
 	private BookReleaseService bookReleaseService;
 	private BorrowItemsService borrowItemsService;
 	private BookService bookService; 
 	
 	private Map<String, Object> session;
 	
-	public  BookReleaseService getbookReleaseService() {
+	public int getId() {
+		return id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	public  BookReleaseService getBookReleaseService() {
 		return bookReleaseService;
 	}
 
@@ -44,7 +54,7 @@ public  class GetCartAction extends BaseAction implements SessionAware {
 		this.borrowItemsService = borrowItemsService;
 	}
 	
-	public  BookService getbookService() {
+	public  BookService getBookService() {
 		return bookService;
 	}
 
@@ -60,6 +70,7 @@ public  class GetCartAction extends BaseAction implements SessionAware {
 	}
 	
 	public String execute() throws Exception {
+		try {
 		int id = (Integer) session.get("userId");
 		List<BorrowItem> bi = borrowItemsService.getBorrowItemById(id);
 		Map<Integer, String>books = new HashMap<Integer, String>();  //r_id and title
@@ -76,9 +87,15 @@ public  class GetCartAction extends BaseAction implements SessionAware {
 			BookRelease br = bookReleaseService.getBookReleaseByR_id(r_id);
 			prices.put(r_id, br.getPrice());
 		} 
+		
 		request().setAttribute("bi", bi);
 		request().setAttribute("books", books);
         request().setAttribute("prices", prices);		
 		return SUCCESS;
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			return ERROR;
+		}
 	}
 }
