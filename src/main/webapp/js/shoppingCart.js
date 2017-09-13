@@ -66,21 +66,20 @@ $(function() {
 							id : id,
 							json : jsonstr,
 							location : result
-						}, function(json) {
-							if (json.error=="undefined") {
-								bootbox.alert({
-									message : '未知错误！',
-									callback : function() {
-										location.reload();
-									}
+						},  function(data) {
+							var result = data.result;
+							if (result == "success") {
+								bootbox.alert("借书成功！", function(){
+									location.href = "<%=path%>/index";
 								});
+							} else if (result == "points") {
+								bootbox.alert("积分不足，无法借书:(");
+							} else if (result == "borrowed") {
+								bootbox.alert("该书已被借出:(");
+							} else if (result == "location") {
+								bootbox.alert("请先输入收货地址！");
 							} else {
-								bootbox.alert({
-									message : '借书成功！',
-									callback : function() {
-										location.href = "index";
-									}
-								});
+								bootbox.alert("未知错误:(");
 							}
 						});
 					}

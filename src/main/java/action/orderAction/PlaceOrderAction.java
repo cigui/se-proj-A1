@@ -94,7 +94,6 @@ public class PlaceOrderAction extends BaseAction  {
 	
 	public String execute() throws Exception {	
 		resultMap = new HashMap<String, Object>();
-		try {
 			Gson gson = new Gson();
 			resultMap = new HashMap<String, Object>();
 			@SuppressWarnings("unchecked")
@@ -105,15 +104,10 @@ public class PlaceOrderAction extends BaseAction  {
 			}
 			for (int i = 0; i < r_id2.size(); i++) {
 				BorrowItem bi = borrowItemsService.getBorrowItem(id, r_id2.get(i));
-				borrowItemsService.delete(bi);
-				borrowHistoryService.borrow(id, r_id2.get(i), location);
+				String result = borrowHistoryService.borrow(id, r_id2.get(i), location);
+				resultMap.put("result", result);
+				borrowItemsService.delete(bi);	
 			}
-			resultMap.put("success", true);
 			return SUCCESS;
-		} catch (Exception e) {
-			e.printStackTrace();
-			resultMap.put("error", "undefined");
-			return ERROR;
 		}
 	}
-}
