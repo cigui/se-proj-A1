@@ -86,12 +86,21 @@ public class AdminServiceImpl implements AdminService {
 			int category1 = bookRelease.getCategory1();
 			int category2 = bookRelease.getCategory2();
 			int category3 = bookRelease.getCategory3();
-			BookCateRelationship BCR1 = new BookCateRelationship(isbn,category1);
-			bookCateRelationshipDao.save(BCR1);
-			BookCateRelationship BCR2 = new BookCateRelationship(isbn,category2);
-			bookCateRelationshipDao.save(BCR2);
-			BookCateRelationship BCR3 = new BookCateRelationship(isbn,category3);
-			bookCateRelationshipDao.save(BCR3);
+			if (category1 > 0 && category1 < 18){
+				BookCateRelationship BCR1 = new BookCateRelationship(isbn,category1);
+				bookCateRelationshipDao.save(BCR1);
+			}
+            if (category2 > 0 && category2 < 18){
+            	BookCateRelationship BCR2 = new BookCateRelationship(isbn,category2);
+    			bookCateRelationshipDao.save(BCR2);
+			}
+            if (category3 > 0 && category3 < 18){
+            	BookCateRelationship BCR3 = new BookCateRelationship(isbn,category3);
+    			bookCateRelationshipDao.save(BCR3);
+			}
+			
+			
+			
 		}
 		if (status == 0)	{
 			bookRelease.setStatus((short) -1);
