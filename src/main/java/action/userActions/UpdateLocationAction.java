@@ -163,6 +163,7 @@ public class UpdateLocationAction extends BaseAction implements SessionAware{
 			for (BookRelease item : br) {
 				item.setDistrictCode(district.getCode());
 				item.setCityCode((district.getCode()/100)*100);
+				bookReleaseService.update(item);
 			}
 					
 			session.put("logined", true);

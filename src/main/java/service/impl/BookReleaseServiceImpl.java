@@ -24,6 +24,7 @@ import model.Book;
 import model.BookRelease;
 import model.PagedBookReleaseInfo;
 import model.Picture;
+import model.User;
 import service.BookReleaseService;
 
 public class BookReleaseServiceImpl implements BookReleaseService {
@@ -65,6 +66,10 @@ public class BookReleaseServiceImpl implements BookReleaseService {
 		this.districtDao = districtDao;
 	}
 
+	public void update(BookRelease bookRelease) {
+		bookReleaseDao.update(bookRelease);
+	}
+	
 	public List<BookRelease> getBookReleaseByISBN(long ISBN) {
 		return bookReleaseDao.getBookReleaseByIsbn(ISBN);
 	}
