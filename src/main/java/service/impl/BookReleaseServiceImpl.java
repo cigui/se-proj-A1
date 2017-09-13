@@ -24,7 +24,6 @@ import model.Book;
 import model.BookRelease;
 import model.PagedBookReleaseInfo;
 import model.Picture;
-import model.User;
 import service.BookReleaseService;
 
 public class BookReleaseServiceImpl implements BookReleaseService {

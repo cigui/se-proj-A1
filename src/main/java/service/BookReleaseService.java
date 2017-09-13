@@ -3,8 +3,6 @@ package service;
 import model.BookRelease;
 import model.PagedBookReleaseInfo;
 import model.Picture;
-import model.User;
-
 import java.io.File;
 import java.util.List;
 

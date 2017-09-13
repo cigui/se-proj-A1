@@ -26,7 +26,12 @@ $(function(){
 				required : true,
 				byteRangeLength : 140
 			},
-			price : "required",
+			price : {
+				required : true,
+				digits : true,
+				min : 0,
+				max : 2147483647
+			},
 			publishDate : "required",
 			category1 : "required"	
 		},
@@ -40,7 +45,7 @@ $(function(){
 				required : "请输入书籍描述",
 				byteRangeLength : "描述不能超过140字节！（单个汉字占两个字节）"
 			},
-			price : "请输入积分定价",
+			price : "请输入正整数积分定价",
 			publishDate : "请输入出版日期",
 			category1 : "请至少输入1个分类"
 		}
