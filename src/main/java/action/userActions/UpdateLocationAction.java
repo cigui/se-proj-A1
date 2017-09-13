@@ -1,9 +1,16 @@
 package action.userActions;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import action.BaseAction;
+import model.District;
 import model.User;
+import model.BookRelease;
+import model.BorrowItem;
+import service.DistrictService;
+import service.BookReleaseService;
 import service.UserService;
 import org.apache.struts2.interceptor.SessionAware;
 
@@ -14,6 +21,8 @@ public class UpdateLocationAction extends BaseAction implements SessionAware{
 	 */
 	private static final long serialVersionUID = 1L;//用于版本控制 
 	private UserService userService;
+	private BookReleaseService bookReleaseService;
+	private DistrictService districtService;
 	private int district;
 	private String nickName;
 	private String email;
@@ -77,6 +86,26 @@ public class UpdateLocationAction extends BaseAction implements SessionAware{
 	}
 
 
+	public BookReleaseService getBookReleaseService() {
+		return bookReleaseService;
+	}
+
+
+	public void setBookReleaseService(BookReleaseService bookReleaseService) {
+		this.bookReleaseService = bookReleaseService;
+	}
+
+
+	public DistrictService getDistrictService() {
+		return districtService;
+	}
+
+
+	public void setDistrictService(DistrictService districtService) {
+		this.districtService = districtService;
+	}
+
+
 	public File getAvatar() {
 		return avatar;
 	}
@@ -129,7 +158,13 @@ public class UpdateLocationAction extends BaseAction implements SessionAware{
 	        //user.setPassword(password);		
 	        //user.setGender(gender);
 			userService.update(user);
-			
+			District district = districtService.getDistrictById(user.getL_id());
+			List<BookRelease> br = bookReleaseService.getBookReleaseById(user.getId());
+			for (BookRelease item : br) {
+				item.setDistrictCode(district.getCode());
+				item.setCityCode((district.getCode()/100)*100);
+			}
+					
 			session.put("logined", true);
 			session.put("userName", user.getNickname());
 			session.put("userId", user.getId()); 
