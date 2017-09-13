@@ -9,7 +9,6 @@ import com.google.gson.Gson;
 
 import action.BaseAction;
 import model.BorrowItem;
-import model.BorrowHistory;
 import service.BorrowItemsService;
 import service.BorrowHistoryService;
 
