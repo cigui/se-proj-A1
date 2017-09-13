@@ -98,7 +98,11 @@
 					<h3>借出人所在地:</h3>
 				</div>
 				<div class="col-md-7">
+				<% if (location.getProvince() != null) {%>
 					<h3><%=location.getProvince()%>省<%=location.getCity()%>市<%=location.getDistrict()%>区</h3>
+				<%} else {%>
+					<h3><%=location.getCity()%>市<%=location.getDistrict()%>区</h3>
+				<% } %>
 				</div>
 			</div>
 			<p></p>
