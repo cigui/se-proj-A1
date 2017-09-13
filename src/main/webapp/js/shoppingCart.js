@@ -70,7 +70,7 @@ $(function() {
 							var result = data.result;
 							if (result == "success") {
 								bootbox.alert("借书成功！", function(){
-									location.href = "<%=path%>/index";
+									location.reload();
 								});
 							} else if (result == "points") {
 								bootbox.alert("积分不足，无法借书:(");
