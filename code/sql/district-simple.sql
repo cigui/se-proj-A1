@@ -82,6 +82,7 @@ insert into `district` (`id`, `name`, `parent_id`, `code`, `order`) values('71',
 insert into `district` (`id`, `name`, `parent_id`, `code`, `order`) values('72','长宁','3','310105','3');
 insert into `district` (`id`, `name`, `parent_id`, `code`, `order`) values('73','静安','3','310106','4');
 insert into `district` (`id`, `name`, `parent_id`, `code`, `order`) values('74','普陀','3','310107','5');
+insert into `district` (`id`, `name`, `parent_id`, `code`, `order`) values('75','闸北','3','310108','6');
 insert into `district` (`id`, `name`, `parent_id`, `code`, `order`) values('76','虹口','3','310109','7');
 insert into `district` (`id`, `name`, `parent_id`, `code`, `order`) values('77','杨浦','3','310110','8');
 insert into `district` (`id`, `name`, `parent_id`, `code`, `order`) values('78','闵行','3','310112','9');
