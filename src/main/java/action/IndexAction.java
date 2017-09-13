@@ -1,5 +1,6 @@
 package action;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -54,9 +55,15 @@ public class IndexAction extends BaseAction {
 		
 		if(session().getAttribute("userId") != null){
 			User u = userService.getUserById((Integer)session().getAttribute("userId"));
-			List<Book> recBooks = bookService.getBooksByCategory(u.getFav_category());
-			if (recBooks != null){ 
-				Collections.shuffle(recBooks);
+			List<Book> recBooks = new ArrayList<Book>();
+			if (u.getFav_category()!=null){
+				recBooks = bookService.getBooksByCategory(u.getFav_category());
+				if (recBooks != null){ 
+					Collections.shuffle(recBooks);
+				}
+			} else {
+				recBooks = bookService.getAllBooks();
+						Collections.shuffle(recBooks);
 			}
 			request().setAttribute("recommendBooks", recBooks);
 		}

@@ -18,7 +18,7 @@
 	</div>
 	<div class="row">
 		<div class="col-md-6" style="text-align: center">
-			<a href="<%=path%>/releasebook.jsp" class="btn btn-primary btn-lg">继续发布</a>
+			<a href="<%=path%>/goReleaseBook" class="btn btn-primary btn-lg">继续发布</a>
 		</div>
 		<div class="col-md-6" style="text-align: center">
 			<a href="index" class="btn btn-primary btn-lg">回到首页</a>
